@@ -1,7 +1,10 @@
 import Image from "next/image";
+import Landing from "./components/Landing";
 
 export default function Home() {
   return (
-    <h1 className="text-2xl text-center font-bold">Lets Sync...</h1>
+    <div>
+      <Landing />
+    </div>
   );
 }
