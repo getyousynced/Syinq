@@ -1,17 +1,31 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
+type NavLink = {
+    label: string, 
+    href: string
+}
+
+const NavLinks : NavLink[] = [
+    { label: "How it works?", href: '/how-it-works' },
+    { label: "About", href: '/about' },
+    { label: "Blog", href: '/blog' },
+    { label: "Contact us", href: '/contact-us' },
+]
 const Navbar = () => {
+
   return (
-      <div className='flex justify-between bg-white px-10 p-4 text-center items-center'>
-          <Image src="/sync-logo.png" width={80} height={80} alt="X" />
-          <div className="flex justify-evenly gap-14 font-bold text-xl">
-              <div>How it works?</div>
-              <div>About us</div>
-              <div>Blog</div>
-              <div>Contact us</div>
-          </div>
-    </div>
+      <nav className='hidden sm:flex justify-between bg-white px-10 p-4 items-center'>
+          <Link href="/">
+              <Image src="/sync-logo.png" width={80} height={80} alt="Sync Logo" priority />
+          </Link>
+          <ul className="flex gap-14 font-bold text-xl">
+              {NavLinks.map(({ label, href }) =>(
+                  <li><Link className='hover:text-blue-500' key={href} href={href}> {label}</Link></li>
+        ))}
+          </ul>
+    </nav>
   )
 }
 
