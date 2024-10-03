@@ -18,7 +18,7 @@ const Footer = () => {
         { email },
         "your_user_id" // Replace with your EmailJS user ID
       )
-      .then((result) => {
+      .then(() => {
         console.log("Email successfully sent!");
         setEmail(""); // Clear the email input field
       })
