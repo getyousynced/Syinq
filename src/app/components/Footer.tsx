@@ -3,8 +3,9 @@ import emailjs from "emailjs-com";
 import Image from "next/image";
 import { ImFacebook2 } from "react-icons/im";
 import { FaSquareXTwitter, FaSquareVimeo, FaYoutube } from "react-icons/fa6";
+import Link from "next/link";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   const [email, setEmail] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -27,17 +28,32 @@ const Footer = () => {
       });
   };
 
+  //footer links
+  const footerLinks: {name: string, href: string}[] = [
+    { name: "About us", href: "#" },
+    { name: "Contact us", href: "#" },
+    { name: "About", href: "#" },
+    { name: "Blogs", href: "#" },
+  ]
+
+  //social links
+  const socialLinks: { icon: React.ReactNode; href: string }[] = [
+    { icon: <ImFacebook2 size={28} />, href: "#" },
+    { icon: <FaSquareXTwitter size={32} />, href: "#" },
+    { icon: <FaSquareVimeo size={32} />, href: "#" },
+    { icon: <FaYoutube size={36} />, href: "#" },
+  ]
+
   return (
     <footer className="bg-white text-center text-gray-800 py-6 bottom-0 w-full overflow-hidden relative">
       {/* SVG curve as a background element */}
       <div className="absolute inset-0 top-0 z-0">
         <Image
           src="/Shape.svg"
-          className=""
-          layout="intrinsic"
           width={2400}
           height={2400}
           alt="blue curve"
+          priority={true}
         />
       </div>
       <div className="relative z-10 max-w-7xl mx-auto px-4 -mt-6 md:mt-0">
@@ -71,35 +87,22 @@ const Footer = () => {
             </form>
           </div>
           <div className="w-full py-6 md:py-12">
-            <div className="container mx-auto flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+            <div className="container mx-auto flex flex-col md:flex-row items-center justify-between space-y-8 md:space-y-0">
+
               <div className="flex justify-center space-x-10 md:space-x-20 text-[#434341]">
-                <a href="#" className="hover:text-black text-sm text-nowrap md:text-lg">
-                  About us
-                </a>
-                <a href="#" className="hover:text-black text-sm text-nowrap md:text-lg">
-                  Contact us
-                </a>
-                <a href="#" className="hover:text-black text-sm text-nowrap md:text-lg">
-                  About
-                </a>
-                <a href="#" className="hover:text-black text-sm text-nowrap md:text-lg">
-                  Blogs
-                </a>
+                {footerLinks.map((link, index) => (
+                  <Link href={link.href} key={index} className="hover:text-black text-sm text-nowrap md:text-lg">
+                    {link.name}
+                  </Link>
+                ))}
               </div>
 
-              <div className="flex justify-center space-x-6 md:space-x-8 text-gray-500">
-                <a href="#" className="text-[#434341] hover:text-black">
-                  <ImFacebook2 size={28} />
-                </a>
-                <a href="#" className="text-[#434341] hover:text-black">
-                  <FaSquareXTwitter size={32} />
-                </a>
-                <a href="#" className="text-[#434341] hover:text-black">
-                  <FaSquareVimeo size={32} />
-                </a>
-                <a href="#" className="text-[#434341] hover:text-black">
-                  <FaYoutube size={36} />
-                </a>
+              <div className="flex justify-center space-x-6 md:space-x-8 text-[#434341]">
+                {socialLinks.map((social, index) => (
+                  <Link href={social.href} key={index} className="hover:text-black">
+                    {social.icon}
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
