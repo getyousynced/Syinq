@@ -20,8 +20,9 @@ function AboutSync() {
             {navs.map((nav) => (
               <button
                 key={nav}
-                className={`px-2 sm:px-4 lg:px-8 py-2 rounded-3xl font-[600] text-sm sm:text-base cursor-pointer whitespace-nowrap transition-all duration-300 ease-in-out ${activeNav === nav ? "bg-[#1BD5F533] shadow-inner" : ""
-                  }`}
+                className={`px-2 sm:px-4 lg:px-8 py-2 rounded-3xl font-[600] text-sm sm:text-base cursor-pointer whitespace-nowrap transition-all duration-300 ease-in-out ${
+                  activeNav === nav ? "bg-[#1BD5F533] shadow-inner" : ""
+                }`}
                 onClick={() => handleNavClick(nav)}
               >
                 {nav}
@@ -30,10 +31,11 @@ function AboutSync() {
           </nav>
           <section className="flex flex-col lg:flex-row mt-6 sm:mt-8">
             <article
-              className={`w-full lg:w-[60%] xl:w-[70%] font-[500] text-base sm:text-lg lg:text-xl transition-opacity duration-500 ease-in-out ${["History", "Team", "Vision"].includes(activeNav)
+              className={`w-full lg:w-[60%] xl:w-[70%] font-[500] text-base sm:text-lg lg:text-xl transition-opacity duration-500 ease-in-out ${
+                ["History", "Team", "Vision"].includes(activeNav)
                   ? "opacity-100"
                   : "opacity-0"
-                }`}
+              }`}
             >
               {activeNav === "History" && (
                 <div>

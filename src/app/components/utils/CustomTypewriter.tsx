@@ -9,11 +9,11 @@ type typeWriterProps = {
 const CustomTypewriter = ({ typeWriterData}: typeWriterProps) => {
     const [isMounted, setIsMounted] = useState(false);
     const { isOpen } = useSidebar();
-    if (isOpen) return " ";
-
     useEffect(() => {
         setIsMounted(true);
     }, []);
+    if (isOpen) return " ";
+
     if (!isMounted) return null;
   return (
       <div className=''>
