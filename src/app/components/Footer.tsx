@@ -40,7 +40,7 @@ const Footer = () => {
           alt="blue curve"
         />
       </div>
-      <div className="relative z-10 max-w-7xl mx-auto px-4">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 -mt-6 md:mt-0">
         <div className="flex flex-col items-center">
           <div className="border-2 rounded-xl bg-white flex flex-col md:flex-row items-center justify-between px-4 md:px-8 py-8 md:py-16 gap-4 mt-8 md:mt-16 shadow-xl w-full max-w-7xl mx-auto">
             <h2 className="text-xl md:text-3xl w-full text-nowrap font-thin">
