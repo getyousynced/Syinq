@@ -22,7 +22,7 @@ const Navbar = () => {
           </Link>
           <ul className="flex gap-14 font-bold text-xl">
               {NavLinks.map(({ label, href }) =>(
-                  <li><Link className='hover:text-blue-500' key={href} href={href}> {label}</Link></li>
+                  <li><Link className={label === "How it works?" ? 'text-blue-500' : 'text-black'} key={href} href={href}> {label}</Link></li>
         ))}
           </ul>
     </nav>

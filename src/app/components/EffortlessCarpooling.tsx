@@ -68,7 +68,7 @@ function EffortlessCarpooling() {
         </header>
         <div className="w-full flex justify-center p-4 sm:p-8 lg:p-[8vw] relative bg-white">
           
-          <img className="w-[60%] sm:w-[50%] lg:w-[36%] max-w-md lg:max-w-lg" src="/carpooling.png" alt="Carpooling" />
+          <img className="w-[60%] sm:w-[50%] lg:w-[36%] max-w-md lg:max-w-lg" src="/carpooling.svg" alt="Carpooling" />
 
           {cards.map((card) => (
             <div key={card.id} className="hidden lg:block">
