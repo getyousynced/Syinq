@@ -4,7 +4,7 @@ import React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
-import { useSidebar } from "./context/SidebarContext"
+import { useSidebar } from "../context/SidebarContext"
 
 
 const NavLinks = [
