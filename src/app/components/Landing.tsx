@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 import React from 'react';
-import CustomTypewriter from './utils/CustomTypewriter';
-import { useSidebar } from './context/SidebarContext';
+import CustomTypewriter from '../utils/CustomTypewriter';
+import { useSidebar } from '../context/SidebarContext';
 
 export default function Landing() {
     const typeWriterData = ["Socially Connected Sustainable Ridesharing"];
