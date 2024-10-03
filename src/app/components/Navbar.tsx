@@ -6,7 +6,7 @@ import { NavLinks } from '../data/navLinks'
 const Navbar = () => {
 
   return (
-      <nav className='hidden sm:flex sm:sticky sm:top-0 justify-between bg-white px-10 p-4 items-center shadow-lg backdrop-blur-md'>
+      <nav className='hidden sm:flex sm:sticky sm:top-0 justify-between bg-white px-10 p-4 items-center shadow-lg backdrop-blur-md z-30'>
           <Link href="/">
               <Image src="/sync-logo.svg" width={80} height={80} alt="Sync Logo" priority />
           </Link>
