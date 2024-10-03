@@ -14,7 +14,7 @@ export default function Landing() {
             <div className='sm:w-1/2 flex justify-center'>
                 <div className='w-[85%] sm:w-[80%]'>
                     <p className='text-3xl font-bold pb-10'>
-                        Your Campus Commute, Simplified -
+                        Your Campus Commute, Simplified- 
                         <span className='text-[#AAAAAA]'>
                             {' '}
                             {isOpen ? (
