@@ -1,0 +1,1978 @@
+Log file created at: 2024/10/06 21:56:40
+Running on machine: Rupeshs-MacBook-Pro
+Binary: Built with gc go1.22.2 for darwin/arm64
+Previous log: <none>
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I1006 21:56:40.010449   30240 eventsink.go:59] Found typescript version 5.3.3 at /Users/rupeshshandilya/Desktop/test/Sync-Website/.sst/platform/node_modules/typescript/lib/typescript.js
+I1006 21:56:40.018003   30240 eventsink.go:59] Found ts-node version: 7.0.1 at /Users/rupeshshandilya/Desktop/test/Sync-Website/.sst/platform/node_modules/ts-node/dist/index.js
+I1006 21:56:40.023533   30240 eventsink.go:59] Registering resource: t=pulumi:pulumi:Stack, name=sync-website-production, custom=false, remote=false
+I1006 21:56:40.024047   30240 eventsink.go:59] RegisterResource RPC prepared: t=pulumi:pulumi:Stack, name=sync-website-production
+I1006 21:56:40.024448   30240 eventsink.go:59] RegisterResource RPC finished: resource:sync-website-production[pulumi:pulumi:Stack]; err: null, resp: urn:pulumi:production::sync-website::pulumi:pulumi:Stack::sync-website-production,,,,
+I1006 21:56:40.025426   30240 eventsink.go:59] Running program '/Users/rupeshshandilya/Desktop/test/Sync-Website/.sst/platform/sst.config.1728231997127.mjs' in pwd '/Users/rupeshshandilya/Desktop/test/Sync-Website/.sst/platform' w/ args: 
+I1006 21:56:41.067887   30240 eventsink.go:59] Registering resource: t=sst:aws:Nextjs, name=SyncWebsite, custom=false, remote=false
+I1006 21:56:41.078201   30240 eventsink.go:59] Invoking function: tok=aws:index/getPartition:getPartition asynchronously
+I1006 21:56:41.082252   30240 eventsink.go:59] Invoking function: tok=aws:index/getRegion:getRegion asynchronously
+I1006 21:56:41.083161   30240 eventsink.go:59] Registering resource: t=random:index/randomId:RandomId, name=SyncWebsiteAssetsId, custom=true, remote=false
+I1006 21:56:41.083607   30240 eventsink.go:59] Registering resource: t=pulumi-nodejs:dynamic:Resource, name=SyncWebsiteS3AccessControl.sst.aws.OriginAccessControl, custom=true, remote=false
+I1006 21:56:41.085060   30240 eventsink.go:59] Registering resource: t=sst:aws:Bucket, name=SyncWebsiteAssets, custom=false, remote=false
+I1006 21:56:41.085435   30240 eventsink.go:59] Registering resource: t=aws:s3/bucketV2:BucketV2, name=SyncWebsiteAssetsBucket, custom=true, remote=false
+I1006 21:56:41.086005   30240 eventsink.go:59] Registering resource: t=aws:s3/bucketPublicAccessBlock:BucketPublicAccessBlock, name=SyncWebsiteAssetsPublicAccessBlock, custom=true, remote=false
+I1006 21:56:41.086787   30240 eventsink.go:59] , obj={}
+I1006 21:56:41.087274   30240 eventsink.go:59] , obj={}
+I1006 21:56:41.087712   30240 eventsink.go:59] Registering resource: t=aws:s3/bucketCorsConfigurationV2:BucketCorsConfigurationV2, name=SyncWebsiteAssetsCors, custom=true, remote=false
+I1006 21:56:41.088063   30240 eventsink.go:59] RegisterResource RPC prepared: t=sst:aws:Nextjs, name=SyncWebsite
+I1006 21:56:41.088413   30240 eventsink.go:59] Invoking function: tok=aws:iam/getPolicyDocument:getPolicyDocument asynchronously
+I1006 21:56:41.088666   30240 eventsink.go:59] Registering resource: t=aws:s3/bucketPolicy:BucketPolicy, name=SyncWebsiteAssetsPolicy, custom=true, remote=false
+I1006 21:56:41.088994   30240 eventsink.go:59] Registering resource: t=pulumi-nodejs:dynamic:Resource, name=SyncWebsiteBuild.sst.Run, custom=true, remote=false
+I1006 21:56:41.089300   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:56:41.089550   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:56:41.089775   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:56:41.090157   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:56:41.090387   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:56:41.090620   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:56:41.090888   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:56:41.091154   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:56:41.091369   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:56:41.091612   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:56:41.091827   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:56:41.092052   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:56:41.092270   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:56:41.092481   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:56:41.092719   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:56:41.092908   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:56:41.093193   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:56:41.093415   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:56:41.093666   30240 eventsink.go:59] Registering resource: t=sst:sst:LinkRef, name=SyncWebsiteLinkRef, custom=false, remote=false
+I1006 21:56:41.093887   30240 eventsink.go:59] RegisterResource RPC prepared: t=sst:sst:LinkRef, name=SyncWebsiteLinkRef
+I1006 21:56:41.094089   30240 eventsink.go:59] RegisterResourceOutputs RPC prepared: urn=urn:pulumi:production::sync-website::pulumi:pulumi:Stack::sync-website-production
+I1006 21:56:41.094282   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsite[sst:aws:Nextjs]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs::SyncWebsite,,,,
+I1006 21:56:41.094518   30240 eventsink.go:59] RegisterResource RPC prepared: t=sst:aws:Bucket, name=SyncWebsiteAssets
+I1006 21:56:41.094831   30240 eventsink.go:59] RegisterResource RPC prepared: t=pulumi-nodejs:dynamic:Resource, name=SyncWebsiteS3AccessControl.sst.aws.OriginAccessControl
+I1006 21:56:41.095113   30240 eventsink.go:59] RegisterResource RPC prepared: t=pulumi-nodejs:dynamic:Resource, name=SyncWebsiteBuild.sst.Run
+I1006 21:56:41.095347   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteLinkRef[sst:sst:LinkRef]; err: null, resp: urn:pulumi:production::sync-website::sst:sst:LinkRef::SyncWebsiteLinkRef,,,,
+I1006 21:56:42.897156   30240 eventsink.go:59] [INFO] pulumi-aws: starting to validate credentials. Disable this by AWS_SKIP_CREDENTIALS_VALIDATION or skipCredentialsValidation option
+I1006 21:56:44.889444   30240 eventsink.go:59] [INFO] pulumi-aws: credentials are valid
+I1006 21:56:44.907688   30240 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:production::sync-website::pulumi:pulumi:Stack::sync-website-production; err: null, resp: 
+I1006 21:56:44.909610   30240 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:production::sync-website::pulumi:pulumi:Stack::sync-website-production; err: null, resp: 
+I1006 21:56:44.910631   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteAssets[sst:aws:Bucket]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Bucket::SyncWebsiteAssets,,,,
+I1006 21:56:44.916074   30240 eventsink.go:59] RegisterResource RPC prepared: t=random:index/randomId:RandomId, name=SyncWebsiteAssetsId
+I1006 21:56:44.916609   30240 eventsink.go:59] RegisterResourceOutputs RPC prepared: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Bucket::SyncWebsiteAssets
+I1006 21:56:45.079486   30240 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Bucket::SyncWebsiteAssets; err: null, resp: 
+I1006 21:56:45.079864   30240 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Bucket::SyncWebsiteAssets; err: null, resp: 
+I1006 21:56:45.086591   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteS3AccessControl.sst.aws.OriginAccessControl[pulumi-nodejs:dynamic:Resource]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$pulumi-nodejs:dynamic:Resource::SyncWebsiteS3AccessControl.sst.aws.OriginAccessControl,E3OKGWTGO2XAR9,__provider,,,exports.handler = __f0;
+
+var __provider_proto = {};
+Object.defineProperty(__f1, "prototype", { value: __provider_proto });
+Object.defineProperty(__provider_proto, "constructor", { configurable: true, writable: true, value: __f1 });
+Object.defineProperty(__provider_proto, "name", { configurable: true, writable: true, value: __f2 });
+Object.setPrototypeOf(__f4, global.Error);
+Object.defineProperty(__provider_proto, "create", { configurable: true, writable: true, value: __f3 });
+Object.defineProperty(__provider_proto, "delete", { configurable: true, writable: true, value: __f5 });
+Object.defineProperty(__provider_proto, "update", { configurable: true, writable: true, value: __f6 });
+Object.defineProperty(__provider_proto, "read", { configurable: true, writable: true, value: __f7 });
+var __provider = Object.create(__provider_proto);
+__provider.type = "Aws.OriginAccessControl";
+
+function __f1(__0) {
+  return (function() {
+    with({ this: undefined, arguments: undefined }) {
+
+return function /*constructor*/(type) {
+      this.type = type;
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f2(__0) {
+  return (function() {
+    with({ this: undefined, arguments: undefined }) {
+
+return function /*name*/(action) {
+      return "Resource." + this.type + "." + action;
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f4(__0) {
+  return (function() {
+    with({ __super: global.Error, this: undefined, arguments: undefined }) {
+
+return function /*constructor*/(method) {
+    __super.call(this, `Method "${method}" not found`);
+    this.method = method;
+};
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+const http = require("http");
+
+function __call(__0, __1) {
+  return (function() {
+    with({ MethodNotFoundError: __f4, call: __call, this: undefined, arguments: undefined }) {
+
+return async function /*call*/(method, args) {
+    return new Promise((resolve, reject) => {
+      const url = new URL(process.env.SST_SERVER + "/rpc");
+      const options = {
+        hostname: url.hostname,
+        port: url.port,
+        path: url.pathname,
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      };
+      const req = http.request(options, (res) => {
+        let data = "";
+        res.on("data", (chunk) => {
+          data += chunk;
+        });
+        res.on("end", () => {
+          if (res.statusCode !== 200) {
+            reject(new Error(`Failed to call RPC: ${data}`));
+            return;
+          }
+          try {
+            const json = JSON.parse(data);
+            if (json.error) {
+              if (json.error.startsWith("rpc: can't find")) {
+                reject(new MethodNotFoundError(method));
+                return;
+              }
+              reject(new Error(json.error));
+              return;
+            }
+            resolve(json.result);
+          } catch (error) {
+            reject(new Error(`Failed to parse JSON: ${error.message}`));
+          }
+        });
+      });
+      req.on("error", (error) => {
+        reject(error);
+      });
+      req.setTimeout(0);
+      const body = JSON.stringify({
+        jsonrpc: "1.0",
+        method,
+        params: [args]
+      });
+      req.write(body);
+      req.end();
+    });
+  };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f3(__0) {
+  return (function() {
+    with({ call: __call, this: undefined, arguments: undefined }) {
+
+return async function /*create*/(inputs) {
+      return call(this.name("Create"), inputs);
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f5(__0, __1) {
+  return (function() {
+    with({ call: __call, MethodNotFoundError: __f4, this: undefined, arguments: undefined }) {
+
+return async function /*delete*/(id, outs) {
+      return call(this.name("Delete"), { id, outs }).catch((ex) => {
+        if (ex instanceof MethodNotFoundError) return;
+        throw ex;
+      });
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f6(__0, __1, __2) {
+  return (function() {
+    with({ call: __call, MethodNotFoundError: __f4, this: undefined, arguments: undefined }) {
+
+return async function /*update*/(id, olds, news) {
+      return call(this.name("Update"), { id, olds, news }).catch((ex) => {
+        if (ex instanceof MethodNotFoundError)
+          return {
+            id
+          };
+        throw ex;
+      });
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f7(__0, __1) {
+  return (function() {
+    with({ call: __call, MethodNotFoundError: __f4, this: undefined, arguments: undefined }) {
+
+return async function /*read*/(id, props) {
+      return call(this.name("Read"), { id, props }).catch((ex) => {
+        if (ex instanceof MethodNotFoundError) return { id, props };
+        throw ex;
+      });
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f0() {
+  return (function() {
+    with({ provider: __provider, this: undefined, arguments: undefined }) {
+
+return () => provider;
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+,,
+I1006 21:56:45.244285   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:s3/bucketV2:BucketV2, name=SyncWebsiteAssetsBucket
+I1006 21:56:45.244474   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteAssetsId[random:index/randomId:RandomId]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Bucket$random:index/randomId:RandomId::SyncWebsiteAssetsId,XmusXPex,b64Std,,,XmusXPex,b64Url,,,XmusXPex,byteLength,,6,dec,,,103816546285489,hex,,,5e6bac5cf7b1,id,,,XmusXPex,,
+I1006 21:56:46.885444   30240 eventsink.go:59] Invoke RPC finished: tok=aws:index/getPartition:getPartition; err: null, resp: dnsSuffix,,,amazonaws.com,id,,,aws,partition,,,aws,reverseDnsPrefix,,,com.amazonaws,
+I1006 21:56:46.886372   30240 eventsink.go:59] Invoke RPC finished: tok=aws:index/getRegion:getRegion; err: null, resp: description,,,US East (N. Virginia),endpoint,,,ec2.us-east-1.amazonaws.com,id,,,us-east-1,name,,,us-east-1,
+I1006 21:56:46.898057   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteAssetsBucket[aws:s3/bucketV2:BucketV2]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Bucket$aws:s3/bucketV2:BucketV2::SyncWebsiteAssetsBucket,sync-website-production-syncwebsiteassets-wxtuonvr,__meta,,,{"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0":{"create":1200000000000,"delete":3600000000000,"read":1200000000000,"update":1200000000000}},accelerationStatus,,,,acl,0,arn,,,arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr,bucket,,,sync-website-production-syncwebsiteassets-wxtuonvr,bucketDomainName,,,sync-website-production-syncwebsiteassets-wxtuonvr.s3.amazonaws.com,bucketPrefix,,,,bucketRegionalDomainName,,,sync-website-production-syncwebsiteassets-wxtuonvr.s3.us-east-1.amazonaws.com,corsRules,,,,,,,forceDestroy,,,,true,grants,,,,,,,,,,id,,,824607c14f2e4f15562e9d1858266ca8495a83a64a2c0cb07a526ad37d1678e4,permissions,,,,,,,,FULL_CONTROL,type,,,CanonicalUser,uri,,,,hostedZoneId,,,Z3AQBSTGFYJSTF,id,,,sync-website-production-syncwebsiteassets-wxtuonvr,lifecycleRules,,,,,,,loggings,,,,,,,objectLockConfiguration,0,objectLockEnabled,,,,false,policy,,,,region,,,us-east-1,replicationConfigurations,,,,,,,requestPayer,,,BucketOwner,serverSideEncryptionConfigurations,,,,,,,,,,rules,,,,,,,,,,applyServerSideEncryptionByDefaults,,,,,,,,,,kmsMasterKeyId,,,,sseAlgorithm,,,AES256,bucketKeyEnabled,,,,false,tags,,,,,sst:app,,,sync-website,sst:stage,,,production,tagsAll,,,,,sst:app,,,sync-website,sst:stage,,,production,versionings,,,,,,,,,,enabled,,,,false,mfaDelete,,,,false,websiteDomain,0,websiteEndpoint,0,websites,,,,,,,,
+I1006 21:56:46.898549   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:s3/bucketCorsConfigurationV2:BucketCorsConfigurationV2, name=SyncWebsiteAssetsCors
+I1006 21:56:46.902181   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:s3/bucketPublicAccessBlock:BucketPublicAccessBlock, name=SyncWebsiteAssetsPublicAccessBlock
+I1006 21:56:46.905365   30240 eventsink.go:59] , obj={"statements":[{"principals":[{"type":"Service","identifiers":["cloudfront.amazonaws.com"]}],"actions":["s3:GetObject"],"resources":["arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr/*"]},{"effect":"Deny","principals":[{"type":"*","identifiers":["*"]}],"actions":["s3:*"],"resources":["arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr","arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr/*"],"conditions":[{"test":"Bool","variable":"aws:SecureTransport","values":["false"]}]}]}
+I1006 21:56:46.905675   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteAssetsPublicAccessBlock[aws:s3/bucketPublicAccessBlock:BucketPublicAccessBlock]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Bucket$aws:s3/bucketPublicAccessBlock:BucketPublicAccessBlock::SyncWebsiteAssetsPublicAccessBlock,sync-website-production-syncwebsiteassets-wxtuonvr,blockPublicAcls,,,,true,blockPublicPolicy,,,,true,bucket,,,sync-website-production-syncwebsiteassets-wxtuonvr,id,,,sync-website-production-syncwebsiteassets-wxtuonvr,ignorePublicAcls,,,,true,restrictPublicBuckets,,,,true,,
+I1006 21:56:46.906067   30240 eventsink.go:59] Invoke RPC finished: tok=aws:iam/getPolicyDocument:getPolicyDocument; err: null, resp: id,,,4086278269,json,,,{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr/*",
+      "Principal": {
+        "Service": "cloudfront.amazonaws.com"
+      }
+    },
+    {
+      "Effect": "Deny",
+      "Action": "s3:*",
+      "Resource": [
+        "arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr/*",
+        "arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr"
+      ],
+      "Principal": "*",
+      "Condition": {
+        "Bool": {
+          "aws:SecureTransport": "false"
+        }
+      }
+    }
+  ]
+},minifiedJson,,,{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Action":"s3:GetObject","Resource":"arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr/*","Principal":{"Service":"cloudfront.amazonaws.com"}},{"Effect":"Deny","Action":"s3:*","Resource":["arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr/*","arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr"],"Principal":"*","Condition":{"Bool":{"aws:SecureTransport":"false"}}}]},statements,,,,,,,,,,actions,,,,,,,,s3:GetObject,conditions,,,,,,,effect,,,Allow,notActions,,,,,,,notPrincipals,,,,,,,notResources,,,,,,,principals,,,,,,,,,,identifiers,,,,,,,,cloudfront.amazonaws.com,type,,,Service,resources,,,,,,,,arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr/*,sid,,,,,,,,actions,,,,,,,,s3:*,conditions,,,,,,,,,,test,,,Bool,values,,,,,,,,false,variable,,,aws:SecureTransport,effect,,,Deny,notActions,,,,,,,notPrincipals,,,,,,,notResources,,,,,,,principals,,,,,,,,,,identifiers,,,,,,,,*,type,,,*,resources,,,,,,,,arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr,,,arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr/*,sid,,,,version,,,2012-10-17,
+I1006 21:56:46.906784   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:s3/bucketPolicy:BucketPolicy, name=SyncWebsiteAssetsPolicy
+I1006 21:56:46.907022   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteAssetsCors[aws:s3/bucketCorsConfigurationV2:BucketCorsConfigurationV2]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Bucket$aws:s3/bucketCorsConfigurationV2:BucketCorsConfigurationV2::SyncWebsiteAssetsCors,sync-website-production-syncwebsiteassets-wxtuonvr,bucket,,,sync-website-production-syncwebsiteassets-wxtuonvr,corsRules,,,,,,,,,,allowedHeaders,,,,,,,,*,allowedMethods,,,,,,,,DELETE,,,GET,,,HEAD,,,POST,,,PUT,allowedOrigins,,,,,,,,*,exposeHeaders,,,,,,,id,,,,maxAgeSeconds,,0,expectedBucketOwner,,,,id,,,sync-website-production-syncwebsiteassets-wxtuonvr,,
+I1006 21:56:46.907260   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteAssetsPolicy[aws:s3/bucketPolicy:BucketPolicy]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Bucket$aws:s3/bucketPolicy:BucketPolicy::SyncWebsiteAssetsPolicy,sync-website-production-syncwebsiteassets-wxtuonvr,bucket,,,sync-website-production-syncwebsiteassets-wxtuonvr,id,,,sync-website-production-syncwebsiteassets-wxtuonvr,policy,,,{"Statement":[{"Action":"s3:GetObject","Effect":"Allow","Principal":{"Service":"cloudfront.amazonaws.com"},"Resource":"arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr/*"},{"Action":"s3:*","Condition":{"Bool":{"aws:SecureTransport":"false"}},"Effect":"Deny","Principal":"*","Resource":["arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr/*","arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr"]}],"Version":"2012-10-17"},,
+I1006 21:56:59.976108   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteBuild.sst.Run[pulumi-nodejs:dynamic:Resource]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$pulumi-nodejs:dynamic:Resource::SyncWebsiteBuild.sst.Run,run,__provider,,,exports.handler = __f0;
+
+var __provider_proto = {};
+Object.defineProperty(__f1, "prototype", { value: __provider_proto });
+Object.defineProperty(__provider_proto, "constructor", { configurable: true, writable: true, value: __f1 });
+Object.defineProperty(__provider_proto, "name", { configurable: true, writable: true, value: __f2 });
+Object.setPrototypeOf(__f4, global.Error);
+Object.defineProperty(__provider_proto, "create", { configurable: true, writable: true, value: __f3 });
+Object.defineProperty(__provider_proto, "delete", { configurable: true, writable: true, value: __f5 });
+Object.defineProperty(__provider_proto, "update", { configurable: true, writable: true, value: __f6 });
+Object.defineProperty(__provider_proto, "read", { configurable: true, writable: true, value: __f7 });
+var __provider = Object.create(__provider_proto);
+__provider.type = "Run";
+
+function __f1(__0) {
+  return (function() {
+    with({ this: undefined, arguments: undefined }) {
+
+return function /*constructor*/(type) {
+      this.type = type;
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f2(__0) {
+  return (function() {
+    with({ this: undefined, arguments: undefined }) {
+
+return function /*name*/(action) {
+      return "Resource." + this.type + "." + action;
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f4(__0) {
+  return (function() {
+    with({ __super: global.Error, this: undefined, arguments: undefined }) {
+
+return function /*constructor*/(method) {
+    __super.call(this, `Method "${method}" not found`);
+    this.method = method;
+};
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+const http = require("http");
+
+function __call(__0, __1) {
+  return (function() {
+    with({ MethodNotFoundError: __f4, call: __call, this: undefined, arguments: undefined }) {
+
+return async function /*call*/(method, args) {
+    return new Promise((resolve, reject) => {
+      const url = new URL(process.env.SST_SERVER + "/rpc");
+      const options = {
+        hostname: url.hostname,
+        port: url.port,
+        path: url.pathname,
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      };
+      const req = http.request(options, (res) => {
+        let data = "";
+        res.on("data", (chunk) => {
+          data += chunk;
+        });
+        res.on("end", () => {
+          if (res.statusCode !== 200) {
+            reject(new Error(`Failed to call RPC: ${data}`));
+            return;
+          }
+          try {
+            const json = JSON.parse(data);
+            if (json.error) {
+              if (json.error.startsWith("rpc: can't find")) {
+                reject(new MethodNotFoundError(method));
+                return;
+              }
+              reject(new Error(json.error));
+              return;
+            }
+            resolve(json.result);
+          } catch (error) {
+            reject(new Error(`Failed to parse JSON: ${error.message}`));
+          }
+        });
+      });
+      req.on("error", (error) => {
+        reject(error);
+      });
+      req.setTimeout(0);
+      const body = JSON.stringify({
+        jsonrpc: "1.0",
+        method,
+        params: [args]
+      });
+      req.write(body);
+      req.end();
+    });
+  };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f3(__0) {
+  return (function() {
+    with({ call: __call, this: undefined, arguments: undefined }) {
+
+return async function /*create*/(inputs) {
+      return call(this.name("Create"), inputs);
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f5(__0, __1) {
+  return (function() {
+    with({ call: __call, MethodNotFoundError: __f4, this: undefined, arguments: undefined }) {
+
+return async function /*delete*/(id, outs) {
+      return call(this.name("Delete"), { id, outs }).catch((ex) => {
+        if (ex instanceof MethodNotFoundError) return;
+        throw ex;
+      });
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f6(__0, __1, __2) {
+  return (function() {
+    with({ call: __call, MethodNotFoundError: __f4, this: undefined, arguments: undefined }) {
+
+return async function /*update*/(id, olds, news) {
+      return call(this.name("Update"), { id, olds, news }).catch((ex) => {
+        if (ex instanceof MethodNotFoundError)
+          return {
+            id
+          };
+        throw ex;
+      });
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f7(__0, __1) {
+  return (function() {
+    with({ call: __call, MethodNotFoundError: __f4, this: undefined, arguments: undefined }) {
+
+return async function /*read*/(id, props) {
+      return call(this.name("Read"), { id, props }).catch((ex) => {
+        if (ex instanceof MethodNotFoundError) return { id, props };
+        throw ex;
+      });
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f0() {
+  return (function() {
+    with({ provider: __provider, this: undefined, arguments: undefined }) {
+
+return () => provider;
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+,,
+I1006 21:56:59.985513   30240 eventsink.go:59] Registering resource: t=aws:dynamodb/table:Table, name=SyncWebsiteRevalidationTable, custom=true, remote=false
+I1006 21:56:59.993004   30240 eventsink.go:59] Registering resource: t=sst:aws:Queue, name=SyncWebsiteRevalidationEvents, custom=false, remote=false
+I1006 21:57:00.136608   30240 eventsink.go:59] Registering resource: t=aws:sqs/queue:Queue, name=SyncWebsiteRevalidationEventsQueue, custom=true, remote=false
+I1006 21:57:00.143930   30240 eventsink.go:59] RegisterResource RPC prepared: t=sst:aws:Queue, name=SyncWebsiteRevalidationEvents
+I1006 21:57:00.156055   30240 eventsink.go:59] Registering resource: t=sst:aws:Function, name=SyncWebsiteRevalidationSeeder, custom=false, remote=false
+I1006 21:57:00.176240   30240 eventsink.go:59] Invoking function: tok=aws:index/getRegion:getRegion asynchronously
+I1006 21:57:00.177437   30240 eventsink.go:59] Invoking function: tok=aws:index/getRegion:getRegion asynchronously
+I1006 21:57:00.179034   30240 eventsink.go:59] Registering resource: t=aws:iam/role:Role, name=SyncWebsiteRevalidationSeederRole, custom=true, remote=false
+I1006 21:57:00.181067   30240 eventsink.go:59] Registering resource: t=aws:lambda/invocation:Invocation, name=SyncWebsiteRevalidationSeed, custom=true, remote=false
+I1006 21:57:00.182475   30240 eventsink.go:59] , obj={}
+I1006 21:57:00.183784   30240 eventsink.go:59] , obj={}
+I1006 21:57:00.208059   30240 eventsink.go:59] RegisterResource RPC prepared: t=sst:aws:Function, name=SyncWebsiteRevalidationSeeder
+I1006 21:57:00.209344   30240 eventsink.go:59] Registering resource: t=aws:cloudwatch/logGroup:LogGroup, name=SyncWebsiteRevalidationSeederLogGroup, custom=true, remote=false
+I1006 21:57:00.210125   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:dynamodb/table:Table, name=SyncWebsiteRevalidationTable
+I1006 21:57:00.210781   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteRevalidationEvents[sst:aws:Queue]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Queue::SyncWebsiteRevalidationEvents,,,,
+I1006 21:57:00.233380   30240 eventsink.go:59] RegisterResourceOutputs RPC prepared: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Queue::SyncWebsiteRevalidationEvents
+I1006 21:57:00.234338   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:sqs/queue:Queue, name=SyncWebsiteRevalidationEventsQueue
+I1006 21:57:00.234773   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteRevalidationSeeder[sst:aws:Function]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function::SyncWebsiteRevalidationSeeder,,,,
+I1006 21:57:00.235571   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:cloudwatch/logGroup:LogGroup, name=SyncWebsiteRevalidationSeederLogGroup
+I1006 21:57:00.252809   30240 eventsink.go:59] RegisterResourceOutputs RPC prepared: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function::SyncWebsiteRevalidationSeeder
+I1006 21:57:00.253475   30240 eventsink.go:59] Invoke RPC finished: tok=aws:index/getRegion:getRegion; err: null, resp: description,,,US East (N. Virginia),endpoint,,,ec2.us-east-1.amazonaws.com,id,,,us-east-1,name,,,us-east-1,
+I1006 21:57:00.253898   30240 eventsink.go:59] Invoke RPC finished: tok=aws:index/getRegion:getRegion; err: null, resp: description,,,US East (N. Virginia),endpoint,,,ec2.us-east-1.amazonaws.com,id,,,us-east-1,name,,,us-east-1,
+I1006 21:57:00.254411   30240 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Queue::SyncWebsiteRevalidationEvents; err: null, resp: 
+I1006 21:57:00.254815   30240 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Queue::SyncWebsiteRevalidationEvents; err: null, resp: 
+I1006 21:57:00.255119   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteRevalidationTable[aws:dynamodb/table:Table]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$aws:dynamodb/table:Table::SyncWebsiteRevalidationTable,sync-website-production-SyncWebsiteRevalidationTable,__meta,,,{"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0":{"create":1800000000000,"delete":600000000000,"update":3600000000000},"schema_version":"1"},arn,,,arn:aws:dynamodb:us-east-1:831926620158:table/sync-website-production-SyncWebsiteRevalidationTable,attributes,,,,,,,,,,name,,,path,type,,,S,,,,,name,,,revalidatedAt,type,,,N,,,,,name,,,tag,type,,,S,billingMode,,,PAY_PER_REQUEST,deletionProtectionEnabled,,,,false,globalSecondaryIndexes,,,,,,,,,,hashKey,,,path,name,,,revalidate,nonKeyAttributes,,,,,,,projectionType,,,ALL,rangeKey,,,revalidatedAt,readCapacity,0,writeCapacity,0,hashKey,,,tag,id,,,sync-website-production-SyncWebsiteRevalidationTable,importTable,0,localSecondaryIndexes,,,,,,,name,,,sync-website-production-SyncWebsiteRevalidationTable,pointInTimeRecovery,,,,,enabled,,,,true,rangeKey,,,path,readCapacity,,0,replicas,,,,,,,restoreDateTime,0,restoreSourceName,0,restoreSourceTableArn,0,restoreToLatestTime,0,serverSideEncryption,0,streamArn,,,,streamEnabled,,,,false,streamLabel,,,,streamViewType,,,,tableClass,,,STANDARD,tags,,,,,sst:app,,,sync-website,sst:stage,,,production,tagsAll,,,,,sst:app,,,sync-website,sst:stage,,,production,ttl,,,,,attributeName,,,,enabled,,,,false,writeCapacity,,0,,
+I1006 21:57:00.255686   30240 eventsink.go:59] Invoking function: tok=aws:iam/getPolicyDocument:getPolicyDocument asynchronously
+I1006 21:57:00.255945   30240 eventsink.go:59] , obj={"statements":[{"actions":["dynamodb:BatchWriteItem","dynamodb:PutItem","dynamodb:DescribeTable"],"resources":["arn:aws:dynamodb:us-east-1:831926620158:table/sync-website-production-SyncWebsiteRevalidationTable"]}]}
+I1006 21:57:00.256257   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteRevalidationEventsQueue[aws:sqs/queue:Queue]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Queue$aws:sqs/queue:Queue::SyncWebsiteRevalidationEventsQueue,https://sqs.us-east-1.amazonaws.com/831926620158/sync-website-production-SyncWebsiteRevalidationEventsQueue.fifo,arn,,,arn:aws:sqs:us-east-1:831926620158:sync-website-production-SyncWebsiteRevalidationEventsQueue.fifo,contentBasedDeduplication,,,,false,deduplicationScope,,,queue,delaySeconds,,0,fifoQueue,,,,true,fifoThroughputLimit,,,perQueue,id,,,https://sqs.us-east-1.amazonaws.com/831926620158/sync-website-production-SyncWebsiteRevalidationEventsQueue.fifo,kmsDataKeyReusePeriodSeconds,,300,kmsMasterKeyId,,,,maxMessageSize,,262144,messageRetentionSeconds,,345600,name,,,sync-website-production-SyncWebsiteRevalidationEventsQueue.fifo,namePrefix,,,,policy,,,,receiveWaitTimeSeconds,,20,redriveAllowPolicy,,,,redrivePolicy,,,,sqsManagedSseEnabled,,,,true,tags,,,,,sst:app,,,sync-website,sst:stage,,,production,tagsAll,,,,,sst:app,,,sync-website,sst:stage,,,production,url,,,https://sqs.us-east-1.amazonaws.com/831926620158/sync-website-production-SyncWebsiteRevalidationEventsQueue.fifo,visibilityTimeoutSeconds,,30,,
+I1006 21:57:00.256777   30240 eventsink.go:59] Registering resource: t=sst:aws:QueueLambdaSubscriber, name=SyncWebsiteRevalidationEventsSubscriberUffhrs, custom=false, remote=false
+I1006 21:57:00.257018   30240 eventsink.go:59] Registering resource: t=aws:lambda/eventSourceMapping:EventSourceMapping, name=SyncWebsiteRevalidationEventsSubscriberUffhrsEventSourceMapping, custom=true, remote=false
+I1006 21:57:00.257396   30240 eventsink.go:59] RegisterResource RPC prepared: t=sst:aws:QueueLambdaSubscriber, name=SyncWebsiteRevalidationEventsSubscriberUffhrs
+I1006 21:57:00.257820   30240 eventsink.go:59] Registering resource: t=sst:aws:Function, name=SyncWebsiteRevalidationEventsSubscriberUffhrsFunction, custom=false, remote=false
+I1006 21:57:00.258220   30240 eventsink.go:59] Invoking function: tok=aws:index/getRegion:getRegion asynchronously
+I1006 21:57:00.258498   30240 eventsink.go:59] Invoking function: tok=aws:index/getRegion:getRegion asynchronously
+I1006 21:57:00.258733   30240 eventsink.go:59] Registering resource: t=aws:iam/role:Role, name=SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionRole, custom=true, remote=false
+I1006 21:57:00.259245   30240 eventsink.go:59] , obj={}
+I1006 21:57:00.259548   30240 eventsink.go:59] , obj={}
+I1006 21:57:00.259948   30240 eventsink.go:59] Registering resource: t=sst:aws:Function, name=SyncWebsiteImageOptimizer, custom=false, remote=false
+I1006 21:57:00.260259   30240 eventsink.go:59] Invoking function: tok=aws:index/getRegion:getRegion asynchronously
+I1006 21:57:00.260621   30240 eventsink.go:59] Invoking function: tok=aws:index/getRegion:getRegion asynchronously
+I1006 21:57:00.260996   30240 eventsink.go:59] Registering resource: t=aws:iam/role:Role, name=SyncWebsiteImageOptimizerRole, custom=true, remote=false
+I1006 21:57:00.261333   30240 eventsink.go:59] Registering resource: t=sst:aws:Function, name=SyncWebsiteDefault, custom=false, remote=false
+I1006 21:57:00.261667   30240 eventsink.go:59] Invoking function: tok=aws:index/getRegion:getRegion asynchronously
+I1006 21:57:00.261949   30240 eventsink.go:59] Invoking function: tok=aws:index/getRegion:getRegion asynchronously
+I1006 21:57:00.262222   30240 eventsink.go:59] Registering resource: t=aws:iam/role:Role, name=SyncWebsiteDefaultRole, custom=true, remote=false
+I1006 21:57:00.262568   30240 eventsink.go:59] Registering resource: t=aws:cloudfront/cachePolicy:CachePolicy, name=SyncWebsiteServerCachePolicy, custom=true, remote=false
+I1006 21:57:00.262950   30240 eventsink.go:59] Registering resource: t=aws:cloudfront/function:Function, name=SyncWebsiteCloudfrontFunctionServerCfFunction, custom=true, remote=false
+I1006 21:57:00.263427   30240 eventsink.go:59] Registering resource: t=sst:aws:CDN, name=SyncWebsiteCdn, custom=false, remote=false
+I1006 21:57:00.264105   30240 eventsink.go:59] Registering resource: t=aws:cloudfront/distribution:Distribution, name=SyncWebsiteCdnDistribution, custom=true, remote=false
+I1006 21:57:00.264488   30240 eventsink.go:59] Registering resource: t=pulumi-nodejs:dynamic:Resource, name=SyncWebsiteCdnInvalidation.sst.aws.DistributionInvalidation, custom=true, remote=false
+I1006 21:57:00.264835   30240 eventsink.go:59] Registering resource: t=aws:cloudwatch/logGroup:LogGroup, name=SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionLogGroup, custom=true, remote=false
+I1006 21:57:00.265254   30240 eventsink.go:59] , obj={}
+I1006 21:57:00.265622   30240 eventsink.go:59] , obj={}
+I1006 21:57:00.265950   30240 eventsink.go:59] , obj={}
+I1006 21:57:00.266257   30240 eventsink.go:59] , obj={}
+I1006 21:57:00.266586   30240 eventsink.go:59] Registering resource: t=pulumi-nodejs:dynamic:Resource, name=SyncWebsiteCdnWaiter.sst.aws.DistributionDeploymentWaiter, custom=true, remote=false
+I1006 21:57:00.267878   30240 eventsink.go:59] RegisterResource RPC prepared: t=sst:aws:Function, name=SyncWebsiteImageOptimizer
+I1006 21:57:00.268230   30240 eventsink.go:59] RegisterResource RPC prepared: t=sst:aws:Function, name=SyncWebsiteDefault
+I1006 21:57:00.268858   30240 eventsink.go:59] Registering resource: t=aws:cloudwatch/logGroup:LogGroup, name=SyncWebsiteImageOptimizerLogGroup, custom=true, remote=false
+I1006 21:57:00.269531   30240 eventsink.go:59] Registering resource: t=aws:lambda/functionUrl:FunctionUrl, name=SyncWebsiteImageOptimizerUrl, custom=true, remote=false
+I1006 21:57:00.269854   30240 eventsink.go:59] Registering resource: t=aws:cloudwatch/logGroup:LogGroup, name=SyncWebsiteDefaultLogGroup, custom=true, remote=false
+I1006 21:57:00.270308   30240 eventsink.go:59] Registering resource: t=aws:lambda/functionUrl:FunctionUrl, name=SyncWebsiteDefaultUrl, custom=true, remote=false
+I1006 21:57:00.270666   30240 eventsink.go:59] Invoking function: tok=aws:index/getDefaultTags:getDefaultTags asynchronously
+I1006 21:57:00.271010   30240 eventsink.go:59] Registering resource: t=pulumi:providers:aws, name=AwsProvider.sst.us-east-1, custom=true, remote=false
+I1006 21:57:00.271334   30240 eventsink.go:59] Registering resource: t=sst:aws:Certificate, name=SyncWebsiteCdnSsl, custom=false, remote=false
+I1006 21:57:00.271567   30240 eventsink.go:59] Registering resource: t=aws:acm/certificate:Certificate, name=SyncWebsiteCdnSslCertificate, custom=true, remote=false
+I1006 21:57:00.271883   30240 eventsink.go:59] Registering resource: t=aws:acm/certificateValidation:CertificateValidation, name=SyncWebsiteCdnSslValidation, custom=true, remote=false
+I1006 21:57:00.272268   30240 eventsink.go:59] , obj={}
+I1006 21:57:00.272461   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:cloudfront/cachePolicy:CachePolicy, name=SyncWebsiteServerCachePolicy
+I1006 21:57:00.272764   30240 eventsink.go:59] Invoking function: tok=aws:iam/getPolicyDocument:getPolicyDocument asynchronously
+I1006 21:57:00.273290   30240 eventsink.go:59] Invoking function: tok=aws:iam/getPolicyDocument:getPolicyDocument asynchronously
+I1006 21:57:00.273670   30240 eventsink.go:59] , obj={"statements":[{"actions":["sqs:ChangeMessageVisibility","sqs:DeleteMessage","sqs:GetQueueAttributes","sqs:GetQueueUrl","sqs:ReceiveMessage"],"resources":["arn:aws:sqs:us-east-1:831926620158:sync-website-production-SyncWebsiteRevalidationEventsQueue.fifo"]},{"actions":["sqs:ChangeMessageVisibility","sqs:DeleteMessage","sqs:GetQueueAttributes","sqs:GetQueueUrl","sqs:ReceiveMessage"],"resources":["arn:aws:sqs:us-east-1:831926620158:sync-website-production-SyncWebsiteRevalidationEventsQueue.fifo"]}]}
+I1006 21:57:00.274126   30240 eventsink.go:59] Invoking function: tok=aws:iam/getPolicyDocument:getPolicyDocument asynchronously
+I1006 21:57:00.274363   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:cloudfront/function:Function, name=SyncWebsiteCloudfrontFunctionServerCfFunction
+I1006 21:57:00.274583   30240 eventsink.go:59] , obj={"statements":[{"actions":["s3:GetObject"],"resources":["arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr/*"]}]}
+I1006 21:57:00.275221   30240 eventsink.go:59] , obj={"statements":[{"actions":["cloudfront:CreateInvalidation"],"resources":["*"]},{"actions":["s3:GetObject","s3:PutObject","s3:DeleteObject"],"resources":["arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr/*"]},{"actions":["s3:ListBucket"],"resources":["arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr"]},{"actions":["sqs:SendMessage","sqs:GetQueueAttributes","sqs:GetQueueUrl"],"resources":["arn:aws:sqs:us-east-1:831926620158:sync-website-production-SyncWebsiteRevalidationEventsQueue.fifo"]},{"actions":["dynamodb:BatchGetItem","dynamodb:GetRecords","dynamodb:GetShardIterator","dynamodb:Query","dynamodb:GetItem","dynamodb:Scan","dynamodb:ConditionCheckItem","dynamodb:BatchWriteItem","dynamodb:PutItem","dynamodb:UpdateItem","dynamodb:DeleteItem","dynamodb:DescribeTable"],"resources":["arn:aws:dynamodb:us-east-1:831926620158:table/sync-website-production-SyncWebsiteRevalidationTable","arn:aws:dynamodb:us-east-1:831926620158:table/sync-website-production-SyncWebsiteRevalidationTable/*"]}]}
+I1006 21:57:00.275518   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.275771   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.276138   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.276440   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.276656   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.276912   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.277257   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.277486   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.277799   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.278254   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.278628   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.278963   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.279368   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.279669   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.279963   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.280249   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.280595   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.280961   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.281215   30240 eventsink.go:59] Invoke RPC finished: tok=aws:iam/getPolicyDocument:getPolicyDocument; err: null, resp: id,,,1567322835,json,,,{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "dynamodb:PutItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:BatchWriteItem"
+      ],
+      "Resource": "arn:aws:dynamodb:us-east-1:831926620158:table/sync-website-production-SyncWebsiteRevalidationTable"
+    }
+  ]
+},minifiedJson,,,{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Action":["dynamodb:PutItem","dynamodb:DescribeTable","dynamodb:BatchWriteItem"],"Resource":"arn:aws:dynamodb:us-east-1:831926620158:table/sync-website-production-SyncWebsiteRevalidationTable"}]},statements,,,,,,,,,,actions,,,,,,,,dynamodb:DescribeTable,,,dynamodb:PutItem,,,dynamodb:BatchWriteItem,conditions,,,,,,,effect,,,Allow,notActions,,,,,,,notPrincipals,,,,,,,notResources,,,,,,,principals,,,,,,,resources,,,,,,,,arn:aws:dynamodb:us-east-1:831926620158:table/sync-website-production-SyncWebsiteRevalidationTable,sid,,,,version,,,2012-10-17,
+I1006 21:57:00.281543   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:iam/role:Role, name=SyncWebsiteRevalidationSeederRole
+I1006 21:57:00.281806   30240 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function::SyncWebsiteRevalidationSeeder; err: null, resp: 
+I1006 21:57:00.282094   30240 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function::SyncWebsiteRevalidationSeeder; err: null, resp: 
+I1006 21:57:00.282420   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteRevalidationSeederLogGroup[aws:cloudwatch/logGroup:LogGroup]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:cloudwatch/logGroup:LogGroup::SyncWebsiteRevalidationSeederLogGroup,/aws/lambda/sync-website-production-SyncWebsiteRevalidationSeederFunction,arn,,,arn:aws:logs:us-east-1:831926620158:log-group:/aws/lambda/sync-website-production-SyncWebsiteRevalidationSeederFunction,id,,,/aws/lambda/sync-website-production-SyncWebsiteRevalidationSeederFunction,kmsKeyId,,,,logGroupClass,,,STANDARD,name,,,/aws/lambda/sync-website-production-SyncWebsiteRevalidationSeederFunction,namePrefix,,,,retentionInDays,,0,skipDestroy,,,,false,tags,,,,,sst:app,,,sync-website,sst:stage,,,production,tagsAll,,,,,sst:app,,,sync-website,sst:stage,,,production,,
+I1006 21:57:00.282615   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteDefault[sst:aws:Function]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function::SyncWebsiteDefault,,,,
+I1006 21:57:00.283098   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:cloudwatch/logGroup:LogGroup, name=SyncWebsiteDefaultLogGroup
+I1006 21:57:00.283401   30240 eventsink.go:59] RegisterResourceOutputs RPC prepared: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function::SyncWebsiteDefault
+I1006 21:57:00.283601   30240 eventsink.go:59] Invoke RPC finished: tok=aws:iam/getPolicyDocument:getPolicyDocument; err: null, resp: id,,,1486125604,json,,,{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "sqs:ReceiveMessage",
+        "sqs:GetQueueUrl",
+        "sqs:GetQueueAttributes",
+        "sqs:DeleteMessage",
+        "sqs:ChangeMessageVisibility"
+      ],
+      "Resource": "arn:aws:sqs:us-east-1:831926620158:sync-website-production-SyncWebsiteRevalidationEventsQueue.fifo"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "sqs:ReceiveMessage",
+        "sqs:GetQueueUrl",
+        "sqs:GetQueueAttributes",
+        "sqs:DeleteMessage",
+        "sqs:ChangeMessageVisibility"
+      ],
+      "Resource": "arn:aws:sqs:us-east-1:831926620158:sync-website-production-SyncWebsiteRevalidationEventsQueue.fifo"
+    }
+  ]
+},minifiedJson,,,{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Action":["sqs:ReceiveMessage","sqs:GetQueueUrl","sqs:GetQueueAttributes","sqs:DeleteMessage","sqs:ChangeMessageVisibility"],"Resource":"arn:aws:sqs:us-east-1:831926620158:sync-website-production-SyncWebsiteRevalidationEventsQueue.fifo"},{"Effect":"Allow","Action":["sqs:ReceiveMessage","sqs:GetQueueUrl","sqs:GetQueueAttributes","sqs:DeleteMessage","sqs:ChangeMessageVisibility"],"Resource":"arn:aws:sqs:us-east-1:831926620158:sync-website-production-SyncWebsiteRevalidationEventsQueue.fifo"}]},statements,,,,,,,,,,actions,,,,,,,,sqs:DeleteMessage,,,sqs:GetQueueAttributes,,,sqs:ReceiveMessage,,,sqs:GetQueueUrl,,,sqs:ChangeMessageVisibility,conditions,,,,,,,effect,,,Allow,notActions,,,,,,,notPrincipals,,,,,,,notResources,,,,,,,principals,,,,,,,resources,,,,,,,,arn:aws:sqs:us-east-1:831926620158:sync-website-production-SyncWebsiteRevalidationEventsQueue.fifo,sid,,,,,,,,actions,,,,,,,,sqs:DeleteMessage,,,sqs:GetQueueAttributes,,,sqs:ReceiveMessage,,,sqs:GetQueueUrl,,,sqs:ChangeMessageVisibility,conditions,,,,,,,effect,,,Allow,notActions,,,,,,,notPrincipals,,,,,,,notResources,,,,,,,principals,,,,,,,resources,,,,,,,,arn:aws:sqs:us-east-1:831926620158:sync-website-production-SyncWebsiteRevalidationEventsQueue.fifo,sid,,,,version,,,2012-10-17,
+I1006 21:57:00.283959   30240 eventsink.go:59] Invoke RPC finished: tok=aws:iam/getPolicyDocument:getPolicyDocument; err: null, resp: id,,,813792027,json,,,{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "cloudfront:CreateInvalidation",
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject",
+        "s3:GetObject",
+        "s3:DeleteObject"
+      ],
+      "Resource": "arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr/*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "sqs:SendMessage",
+        "sqs:GetQueueUrl",
+        "sqs:GetQueueAttributes"
+      ],
+      "Resource": "arn:aws:sqs:us-east-1:831926620158:sync-website-production-SyncWebsiteRevalidationEventsQueue.fifo"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "dynamodb:UpdateItem",
+        "dynamodb:Scan",
+        "dynamodb:Query",
+        "dynamodb:PutItem",
+        "dynamodb:GetShardIterator",
+        "dynamodb:GetRecords",
+        "dynamodb:GetItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:DeleteItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:BatchGetItem"
+      ],
+      "Resource": [
+        "arn:aws:dynamodb:us-east-1:831926620158:table/sync-website-production-SyncWebsiteRevalidationTable/*",
+        "arn:aws:dynamodb:us-east-1:831926620158:table/sync-website-production-SyncWebsiteRevalidationTable"
+      ]
+    }
+  ]
+},minifiedJson,,,{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Action":"cloudfront:CreateInvalidation","Resource":"*"},{"Effect":"Allow","Action":["s3:PutObject","s3:GetObject","s3:DeleteObject"],"Resource":"arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr/*"},{"Effect":"Allow","Action":"s3:ListBucket","Resource":"arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr"},{"Effect":"Allow","Action":["sqs:SendMessage","sqs:GetQueueUrl","sqs:GetQueueAttributes"],"Resource":"arn:aws:sqs:us-east-1:831926620158:sync-website-production-SyncWebsiteRevalidationEventsQueue.fifo"},{"Effect":"Allow","Action":["dynamodb:UpdateItem","dynamodb:Scan","dynamodb:Query","dynamodb:PutItem","dynamodb:GetShardIterator","dynamodb:GetRecords","dynamodb:GetItem","dynamodb:DescribeTable","dynamodb:DeleteItem","dynamodb:ConditionCheckItem","dynamodb:BatchWriteItem","dynamodb:BatchGetItem"],"Resource":["arn:aws:dynamodb:us-east-1:831926620158:table/sync-website-production-SyncWebsiteRevalidationTable/*","arn:aws:dynamodb:us-east-1:831926620158:table/sync-website-production-SyncWebsiteRevalidationTable"]}]},statements,,,,,,,,,,actions,,,,,,,,cloudfront:CreateInvalidation,conditions,,,,,,,effect,,,Allow,notActions,,,,,,,notPrincipals,,,,,,,notResources,,,,,,,principals,,,,,,,resources,,,,,,,,*,sid,,,,,,,,actions,,,,,,,,s3:GetObject,,,s3:DeleteObject,,,s3:PutObject,conditions,,,,,,,effect,,,Allow,notActions,,,,,,,notPrincipals,,,,,,,notResources,,,,,,,principals,,,,,,,resources,,,,,,,,arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr/*,sid,,,,,,,,actions,,,,,,,,s3:ListBucket,conditions,,,,,,,effect,,,Allow,notActions,,,,,,,notPrincipals,,,,,,,notResources,,,,,,,principals,,,,,,,resources,,,,,,,,arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr,sid,,,,,,,,actions,,,,,,,,sqs:GetQueueAttributes,,,sqs:SendMessage,,,sqs:GetQueueUrl,conditions,,,,,,,effect,,,Allow,notActions,,,,,,,notPrincipals,,,,,,,notResources,,,,,,,principals,,,,,,,resources,,,,,,,,arn:aws:sqs:us-east-1:831926620158:sync-website-production-SyncWebsiteRevalidationEventsQueue.fifo,sid,,,,,,,,actions,,,,,,,,dynamodb:DescribeTable,,,dynamodb:DeleteItem,,,dynamodb:ConditionCheckItem,,,dynamodb:BatchGetItem,,,dynamodb:PutItem,,,dynamodb:GetShardIterator,,,dynamodb:Query,,,dynamodb:UpdateItem,,,dynamodb:GetRecords,,,dynamodb:GetItem,,,dynamodb:BatchWriteItem,,,dynamodb:Scan,conditions,,,,,,,effect,,,Allow,notActions,,,,,,,notPrincipals,,,,,,,notResources,,,,,,,principals,,,,,,,resources,,,,,,,,arn:aws:dynamodb:us-east-1:831926620158:table/sync-website-production-SyncWebsiteRevalidationTable/*,,,arn:aws:dynamodb:us-east-1:831926620158:table/sync-website-production-SyncWebsiteRevalidationTable,sid,,,,version,,,2012-10-17,
+I1006 21:57:00.284170   30240 eventsink.go:59] Invoke RPC finished: tok=aws:index/getRegion:getRegion; err: null, resp: description,,,US East (N. Virginia),endpoint,,,ec2.us-east-1.amazonaws.com,id,,,us-east-1,name,,,us-east-1,
+I1006 21:57:00.284508   30240 eventsink.go:59] Invoke RPC finished: tok=aws:index/getRegion:getRegion; err: null, resp: description,,,US East (N. Virginia),endpoint,,,ec2.us-east-1.amazonaws.com,id,,,us-east-1,name,,,us-east-1,
+I1006 21:57:00.285181   30240 eventsink.go:59] Invoke RPC finished: tok=aws:iam/getPolicyDocument:getPolicyDocument; err: null, resp: id,,,2606278804,json,,,{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr/*"
+    }
+  ]
+},minifiedJson,,,{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Action":"s3:GetObject","Resource":"arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr/*"}]},statements,,,,,,,,,,actions,,,,,,,,s3:GetObject,conditions,,,,,,,effect,,,Allow,notActions,,,,,,,notPrincipals,,,,,,,notResources,,,,,,,principals,,,,,,,resources,,,,,,,,arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr/*,sid,,,,version,,,2012-10-17,
+I1006 21:57:00.285662   30240 eventsink.go:59] Invoke RPC finished: tok=aws:index/getRegion:getRegion; err: null, resp: description,,,US East (N. Virginia),endpoint,,,ec2.us-east-1.amazonaws.com,id,,,us-east-1,name,,,us-east-1,
+I1006 21:57:00.286054   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteImageOptimizer[sst:aws:Function]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function::SyncWebsiteImageOptimizer,,,,
+I1006 21:57:00.286420   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:cloudwatch/logGroup:LogGroup, name=SyncWebsiteImageOptimizerLogGroup
+I1006 21:57:00.286709   30240 eventsink.go:59] RegisterResourceOutputs RPC prepared: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function::SyncWebsiteImageOptimizer
+I1006 21:57:00.286938   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:iam/role:Role, name=SyncWebsiteImageOptimizerRole
+I1006 21:57:00.287167   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteRevalidationEventsSubscriberUffhrs[sst:aws:QueueLambdaSubscriber]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:QueueLambdaSubscriber::SyncWebsiteRevalidationEventsSubscriberUffhrs,,,,
+I1006 21:57:00.287466   30240 eventsink.go:59] RegisterResourceOutputs RPC prepared: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:QueueLambdaSubscriber::SyncWebsiteRevalidationEventsSubscriberUffhrs
+I1006 21:57:00.287786   30240 eventsink.go:59] RegisterResource RPC prepared: t=sst:aws:Function, name=SyncWebsiteRevalidationEventsSubscriberUffhrsFunction
+I1006 21:57:00.288082   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteCloudfrontFunctionServerCfFunction[aws:cloudfront/function:Function]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$aws:cloudfront/function:Function::SyncWebsiteCloudfrontFunctionServerCfFunction,sync-we-production-SyncWebsiteCloudfrontFunctionServerCfFunction,arn,,,arn:aws:cloudfront::831926620158:function/sync-we-production-SyncWebsiteCloudfrontFunctionServerCfFunction,code,,,
+async function handler(event) {
+  event.request.headers["x-forwarded-host"] = event.request.headers.host;
+
+function getHeader(key) {
+  var header = event.request.headers[key];
+  if (header) {
+    if (header.multiValue) {
+      return header.multiValue.map((header) => header.value).join(",");
+    }
+    if (header.value) {
+      return header.value;
+    }
+  }
+  return "";
+}
+var cacheKey = "";
+if (event.request.uri.startsWith("/_next/image")) {
+  cacheKey = getHeader("accept");
+} else {
+  cacheKey =
+    getHeader("rsc") +
+    getHeader("next-router-prefetch") +
+    getHeader("next-router-state-tree") +
+    getHeader("next-url") +
+    getHeader("x-prerender-revalidate");
+}
+if (event.request.cookies["__prerender_bypass"]) {
+  cacheKey += event.request.cookies["__prerender_bypass"]
+    ? event.request.cookies["__prerender_bypass"].value
+    : "";
+}
+var crypto = require("crypto");
+
+var hashedKey = crypto.createHash("md5").update(cacheKey).digest("hex");
+event.request.headers["x-open-next-cache-key"] = { value: hashedKey };
+
+
+if(event.request.headers["cloudfront-viewer-city"]) {
+  event.request.headers["x-open-next-city"] = event.request.headers["cloudfront-viewer-city"];
+}
+if(event.request.headers["cloudfront-viewer-country"]) {
+  event.request.headers["x-open-next-country"] = event.request.headers["cloudfront-viewer-country"];
+}
+if(event.request.headers["cloudfront-viewer-region"]) {
+  event.request.headers["x-open-next-region"] = event.request.headers["cloudfront-viewer-region"];
+}
+if(event.request.headers["cloudfront-viewer-latitude"]) {
+  event.request.headers["x-open-next-latitude"] = event.request.headers["cloudfront-viewer-latitude"];
+}
+if(event.request.headers["cloudfront-viewer-longitude"]) {
+  event.request.headers["x-open-next-longitude"] = event.request.headers["cloudfront-viewer-longitude"];
+}
+    
+  
+  return event.request;
+},comment,,,,etag,,,ETVPDKIKX0DER,id,,,sync-we-production-SyncWebsiteCloudfrontFunctionServerCfFunction,keyValueStoreAssociations,0,liveStageEtag,,,ETVPDKIKX0DER,name,,,sync-we-production-SyncWebsiteCloudfrontFunctionServerCfFunction,publish,,,,true,runtime,,,cloudfront-js-2.0,status,,,UNASSOCIATED,,
+I1006 21:57:00.288542   30240 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function::SyncWebsiteDefault; err: null, resp: 
+I1006 21:57:00.288823   30240 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function::SyncWebsiteDefault; err: null, resp: 
+I1006 21:57:00.289154   30240 eventsink.go:59] Invoke RPC finished: tok=aws:index/getRegion:getRegion; err: null, resp: description,,,US East (N. Virginia),endpoint,,,ec2.us-east-1.amazonaws.com,id,,,us-east-1,name,,,us-east-1,
+I1006 21:57:00.289420   30240 eventsink.go:59] Invoke RPC finished: tok=aws:index/getRegion:getRegion; err: null, resp: description,,,US East (N. Virginia),endpoint,,,ec2.us-east-1.amazonaws.com,id,,,us-east-1,name,,,us-east-1,
+I1006 21:57:00.289694   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:iam/role:Role, name=SyncWebsiteDefaultRole
+I1006 21:57:00.290069   30240 eventsink.go:59] Invoke RPC finished: tok=aws:index/getRegion:getRegion; err: null, resp: description,,,US East (N. Virginia),endpoint,,,ec2.us-east-1.amazonaws.com,id,,,us-east-1,name,,,us-east-1,
+I1006 21:57:00.290332   30240 eventsink.go:59] Invoke RPC finished: tok=aws:index/getDefaultTags:getDefaultTags; err: null, resp: id,,,aws,tags,,,,,sst:app,,,sync-website,sst:stage,,,production,
+I1006 21:57:00.290540   30240 eventsink.go:59] RegisterResource RPC prepared: t=pulumi:providers:aws, name=AwsProvider.sst.us-east-1
+I1006 21:57:00.290895   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteServerCachePolicy[aws:cloudfront/cachePolicy:CachePolicy]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$aws:cloudfront/cachePolicy:CachePolicy::SyncWebsiteServerCachePolicy,14df8992-f74d-4c7c-9a7f-eb21cec26da4,comment,,,SST server response cache policy,defaultTtl,,0,etag,,,E23ZP02F085DFQ,id,,,14df8992-f74d-4c7c-9a7f-eb21cec26da4,maxTtl,,31536000,minTtl,,0,name,,,SyncWebsiteServerCachePolicy-94a3852,parametersInCacheKeyAndForwardedToOrigin,,,,,cookiesConfig,,,,,cookieBehavior,,,none,cookies,0,enableAcceptEncodingBrotli,,,,true,enableAcceptEncodingGzip,,,,true,headersConfig,,,,,headerBehavior,,,whitelist,headers,,,,,items,,,,,,,,x-open-next-cache-key,queryStringsConfig,,,,,queryStringBehavior,,,all,queryStrings,0,,
+I1006 21:57:00.291211   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteRevalidationSeederRole[aws:iam/role:Role]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:iam/role:Role::SyncWebsiteRevalidationSeederRole,sync-websit-production-SyncWebsiteRevalidationSeederRole-useast1,arn,,,arn:aws:iam::831926620158:role/sync-websit-production-SyncWebsiteRevalidationSeederRole-useast1,assumeRolePolicy,,,{"Statement":[{"Action":"sts:AssumeRole","Effect":"Allow","Principal":{"Service":"lambda.amazonaws.com"},"Sid":"AllowAssumeRole"}],"Version":"2012-10-17"},createDate,,,2024-10-06T16:18:00Z,description,,,,forceDetachPolicies,,,,false,id,,,sync-websit-production-SyncWebsiteRevalidationSeederRole-useast1,inlinePolicies,,,,,,,,,,name,,,inline,policy,,,{"Version":"2012-10-17","Statement":[{"Action":["dynamodb:PutItem","dynamodb:DescribeTable","dynamodb:BatchWriteItem"],"Effect":"Allow","Resource":"arn:aws:dynamodb:us-east-1:831926620158:table/sync-website-production-SyncWebsiteRevalidationTable"}]},managedPolicyArns,,,,,,,,arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole,maxSessionDuration,,3600,name,,,sync-websit-production-SyncWebsiteRevalidationSeederRole-useast1,namePrefix,,,,path,,,/,permissionsBoundary,,,,tags,,,,,sst:app,,,sync-website,sst:stage,,,production,tagsAll,,,,,sst:app,,,sync-website,sst:stage,,,production,uniqueId,,,AROA4DMVQZ77IP6VMDFPG,,
+I1006 21:57:00.291493   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteDefaultLogGroup[aws:cloudwatch/logGroup:LogGroup]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:cloudwatch/logGroup:LogGroup::SyncWebsiteDefaultLogGroup,/aws/lambda/sync-website-production-SyncWebsiteDefaultFunction,arn,,,arn:aws:logs:us-east-1:831926620158:log-group:/aws/lambda/sync-website-production-SyncWebsiteDefaultFunction,id,,,/aws/lambda/sync-website-production-SyncWebsiteDefaultFunction,kmsKeyId,,,,logGroupClass,,,STANDARD,name,,,/aws/lambda/sync-website-production-SyncWebsiteDefaultFunction,namePrefix,,,,retentionInDays,,0,skipDestroy,,,,false,tags,,,,,sst:app,,,sync-website,sst:stage,,,production,tagsAll,,,,,sst:app,,,sync-website,sst:stage,,,production,,
+I1006 21:57:00.291924   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteImageOptimizerRole[aws:iam/role:Role]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:iam/role:Role::SyncWebsiteImageOptimizerRole,sync-website-production-SyncWebsiteImageOptimizerRole-useast1,arn,,,arn:aws:iam::831926620158:role/sync-website-production-SyncWebsiteImageOptimizerRole-useast1,assumeRolePolicy,,,{"Statement":[{"Action":"sts:AssumeRole","Effect":"Allow","Principal":{"Service":"lambda.amazonaws.com"},"Sid":"AllowAssumeRole"}],"Version":"2012-10-17"},createDate,,,2024-10-06T16:18:05Z,description,,,,forceDetachPolicies,,,,false,id,,,sync-website-production-SyncWebsiteImageOptimizerRole-useast1,inlinePolicies,,,,,,,,,,name,,,inline,policy,,,{"Version":"2012-10-17","Statement":[{"Action":"s3:GetObject","Effect":"Allow","Resource":"arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr/*"}]},managedPolicyArns,,,,,,,,arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole,maxSessionDuration,,3600,name,,,sync-website-production-SyncWebsiteImageOptimizerRole-useast1,namePrefix,,,,path,,,/,permissionsBoundary,,,,tags,,,,,sst:app,,,sync-website,sst:stage,,,production,tagsAll,,,,,sst:app,,,sync-website,sst:stage,,,production,uniqueId,,,AROA4DMVQZ77H67272BQD,,
+I1006 21:57:00.292174   30240 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function::SyncWebsiteImageOptimizer; err: null, resp: 
+I1006 21:57:00.292468   30240 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function::SyncWebsiteImageOptimizer; err: null, resp: 
+I1006 21:57:00.292905   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteRevalidationEventsSubscriberUffhrsFunction[sst:aws:Function]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:QueueLambdaSubscriber$sst:aws:Function::SyncWebsiteRevalidationEventsSubscriberUffhrsFunction,,,,
+I1006 21:57:00.293342   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:cloudwatch/logGroup:LogGroup, name=SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionLogGroup
+I1006 21:57:00.293727   30240 eventsink.go:59] RegisterResourceOutputs RPC prepared: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:QueueLambdaSubscriber$sst:aws:Function::SyncWebsiteRevalidationEventsSubscriberUffhrsFunction
+I1006 21:57:00.294060   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:iam/role:Role, name=SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionRole
+I1006 21:57:00.294401   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteImageOptimizerLogGroup[aws:cloudwatch/logGroup:LogGroup]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:cloudwatch/logGroup:LogGroup::SyncWebsiteImageOptimizerLogGroup,/aws/lambda/sync-website-production-SyncWebsiteImageOptimizerFunction,arn,,,arn:aws:logs:us-east-1:831926620158:log-group:/aws/lambda/sync-website-production-SyncWebsiteImageOptimizerFunction,id,,,/aws/lambda/sync-website-production-SyncWebsiteImageOptimizerFunction,kmsKeyId,,,,logGroupClass,,,STANDARD,name,,,/aws/lambda/sync-website-production-SyncWebsiteImageOptimizerFunction,namePrefix,,,,retentionInDays,,3,skipDestroy,,,,false,tags,,,,,sst:app,,,sync-website,sst:stage,,,production,tagsAll,,,,,sst:app,,,sync-website,sst:stage,,,production,,
+I1006 21:57:00.294736   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteDefaultRole[aws:iam/role:Role]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:iam/role:Role::SyncWebsiteDefaultRole,sync-website-production-SyncWebsiteDefaultRole-useast1,arn,,,arn:aws:iam::831926620158:role/sync-website-production-SyncWebsiteDefaultRole-useast1,assumeRolePolicy,,,{"Statement":[{"Action":"sts:AssumeRole","Effect":"Allow","Principal":{"Service":"lambda.amazonaws.com"},"Sid":"AllowAssumeRole"}],"Version":"2012-10-17"},createDate,,,2024-10-06T16:18:05Z,description,,,,forceDetachPolicies,,,,false,id,,,sync-website-production-SyncWebsiteDefaultRole-useast1,inlinePolicies,,,,,,,,,,name,,,inline,policy,,,{"Version":"2012-10-17","Statement":[{"Action":"cloudfront:CreateInvalidation","Effect":"Allow","Resource":"*"},{"Action":["s3:PutObject","s3:GetObject","s3:DeleteObject"],"Effect":"Allow","Resource":"arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr/*"},{"Action":"s3:ListBucket","Effect":"Allow","Resource":"arn:aws:s3:::sync-website-production-syncwebsiteassets-wxtuonvr"},{"Action":["sqs:SendMessage","sqs:GetQueueUrl","sqs:GetQueueAttributes"],"Effect":"Allow","Resource":"arn:aws:sqs:us-east-1:831926620158:sync-website-production-SyncWebsiteRevalidationEventsQueue.fifo"},{"Action":["dynamodb:UpdateItem","dynamodb:Scan","dynamodb:Query","dynamodb:PutItem","dynamodb:GetShardIterator","dynamodb:GetRecords","dynamodb:GetItem","dynamodb:DescribeTable","dynamodb:DeleteItem","dynamodb:ConditionCheckItem","dynamodb:BatchWriteItem","dynamodb:BatchGetItem"],"Effect":"Allow","Resource":["arn:aws:dynamodb:us-east-1:831926620158:table/sync-website-production-SyncWebsiteRevalidationTable/*","arn:aws:dynamodb:us-east-1:831926620158:table/sync-website-production-SyncWebsiteRevalidationTable"]}]},managedPolicyArns,,,,,,,,arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole,maxSessionDuration,,3600,name,,,sync-website-production-SyncWebsiteDefaultRole-useast1,namePrefix,,,,path,,,/,permissionsBoundary,,,,tags,,,,,sst:app,,,sync-website,sst:stage,,,production,tagsAll,,,,,sst:app,,,sync-website,sst:stage,,,production,uniqueId,,,AROA4DMVQZ77E3TQQ7A7K,,
+I1006 21:57:00.295819   30240 eventsink.go:59] Registering resource: t=pulumi-nodejs:dynamic:Resource, name=SyncWebsiteAssetFiles.sst.aws.BucketFiles, custom=true, remote=false
+I1006 21:57:00.296158   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.296538   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.296950   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.297407   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.297685   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.298024   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.298280   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.298617   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.298874   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:00.299111   30240 eventsink.go:59] RegisterResource RPC prepared: t=pulumi-nodejs:dynamic:Resource, name=SyncWebsiteAssetFiles.sst.aws.BucketFiles
+I1006 21:57:00.299416   30240 eventsink.go:59] Registering resource: t=aws:s3/bucketObjectv2:BucketObjectv2, name=SyncWebsiteRevalidationSeederCode, custom=true, remote=false
+I1006 21:57:00.299714   30240 eventsink.go:59] Registering resource: t=aws:lambda/function:Function, name=SyncWebsiteRevalidationSeederFunction, custom=true, remote=false
+I1006 21:57:00.300128   30240 eventsink.go:59] Registering resource: t=aws:s3/bucketObjectv2:BucketObjectv2, name=SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionCode, custom=true, remote=false
+I1006 21:57:00.300383   30240 eventsink.go:59] Registering resource: t=aws:lambda/function:Function, name=SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionFunction, custom=true, remote=false
+I1006 21:57:00.805235   30240 eventsink.go:59] Registering resource: t=aws:s3/bucketObjectv2:BucketObjectv2, name=SyncWebsiteDefaultCode, custom=true, remote=false
+I1006 21:57:00.805899   30240 eventsink.go:59] Registering resource: t=aws:lambda/function:Function, name=SyncWebsiteDefaultFunction, custom=true, remote=false
+I1006 21:57:01.009094   30240 eventsink.go:59] Registering resource: t=aws:s3/bucketObjectv2:BucketObjectv2, name=SyncWebsiteImageOptimizerCode, custom=true, remote=false
+I1006 21:57:01.009771   30240 eventsink.go:59] Registering resource: t=aws:lambda/function:Function, name=SyncWebsiteImageOptimizerFunction, custom=true, remote=false
+I1006 21:57:01.173390   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:s3/bucketObjectv2:BucketObjectv2, name=SyncWebsiteRevalidationSeederCode
+I1006 21:57:01.209019   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:s3/bucketObjectv2:BucketObjectv2, name=SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionCode
+I1006 21:57:01.309874   30240 eventsink.go:59] [INFO] pulumi-aws: starting to validate credentials. Disable this by AWS_SKIP_CREDENTIALS_VALIDATION or skipCredentialsValidation option
+I1006 21:57:01.865493   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:s3/bucketObjectv2:BucketObjectv2, name=SyncWebsiteDefaultCode
+I1006 21:57:02.100796   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:s3/bucketObjectv2:BucketObjectv2, name=SyncWebsiteImageOptimizerCode
+I1006 21:57:03.232206   30240 eventsink.go:59] [INFO] pulumi-aws: credentials are valid
+I1006 21:57:03.248869   30240 eventsink.go:59] RegisterResource RPC finished: resource:AwsProvider.sst.us-east-1[pulumi:providers:aws]; err: null, resp: urn:pulumi:production::sync-website::pulumi:providers:aws::AwsProvider.sst.us-east-1,44740f8a-e11d-44fb-b91d-6b31880a0989,defaultTags,,,{"tags":{"sst:app":"sync-website","sst:stage":"production"}},region,,,us-east-1,skipCredentialsValidation,,,false,skipRegionValidation,,,true,version,,,6.54.2,,
+I1006 21:57:03.251471   30240 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:QueueLambdaSubscriber::SyncWebsiteRevalidationEventsSubscriberUffhrs; err: null, resp: 
+I1006 21:57:03.255389   30240 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:QueueLambdaSubscriber::SyncWebsiteRevalidationEventsSubscriberUffhrs; err: null, resp: 
+I1006 21:57:03.257286   30240 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:QueueLambdaSubscriber$sst:aws:Function::SyncWebsiteRevalidationEventsSubscriberUffhrsFunction; err: null, resp: 
+I1006 21:57:03.257929   30240 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:QueueLambdaSubscriber$sst:aws:Function::SyncWebsiteRevalidationEventsSubscriberUffhrsFunction; err: null, resp: 
+I1006 21:57:03.258446   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionLogGroup[aws:cloudwatch/logGroup:LogGroup]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:QueueLambdaSubscriber$sst:aws:Function$aws:cloudwatch/logGroup:LogGroup::SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionLogGroup,/aws/lambda/producti-SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionFu,arn,,,arn:aws:logs:us-east-1:831926620158:log-group:/aws/lambda/producti-SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionFu,id,,,/aws/lambda/producti-SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionFu,kmsKeyId,,,,logGroupClass,,,STANDARD,name,,,/aws/lambda/producti-SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionFu,namePrefix,,,,retentionInDays,,0,skipDestroy,,,,false,tags,,,,,sst:app,,,sync-website,sst:stage,,,production,tagsAll,,,,,sst:app,,,sync-website,sst:stage,,,production,,
+I1006 21:57:03.258976   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionRole[aws:iam/role:Role]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:QueueLambdaSubscriber$sst:aws:Function$aws:iam/role:Role::SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionRole,producti-SyncWebsiteRevalidationEventsSubscriberUffhrsFu-useast1,arn,,,arn:aws:iam::831926620158:role/producti-SyncWebsiteRevalidationEventsSubscriberUffhrsFu-useast1,assumeRolePolicy,,,{"Statement":[{"Action":"sts:AssumeRole","Effect":"Allow","Principal":{"Service":"lambda.amazonaws.com"},"Sid":"AllowAssumeRole"}],"Version":"2012-10-17"},createDate,,,2024-10-06T16:18:05Z,description,,,,forceDetachPolicies,,,,false,id,,,producti-SyncWebsiteRevalidationEventsSubscriberUffhrsFu-useast1,inlinePolicies,,,,,,,,,,name,,,inline,policy,,,{"Version":"2012-10-17","Statement":[{"Action":["sqs:ReceiveMessage","sqs:GetQueueUrl","sqs:GetQueueAttributes","sqs:DeleteMessage","sqs:ChangeMessageVisibility"],"Effect":"Allow","Resource":"arn:aws:sqs:us-east-1:831926620158:sync-website-production-SyncWebsiteRevalidationEventsQueue.fifo"},{"Action":["sqs:ReceiveMessage","sqs:GetQueueUrl","sqs:GetQueueAttributes","sqs:DeleteMessage","sqs:ChangeMessageVisibility"],"Effect":"Allow","Resource":"arn:aws:sqs:us-east-1:831926620158:sync-website-production-SyncWebsiteRevalidationEventsQueue.fifo"}]},managedPolicyArns,,,,,,,,arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole,maxSessionDuration,,3600,name,,,producti-SyncWebsiteRevalidationEventsSubscriberUffhrsFu-useast1,namePrefix,,,,path,,,/,permissionsBoundary,,,,tags,,,,,sst:app,,,sync-website,sst:stage,,,production,tagsAll,,,,,sst:app,,,sync-website,sst:stage,,,production,uniqueId,,,AROA4DMVQZ77EHDMF64HS,,
+I1006 21:57:05.206845   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionCode[aws:s3/bucketObjectv2:BucketObjectv2]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:QueueLambdaSubscriber$sst:aws:Function$aws:s3/bucketObjectv2:BucketObjectv2::SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionCode,assets/SyncWebsiteRevalidationEventsSubscriberUffhrsFunction-code-bb66462d55a6e8416878a73e00a74c42ac8c5228835929bb5304d501c7dd9ae7.zip,acl,0,arn,,,arn:aws:s3:::sst-asset-vaavddthmxfo/assets/SyncWebsiteRevalidationEventsSubscriberUffhrsFunction-code-bb66462d55a6e8416878a73e00a74c42ac8c5228835929bb5304d501c7dd9ae7.zip,bucket,,,sst-asset-vaavddthmxfo,bucketKeyEnabled,,,,false,cacheControl,,,,checksumAlgorithm,0,checksumCrc32,,,,checksumCrc32c,,,,checksumSha1,,,,checksumSha256,,,,content,0,contentBase64,0,contentDisposition,,,,contentEncoding,,,,contentLanguage,,,,contentType,,,application/octet-stream,etag,,,201aade590dbd83337881d18ed67b659,forceDestroy,,,,false,id,,,assets/SyncWebsiteRevalidationEventsSubscriberUffhrsFunction-code-bb66462d55a6e8416878a73e00a74c42ac8c5228835929bb5304d501c7dd9ae7.zip,key,,,assets/SyncWebsiteRevalidationEventsSubscriberUffhrsFunction-code-bb66462d55a6e8416878a73e00a74c42ac8c5228835929bb5304d501c7dd9ae7.zip,kmsKeyId,0,metadata,0,objectLockLegalHoldStatus,,,,objectLockMode,,,,objectLockRetainUntilDate,,,,overrideProvider,0,serverSideEncryption,,,AES256,source,,,,,4dabf18193072939515e22adb298388d,,,0def7320c3a5731c473e5ecbe6d01bc7,hash,,,bb66462d55a6e8416878a73e00a74c42ac8c5228835929bb5304d501c7dd9ae7,path,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.sst/artifacts/SyncWebsiteRevalidationEventsSubscriberUffhrsFunction/code.zip,sourceHash,0,storageClass,,,STANDARD,tags,,,,,sst:app,,,sync-website,sst:stage,,,production,tagsAll,,,,,sst:app,,,sync-website,sst:stage,,,production,versionId,,,,websiteRedirect,,,,,
+I1006 21:57:05.207438   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:lambda/function:Function, name=SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionFunction
+I1006 21:57:05.476490   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteRevalidationSeederCode[aws:s3/bucketObjectv2:BucketObjectv2]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:s3/bucketObjectv2:BucketObjectv2::SyncWebsiteRevalidationSeederCode,assets/SyncWebsiteRevalidationSeeder-code-848b6f9afe58621c51d271d0b5e8a1c2e7e4f7e4178f0b2d70c4c60f7a0df333.zip,acl,0,arn,,,arn:aws:s3:::sst-asset-vaavddthmxfo/assets/SyncWebsiteRevalidationSeeder-code-848b6f9afe58621c51d271d0b5e8a1c2e7e4f7e4178f0b2d70c4c60f7a0df333.zip,bucket,,,sst-asset-vaavddthmxfo,bucketKeyEnabled,,,,false,cacheControl,,,,checksumAlgorithm,0,checksumCrc32,,,,checksumCrc32c,,,,checksumSha1,,,,checksumSha256,,,,content,0,contentBase64,0,contentDisposition,,,,contentEncoding,,,,contentLanguage,,,,contentType,,,application/octet-stream,etag,,,1fe41f7493cb046dbfb4318360506e24,forceDestroy,,,,false,id,,,assets/SyncWebsiteRevalidationSeeder-code-848b6f9afe58621c51d271d0b5e8a1c2e7e4f7e4178f0b2d70c4c60f7a0df333.zip,key,,,assets/SyncWebsiteRevalidationSeeder-code-848b6f9afe58621c51d271d0b5e8a1c2e7e4f7e4178f0b2d70c4c60f7a0df333.zip,kmsKeyId,0,metadata,0,objectLockLegalHoldStatus,,,,objectLockMode,,,,objectLockRetainUntilDate,,,,overrideProvider,0,serverSideEncryption,,,AES256,source,,,,,4dabf18193072939515e22adb298388d,,,0def7320c3a5731c473e5ecbe6d01bc7,hash,,,848b6f9afe58621c51d271d0b5e8a1c2e7e4f7e4178f0b2d70c4c60f7a0df333,path,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.sst/artifacts/SyncWebsiteRevalidationSeeder/code.zip,sourceHash,0,storageClass,,,STANDARD,tags,,,,,sst:app,,,sync-website,sst:stage,,,production,tagsAll,,,,,sst:app,,,sync-website,sst:stage,,,production,versionId,,,,websiteRedirect,,,,,
+I1006 21:57:05.477084   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:lambda/function:Function, name=SyncWebsiteRevalidationSeederFunction
+I1006 21:57:06.357521   30240 eventsink.go:59] [DEBUG] Waiting for state to become: [Successful]
+I1006 21:57:06.429662   30240 eventsink.go:59] [DEBUG] Waiting for state to become: [Successful]
+I1006 21:57:07.408835   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteDefaultCode[aws:s3/bucketObjectv2:BucketObjectv2]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:s3/bucketObjectv2:BucketObjectv2::SyncWebsiteDefaultCode,assets/SyncWebsiteDefault-code-7f1b4424c12b71277b072fce450e162fcc6c6b1f3571b8d6c3061b7bf789569b.zip,acl,0,arn,,,arn:aws:s3:::sst-asset-vaavddthmxfo/assets/SyncWebsiteDefault-code-7f1b4424c12b71277b072fce450e162fcc6c6b1f3571b8d6c3061b7bf789569b.zip,bucket,,,sst-asset-vaavddthmxfo,bucketKeyEnabled,,,,false,cacheControl,,,,checksumAlgorithm,0,checksumCrc32,,,,checksumCrc32c,,,,checksumSha1,,,,checksumSha256,,,,content,0,contentBase64,0,contentDisposition,,,,contentEncoding,,,,contentLanguage,,,,contentType,,,binary/octet-stream,etag,,,5bd3e582b6ce3493b7da43dce4b82419-2,forceDestroy,,,,false,id,,,assets/SyncWebsiteDefault-code-7f1b4424c12b71277b072fce450e162fcc6c6b1f3571b8d6c3061b7bf789569b.zip,key,,,assets/SyncWebsiteDefault-code-7f1b4424c12b71277b072fce450e162fcc6c6b1f3571b8d6c3061b7bf789569b.zip,kmsKeyId,0,metadata,0,objectLockLegalHoldStatus,,,,objectLockMode,,,,objectLockRetainUntilDate,,,,overrideProvider,0,serverSideEncryption,,,AES256,source,,,,,4dabf18193072939515e22adb298388d,,,0def7320c3a5731c473e5ecbe6d01bc7,hash,,,7f1b4424c12b71277b072fce450e162fcc6c6b1f3571b8d6c3061b7bf789569b,path,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.sst/artifacts/SyncWebsiteDefault/code.zip,sourceHash,0,storageClass,,,STANDARD,tags,,,,,sst:app,,,sync-website,sst:stage,,,production,tagsAll,,,,,sst:app,,,sync-website,sst:stage,,,production,versionId,,,,websiteRedirect,,,,,
+I1006 21:57:07.409420   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:lambda/function:Function, name=SyncWebsiteDefaultFunction
+I1006 21:57:07.771148   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteImageOptimizerCode[aws:s3/bucketObjectv2:BucketObjectv2]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:s3/bucketObjectv2:BucketObjectv2::SyncWebsiteImageOptimizerCode,assets/SyncWebsiteImageOptimizer-code-09bf7c49cdc9eb04484f85bf7ee8311440ce12018ecf7e982fd022c7c276bfdc.zip,acl,0,arn,,,arn:aws:s3:::sst-asset-vaavddthmxfo/assets/SyncWebsiteImageOptimizer-code-09bf7c49cdc9eb04484f85bf7ee8311440ce12018ecf7e982fd022c7c276bfdc.zip,bucket,,,sst-asset-vaavddthmxfo,bucketKeyEnabled,,,,false,cacheControl,,,,checksumAlgorithm,0,checksumCrc32,,,,checksumCrc32c,,,,checksumSha1,,,,checksumSha256,,,,content,0,contentBase64,0,contentDisposition,,,,contentEncoding,,,,contentLanguage,,,,contentType,,,binary/octet-stream,etag,,,72e3df4572396f6b90b5c83fa18a3ebc-3,forceDestroy,,,,false,id,,,assets/SyncWebsiteImageOptimizer-code-09bf7c49cdc9eb04484f85bf7ee8311440ce12018ecf7e982fd022c7c276bfdc.zip,key,,,assets/SyncWebsiteImageOptimizer-code-09bf7c49cdc9eb04484f85bf7ee8311440ce12018ecf7e982fd022c7c276bfdc.zip,kmsKeyId,0,metadata,0,objectLockLegalHoldStatus,,,,objectLockMode,,,,objectLockRetainUntilDate,,,,overrideProvider,0,serverSideEncryption,,,AES256,source,,,,,4dabf18193072939515e22adb298388d,,,0def7320c3a5731c473e5ecbe6d01bc7,hash,,,09bf7c49cdc9eb04484f85bf7ee8311440ce12018ecf7e982fd022c7c276bfdc,path,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.sst/artifacts/SyncWebsiteImageOptimizer/code.zip,sourceHash,0,storageClass,,,STANDARD,tags,,,,,sst:app,,,sync-website,sst:stage,,,production,tagsAll,,,,,sst:app,,,sync-website,sst:stage,,,production,versionId,,,,websiteRedirect,,,,,
+I1006 21:57:07.771698   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:lambda/function:Function, name=SyncWebsiteImageOptimizerFunction
+I1006 21:57:08.332434   30240 eventsink.go:59] [DEBUG] Waiting for state to become: [Successful]
+I1006 21:57:08.865026   30240 eventsink.go:59] [DEBUG] Waiting for state to become: [Successful]
+I1006 21:57:12.503456   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionFunction[aws:lambda/function:Function]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:QueueLambdaSubscriber$sst:aws:Function$aws:lambda/function:Function::SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionFunction,producti-SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionFu,__meta,,,{"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0":{"create":600000000000,"delete":600000000000,"update":600000000000}},architectures,,,,,,,,x86_64,arn,,,arn:aws:lambda:us-east-1:831926620158:function:producti-SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionFu,code,0,codeSha256,,,u2ZGLVWm6EFoeKc+AKdMQqyMUiiDWSm7UwTVAcfdmuc=,codeSigningConfigArn,,,,deadLetterConfig,0,description,,,Subscribed to SyncWebsiteRevalidationEventsSubscriberUffhrs,environment,,,,,variables,,,,,SST_RESOURCE_App,,,{"name":"sync-website","stage":"production"},ephemeralStorage,,,,,size,,512,fileSystemConfig,0,handler,,,index.handler,id,,,producti-SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionFu,imageConfig,0,imageUri,,,,invokeArn,,,arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:831926620158:function:producti-SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionFu/invocations,kmsKeyArn,,,,lastModified,,,2024-10-06T16:27:06.000+0000,layers,0,loggingConfig,,,,,applicationLogLevel,,,,logFormat,,,Text,logGroup,,,/aws/lambda/producti-SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionFu,systemLogLevel,,,,memorySize,,1024,name,,,producti-SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionFu,packageType,,,Zip,publish,,,,false,qualifiedArn,,,arn:aws:lambda:us-east-1:831926620158:function:producti-SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionFu:$LATEST,qualifiedInvokeArn,,,arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:831926620158:function:producti-SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionFu:$LATEST/invocations,replaceSecurityGroupsOnDestroy,0,replacementSecurityGroupIds,0,reservedConcurrentExecutions,,-1,role,,,arn:aws:iam::831926620158:role/producti-SyncWebsiteRevalidationEventsSubscriberUffhrsFu-useast1,runtime,,,nodejs20.x,s3Bucket,,,sst-asset-vaavddthmxfo,s3Key,,,assets/SyncWebsiteRevalidationEventsSubscriberUffhrsFunction-code-bb66462d55a6e8416878a73e00a74c42ac8c5228835929bb5304d501c7dd9ae7.zip,s3ObjectVersion,0,signingJobArn,,,,signingProfileVersionArn,,,,skipDestroy,,,,false,snapStart,0,sourceCodeHash,,,,sourceCodeSize,,2328,tags,,,,,sst:app,,,sync-website,sst:stage,,,production,tagsAll,,,,,sst:app,,,sync-website,sst:stage,,,production,timeout,,30,tracingConfig,,,,,mode,,,PassThrough,version,,,$LATEST,vpcConfig,0,,
+I1006 21:57:12.504127   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:lambda/eventSourceMapping:EventSourceMapping, name=SyncWebsiteRevalidationEventsSubscriberUffhrsEventSourceMapping
+I1006 21:57:12.515594   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteRevalidationEventsSubscriberUffhrsEventSourceMapping[aws:lambda/eventSourceMapping:EventSourceMapping]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:QueueLambdaSubscriber$aws:lambda/eventSourceMapping:EventSourceMapping::SyncWebsiteRevalidationEventsSubscriberUffhrsEventSourceMapping,d92c011f-dc7b-423d-a29c-03d0148a3c80,amazonManagedKafkaEventSourceConfig,0,batchSize,,5,bisectBatchOnFunctionError,,,,false,destinationConfig,0,documentDbEventSourceConfig,0,enabled,,,,true,eventSourceArn,,,arn:aws:sqs:us-east-1:831926620158:sync-website-production-SyncWebsiteRevalidationEventsQueue.fifo,filterCriteria,0,functionArn,,,arn:aws:lambda:us-east-1:831926620158:function:producti-SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionFu,functionName,,,arn:aws:lambda:us-east-1:831926620158:function:producti-SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionFu,functionResponseTypes,0,id,,,d92c011f-dc7b-423d-a29c-03d0148a3c80,kmsKeyArn,,,,lastModified,,,2024-10-06T16:18:20Z,lastProcessingResult,,,,maximumBatchingWindowInSeconds,,0,maximumRecordAgeInSeconds,,0,maximumRetryAttempts,,0,parallelizationFactor,,0,queues,0,scalingConfig,0,selfManagedEventSource,0,selfManagedKafkaEventSourceConfig,0,sourceAccessConfigurations,,,,,,,startingPosition,,,,startingPositionTimestamp,,,,state,,,Enabled,stateTransitionReason,,,USER_INITIATED,topics,0,tumblingWindowInSeconds,,0,uuid,,,d92c011f-dc7b-423d-a29c-03d0148a3c80,,
+I1006 21:57:12.518913   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteRevalidationSeederFunction[aws:lambda/function:Function]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:lambda/function:Function::SyncWebsiteRevalidationSeederFunction,sync-website-production-SyncWebsiteRevalidationSeederFunction,__meta,,,{"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0":{"create":600000000000,"delete":600000000000,"update":600000000000}},architectures,,,,,,,,x86_64,arn,,,arn:aws:lambda:us-east-1:831926620158:function:sync-website-production-SyncWebsiteRevalidationSeederFunction,code,0,codeSha256,,,hItvmv5YYhxR0nHQteihwufk9+QXjwstcMTGD3oN8zM=,codeSigningConfigArn,,,,deadLetterConfig,0,description,,,SyncWebsite ISR revalidation data seeder,environment,,,,,variables,,,,,CACHE_DYNAMO_TABLE,,,sync-website-production-SyncWebsiteRevalidationTable,SST_RESOURCE_App,,,{"name":"sync-website","stage":"production"},ephemeralStorage,,,,,size,,512,fileSystemConfig,0,handler,,,index.handler,id,,,sync-website-production-SyncWebsiteRevalidationSeederFunction,imageConfig,0,imageUri,,,,invokeArn,,,arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:831926620158:function:sync-website-production-SyncWebsiteRevalidationSeederFunction/invocations,kmsKeyArn,,,,lastModified,,,2024-10-06T16:27:06.000+0000,layers,0,loggingConfig,,,,,applicationLogLevel,,,,logFormat,,,Text,logGroup,,,/aws/lambda/sync-website-production-SyncWebsiteRevalidationSeederFunction,systemLogLevel,,,,memorySize,,128,name,,,sync-website-production-SyncWebsiteRevalidationSeederFunction,packageType,,,Zip,publish,,,,false,qualifiedArn,,,arn:aws:lambda:us-east-1:831926620158:function:sync-website-production-SyncWebsiteRevalidationSeederFunction:$LATEST,qualifiedInvokeArn,,,arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:831926620158:function:sync-website-production-SyncWebsiteRevalidationSeederFunction:$LATEST/invocations,replaceSecurityGroupsOnDestroy,0,replacementSecurityGroupIds,0,reservedConcurrentExecutions,,-1,role,,,arn:aws:iam::831926620158:role/sync-websit-production-SyncWebsiteRevalidationSeederRole-useast1,runtime,,,nodejs20.x,s3Bucket,,,sst-asset-vaavddthmxfo,s3Key,,,assets/SyncWebsiteRevalidationSeeder-code-848b6f9afe58621c51d271d0b5e8a1c2e7e4f7e4178f0b2d70c4c60f7a0df333.zip,s3ObjectVersion,0,signingJobArn,,,,signingProfileVersionArn,,,,skipDestroy,,,,false,snapStart,0,sourceCodeHash,,,,sourceCodeSize,,2849,tags,,,,,sst:app,,,sync-website,sst:stage,,,production,tagsAll,,,,,sst:app,,,sync-website,sst:stage,,,production,timeout,,900,tracingConfig,,,,,mode,,,PassThrough,version,,,$LATEST,vpcConfig,0,,
+I1006 21:57:12.519600   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:lambda/invocation:Invocation, name=SyncWebsiteRevalidationSeed
+I1006 21:57:13.589406   30240 eventsink.go:59] [TRACE] Waiting 200ms before next try
+I1006 21:57:14.060097   30240 eventsink.go:59] [TRACE] Waiting 400ms before next try
+I1006 21:57:14.143721   30240 eventsink.go:59] [TRACE] Waiting 200ms before next try
+I1006 21:57:14.315533   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteRevalidationSeed[aws:lambda/invocation:Invocation]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$aws:lambda/invocation:Invocation::SyncWebsiteRevalidationSeed,sync-website-production-SyncWebsiteRevalidationSeederFunction_$LATEST_a4dc148fe8537f1e39264f6aac10b5b8,functionName,,,sync-website-production-SyncWebsiteRevalidationSeederFunction,id,,,sync-website-production-SyncWebsiteRevalidationSeederFunction_$LATEST_a4dc148fe8537f1e39264f6aac10b5b8,input,,,{"RequestType":"Create"},lifecycleScope,,,CREATE_ONLY,qualifier,,,$LATEST,result,,,{"type":"dummy","original":{"type":"initializationFunction","resourceId":"dynamodb-cache"}},terraformKey,,,tf,triggers,,,,,version,,,1728232019961,,
+I1006 21:57:15.541238   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteDefaultFunction[aws:lambda/function:Function]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:lambda/function:Function::SyncWebsiteDefaultFunction,sync-website-production-SyncWebsiteDefaultFunction,__meta,,,{"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0":{"create":600000000000,"delete":600000000000,"update":600000000000}},architectures,,,,,,,,x86_64,arn,,,arn:aws:lambda:us-east-1:831926620158:function:sync-website-production-SyncWebsiteDefaultFunction,code,0,codeSha256,,,fxtEJMErcSd7By/ORQ4WL8xsax81cbjWwwYbe/eJVps=,codeSigningConfigArn,,,,deadLetterConfig,0,description,,,SyncWebsite server,environment,,,,,variables,,,,,CACHE_BUCKET_KEY_PREFIX,,,_cache,CACHE_BUCKET_NAME,,,sync-website-production-syncwebsiteassets-wxtuonvr,CACHE_BUCKET_REGION,,,us-east-1,CACHE_DYNAMO_TABLE,,,sync-website-production-SyncWebsiteRevalidationTable,REVALIDATION_QUEUE_REGION,,,us-east-1,REVALIDATION_QUEUE_URL,,,https://sqs.us-east-1.amazonaws.com/831926620158/sync-website-production-SyncWebsiteRevalidationEventsQueue.fifo,SST_RESOURCE_App,,,{"name":"sync-website","stage":"production"},ephemeralStorage,,,,,size,,512,fileSystemConfig,0,handler,,,index.handler,id,,,sync-website-production-SyncWebsiteDefaultFunction,imageConfig,0,imageUri,,,,invokeArn,,,arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:831926620158:function:sync-website-production-SyncWebsiteDefaultFunction/invocations,kmsKeyArn,,,,lastModified,,,2024-10-06T16:27:08.000+0000,layers,,,,,,,loggingConfig,,,,,applicationLogLevel,,,,logFormat,,,Text,logGroup,,,/aws/lambda/sync-website-production-SyncWebsiteDefaultFunction,systemLogLevel,,,,memorySize,,1024,name,,,sync-website-production-SyncWebsiteDefaultFunction,packageType,,,Zip,publish,,,,false,qualifiedArn,,,arn:aws:lambda:us-east-1:831926620158:function:sync-website-production-SyncWebsiteDefaultFunction:$LATEST,qualifiedInvokeArn,,,arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:831926620158:function:sync-website-production-SyncWebsiteDefaultFunction:$LATEST/invocations,replaceSecurityGroupsOnDestroy,0,replacementSecurityGroupIds,0,reservedConcurrentExecutions,,-1,role,,,arn:aws:iam::831926620158:role/sync-website-production-SyncWebsiteDefaultRole-useast1,runtime,,,nodejs20.x,s3Bucket,,,sst-asset-vaavddthmxfo,s3Key,,,assets/SyncWebsiteDefault-code-7f1b4424c12b71277b072fce450e162fcc6c6b1f3571b8d6c3061b7bf789569b.zip,s3ObjectVersion,0,signingJobArn,,,,signingProfileVersionArn,,,,skipDestroy,,,,false,snapStart,0,sourceCodeHash,,,,sourceCodeSize,,5586434,tags,,,,,sst:app,,,sync-website,sst:stage,,,production,tagsAll,,,,,sst:app,,,sync-website,sst:stage,,,production,timeout,,20,tracingConfig,,,,,mode,,,PassThrough,version,,,$LATEST,vpcConfig,0,,
+I1006 21:57:15.541875   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:lambda/functionUrl:FunctionUrl, name=SyncWebsiteDefaultUrl
+I1006 21:57:15.546029   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteDefaultUrl[aws:lambda/functionUrl:FunctionUrl]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:lambda/functionUrl:FunctionUrl::SyncWebsiteDefaultUrl,sync-website-production-SyncWebsiteDefaultFunction,__meta,,,{"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0":{"create":600000000000}},authorizationType,,,NONE,cors,,,,,allowCredentials,,,,false,allowHeaders,,,,,,,,*,allowMethods,,,,,,,,*,allowOrigins,,,,,,,,*,exposeHeaders,0,maxAge,,0,functionArn,,,arn:aws:lambda:us-east-1:831926620158:function:sync-website-production-SyncWebsiteDefaultFunction,functionName,,,sync-website-production-SyncWebsiteDefaultFunction,functionUrl,,,https://3yrlbriscgxzrelw4226upj3ra0gzadn.lambda-url.us-east-1.on.aws/,id,,,sync-website-production-SyncWebsiteDefaultFunction,invokeMode,,,BUFFERED,qualifier,,,,urlId,,,3yrlbriscgxzrelw4226upj3ra0gzadn,,
+I1006 21:57:16.106508   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteImageOptimizerFunction[aws:lambda/function:Function]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:lambda/function:Function::SyncWebsiteImageOptimizerFunction,sync-website-production-SyncWebsiteImageOptimizerFunction,__meta,,,{"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0":{"create":600000000000,"delete":600000000000,"update":600000000000}},architectures,,,,,,,,arm64,arn,,,arn:aws:lambda:us-east-1:831926620158:function:sync-website-production-SyncWebsiteImageOptimizerFunction,code,0,codeSha256,,,Cb98Sc3J6wRIT4W/fugxFEDOEgGOz36YL9Aix8J2v9w=,codeSigningConfigArn,,,,deadLetterConfig,0,description,,,SyncWebsite image optimizer,environment,,,,,variables,,,,,BUCKET_KEY_PREFIX,,,_assets,BUCKET_NAME,,,sync-website-production-syncwebsiteassets-wxtuonvr,SST_RESOURCE_App,,,{"name":"sync-website","stage":"production"},ephemeralStorage,,,,,size,,512,fileSystemConfig,0,handler,,,index.handler,id,,,sync-website-production-SyncWebsiteImageOptimizerFunction,imageConfig,0,imageUri,,,,invokeArn,,,arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:831926620158:function:sync-website-production-SyncWebsiteImageOptimizerFunction/invocations,kmsKeyArn,,,,lastModified,,,2024-10-06T16:27:08.000+0000,layers,0,loggingConfig,,,,,applicationLogLevel,,,,logFormat,,,Text,logGroup,,,/aws/lambda/sync-website-production-SyncWebsiteImageOptimizerFunction,systemLogLevel,,,,memorySize,,1536,name,,,sync-website-production-SyncWebsiteImageOptimizerFunction,packageType,,,Zip,publish,,,,false,qualifiedArn,,,arn:aws:lambda:us-east-1:831926620158:function:sync-website-production-SyncWebsiteImageOptimizerFunction:$LATEST,qualifiedInvokeArn,,,arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:831926620158:function:sync-website-production-SyncWebsiteImageOptimizerFunction:$LATEST/invocations,replaceSecurityGroupsOnDestroy,0,replacementSecurityGroupIds,0,reservedConcurrentExecutions,,-1,role,,,arn:aws:iam::831926620158:role/sync-website-production-SyncWebsiteImageOptimizerRole-useast1,runtime,,,nodejs20.x,s3Bucket,,,sst-asset-vaavddthmxfo,s3Key,,,assets/SyncWebsiteImageOptimizer-code-09bf7c49cdc9eb04484f85bf7ee8311440ce12018ecf7e982fd022c7c276bfdc.zip,s3ObjectVersion,0,signingJobArn,,,,signingProfileVersionArn,,,,skipDestroy,,,,false,snapStart,0,sourceCodeHash,,,,sourceCodeSize,,11549894,tags,,,,,sst:app,,,sync-website,sst:stage,,,production,tagsAll,,,,,sst:app,,,sync-website,sst:stage,,,production,timeout,,25,tracingConfig,,,,,mode,,,PassThrough,version,,,$LATEST,vpcConfig,0,,
+I1006 21:57:16.107056   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:lambda/functionUrl:FunctionUrl, name=SyncWebsiteImageOptimizerUrl
+I1006 21:57:16.111229   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteImageOptimizerUrl[aws:lambda/functionUrl:FunctionUrl]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:lambda/functionUrl:FunctionUrl::SyncWebsiteImageOptimizerUrl,sync-website-production-SyncWebsiteImageOptimizerFunction,__meta,,,{"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0":{"create":600000000000}},authorizationType,,,NONE,cors,,,,,allowCredentials,,,,false,allowHeaders,,,,,,,,*,allowMethods,,,,,,,,*,allowOrigins,,,,,,,,*,exposeHeaders,0,maxAge,,0,functionArn,,,arn:aws:lambda:us-east-1:831926620158:function:sync-website-production-SyncWebsiteImageOptimizerFunction,functionName,,,sync-website-production-SyncWebsiteImageOptimizerFunction,functionUrl,,,https://cfmzvcmudlkiahccm5dhgu2ke40hdhfz.lambda-url.us-east-1.on.aws/,id,,,sync-website-production-SyncWebsiteImageOptimizerFunction,invokeMode,,,BUFFERED,qualifier,,,,urlId,,,cfmzvcmudlkiahccm5dhgu2ke40hdhfz,,
+I1006 21:57:16.757157   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteAssetFiles.sst.aws.BucketFiles[pulumi-nodejs:dynamic:Resource]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$pulumi-nodejs:dynamic:Resource::SyncWebsiteAssetFiles.sst.aws.BucketFiles,files,__provider,,,exports.handler = __f0;
+
+var __provider_proto = {};
+Object.defineProperty(__f1, "prototype", { value: __provider_proto });
+Object.defineProperty(__provider_proto, "constructor", { configurable: true, writable: true, value: __f1 });
+Object.defineProperty(__provider_proto, "name", { configurable: true, writable: true, value: __f2 });
+Object.setPrototypeOf(__f4, global.Error);
+Object.defineProperty(__provider_proto, "create", { configurable: true, writable: true, value: __f3 });
+Object.defineProperty(__provider_proto, "delete", { configurable: true, writable: true, value: __f5 });
+Object.defineProperty(__provider_proto, "update", { configurable: true, writable: true, value: __f6 });
+Object.defineProperty(__provider_proto, "read", { configurable: true, writable: true, value: __f7 });
+var __provider = Object.create(__provider_proto);
+__provider.type = "Aws.BucketFiles";
+
+function __f1(__0) {
+  return (function() {
+    with({ this: undefined, arguments: undefined }) {
+
+return function /*constructor*/(type) {
+      this.type = type;
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f2(__0) {
+  return (function() {
+    with({ this: undefined, arguments: undefined }) {
+
+return function /*name*/(action) {
+      return "Resource." + this.type + "." + action;
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f4(__0) {
+  return (function() {
+    with({ __super: global.Error, this: undefined, arguments: undefined }) {
+
+return function /*constructor*/(method) {
+    __super.call(this, `Method "${method}" not found`);
+    this.method = method;
+};
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+const http = require("http");
+
+function __call(__0, __1) {
+  return (function() {
+    with({ MethodNotFoundError: __f4, call: __call, this: undefined, arguments: undefined }) {
+
+return async function /*call*/(method, args) {
+    return new Promise((resolve, reject) => {
+      const url = new URL(process.env.SST_SERVER + "/rpc");
+      const options = {
+        hostname: url.hostname,
+        port: url.port,
+        path: url.pathname,
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      };
+      const req = http.request(options, (res) => {
+        let data = "";
+        res.on("data", (chunk) => {
+          data += chunk;
+        });
+        res.on("end", () => {
+          if (res.statusCode !== 200) {
+            reject(new Error(`Failed to call RPC: ${data}`));
+            return;
+          }
+          try {
+            const json = JSON.parse(data);
+            if (json.error) {
+              if (json.error.startsWith("rpc: can't find")) {
+                reject(new MethodNotFoundError(method));
+                return;
+              }
+              reject(new Error(json.error));
+              return;
+            }
+            resolve(json.result);
+          } catch (error) {
+            reject(new Error(`Failed to parse JSON: ${error.message}`));
+          }
+        });
+      });
+      req.on("error", (error) => {
+        reject(error);
+      });
+      req.setTimeout(0);
+      const body = JSON.stringify({
+        jsonrpc: "1.0",
+        method,
+        params: [args]
+      });
+      req.write(body);
+      req.end();
+    });
+  };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f3(__0) {
+  return (function() {
+    with({ call: __call, this: undefined, arguments: undefined }) {
+
+return async function /*create*/(inputs) {
+      return call(this.name("Create"), inputs);
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f5(__0, __1) {
+  return (function() {
+    with({ call: __call, MethodNotFoundError: __f4, this: undefined, arguments: undefined }) {
+
+return async function /*delete*/(id, outs) {
+      return call(this.name("Delete"), { id, outs }).catch((ex) => {
+        if (ex instanceof MethodNotFoundError) return;
+        throw ex;
+      });
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f6(__0, __1, __2) {
+  return (function() {
+    with({ call: __call, MethodNotFoundError: __f4, this: undefined, arguments: undefined }) {
+
+return async function /*update*/(id, olds, news) {
+      return call(this.name("Update"), { id, olds, news }).catch((ex) => {
+        if (ex instanceof MethodNotFoundError)
+          return {
+            id
+          };
+        throw ex;
+      });
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f7(__0, __1) {
+  return (function() {
+    with({ call: __call, MethodNotFoundError: __f4, this: undefined, arguments: undefined }) {
+
+return async function /*read*/(id, props) {
+      return call(this.name("Read"), { id, props }).catch((ex) => {
+        if (ex instanceof MethodNotFoundError) return { id, props };
+        throw ex;
+      });
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f0() {
+  return (function() {
+    with({ provider: __provider, this: undefined, arguments: undefined }) {
+
+return () => provider;
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+,bucketName,,,sync-website-production-syncwebsiteassets-wxtuonvr,files,,,,,,,,,,cacheControl,,,public,max-age=31536000,immutable,contentType,,,font/woff,hash,,,e8b65928f551b17e3d67c3f709721b952c39842d14b00701f9232057fde73608,key,,,_assets/_next/static/media/463dafcda517f24f-s.p.woff,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/_next/static/media/463dafcda517f24f-s.p.woff,,,,,cacheControl,,,public,max-age=31536000,immutable,contentType,,,font/woff,hash,,,296fafafd41304f7c992079054b8af914dbbd865f32de97c66d0f613b55755d6,key,,,_assets/_next/static/media/4473ecc91f70f139-s.p.woff,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/_next/static/media/4473ecc91f70f139-s.p.woff,,,,,cacheControl,,,public,max-age=31536000,immutable,contentType,,,text/javascript;charset=UTF-8,hash,,,678f6ce2cb80b1fe72fc67e7412be6e2ab6ada083111b64f7c40d35e3cba5e00,key,,,_assets/_next/static/jStOSCIuig8hwaL8hzL8U/_ssgManifest.js,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/_next/static/jStOSCIuig8hwaL8hzL8U/_ssgManifest.js,,,,,cacheControl,,,public,max-age=31536000,immutable,contentType,,,text/javascript;charset=UTF-8,hash,,,e1d1a41267d78cc06a5b5357a9cfb4c73d5b5bc71b5130ffa20ce9ec351849e0,key,,,_assets/_next/static/jStOSCIuig8hwaL8hzL8U/_buildManifest.js,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/_next/static/jStOSCIuig8hwaL8hzL8U/_buildManifest.js,,,,,cacheControl,,,public,max-age=31536000,immutable,contentType,,,text/css;charset=UTF-8,hash,,,2bddca62bc24e7e7c056cf6836353a57ef4774b6ef84446d24348941a345bfff,key,,,_assets/_next/static/css/8bc981040f61bc26.css,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/_next/static/css/8bc981040f61bc26.css,,,,,cacheControl,,,public,max-age=31536000,immutable,contentType,,,text/javascript;charset=UTF-8,hash,,,40aaecea4eb9e103679cdd3c9522d685777586a6abbff7ab71f0a6ea175a656e,key,,,_assets/_next/static/chunks/webpack-ca5508a5ffdda934.js,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/_next/static/chunks/webpack-ca5508a5ffdda934.js,,,,,cacheControl,,,public,max-age=31536000,immutable,contentType,,,text/javascript;charset=UTF-8,hash,,,0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683,key,,,_assets/_next/static/chunks/polyfills-42372ed130431b0a.js,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/_next/static/chunks/polyfills-42372ed130431b0a.js,,,,,cacheControl,,,public,max-age=31536000,immutable,contentType,,,text/javascript;charset=UTF-8,hash,,,76d1fd876f483f7b162b0c09273dd9ff049f4ad734ba63b1b073e4bf0899d016,key,,,_assets/_next/static/chunks/main-app-3a1ed74427df97e4.js,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/_next/static/chunks/main-app-3a1ed74427df97e4.js,,,,,cacheControl,,,public,max-age=31536000,immutable,contentType,,,text/javascript;charset=UTF-8,hash,,,75638ffb4f0d0800d3e604938a1b5f8048e5b988d1fe790d5e0c0d70c67ca681,key,,,_assets/_next/static/chunks/main-9b163cd436dc034a.js,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/_next/static/chunks/main-9b163cd436dc034a.js,,,,,cacheControl,,,public,max-age=31536000,immutable,contentType,,,text/javascript;charset=UTF-8,hash,,,4250d53f0bc756ece2ddd690a008add1d7fdc887528c671f4dfe8d916d7787b7,key,,,_assets/_next/static/chunks/framework-f66176bb897dc684.js,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/_next/static/chunks/framework-f66176bb897dc684.js,,,,,cacheControl,,,public,max-age=31536000,immutable,contentType,,,text/javascript;charset=UTF-8,hash,,,71ed963804cbd4b773b16a2e290fb534288140999cca4833a8ff300a9d72a9b1,key,,,_assets/_next/static/chunks/fd9d1056-3d5fd5de155f94df.js,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/_next/static/chunks/fd9d1056-3d5fd5de155f94df.js,,,,,cacheControl,,,public,max-age=31536000,immutable,contentType,,,text/javascript;charset=UTF-8,hash,,,6c5517571814454208684a401bcb9d6eea43d4997eabe1de6e4d83070db2499d,key,,,_assets/_next/static/chunks/85-1bf7c3d3f2d204a1.js,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/_next/static/chunks/85-1bf7c3d3f2d204a1.js,,,,,cacheControl,,,public,max-age=31536000,immutable,contentType,,,text/javascript;charset=UTF-8,hash,,,81bad78002320a58642777b72ebc36fc56324adaa2930bca35ba729b5390a583,key,,,_assets/_next/static/chunks/648-d76e0cd48278dcc0.js,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/_next/static/chunks/648-d76e0cd48278dcc0.js,,,,,cacheControl,,,public,max-age=31536000,immutable,contentType,,,text/javascript;charset=UTF-8,hash,,,e6026c7e9ce107b55d62d52d295a39e06ae66ab1b15c4d3b31037864d4094a08,key,,,_assets/_next/static/chunks/619edb50-a1e570e2792ef083.js,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/_next/static/chunks/619edb50-a1e570e2792ef083.js,,,,,cacheControl,,,public,max-age=31536000,immutable,contentType,,,text/javascript;charset=UTF-8,hash,,,3b30eb46e7b29bb086349a4c4660c58b46f34f0a4465ab2adb345f82d60909da,key,,,_assets/_next/static/chunks/53c13509-c58f80d1aa2e1aa0.js,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/_next/static/chunks/53c13509-c58f80d1aa2e1aa0.js,,,,,cacheControl,,,public,max-age=31536000,immutable,contentType,,,text/javascript;charset=UTF-8,hash,,,15891d483cae1e4659f62aed1c38d9bdafdb2e8cb256f5e906eeb90bd70d3438,key,,,_assets/_next/static/chunks/23-0545788ed5d9f123.js,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/_next/static/chunks/23-0545788ed5d9f123.js,,,,,cacheControl,,,public,max-age=31536000,immutable,contentType,,,text/javascript;charset=UTF-8,hash,,,4d9aabbacd3a28a3f1f8230004330f285ef0f8d439b3683024033c1eeca5eea5,key,,,_assets/_next/static/chunks/pages/_error-1be831200e60c5c0.js,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/_next/static/chunks/pages/_error-1be831200e60c5c0.js,,,,,cacheControl,,,public,max-age=31536000,immutable,contentType,,,text/javascript;charset=UTF-8,hash,,,5240d96aa50fe25e210a030a543aa5251100809d7805ebb3090e773a24ef6c29,key,,,_assets/_next/static/chunks/pages/_app-6a626577ffa902a4.js,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/_next/static/chunks/pages/_app-6a626577ffa902a4.js,,,,,cacheControl,,,public,max-age=31536000,immutable,contentType,,,text/javascript;charset=UTF-8,hash,,,e9603dbd3d0f24e0c72c8aa558ce24e0cf0ab9d65f2e6fbc64b3d824adc7a5b1,key,,,_assets/_next/static/chunks/app/page-6142099bc32a6916.js,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/_next/static/chunks/app/page-6142099bc32a6916.js,,,,,cacheControl,,,public,max-age=31536000,immutable,contentType,,,text/javascript;charset=UTF-8,hash,,,948fe22421dd0069c8efb4b6508a891ebebcc868a79cd3f11a768b521c843fb9,key,,,_assets/_next/static/chunks/app/layout-d59c75eec981e19e.js,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/_next/static/chunks/app/layout-d59c75eec981e19e.js,,,,,cacheControl,,,public,max-age=31536000,immutable,contentType,,,text/javascript;charset=UTF-8,hash,,,cd28bf39de17970988b8eaefa1b61b1e3b74aa9c51615443538c9a2dab9bbb60,key,,,_assets/_next/static/chunks/app/_not-found/page-5b78e0f153430713.js,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/_next/static/chunks/app/_not-found/page-5b78e0f153430713.js,,,,,cacheControl,,,public,max-age=0,s-maxage=86400,stale-while-revalidate=86400,contentType,,,image/svg+xml;charset=UTF-8,hash,,,60db2391294a0b77eba3ad88b750e9b27894f3f977b831fa3ff06c0c228d37fd,key,,,_assets/sync-logo.svg,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/sync-logo.svg,,,,,cacheControl,,,public,max-age=0,s-maxage=86400,stale-while-revalidate=86400,contentType,,,image/svg+xml;charset=UTF-8,hash,,,009960f26e5623c2c0287ac2eaaaadeab84e1723821d31b65b7d2fa9de55631a,key,,,_assets/redCar.svg,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/redCar.svg,,,,,cacheControl,,,public,max-age=0,s-maxage=86400,stale-while-revalidate=86400,contentType,,,image/vnd.microsoft.icon,hash,,,2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932,key,,,_assets/favicon.ico,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/favicon.ico,,,,,cacheControl,,,public,max-age=0,s-maxage=86400,stale-while-revalidate=86400,contentType,,,image/svg+xml;charset=UTF-8,hash,,,dc5b9c009fbebf1844594df5aa9084184eb43ae2f657d49a96028d4adfa6e88d,key,,,_assets/carpooling.svg,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/carpooling.svg,,,,,cacheControl,,,public,max-age=0,s-maxage=86400,stale-while-revalidate=86400,contentType,,,image/svg+xml;charset=UTF-8,hash,,,31c98d6032fbd4fef20e38318941124e06293f72629d991c3731b83e2ce2efd1,key,,,_assets/blue-car.svg,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/blue-car.svg,,,,,cacheControl,,,public,max-age=0,s-maxage=86400,stale-while-revalidate=86400,contentType,,,image/svg+xml;charset=UTF-8,hash,,,af2b0f0c2783b6d495b31bb2f6e9e9682027acebe1329e616019300292f6248b,key,,,_assets/Shape.svg,source,,,/Users/rupeshshandilya/Desktop/test/Sync-Website/.open-next/assets/Shape.svg,,,,,cacheControl,,,public,max-age=0,s-maxage=86400,stale-while-revalidate=86400,contentType,,,application/octet-stream,hash,,,c523934d2d6ac06ab00227539d8456
+I1006 21:57:16.759563   30240 eventsink.go:59] RegisterResource RPC prepared: t=sst:aws:CDN, name=SyncWebsiteCdn
+I1006 21:57:16.759902   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteCdn[sst:aws:CDN]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:CDN::SyncWebsiteCdn,,,,
+I1006 21:57:16.762270   30240 eventsink.go:59] RegisterResourceOutputs RPC prepared: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:CDN::SyncWebsiteCdn
+I1006 21:57:16.762631   30240 eventsink.go:59] RegisterResource RPC prepared: t=sst:aws:Certificate, name=SyncWebsiteCdnSsl
+I1006 21:57:16.763140   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteCdnSsl[sst:aws:Certificate]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:CDN$sst:aws:Certificate::SyncWebsiteCdnSsl,,,,
+I1006 21:57:16.763550   30240 eventsink.go:59] RegisterResourceOutputs RPC prepared: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:CDN$sst:aws:Certificate::SyncWebsiteCdnSsl
+I1006 21:57:16.763883   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:acm/certificate:Certificate, name=SyncWebsiteCdnSslCertificate
+I1006 21:57:16.764197   30240 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:CDN::SyncWebsiteCdn; err: null, resp: 
+I1006 21:57:16.764586   30240 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:CDN::SyncWebsiteCdn; err: null, resp: 
+I1006 21:57:16.770537   30240 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:CDN$sst:aws:Certificate::SyncWebsiteCdnSsl; err: null, resp: 
+I1006 21:57:16.809705   30240 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:CDN$sst:aws:Certificate::SyncWebsiteCdnSsl; err: null, resp: 
+I1006 21:57:16.810934   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteCdnSslCertificate[aws:acm/certificate:Certificate]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:CDN$sst:aws:Certificate$aws:acm/certificate:Certificate::SyncWebsiteCdnSslCertificate,arn:aws:acm:us-east-1:831926620158:certificate/ae834c06-9506-4f93-9a7c-4f58786655c3,arn,,,arn:aws:acm:us-east-1:831926620158:certificate/ae834c06-9506-4f93-9a7c-4f58786655c3,certificateAuthorityArn,,,,certificateBody,0,certificateChain,0,domainName,,,sync.getsync.tech,domainValidationOptions,,,,,,,,,,domainName,,,sync.getsync.tech,resourceRecordName,,,_a0304c7881b136a8af6e652e502b5df1.sync.getsync.tech.,resourceRecordType,,,CNAME,resourceRecordValue,,,_77db1dfca5ba1f3c7841c4a988122e4b.djqtsrsxkq.acm-validations.aws.,earlyRenewalDuration,,,,id,,,arn:aws:acm:us-east-1:831926620158:certificate/ae834c06-9506-4f93-9a7c-4f58786655c3,keyAlgorithm,,,RSA_2048,notAfter,,,,notBefore,,,,options,,,,,certificateTransparencyLoggingPreference,,,ENABLED,pendingRenewal,,,,false,privateKey,,,,,4dabf18193072939515e22adb298388d,,,1b47061264138c4ac30d75fd1eb44270,value,0,renewalEligibility,,,INELIGIBLE,renewalSummaries,,,,,,,status,,,PENDING_VALIDATION,subjectAlternativeNames,,,,,,,,sync.getsync.tech,tags,,,,,sst:app,,,sync-website,sst:stage,,,production,tagsAll,,,,,sst:app,,,sync-website,sst:stage,,,production,type,,,AMAZON_ISSUED,validationEmails,,,,,,,validationMethod,,,DNS,validationOptions,,,,,,,,
+I1006 21:57:16.812162   30240 eventsink.go:59] Registering resource: t=pulumi-nodejs:dynamic:Resource, name=SyncWebsiteCdnSslCNAMEZoneLookupA0304c7881b136a8af6e652e502b5df1syncgetsynctech.sst.aws.HostedZoneLookup, custom=true, remote=false
+I1006 21:57:16.813257   30240 eventsink.go:59] Registering resource: t=aws:route53/record:Record, name=SyncWebsiteCdnSslCNAMERecordA0304c7881b136a8af6e652e502b5df1syncgetsynctech, custom=true, remote=false
+I1006 21:57:16.813665   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.814154   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.814823   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.815947   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.816445   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.817284   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.817976   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.827065   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.827923   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.828428   30240 eventsink.go:59] RegisterResource RPC prepared: t=pulumi-nodejs:dynamic:Resource, name=SyncWebsiteCdnSslCNAMEZoneLookupA0304c7881b136a8af6e652e502b5df1syncgetsynctech.sst.aws.HostedZoneLookup
+I1006 21:57:16.831423   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteCdnSslCNAMEZoneLookupA0304c7881b136a8af6e652e502b5df1syncgetsynctech.sst.aws.HostedZoneLookup[pulumi-nodejs:dynamic:Resource]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:CDN$sst:aws:Certificate$pulumi-nodejs:dynamic:Resource::SyncWebsiteCdnSslCNAMEZoneLookupA0304c7881b136a8af6e652e502b5df1syncgetsynctech.sst.aws.HostedZoneLookup,Z00536101FTAQ0OC4U48I,__provider,,,exports.handler = __f0;
+
+var __provider_proto = {};
+Object.defineProperty(__f1, "prototype", { value: __provider_proto });
+Object.defineProperty(__provider_proto, "constructor", { configurable: true, writable: true, value: __f1 });
+Object.defineProperty(__provider_proto, "name", { configurable: true, writable: true, value: __f2 });
+Object.setPrototypeOf(__f4, global.Error);
+Object.defineProperty(__provider_proto, "create", { configurable: true, writable: true, value: __f3 });
+Object.defineProperty(__provider_proto, "delete", { configurable: true, writable: true, value: __f5 });
+Object.defineProperty(__provider_proto, "update", { configurable: true, writable: true, value: __f6 });
+Object.defineProperty(__provider_proto, "read", { configurable: true, writable: true, value: __f7 });
+var __provider = Object.create(__provider_proto);
+__provider.type = "Aws.HostedZoneLookup";
+
+function __f1(__0) {
+  return (function() {
+    with({ this: undefined, arguments: undefined }) {
+
+return function /*constructor*/(type) {
+      this.type = type;
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f2(__0) {
+  return (function() {
+    with({ this: undefined, arguments: undefined }) {
+
+return function /*name*/(action) {
+      return "Resource." + this.type + "." + action;
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f4(__0) {
+  return (function() {
+    with({ __super: global.Error, this: undefined, arguments: undefined }) {
+
+return function /*constructor*/(method) {
+    __super.call(this, `Method "${method}" not found`);
+    this.method = method;
+};
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+const http = require("http");
+
+function __call(__0, __1) {
+  return (function() {
+    with({ MethodNotFoundError: __f4, call: __call, this: undefined, arguments: undefined }) {
+
+return async function /*call*/(method, args) {
+    return new Promise((resolve, reject) => {
+      const url = new URL(process.env.SST_SERVER + "/rpc");
+      const options = {
+        hostname: url.hostname,
+        port: url.port,
+        path: url.pathname,
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      };
+      const req = http.request(options, (res) => {
+        let data = "";
+        res.on("data", (chunk) => {
+          data += chunk;
+        });
+        res.on("end", () => {
+          if (res.statusCode !== 200) {
+            reject(new Error(`Failed to call RPC: ${data}`));
+            return;
+          }
+          try {
+            const json = JSON.parse(data);
+            if (json.error) {
+              if (json.error.startsWith("rpc: can't find")) {
+                reject(new MethodNotFoundError(method));
+                return;
+              }
+              reject(new Error(json.error));
+              return;
+            }
+            resolve(json.result);
+          } catch (error) {
+            reject(new Error(`Failed to parse JSON: ${error.message}`));
+          }
+        });
+      });
+      req.on("error", (error) => {
+        reject(error);
+      });
+      req.setTimeout(0);
+      const body = JSON.stringify({
+        jsonrpc: "1.0",
+        method,
+        params: [args]
+      });
+      req.write(body);
+      req.end();
+    });
+  };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f3(__0) {
+  return (function() {
+    with({ call: __call, this: undefined, arguments: undefined }) {
+
+return async function /*create*/(inputs) {
+      return call(this.name("Create"), inputs);
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f5(__0, __1) {
+  return (function() {
+    with({ call: __call, MethodNotFoundError: __f4, this: undefined, arguments: undefined }) {
+
+return async function /*delete*/(id, outs) {
+      return call(this.name("Delete"), { id, outs }).catch((ex) => {
+        if (ex instanceof MethodNotFoundError) return;
+        throw ex;
+      });
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f6(__0, __1, __2) {
+  return (function() {
+    with({ call: __call, MethodNotFoundError: __f4, this: undefined, arguments: undefined }) {
+
+return async function /*update*/(id, olds, news) {
+      return call(this.name("Update"), { id, olds, news }).catch((ex) => {
+        if (ex instanceof MethodNotFoundError)
+          return {
+            id
+          };
+        throw ex;
+      });
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f7(__0, __1) {
+  return (function() {
+    with({ call: __call, MethodNotFoundError: __f4, this: undefined, arguments: undefined }) {
+
+return async function /*read*/(id, props) {
+      return call(this.name("Read"), { id, props }).catch((ex) => {
+        if (ex instanceof MethodNotFoundError) return { id, props };
+        throw ex;
+      });
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f0() {
+  return (function() {
+    with({ provider: __provider, this: undefined, arguments: undefined }) {
+
+return () => provider;
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+,zoneId,,,Z00536101FTAQ0OC4U48I,,
+I1006 21:57:16.831873   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:route53/record:Record, name=SyncWebsiteCdnSslCNAMERecordA0304c7881b136a8af6e652e502b5df1syncgetsynctech
+I1006 21:57:16.839045   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteCdnSslCNAMERecordA0304c7881b136a8af6e652e502b5df1syncgetsynctech[aws:route53/record:Record]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:CDN$sst:aws:Certificate$aws:route53/record:Record::SyncWebsiteCdnSslCNAMERecordA0304c7881b136a8af6e652e502b5df1syncgetsynctech,Z00536101FTAQ0OC4U48I__a0304c7881b136a8af6e652e502b5df1.sync.getsync.tech._CNAME,__meta,,,{"schema_version":"2"},aliases,,,,,,,allowOverwrite,0,cidrRoutingPolicy,0,failoverRoutingPolicies,,,,,,,fqdn,,,_a0304c7881b136a8af6e652e502b5df1.sync.getsync.tech,geolocationRoutingPolicies,,,,,,,geoproximityRoutingPolicy,0,healthCheckId,,,,id,,,Z00536101FTAQ0OC4U48I__a0304c7881b136a8af6e652e502b5df1.sync.getsync.tech._CNAME,latencyRoutingPolicies,,,,,,,multivalueAnswerRoutingPolicy,,,,false,name,,,_a0304c7881b136a8af6e652e502b5df1.sync.getsync.tech,records,,,,,,,,_77db1dfca5ba1f3c7841c4a988122e4b.djqtsrsxkq.acm-validations.aws.,setIdentifier,,,,ttl,,60,type,,,CNAME,weightedRoutingPolicies,,,,,,,zoneId,,,Z00536101FTAQ0OC4U48I,,
+I1006 21:57:16.839722   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:acm/certificateValidation:CertificateValidation, name=SyncWebsiteCdnSslValidation
+I1006 21:57:16.843796   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteCdnSslValidation[aws:acm/certificateValidation:CertificateValidation]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:CDN$sst:aws:Certificate$aws:acm/certificateValidation:CertificateValidation::SyncWebsiteCdnSslValidation,2024-10-06 16:18:35.471 +0000 UTC,__meta,,,{"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0":{"create":4500000000000}},certificateArn,,,arn:aws:acm:us-east-1:831926620158:certificate/ae834c06-9506-4f93-9a7c-4f58786655c3,id,,,2024-10-06 16:18:35.471 +0000 UTC,validationRecordFqdns,0,,
+I1006 21:57:16.849137   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:cloudfront/distribution:Distribution, name=SyncWebsiteCdnDistribution
+I1006 21:57:16.956355   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteCdnDistribution[aws:cloudfront/distribution:Distribution]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:CDN$aws:cloudfront/distribution:Distribution::SyncWebsiteCdnDistribution,E3D56K9WH6VSJL,__meta,,,{"schema_version":"1"},aliases,,,,,,,,sync.getsync.tech,arn,,,arn:aws:cloudfront::831926620158:distribution/E3D56K9WH6VSJL,callerReference,,,terraform-20241006161911496900000001,comment,,,SyncWebsite app,continuousDeploymentPolicyId,,,,customErrorResponses,,,,,,,defaultCacheBehavior,,,,,allowedMethods,,,,,,,,DELETE,,,GET,,,HEAD,,,OPTIONS,,,PATCH,,,POST,,,PUT,cachePolicyId,,,14df8992-f74d-4c7c-9a7f-eb21cec26da4,cachedMethods,,,,,,,,GET,,,HEAD,compress,,,,true,defaultTtl,,0,fieldLevelEncryptionId,,,,forwardedValues,0,functionAssociations,,,,,,,,,,eventType,,,viewer-request,functionArn,,,arn:aws:cloudfront::831926620158:function/sync-we-production-SyncWebsiteCloudfrontFunctionServerCfFunction,lambdaFunctionAssociations,,,,,,,maxTtl,,0,minTtl,,0,originRequestPolicyId,,,b689b0a8-53d0-40ab-baf2-68738e2966ac,realtimeLogConfigArn,,,,responseHeadersPolicyId,,,,smoothStreaming,,,,false,targetOriginId,,,default,trustedKeyGroups,,,,,,,trustedSigners,,,,,,,viewerProtocolPolicy,,,redirect-to-https,defaultRootObject,,,,domainName,,,d31dufqmbkxugn.cloudfront.net,enabled,,,,true,etag,,,E2QN1Q82HMEVD1,hostedZoneId,,,Z2FDTNDATAQYW2,httpVersion,,,http2,id,,,E3D56K9WH6VSJL,inProgressValidationBatches,,0,isIpv6Enabled,,,,false,lastModifiedTime,,,2024-10-06 16:19:12.886 +0000 UTC,loggingConfig,0,orderedCacheBehaviors,,,,,,,,,,allowedMethods,,,,,,,,DELETE,,,GET,,,HEAD,,,OPTIONS,,,PATCH,,,POST,,,PUT,cachePolicyId,,,14df8992-f74d-4c7c-9a7f-eb21cec26da4,cachedMethods,,,,,,,,GET,,,HEAD,compress,,,,true,defaultTtl,,0,fieldLevelEncryptionId,,,,forwardedValues,0,functionAssociations,,,,,,,,,,eventType,,,viewer-request,functionArn,,,arn:aws:cloudfront::831926620158:function/sync-we-production-SyncWebsiteCloudfrontFunctionServerCfFunction,lambdaFunctionAssociations,,,,,,,maxTtl,,0,minTtl,,0,originRequestPolicyId,,,b689b0a8-53d0-40ab-baf2-68738e2966ac,pathPattern,,,_next/image*,realtimeLogConfigArn,,,,responseHeadersPolicyId,,,,smoothStreaming,,,,false,targetOriginId,,,imageOptimizer,trustedKeyGroups,0,trustedSigners,0,viewerProtocolPolicy,,,redirect-to-https,,,,,allowedMethods,,,,,,,,DELETE,,,GET,,,HEAD,,,OPTIONS,,,PATCH,,,POST,,,PUT,cachePolicyId,,,14df8992-f74d-4c7c-9a7f-eb21cec26da4,cachedMethods,,,,,,,,GET,,,HEAD,compress,,,,true,defaultTtl,,0,fieldLevelEncryptionId,,,,forwardedValues,0,functionAssociations,,,,,,,,,,eventType,,,viewer-request,functionArn,,,arn:aws:cloudfront::831926620158:function/sync-we-production-SyncWebsiteCloudfrontFunctionServerCfFunction,lambdaFunctionAssociations,,,,,,,maxTtl,,0,minTtl,,0,originRequestPolicyId,,,b689b0a8-53d0-40ab-baf2-68738e2966ac,pathPattern,,,_next/data/*,realtimeLogConfigArn,,,,responseHeadersPolicyId,,,,smoothStreaming,,,,false,targetOriginId,,,default,trustedKeyGroups,0,trustedSigners,0,viewerProtocolPolicy,,,redirect-to-https,,,,,allowedMethods,,,,,,,,GET,,,HEAD,,,OPTIONS,cachePolicyId,,,658327ea-f89d-4fab-a63d-7e88639e58f6,cachedMethods,,,,,,,,GET,,,HEAD,compress,,,,true,defaultTtl,,0,fieldLevelEncryptionId,,,,forwardedValues,0,functionAssociations,,,,,,,,,,eventType,,,viewer-request,functionArn,,,arn:aws:cloudfront::831926620158:function/sync-we-production-SyncWebsiteCloudfrontFunctionServerCfFunction,lambdaFunctionAssociations,,,,,,,maxTtl,,0,minTtl,,0,originRequestPolicyId,,,,pathPattern,,,BUILD_ID,realtimeLogConfigArn,,,,responseHeadersPolicyId,,,,smoothStreaming,,,,false,targetOriginId,,,s3,trustedKeyGroups,0,trustedSigners,0,viewerProtocolPolicy,,,redirect-to-https,,,,,allowedMethods,,,,,,,,GET,,,HEAD,,,OPTIONS,cachePolicyId,,,658327ea-f89d-4fab-a63d-7e88639e58f6,cachedMethods,,,,,,,,GET,,,HEAD,compress,,,,true,defaultTtl,,0,fieldLevelEncryptionId,,,,forwardedValues,0,functionAssociations,,,,,,,,,,eventType,,,viewer-request,functionArn,,,arn:aws:cloudfront::831926620158:function/sync-we-production-SyncWebsiteCloudfrontFunctionServerCfFunction,lambdaFunctionAssociations,,,,,,,maxTtl,,0,minTtl,,0,originRequestPolicyId,,,,pathPattern,,,Shape.svg,realtimeLogConfigArn,,,,responseHeadersPolicyId,,,,smoothStreaming,,,,false,targetOriginId,,,s3,trustedKeyGroups,0,trustedSigners,0,viewerProtocolPolicy,,,redirect-to-https,,,,,allowedMethods,,,,,,,,GET,,,HEAD,,,OPTIONS,cachePolicyId,,,658327ea-f89d-4fab-a63d-7e88639e58f6,cachedMethods,,,,,,,,GET,,,HEAD,compress,,,,true,defaultTtl,,0,fieldLevelEncryptionId,,,,forwardedValues,0,functionAssociations,,,,,,,,,,eventType,,,viewer-request,functionArn,,,arn:aws:cloudfront::831926620158:function/sync-we-production-SyncWebsiteCloudfrontFunctionServerCfFunction,lambdaFunctionAssociations,,,,,,,maxTtl,,0,minTtl,,0,originRequestPolicyId,,,,pathPattern,,,_next/*,realtimeLogConfigArn,,,,responseHeadersPolicyId,,,,smoothStreaming,,,,false,targetOriginId,,,s3,trustedKeyGroups,0,trustedSigners,0,viewerProtocolPolicy,,,redirect-to-https,,,,,allowedMethods,,,,,,,,GET,,,HEAD,,,OPTIONS,cachePolicyId,,,658327ea-f89d-4fab-a63d-7e88639e58f6,cachedMethods,,,,,,,,GET,,,HEAD,compress,,,,true,defaultTtl,,0,fieldLevelEncryptionId,,,,forwardedValues,0,functionAssociations,,,,,,,,,,eventType,,,viewer-request,functionArn,,,arn:aws:cloudfront::831926620158:function/sync-we-production-SyncWebsiteCloudfrontFunctionServerCfFunction,lambdaFunctionAssociations,,,,,,,maxTtl,,0,minTtl,,0,originRequestPolicyId,,,,pathPattern,,,blue-car.svg,realtimeLogConfigArn,,,,responseHeadersPolicyId,,,,smoothStreaming,,,,false,targetOriginId,,,s3,trustedKeyGroups,0,trustedSigners,0,viewerProtocolPolicy,,,redirect-to-https,,,,,allowedMethods,,,,,,,,GET,,,HEAD,,,OPTIONS,cachePolicyId,,,658327ea-f89d-4fab-a63d-7e88639e58f6,cachedMethods,,,,,,,,GET,,,HEAD,compress,,,,true,defaultTtl,,0,fieldLevelEncryptionId,,,,forwardedValues,0,functionAssociations,,,,,,,,,,eventType,,,viewer-request,functionArn,,,arn:aws:cloudfront::831926620158:function/sync-we-production-SyncWebsiteCloudfrontFunctionServerCfFunction,lambdaFunctionAssociations,,,,,,,maxTtl,,0,minTtl,,0,originRequestPolicyId,,,,pathPattern,,,cards_images/*,realtimeLogConfigArn,,,,responseHeadersPolicyId,,,,smoothStreaming,,,,false,targetOriginId,,,s3,trustedKeyGroups,0,trustedSigners,0,viewerProtocolPolicy,,,redirect-to-https,,,,,allowedMethods,,,,,,,,GET,,,HEAD,,,OPTIONS,cachePolicyId,,,658327ea-f89d-4fab-a63d-7e88639e58f6,cachedMethods,,,,,,,,GET,,,HEAD,compress,,,,true,defaultTtl,,0,fieldLevelEncryptionId,,,,forwardedValues,0,functionAssociations,,,,,,,,,,eventType,,,viewer-request,functionArn,,,arn:aws:cloudfront::831926620158:function/sync-we-production-SyncWebsiteCloudfrontFunctionServerCfFunction,lambdaFunctionAssociations,,,,,,,maxTtl,,0,minTtl,,0,originRequestPolicyId,,,,pathPattern,,,carpooling.svg,realtimeLogConfigArn,,,,responseHeadersPolicyId,,,,smoothStreaming,,,,false,targetOriginId,,,s3,trustedKeyGroups,0,trustedSigners,0,viewerProtocolPolicy,,,redirect-to-https,,,,,allowedMethods,,,,,,,,GET,,,HEAD,,,OPTIONS,cachePolicyId,,,658327ea-f89d-4fab-a63d-7e88639e58f6,cachedMethods,,,,,,,,GET,,,HEAD,compress,,,,true,defaultTtl,,0,fieldLevelEncryptionId,,,,forwardedValues,0,functionAssociations,,,,,,,,,,eventType,,,viewer-request,functionArn,,,arn:aws:cloudfront::831926620158:function/sync-we-production-SyncWebsiteCloudfrontFunctionServerCfFunction,lambdaFunctionAssociations,,,,,,,maxTtl,,0,minTtl,,0,originRequestPolicyId,,,,pathPattern,,,favicon.ico,realtimeLogConfigArn,,,,responseHeadersPolicyId,,,,smoothStreaming,,,,false,targetOriginId,,,s3,trustedKeyGroups,0,trustedSigners,0,viewerProtocolPolicy,,,redirect-to-https,,,,,allowedMethods,,,,,,,,GET,,,HEAD,,,OPTIONS,cachePolicyId,,,658327ea-f89d-4fab-a63d-7e88639e58f6,cachedMethods,,,,,,,,GET,,,HEAD,compress,,,,true,defaultTtl,,0,fieldLevelEncryptionId,,,,forwardedValues,0,functionAssociations,,,,,,,,,,eventType,,,viewer-request,functionArn,,,arn:aws:cloudfront::831926620158:function/sync-we-production-SyncWebsiteCloudfrontFunctionServerCfFunction,lambdaFunctionAssociations,,,,,,,maxTtl,,0,minTtl,,0,originRequestPolicyId,,,,pathPattern,,,redCar.svg,realtimeLogConfigArn,,,,responseHeadersPolicyId,,,,smoothStreaming,,,,false,targetOriginId,,,s3,trustedKeyGroups,0,trustedSigners,0,viewerProtocolPolicy,,,redirect-to-https,,,,,allowedMethods,,,,,,,,GET,,,HEAD,,,OPTIONS,cachePolicyId,,,658327ea-f89d-4fab-a63d-7e88639e58f6,cachedMethods,,,,,,,,GET,,,HEAD,compress,,,,true,defaultTtl,,0,fieldLevelEncryptionId,,,,forwardedValues,0,functionAssociations,,,,,,,,,,eventType,,,viewer-request,functionArn,,,arn:aws:cloudfront::831926620158:function/sync-we-production-SyncWebsiteCloudfrontFunctionServerCfFunction,lambdaFunctionAssociations,,,,,,,maxTtl,,0,minTtl,,0,originRequestPolicyId,,,,pathPattern,,,sync-logo.svg,realtimeLogConfigArn,,,,responseHeadersPolicyId,,,,smoothStreaming,,,,false,targetOriginId,,,s3,trustedKeyGroups,0,trustedSigners,0,viewerProtocolPolicy,,,redirect-to-https,originGroups,,,,,,,origins,,,,,,,,,,connectionAttempts,,3,connectionTimeout,,10,customHeaders,,,,,,,customOriginConfig,,,,,httpPort,,80,httpsPort,,443,originKeepaliveTimeout,,5,originProtocolPolicy,,,https-only,originReadTimeout,,20,originSslProtocols,,,,,,,,TLSv1.2,domainName,,,3yrlbriscgxzrelw4226upj3ra0gzadn.lambda-url.us-east-1.on.aws,originAccessControlId,,,,originId,,,default,originPath,,,,originShield,0,s3OriginConfig,0,,,,,connectionAttempts,,3,connectionTimeout,,10,customHeaders,,,,,,,customOriginConfig,,,,,httpPort,,80,httpsPort,,443,originKeepaliveTimeout,,5,originProtocolPolicy,,,https-only,originReadTimeout,,20,originSslProtocols,,,,,,,,TLSv1.2,domainName,,,cfmzvcmudlkiahccm5dhgu2ke40hdhfz.lambda-url.us-east-1.on.aws,originAccessControlId,,,,originId,,,imageOptimizer,originPath,,,,originShield,0,s3OriginConfig,0,,,,,connectionAttempts,,3,connectionTimeout,,10,customHeaders,,,,,,,customOriginConfig,0,domainName,,,sync-website-production-syncwebsiteassets-wxtuonvr.s3.us-east-1.amazonaws.com,originAccessControlId,,,E3OKGWTGO2XAR9,originId,,,s3,originPath,,,/_assets,originShield,0,s3OriginConfig,0,priceClass,,,PriceClass_All,restrictions,,,,,geoRestriction,,,,,locations,,,,,,,restrictionType,,,none,retainOnDelete,,,,false,staging,,,,false,status,,,InProgress,tags,,,,,sst:app,,,sync-website,sst:stage,,,production,tagsAll,,,,,sst:app,,,sync-website,sst:stage,,,production,trustedKeyGroups,,,,,,,,,,enabled,,,,false,items,,,,,,,trustedSigners,,,,,,,,,,enabled,,,,false,items,,,,,,,viewerCertificate,,,,,acmCertificateArn,,,arn:aws:acm:us-east-1:831926620158:certificate/ae834c06-9506-4f93-9a7c-4f58786655c3,cloudfrontDefaultCertificate,,,,false,iamCertificateId,,,,minimumProtocolVersion,,,TLSv1.2_2021,sslSupportMethod,,,sni-only,waitForDeployment,,,,false,webAclId,,,,,
+I1006 21:57:16.958746   30240 eventsink.go:59] Registering resource: t=pulumi-nodejs:dynamic:Resource, name=SyncWebsiteCdnAZoneLookupSyncgetsynctech.sst.aws.HostedZoneLookup, custom=true, remote=false
+I1006 21:57:16.959060   30240 eventsink.go:59] Registering resource: t=aws:route53/record:Record, name=SyncWebsiteCdnARecordSyncgetsynctech, custom=true, remote=false
+I1006 21:57:16.959447   30240 eventsink.go:59] Registering resource: t=pulumi-nodejs:dynamic:Resource, name=SyncWebsiteCdnAAAAZoneLookupSyncgetsynctech.sst.aws.HostedZoneLookup, custom=true, remote=false
+I1006 21:57:16.960438   30240 eventsink.go:59] Registering resource: t=aws:route53/record:Record, name=SyncWebsiteCdnAAAARecordSyncgetsynctech, custom=true, remote=false
+I1006 21:57:16.960757   30240 eventsink.go:59] RegisterResource RPC prepared: t=pulumi-nodejs:dynamic:Resource, name=SyncWebsiteCdnWaiter.sst.aws.DistributionDeploymentWaiter
+I1006 21:57:16.961003   30240 eventsink.go:59] RegisterResource RPC prepared: t=pulumi-nodejs:dynamic:Resource, name=SyncWebsiteCdnInvalidation.sst.aws.DistributionInvalidation
+I1006 21:57:16.961269   30240 eventsink.go:59] RegisterResourceOutputs RPC prepared: urn=urn:pulumi:production::sync-website::sst:sst:LinkRef::SyncWebsiteLinkRef
+I1006 21:57:16.961553   30240 eventsink.go:59] RegisterResourceOutputs RPC prepared: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs::SyncWebsite
+I1006 21:57:16.961786   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.962193   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.962559   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.962922   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.963181   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.963551   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.964222   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.964620   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.964971   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.965346   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.965781   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.966252   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.966487   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.966905   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.967293   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.967828   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.968704   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.969407   30240 eventsink.go:59] Found free variables: {"required":{},"optional":{}}
+I1006 21:57:16.969936   30240 eventsink.go:59] RegisterResource RPC prepared: t=pulumi-nodejs:dynamic:Resource, name=SyncWebsiteCdnAZoneLookupSyncgetsynctech.sst.aws.HostedZoneLookup
+I1006 21:57:16.970194   30240 eventsink.go:59] RegisterResource RPC prepared: t=pulumi-nodejs:dynamic:Resource, name=SyncWebsiteCdnAAAAZoneLookupSyncgetsynctech.sst.aws.HostedZoneLookup
+I1006 21:57:16.970505   30240 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs::SyncWebsite; err: null, resp: 
+I1006 21:57:16.970827   30240 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:production::sync-website::sst:aws:Nextjs::SyncWebsite; err: null, resp: 
+I1006 21:57:16.971293   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteCdnAAAAZoneLookupSyncgetsynctech.sst.aws.HostedZoneLookup[pulumi-nodejs:dynamic:Resource]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:CDN$pulumi-nodejs:dynamic:Resource::SyncWebsiteCdnAAAAZoneLookupSyncgetsynctech.sst.aws.HostedZoneLookup,Z00536101FTAQ0OC4U48I,__provider,,,exports.handler = __f0;
+
+var __provider_proto = {};
+Object.defineProperty(__f1, "prototype", { value: __provider_proto });
+Object.defineProperty(__provider_proto, "constructor", { configurable: true, writable: true, value: __f1 });
+Object.defineProperty(__provider_proto, "name", { configurable: true, writable: true, value: __f2 });
+Object.setPrototypeOf(__f4, global.Error);
+Object.defineProperty(__provider_proto, "create", { configurable: true, writable: true, value: __f3 });
+Object.defineProperty(__provider_proto, "delete", { configurable: true, writable: true, value: __f5 });
+Object.defineProperty(__provider_proto, "update", { configurable: true, writable: true, value: __f6 });
+Object.defineProperty(__provider_proto, "read", { configurable: true, writable: true, value: __f7 });
+var __provider = Object.create(__provider_proto);
+__provider.type = "Aws.HostedZoneLookup";
+
+function __f1(__0) {
+  return (function() {
+    with({ this: undefined, arguments: undefined }) {
+
+return function /*constructor*/(type) {
+      this.type = type;
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f2(__0) {
+  return (function() {
+    with({ this: undefined, arguments: undefined }) {
+
+return function /*name*/(action) {
+      return "Resource." + this.type + "." + action;
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f4(__0) {
+  return (function() {
+    with({ __super: global.Error, this: undefined, arguments: undefined }) {
+
+return function /*constructor*/(method) {
+    __super.call(this, `Method "${method}" not found`);
+    this.method = method;
+};
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+const http = require("http");
+
+function __call(__0, __1) {
+  return (function() {
+    with({ MethodNotFoundError: __f4, call: __call, this: undefined, arguments: undefined }) {
+
+return async function /*call*/(method, args) {
+    return new Promise((resolve, reject) => {
+      const url = new URL(process.env.SST_SERVER + "/rpc");
+      const options = {
+        hostname: url.hostname,
+        port: url.port,
+        path: url.pathname,
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      };
+      const req = http.request(options, (res) => {
+        let data = "";
+        res.on("data", (chunk) => {
+          data += chunk;
+        });
+        res.on("end", () => {
+          if (res.statusCode !== 200) {
+            reject(new Error(`Failed to call RPC: ${data}`));
+            return;
+          }
+          try {
+            const json = JSON.parse(data);
+            if (json.error) {
+              if (json.error.startsWith("rpc: can't find")) {
+                reject(new MethodNotFoundError(method));
+                return;
+              }
+              reject(new Error(json.error));
+              return;
+            }
+            resolve(json.result);
+          } catch (error) {
+            reject(new Error(`Failed to parse JSON: ${error.message}`));
+          }
+        });
+      });
+      req.on("error", (error) => {
+        reject(error);
+      });
+      req.setTimeout(0);
+      const body = JSON.stringify({
+        jsonrpc: "1.0",
+        method,
+        params: [args]
+      });
+      req.write(body);
+      req.end();
+    });
+  };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f3(__0) {
+  return (function() {
+    with({ call: __call, this: undefined, arguments: undefined }) {
+
+return async function /*create*/(inputs) {
+      return call(this.name("Create"), inputs);
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f5(__0, __1) {
+  return (function() {
+    with({ call: __call, MethodNotFoundError: __f4, this: undefined, arguments: undefined }) {
+
+return async function /*delete*/(id, outs) {
+      return call(this.name("Delete"), { id, outs }).catch((ex) => {
+        if (ex instanceof MethodNotFoundError) return;
+        throw ex;
+      });
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f6(__0, __1, __2) {
+  return (function() {
+    with({ call: __call, MethodNotFoundError: __f4, this: undefined, arguments: undefined }) {
+
+return async function /*update*/(id, olds, news) {
+      return call(this.name("Update"), { id, olds, news }).catch((ex) => {
+        if (ex instanceof MethodNotFoundError)
+          return {
+            id
+          };
+        throw ex;
+      });
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f7(__0, __1) {
+  return (function() {
+    with({ call: __call, MethodNotFoundError: __f4, this: undefined, arguments: undefined }) {
+
+return async function /*read*/(id, props) {
+      return call(this.name("Read"), { id, props }).catch((ex) => {
+        if (ex instanceof MethodNotFoundError) return { id, props };
+        throw ex;
+      });
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f0() {
+  return (function() {
+    with({ provider: __provider, this: undefined, arguments: undefined }) {
+
+return () => provider;
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+,zoneId,,,Z00536101FTAQ0OC4U48I,,
+I1006 21:57:16.971536   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:route53/record:Record, name=SyncWebsiteCdnAAAARecordSyncgetsynctech
+I1006 21:57:17.001482   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteCdnWaiter.sst.aws.DistributionDeploymentWaiter[pulumi-nodejs:dynamic:Resource]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:CDN$pulumi-nodejs:dynamic:Resource::SyncWebsiteCdnWaiter.sst.aws.DistributionDeploymentWaiter,waiter,__provider,,,exports.handler = __f0;
+
+var __provider_proto = {};
+Object.defineProperty(__f1, "prototype", { value: __provider_proto });
+Object.defineProperty(__provider_proto, "constructor", { configurable: true, writable: true, value: __f1 });
+Object.defineProperty(__provider_proto, "name", { configurable: true, writable: true, value: __f2 });
+Object.setPrototypeOf(__f4, global.Error);
+Object.defineProperty(__provider_proto, "create", { configurable: true, writable: true, value: __f3 });
+Object.defineProperty(__provider_proto, "delete", { configurable: true, writable: true, value: __f5 });
+Object.defineProperty(__provider_proto, "update", { configurable: true, writable: true, value: __f6 });
+Object.defineProperty(__provider_proto, "read", { configurable: true, writable: true, value: __f7 });
+var __provider = Object.create(__provider_proto);
+__provider.type = "Aws.DistributionDeploymentWaiter";
+
+function __f1(__0) {
+  return (function() {
+    with({ this: undefined, arguments: undefined }) {
+
+return function /*constructor*/(type) {
+      this.type = type;
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f2(__0) {
+  return (function() {
+    with({ this: undefined, arguments: undefined }) {
+
+return function /*name*/(action) {
+      return "Resource." + this.type + "." + action;
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f4(__0) {
+  return (function() {
+    with({ __super: global.Error, this: undefined, arguments: undefined }) {
+
+return function /*constructor*/(method) {
+    __super.call(this, `Method "${method}" not found`);
+    this.method = method;
+};
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+const http = require("http");
+
+function __call(__0, __1) {
+  return (function() {
+    with({ MethodNotFoundError: __f4, call: __call, this: undefined, arguments: undefined }) {
+
+return async function /*call*/(method, args) {
+    return new Promise((resolve, reject) => {
+      const url = new URL(process.env.SST_SERVER + "/rpc");
+      const options = {
+        hostname: url.hostname,
+        port: url.port,
+        path: url.pathname,
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      };
+      const req = http.request(options, (res) => {
+        let data = "";
+        res.on("data", (chunk) => {
+          data += chunk;
+        });
+        res.on("end", () => {
+          if (res.statusCode !== 200) {
+            reject(new Error(`Failed to call RPC: ${data}`));
+            return;
+          }
+          try {
+            const json = JSON.parse(data);
+            if (json.error) {
+              if (json.error.startsWith("rpc: can't find")) {
+                reject(new MethodNotFoundError(method));
+                return;
+              }
+              reject(new Error(json.error));
+              return;
+            }
+            resolve(json.result);
+          } catch (error) {
+            reject(new Error(`Failed to parse JSON: ${error.message}`));
+          }
+        });
+      });
+      req.on("error", (error) => {
+        reject(error);
+      });
+      req.setTimeout(0);
+      const body = JSON.stringify({
+        jsonrpc: "1.0",
+        method,
+        params: [args]
+      });
+      req.write(body);
+      req.end();
+    });
+  };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f3(__0) {
+  return (function() {
+    with({ call: __call, this: undefined, arguments: undefined }) {
+
+return async function /*create*/(inputs) {
+      return call(this.name("Create"), inputs);
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f5(__0, __1) {
+  return (function() {
+    with({ call: __call, MethodNotFoundError: __f4, this: undefined, arguments: undefined }) {
+
+return async function /*delete*/(id, outs) {
+      return call(this.name("Delete"), { id, outs }).catch((ex) => {
+        if (ex instanceof MethodNotFoundError) return;
+        throw ex;
+      });
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f6(__0, __1, __2) {
+  return (function() {
+    with({ call: __call, MethodNotFoundError: __f4, this: undefined, arguments: undefined }) {
+
+return async function /*update*/(id, olds, news) {
+      return call(this.name("Update"), { id, olds, news }).catch((ex) => {
+        if (ex instanceof MethodNotFoundError)
+          return {
+            id
+          };
+        throw ex;
+      });
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f7(__0, __1) {
+  return (function() {
+    with({ call: __call, MethodNotFoundError: __f4, this: undefined, arguments: undefined }) {
+
+return async function /*read*/(id, props) {
+      return call(this.name("Read"), { id, props }).catch((ex) => {
+        if (ex instanceof MethodNotFoundError) return { id, props };
+        throw ex;
+      });
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f0() {
+  return (function() {
+    with({ provider: __provider, this: undefined, arguments: undefined }) {
+
+return () => provider;
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+,isDone,,,,true,,
+I1006 21:57:17.003854   30240 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:production::sync-website::sst:sst:LinkRef::SyncWebsiteLinkRef; err: null, resp: 
+I1006 21:57:17.010391   30240 eventsink.go:59] RegisterResourceOutputs RPC finished: urn=urn:pulumi:production::sync-website::sst:sst:LinkRef::SyncWebsiteLinkRef; err: null, resp: 
+I1006 21:57:17.011736   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteCdnAZoneLookupSyncgetsynctech.sst.aws.HostedZoneLookup[pulumi-nodejs:dynamic:Resource]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:CDN$pulumi-nodejs:dynamic:Resource::SyncWebsiteCdnAZoneLookupSyncgetsynctech.sst.aws.HostedZoneLookup,Z00536101FTAQ0OC4U48I,__provider,,,exports.handler = __f0;
+
+var __provider_proto = {};
+Object.defineProperty(__f1, "prototype", { value: __provider_proto });
+Object.defineProperty(__provider_proto, "constructor", { configurable: true, writable: true, value: __f1 });
+Object.defineProperty(__provider_proto, "name", { configurable: true, writable: true, value: __f2 });
+Object.setPrototypeOf(__f4, global.Error);
+Object.defineProperty(__provider_proto, "create", { configurable: true, writable: true, value: __f3 });
+Object.defineProperty(__provider_proto, "delete", { configurable: true, writable: true, value: __f5 });
+Object.defineProperty(__provider_proto, "update", { configurable: true, writable: true, value: __f6 });
+Object.defineProperty(__provider_proto, "read", { configurable: true, writable: true, value: __f7 });
+var __provider = Object.create(__provider_proto);
+__provider.type = "Aws.HostedZoneLookup";
+
+function __f1(__0) {
+  return (function() {
+    with({ this: undefined, arguments: undefined }) {
+
+return function /*constructor*/(type) {
+      this.type = type;
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f2(__0) {
+  return (function() {
+    with({ this: undefined, arguments: undefined }) {
+
+return function /*name*/(action) {
+      return "Resource." + this.type + "." + action;
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f4(__0) {
+  return (function() {
+    with({ __super: global.Error, this: undefined, arguments: undefined }) {
+
+return function /*constructor*/(method) {
+    __super.call(this, `Method "${method}" not found`);
+    this.method = method;
+};
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+const http = require("http");
+
+function __call(__0, __1) {
+  return (function() {
+    with({ MethodNotFoundError: __f4, call: __call, this: undefined, arguments: undefined }) {
+
+return async function /*call*/(method, args) {
+    return new Promise((resolve, reject) => {
+      const url = new URL(process.env.SST_SERVER + "/rpc");
+      const options = {
+        hostname: url.hostname,
+        port: url.port,
+        path: url.pathname,
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      };
+      const req = http.request(options, (res) => {
+        let data = "";
+        res.on("data", (chunk) => {
+          data += chunk;
+        });
+        res.on("end", () => {
+          if (res.statusCode !== 200) {
+            reject(new Error(`Failed to call RPC: ${data}`));
+            return;
+          }
+          try {
+            const json = JSON.parse(data);
+            if (json.error) {
+              if (json.error.startsWith("rpc: can't find")) {
+                reject(new MethodNotFoundError(method));
+                return;
+              }
+              reject(new Error(json.error));
+              return;
+            }
+            resolve(json.result);
+          } catch (error) {
+            reject(new Error(`Failed to parse JSON: ${error.message}`));
+          }
+        });
+      });
+      req.on("error", (error) => {
+        reject(error);
+      });
+      req.setTimeout(0);
+      const body = JSON.stringify({
+        jsonrpc: "1.0",
+        method,
+        params: [args]
+      });
+      req.write(body);
+      req.end();
+    });
+  };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f3(__0) {
+  return (function() {
+    with({ call: __call, this: undefined, arguments: undefined }) {
+
+return async function /*create*/(inputs) {
+      return call(this.name("Create"), inputs);
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f5(__0, __1) {
+  return (function() {
+    with({ call: __call, MethodNotFoundError: __f4, this: undefined, arguments: undefined }) {
+
+return async function /*delete*/(id, outs) {
+      return call(this.name("Delete"), { id, outs }).catch((ex) => {
+        if (ex instanceof MethodNotFoundError) return;
+        throw ex;
+      });
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f6(__0, __1, __2) {
+  return (function() {
+    with({ call: __call, MethodNotFoundError: __f4, this: undefined, arguments: undefined }) {
+
+return async function /*update*/(id, olds, news) {
+      return call(this.name("Update"), { id, olds, news }).catch((ex) => {
+        if (ex instanceof MethodNotFoundError)
+          return {
+            id
+          };
+        throw ex;
+      });
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f7(__0, __1) {
+  return (function() {
+    with({ call: __call, MethodNotFoundError: __f4, this: undefined, arguments: undefined }) {
+
+return async function /*read*/(id, props) {
+      return call(this.name("Read"), { id, props }).catch((ex) => {
+        if (ex instanceof MethodNotFoundError) return { id, props };
+        throw ex;
+      });
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f0() {
+  return (function() {
+    with({ provider: __provider, this: undefined, arguments: undefined }) {
+
+return () => provider;
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+,zoneId,,,Z00536101FTAQ0OC4U48I,,
+I1006 21:57:17.016552   30240 eventsink.go:59] RegisterResource RPC prepared: t=aws:route53/record:Record, name=SyncWebsiteCdnARecordSyncgetsynctech
+I1006 21:57:17.016927   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteCdnAAAARecordSyncgetsynctech[aws:route53/record:Record]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:CDN$aws:route53/record:Record::SyncWebsiteCdnAAAARecordSyncgetsynctech,Z00536101FTAQ0OC4U48I_sync.getsync.tech_AAAA,__meta,,,{"schema_version":"2"},aliases,,,,,,,,,,evaluateTargetHealth,,,,true,name,,,d31dufqmbkxugn.cloudfront.net,zoneId,,,Z2FDTNDATAQYW2,allowOverwrite,0,cidrRoutingPolicy,0,failoverRoutingPolicies,,,,,,,fqdn,,,sync.getsync.tech,geolocationRoutingPolicies,,,,,,,geoproximityRoutingPolicy,0,healthCheckId,,,,id,,,Z00536101FTAQ0OC4U48I_sync.getsync.tech_AAAA,latencyRoutingPolicies,,,,,,,multivalueAnswerRoutingPolicy,,,,false,name,,,sync.getsync.tech,records,0,setIdentifier,,,,ttl,,0,type,,,AAAA,weightedRoutingPolicies,,,,,,,zoneId,,,Z00536101FTAQ0OC4U48I,,
+I1006 21:57:17.022976   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteCdnARecordSyncgetsynctech[aws:route53/record:Record]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:CDN$aws:route53/record:Record::SyncWebsiteCdnARecordSyncgetsynctech,Z00536101FTAQ0OC4U48I_sync.getsync.tech_A,__meta,,,{"schema_version":"2"},aliases,,,,,,,,,,evaluateTargetHealth,,,,true,name,,,d31dufqmbkxugn.cloudfront.net,zoneId,,,Z2FDTNDATAQYW2,allowOverwrite,0,cidrRoutingPolicy,0,failoverRoutingPolicies,,,,,,,fqdn,,,sync.getsync.tech,geolocationRoutingPolicies,,,,,,,geoproximityRoutingPolicy,0,healthCheckId,,,,id,,,Z00536101FTAQ0OC4U48I_sync.getsync.tech_A,latencyRoutingPolicies,,,,,,,multivalueAnswerRoutingPolicy,,,,false,name,,,sync.getsync.tech,records,0,setIdentifier,,,,ttl,,0,type,,,A,weightedRoutingPolicies,,,,,,,zoneId,,,Z00536101FTAQ0OC4U48I,,
+I1006 21:57:18.084217   30240 eventsink.go:59] RegisterResource RPC finished: resource:SyncWebsiteCdnInvalidation.sst.aws.DistributionInvalidation[pulumi-nodejs:dynamic:Resource]; err: null, resp: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:CDN$pulumi-nodejs:dynamic:Resource::SyncWebsiteCdnInvalidation.sst.aws.DistributionInvalidation,invalidation,__provider,,,exports.handler = __f0;
+
+var __provider_proto = {};
+Object.defineProperty(__f1, "prototype", { value: __provider_proto });
+Object.defineProperty(__provider_proto, "constructor", { configurable: true, writable: true, value: __f1 });
+Object.defineProperty(__provider_proto, "name", { configurable: true, writable: true, value: __f2 });
+Object.setPrototypeOf(__f4, global.Error);
+Object.defineProperty(__provider_proto, "create", { configurable: true, writable: true, value: __f3 });
+Object.defineProperty(__provider_proto, "delete", { configurable: true, writable: true, value: __f5 });
+Object.defineProperty(__provider_proto, "update", { configurable: true, writable: true, value: __f6 });
+Object.defineProperty(__provider_proto, "read", { configurable: true, writable: true, value: __f7 });
+var __provider = Object.create(__provider_proto);
+__provider.type = "Aws.DistributionInvalidation";
+
+function __f1(__0) {
+  return (function() {
+    with({ this: undefined, arguments: undefined }) {
+
+return function /*constructor*/(type) {
+      this.type = type;
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f2(__0) {
+  return (function() {
+    with({ this: undefined, arguments: undefined }) {
+
+return function /*name*/(action) {
+      return "Resource." + this.type + "." + action;
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f4(__0) {
+  return (function() {
+    with({ __super: global.Error, this: undefined, arguments: undefined }) {
+
+return function /*constructor*/(method) {
+    __super.call(this, `Method "${method}" not found`);
+    this.method = method;
+};
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+const http = require("http");
+
+function __call(__0, __1) {
+  return (function() {
+    with({ MethodNotFoundError: __f4, call: __call, this: undefined, arguments: undefined }) {
+
+return async function /*call*/(method, args) {
+    return new Promise((resolve, reject) => {
+      const url = new URL(process.env.SST_SERVER + "/rpc");
+      const options = {
+        hostname: url.hostname,
+        port: url.port,
+        path: url.pathname,
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      };
+      const req = http.request(options, (res) => {
+        let data = "";
+        res.on("data", (chunk) => {
+          data += chunk;
+        });
+        res.on("end", () => {
+          if (res.statusCode !== 200) {
+            reject(new Error(`Failed to call RPC: ${data}`));
+            return;
+          }
+          try {
+            const json = JSON.parse(data);
+            if (json.error) {
+              if (json.error.startsWith("rpc: can't find")) {
+                reject(new MethodNotFoundError(method));
+                return;
+              }
+              reject(new Error(json.error));
+              return;
+            }
+            resolve(json.result);
+          } catch (error) {
+            reject(new Error(`Failed to parse JSON: ${error.message}`));
+          }
+        });
+      });
+      req.on("error", (error) => {
+        reject(error);
+      });
+      req.setTimeout(0);
+      const body = JSON.stringify({
+        jsonrpc: "1.0",
+        method,
+        params: [args]
+      });
+      req.write(body);
+      req.end();
+    });
+  };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f3(__0) {
+  return (function() {
+    with({ call: __call, this: undefined, arguments: undefined }) {
+
+return async function /*create*/(inputs) {
+      return call(this.name("Create"), inputs);
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f5(__0, __1) {
+  return (function() {
+    with({ call: __call, MethodNotFoundError: __f4, this: undefined, arguments: undefined }) {
+
+return async function /*delete*/(id, outs) {
+      return call(this.name("Delete"), { id, outs }).catch((ex) => {
+        if (ex instanceof MethodNotFoundError) return;
+        throw ex;
+      });
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f6(__0, __1, __2) {
+  return (function() {
+    with({ call: __call, MethodNotFoundError: __f4, this: undefined, arguments: undefined }) {
+
+return async function /*update*/(id, olds, news) {
+      return call(this.name("Update"), { id, olds, news }).catch((ex) => {
+        if (ex instanceof MethodNotFoundError)
+          return {
+            id
+          };
+        throw ex;
+      });
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f7(__0, __1) {
+  return (function() {
+    with({ call: __call, MethodNotFoundError: __f4, this: undefined, arguments: undefined }) {
+
+return async function /*read*/(id, props) {
+      return call(this.name("Read"), { id, props }).catch((ex) => {
+        if (ex instanceof MethodNotFoundError) return { id, props };
+        throw ex;
+      });
+    };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+
+function __f0() {
+  return (function() {
+    with({ provider: __provider, this: undefined, arguments: undefined }) {
+
+return () => provider;
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+,,
+I1006 21:57:18.161380   30240 eventsink.go:59] [INFO] Deleting S3 Bucket (sst-asset-vaavddthmxfo) Object (assets/SyncWebsiteRevalidationEventsSubscriberUffhrsFunction-code-93ce4fe41083f2b38c9f5c5c2a01fc543a96166f507d4efbddabb70bda34c0ff.zip) Version ()
+I1006 21:57:18.179175   30240 eventsink.go:59] [INFO] Deleting S3 Bucket (sst-asset-vaavddthmxfo) Object (assets/SyncWebsiteRevalidationSeeder-code-7c476c18494376f75d0cd713d6ae6a67afea2585661a93d7d9c854584681eb63.zip) Version ()
+I1006 21:57:18.191788   30240 eventsink.go:59] [INFO] Deleting S3 Bucket (sst-asset-vaavddthmxfo) Object (assets/SyncWebsiteDefault-code-1cf1cb82c74b612edabd2a879d5f86535e6393aa2a4e45da1ffa8617b53b51f6.zip) Version ()
+I1006 21:57:18.200811   30240 eventsink.go:59] [INFO] Deleting S3 Bucket (sst-asset-vaavddthmxfo) Object (assets/SyncWebsiteImageOptimizer-code-3302a935095315c90c0eede222b6cfc3b27b45243f7c246e457ef4e469598ff4.zip) Version ()

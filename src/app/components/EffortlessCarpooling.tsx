@@ -6,7 +6,7 @@ function EffortlessCarpooling() {
 
 
   return (
-    <section className="bg-white mb-20 sm:mb-40 lg:mb-80 font-manrope">
+    <section className="bg-white mb-10 sm:mb-40 lg:mb-80 font-manrope mt-4">
       <div className="px-4 sm:px-6 lg:px-8">
         <header className="w-full flex justify-center mb-8 sm:mb-12 lg:mb-16">
           <h1 className="text-[#099BE4] font-bold text-2xl sm:text-3xl lg:text-4xl text-center">
