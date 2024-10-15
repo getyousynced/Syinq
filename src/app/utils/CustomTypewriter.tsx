@@ -22,6 +22,7 @@ const CustomTypewriter = ({ typeWriterData }: typeWriterProps) => {
                     strings: typeWriterData,
                     autoStart: true,
                     loop: true,
+                    delay: 30
                 }}
             />
         </div>
