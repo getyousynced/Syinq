@@ -98,7 +98,7 @@ const Slider: React.FC = () => {
         <p className="text-black font-semibold text-sm md:text-base mb-2 md:mb-0">
           Save Money: Reduce your transportation costs by up to{" "}
           <span className="text-[#099BE4]">
-            SEK {annualCostReduction.toFixed(2)}
+            Rupees {annualCostReduction.toFixed(2)}
           </span>{" "}
           per year.
         </p>
