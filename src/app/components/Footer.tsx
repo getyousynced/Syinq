@@ -1,32 +1,37 @@
 'use client'
 import React, { useState } from "react";
-import emailjs from "emailjs-com";
+import { sendMail } from "../helpers/mailer";
 import Image from "next/image";
 import { ImFacebook2 } from "react-icons/im";
 import { FaSquareXTwitter, FaSquareVimeo, FaYoutube } from "react-icons/fa6";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 const Footer: React.FC = () => {
   const [email, setEmail] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // EmailJS sending method
-    emailjs
-      .send(
-        "your_service_id", // Replace with your EmailJS service ID
-        "your_template_id", // Replace with your EmailJS template ID
-        { email },
-        "your_user_id" // Replace with your EmailJS user ID
-      )
-      .then(() => {
-        console.log("Email successfully sent!");
-        setEmail(""); // Clear the email input field
-      })
-      .catch((error) => {
-        console.log("There was an error sending the email:", error);
-      });
+    const emailInput = e.currentTarget.elements.namedItem('user_email') as HTMLInputElement;
+    const user_email = emailInput.value.trim();
+  
+    if (user_email === "") {
+      toast.error("Please fill in your email.");
+      return;
+    }
+  
+    try {
+      await sendMail({ email: user_email });
+      setEmail(""); 
+      toast.success("Subscription successful!");
+    } catch (error: unknown) { 
+      if (error instanceof Error) { 
+        toast.error(`Failed to subscribe: ${error.message}`);
+      } else {
+        toast.error("Failed to subscribe due to an unexpected error.");
+      }
+    }
   };
 
   //footer links
@@ -73,6 +78,7 @@ const Footer: React.FC = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  name="user_email"
                   required
                   placeholder="Enter your email"
                   className="w-full p-4 md:p-6 pr-32 md:pr-60 text-sm md:text-lg border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
