@@ -14,3 +14,46 @@ body {
     text-wrap: balance;
   }
 }
+
+
+.custom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px; /* Size of thumb */
+  height: 20px;
+  background: url('/days.svg'); /* Replace with your SVG or image URL */
+  background-size: cover;
+  cursor: pointer;
+}
+
+.custom-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: url('/days.svg'); /* Replace with your SVG or image URL */
+  background-size: cover;
+  cursor: pointer;
+}
+.custom-slider-dist::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px; /* Size of thumb */
+  height: 20px;
+  background: url('/distance.svg'); /* Replace with your SVG or image URL */
+  background-size: cover;
+  cursor: pointer;
+}
+
+.custom-slider-dist::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: url('/distance.svg'); /* Replace with your SVG or image URL */
+  background-size: cover;
+  cursor: pointer;
+}
+
+.custom-slider:focus {
+  outline: none;
+}
+.custom-slider-dist:focus {
+  outline: none;
+}
