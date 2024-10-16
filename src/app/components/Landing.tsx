@@ -10,7 +10,7 @@ export default function Landing() {
     const { isOpen } = useSidebar();
 
     return (
-        <div className='bg-[#F5F5F5] flex sm:flex-row flex-col py-10 sm:p-20'>
+        <div className='bg-[#F5F5F5] flex sm:flex-row flex-col py-10 sm:p-28'>
             <div className='sm:w-1/2 flex justify-center'>
                 <div className='w-[85%] sm:w-[80%]'>
                     <p className='text-3xl font-bold pb-10'>
