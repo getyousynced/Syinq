@@ -9,7 +9,7 @@ datasource db {
 }
 
 model User {
-  id String @id @default(cuid()) @unique
+  id String @id @default(uuid())
   name String 
   email String @unique
   phoneNo Int @unique
@@ -27,7 +27,7 @@ model User {
 }
 
 model Car {
-  carId Int @id @default(autoincrement())
+  carId String @id @default(uuid())
   typeOfRide String
   carNumber String @unique
   carName String
@@ -39,9 +39,9 @@ model Car {
 }
 
 model Address {
-  addressId Int @id @default(autoincrement())
+  addressId String @id @default(uuid())
   user User @relation(fields: [userId], references: [id])
-  userId String @unique
+  userId String 
   street1 String
   street2 String?
   landmark String?
@@ -49,32 +49,32 @@ model Address {
   state String
   country String
 
-  offerRidesOrigin OfferRide[] @relation("originAddress")
-  offerRidesDestination OfferRide[] @relation("destinationAddress")
+  offerRidesOrigin OfferRide[] @relation("originAddressId")
+  offerRidesDestination OfferRide[] @relation("destinationAddressId")
   findRidesOrigin FindRide[] @relation("FindrideOrigin")
   findRidesStops FindRide[] @relation("FindrideStops")
 }
 
 model OfferRide {
-  id Int @id @default(autoincrement())
+  id String @id @default(uuid())
   user User @relation(fields: [userId], references: [id])
   userId String @unique
-
-  originAddressId Int
-  originAddress Address @relation("originAddress", fields: [originAddressId], references: [addressId])
-  destinationAddressId Int
-  destinationAddress Address @relation("destinationAddress", fields: [destinationAddressId], references: [addressId])
+  originAddress Address @relation("originAddressId", fields: [originAddressId], references: [addressId])
+  originAddressId String
+  destinationAddress Address @relation("destinationAddressId", fields: [destinationAddressId], references: [addressId])
+  destinationAddressId String
   
   askForFair Boolean
   amount Int
 
-  carId Int
+  
   car Car @relation("CarOfferRides", fields: [carId], references: [carId])
+  carId String
 }
 
 model FindRide {
-  rideId Int @id @default(autoincrement())
-  originAddressId Int
+  rideId String @id @default(uuid())
+  originAddressId String
   originAddress Address @relation("FindrideOrigin", fields: [originAddressId], references: [addressId])
   stops Address[] @relation("FindrideStops")
   dateTime DateTime

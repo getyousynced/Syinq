@@ -1,12 +1,13 @@
 {
-  "name": "server",
+  "name": "sync-backend",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prisma format",
-    "start": "server.ts"
+    "start": "server.ts",
+    "dev": "bun --watch run ./src/server.ts"
   },
   "keywords": [],
   "author": "",
