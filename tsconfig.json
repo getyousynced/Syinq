@@ -4,6 +4,8 @@
       "moduleResolution": "NodeNext",  
       "target": "ES2023",
       "sourceMap": true,
+      "noEmit": true,
+      "allowImportingTsExtensions": true,
       "outDir": "dist"        
   },
   "include": ["src/**/*"]
