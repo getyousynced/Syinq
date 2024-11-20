@@ -34,7 +34,7 @@ const Slider: React.FC = () => {
       <div className="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-20 mb-10">
         <div className="flex flex-col items-center justify-center w-5/6 md:w-1/2">
           <h2 className="text-xl md:text-3xl text-center text-[#099BE4] font-semibold ">
-            Calculate your savings with Sync's easy-to-use tool.
+            Calculate your savings with Sync&apos;s easy-to-use tool.
           </h2>
           <p className="text-center text-black mt-2">
             Adjust the sliders to see how much you could save with Sync!

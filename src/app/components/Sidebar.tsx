@@ -18,7 +18,7 @@ export default function Sidebar() {
 
     return (
         <div className="md:hidden">
-            <div className="flex items-center p-4 bg-white">
+            <div className="flex items-center p-4">
                 <button
                     className="z-50"
                     onClick={toggle}

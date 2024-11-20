@@ -51,7 +51,7 @@ const Footer: React.FC = () => {
   ]
 
   return (
-    <footer className="bg-white text-center text-gray-800 py-6 bottom-0 w-full overflow-hidden relative">
+    <footer className=" text-center text-gray-800 py-6 bottom-0 w-full overflow-hidden relative">
       {/* SVG curve as a background element */}
       <div className="absolute inset-0 top-0 z-0">
         <Image
