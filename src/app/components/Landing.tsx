@@ -35,11 +35,11 @@ export default function Landing() {
       </div>
       <div className="sm:w-1/2 w-full py-10 sm:p-0 flex justify-center">
         <Image
-          className="object-cover"
+          className="object-contain"
           src="/blue-car.svg"
           alt="blue car"
-          width={500}
-          height={500}
+          width={600}
+          height={600}
           priority
         />
       </div>
