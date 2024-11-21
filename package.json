@@ -10,13 +10,15 @@
     "sso": "aws sso login --sso-session=sync"
   },
   "dependencies": {
+    "@tabler/icons-react": "^3.22.0",
     "clsx": "^2.1.1",
     "emailjs-com": "^3.2.0",
-    "framer-motion": "^11.11.9",
+    "framer-motion": "^11.11.17",
     "lucide-react": "^0.446.0",
     "next": "14.2.13",
     "react": "^18",
     "react-dom": "^18",
+    "react-dropzone": "^14.3.5",
     "react-icons": "^5.3.0",
     "sst": "^3.1.54",
     "tailwind-merge": "^2.5.4",
