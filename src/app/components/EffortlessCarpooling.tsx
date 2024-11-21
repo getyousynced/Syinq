@@ -13,7 +13,7 @@ function EffortlessCarpooling() {
             Effortless Carpooling
           </h1>
         </header>
-        <div className="w-full flex justify-center p-4 sm:p-8 lg:p-[8vw] relative bg-white">
+        <div className="w-full flex justify-center p-4 sm:p-8 lg:p-[8vw] relative">
           
           <Image className="w-[60%] sm:w-[50%] lg:w-[36%] max-w-md lg:max-w-lg" src="/carpooling.svg" alt="Carpooling" width={700} height={700}/>
 

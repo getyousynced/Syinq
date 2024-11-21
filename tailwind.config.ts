@@ -1,19 +1,7 @@
 import type { Config } from "tailwindcss";
-// import flattenColorPalette from './node_modules/tailwindcss/lib/util/flattenColorPalette';
-
-// const addVariablesForColors = ({ addBase, theme }: { addBase: any; theme: any }) => {
-//   const allColors = flattenColorPalette(theme('colors'));
-//   const newVars = Object.fromEntries(
-//     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
-//   );
-
-//   addBase({
-//     ':root': newVars,
-//   });
-// };
 
 const config: Config = {
-  darkMode: "class",
+  darkMode: 'class',
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -22,13 +10,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        background: {
+          light: "#f2f2f2",
+          dark: "#1a1a1a",
+        },
+        text: { // defining text colors for light and dark themes
+          light: "#1a1a1a", // dark text for light background
+          dark: "#f2f2f2", // light text for dark background
+        }
       },
     },
   },
-  plugins: [
-    // addVariablesForColors,
-  ],
+  plugins: [],
 };
 export default config;
