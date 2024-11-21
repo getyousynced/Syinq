@@ -7,7 +7,7 @@ import EffortlessCarpooling from "./components/EffortlessCarpooling";
 import { useTheme } from "next-themes";
 import { useCallback, useEffect } from "react";
 import isHotkey from "is-hotkey";
-import { MacbookScrollDemo } from "./components/MacbookScroll";
+import { HeroScroll } from "./components/HeroScrollDemo";
 
 export default function Home() {
   const { setTheme } = useTheme();
@@ -37,7 +37,7 @@ export default function Home() {
     <>
       <Landing />
       <Slider />
-      <MacbookScrollDemo />
+      <HeroScroll />
       <EffortlessCarpooling />
       <AboutSync />
     </>
