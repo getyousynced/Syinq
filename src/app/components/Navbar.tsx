@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { NavLinks } from "../data/navLinks";
 import { useTheme } from "next-themes";
+// import { DarkModeToggle } from "./dark-mode-toggle";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,7 +26,7 @@ const Navbar = () => {
   }, []);
 
   // Determine if the theme is dark
-  const isDarkMode = theme === 'dark' || resolvedTheme === 'dark' || (!theme && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  // const isDarkMode = theme === 'dark' || resolvedTheme === 'dark' || (!theme && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
 
   useEffect(() => {
@@ -43,7 +44,7 @@ const Navbar = () => {
     >
       <div className="flex justify-between items-center max-w-7xl mx-auto">
         <Link href="/">
-        {isDarkMode ? (
+        {isScrolled && theme!=='dark' ? (
             <Image
               src="/sync-logo.svg"
               width={80}
@@ -52,13 +53,20 @@ const Navbar = () => {
               priority
             />
           ) : (
-            <h1>Hello</h1>
+            <Image
+              src="/WhiteLogo.svg"
+              width={80}
+              height={80}
+              alt="Sync Logo"
+              priority
+            />
           )}
         </Link>
 
         {/* Nav Links */}
         <div className="flex space-x-6">
           <ul className="flex gap-14 font-bold text-md">
+            {/* <DarkModeToggle /> */}
             {NavLinks.map(({ label, href }) => (
               <li key={href}>
                 <Link

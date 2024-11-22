@@ -4,69 +4,61 @@ Updating (production):
     pulumi:pulumi:Stack sync-website-production  warning: Attempting to deploy or update resources with 4 pending operations from previous deployment.
     pulumi:pulumi:Stack sync-website-production running warning: Attempting to deploy or update resources with 4 pending operations from previous deployment.
 @ updating....
-    sst:aws:Nextjs SyncWebsite  
     sst:sst:LinkRef SyncWebsiteLinkRef  
-@ updating........
+    sst:aws:Nextjs SyncWebsite  
+@ updating.......
     sst:aws:Bucket SyncWebsiteAssets  
+@ updating....
     pulumi-nodejs:dynamic:Resource SyncWebsiteS3AccessControl.sst.aws.OriginAccessControl  
  ~  pulumi-nodejs:dynamic:Resource SyncWebsiteBuild.sst.Run updating (0s) [diff: ~env,version]
     random:index:RandomId SyncWebsiteAssetsId  
-@ updating.....
+@ updating....
     aws:s3:BucketV2 SyncWebsiteAssetsBucket  
-    aws:s3:BucketPublicAccessBlock SyncWebsiteAssetsPublicAccessBlock  
     aws:s3:BucketCorsConfigurationV2 SyncWebsiteAssetsCors  
+    aws:s3:BucketPublicAccessBlock SyncWebsiteAssetsPublicAccessBlock  
     aws:s3:BucketPolicy SyncWebsiteAssetsPolicy  
-@ updating................
- ~  pulumi-nodejs:dynamic:Resource SyncWebsiteBuild.sst.Run updated (15s) [diff: ~env,version]
+@ updating....................
+ ~  pulumi-nodejs:dynamic:Resource SyncWebsiteBuild.sst.Run updated (18s) [diff: ~env,version]
+    sst:aws:Queue SyncWebsiteRevalidationEvents  
     sst:aws:Function SyncWebsiteRevalidationSeeder  
     aws:dynamodb:Table SyncWebsiteRevalidationTable  
-    sst:aws:Queue SyncWebsiteRevalidationEvents  
-    aws:cloudwatch:LogGroup SyncWebsiteRevalidationSeederLogGroup  
     aws:sqs:Queue SyncWebsiteRevalidationEventsQueue  
-    aws:iam:Role SyncWebsiteRevalidationSeederRole  warning: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:iam/role:Role::SyncWebsiteRevalidationSeederRole verification warning: The inline_policy argument is deprecated. Use the aws_iam_role_policy resource instead. If Terraform should exclusively manage all inline policy associations (the current behavior of this argument), use the aws_iam_role_policies_exclusive resource as well.
-    aws:iam:Role SyncWebsiteRevalidationSeederRole  warning: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:iam/role:Role::SyncWebsiteRevalidationSeederRole verification warning: The inline_policy argument is deprecated. Use the aws_iam_role_policy resource instead. If Terraform should exclusively manage all inline policy associations (the current behavior of this argument), use the aws_iam_role_policies_exclusive resource as well.
-    sst:aws:Function SyncWebsiteImageOptimizer  
+    aws:cloudwatch:LogGroup SyncWebsiteRevalidationSeederLogGroup  
     sst:aws:QueueLambdaSubscriber SyncWebsiteRevalidationEventsSubscriberUffhrs  
-    sst:aws:Function SyncWebsiteDefault  
     aws:cloudfront:Function SyncWebsiteCloudfrontFunctionServerCfFunction  
+    sst:aws:Function SyncWebsiteDefault  
+    sst:aws:Function SyncWebsiteImageOptimizer  
     aws:cloudfront:CachePolicy SyncWebsiteServerCachePolicy  
-    sst:aws:Function SyncWebsiteRevalidationEventsSubscriberUffhrsFunction  
+    aws:iam:Role SyncWebsiteRevalidationSeederRole  warning: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:iam/role:Role::SyncWebsiteRevalidationSeederRole verification warning: The inline_policy argument is deprecated. Use the aws_iam_role_policy resource instead. If Terraform should exclusively manage all inline policy associations (the current behavior of this argument), use the aws_iam_role_policies_exclusive resource as well.
+    aws:iam:Role SyncWebsiteRevalidationSeederRole  warning: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:iam/role:Role::SyncWebsiteRevalidationSeederRole verification warning: The inline_policy argument is deprecated. Use the aws_iam_role_policy resource instead. If Terraform should exclusively manage all inline policy associations (the current behavior of this argument), use the aws_iam_role_policies_exclusive resource as well.
+    aws:cloudwatch:LogGroup SyncWebsiteDefaultLogGroup  
     aws:cloudwatch:LogGroup SyncWebsiteImageOptimizerLogGroup  
     aws:iam:Role SyncWebsiteImageOptimizerRole  warning: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:iam/role:Role::SyncWebsiteImageOptimizerRole verification warning: The inline_policy argument is deprecated. Use the aws_iam_role_policy resource instead. If Terraform should exclusively manage all inline policy associations (the current behavior of this argument), use the aws_iam_role_policies_exclusive resource as well.
     aws:iam:Role SyncWebsiteImageOptimizerRole  warning: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:iam/role:Role::SyncWebsiteImageOptimizerRole verification warning: The inline_policy argument is deprecated. Use the aws_iam_role_policy resource instead. If Terraform should exclusively manage all inline policy associations (the current behavior of this argument), use the aws_iam_role_policies_exclusive resource as well.
-    aws:cloudwatch:LogGroup SyncWebsiteDefaultLogGroup  
-    aws:iam:Role SyncWebsiteDefaultRole  warning: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:iam/role:Role::SyncWebsiteDefaultRole verification warning: The inline_policy argument is deprecated. Use the aws_iam_role_policy resource instead. If Terraform should exclusively manage all inline policy associations (the current behavior of this argument), use the aws_iam_role_policies_exclusive resource as well.
-    aws:iam:Role SyncWebsiteDefaultRole  warning: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:iam/role:Role::SyncWebsiteDefaultRole verification warning: The inline_policy argument is deprecated. Use the aws_iam_role_policy resource instead. If Terraform should exclusively manage all inline policy associations (the current behavior of this argument), use the aws_iam_role_policies_exclusive resource as well.
 @ updating.......
+    sst:aws:Function SyncWebsiteRevalidationEventsSubscriberUffhrsFunction  
     pulumi:providers:aws AwsProvider.sst.us-east-1  
-    aws:iam:Role SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionRole  warning: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:QueueLambdaSubscriber$sst:aws:Function$aws:iam/role:Role::SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionRole verification warning: The inline_policy argument is deprecated. Use the aws_iam_role_policy resource instead. If Terraform should exclusively manage all inline policy associations (the current behavior of this argument), use the aws_iam_role_policies_exclusive resource as well.
-    aws:iam:Role SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionRole  warning: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:QueueLambdaSubscriber$sst:aws:Function$aws:iam/role:Role::SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionRole verification warning: The inline_policy argument is deprecated. Use the aws_iam_role_policy resource instead. If Terraform should exclusively manage all inline policy associations (the current behavior of this argument), use the aws_iam_role_policies_exclusive resource as well.
-    aws:cloudwatch:LogGroup SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionLogGroup  
+    aws:iam:Role SyncWebsiteDefaultRole  warning: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:iam/role:Role::SyncWebsiteDefaultRole verification warning: The inline_policy argument is deprecated. Use the aws_iam_role_policy resource instead. If Terraform should exclusively manage all inline policy associations (the current behavior of this argument), use the aws_iam_role_policies_exclusive resource as well.
+    aws:iam:Role SyncWebsiteDefaultRole  warning: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:iam/role:Role::SyncWebsiteDefaultRole verification warning: The inline_policy argument is deprecated. Use the aws_iam_role_policy resource instead. If Terraform should exclusively manage all inline policy associations (the current behavior of this argument), use the aws_iam_role_policies_exclusive resource as well.
+@ updating....
  ~  pulumi-nodejs:dynamic:Resource SyncWebsiteAssetFiles.sst.aws.BucketFiles updating (0s) [diff: ~files]
- ++ aws:s3:BucketObjectv2 SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionCode creating replacement (0s) [diff: ~key,source]
  ++ aws:s3:BucketObjectv2 SyncWebsiteRevalidationSeederCode creating replacement (0s) [diff: ~key,source]
- ++ aws:s3:BucketObjectv2 SyncWebsiteImageOptimizerCode creating replacement (0s) [diff: ~key,source]
  ++ aws:s3:BucketObjectv2 SyncWebsiteDefaultCode creating replacement (0s) [diff: ~key,source]
-@ updating......
- ++ aws:s3:BucketObjectv2 SyncWebsiteRevalidationSeederCode created replacement (2s) [diff: ~key,source]
- +- aws:s3:BucketObjectv2 SyncWebsiteRevalidationSeederCode replacing (0s) [diff: ~key,source]
- +- aws:s3:BucketObjectv2 SyncWebsiteRevalidationSeederCode replaced (0.00s) [diff: ~key,source]
- ~  aws:lambda:Function SyncWebsiteRevalidationSeederFunction updating (0s) [diff: ~s3Key]
+ ++ aws:s3:BucketObjectv2 SyncWebsiteImageOptimizerCode creating replacement (0s) [diff: ~key,source]
+    aws:cloudwatch:LogGroup SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionLogGroup  
+    aws:iam:Role SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionRole  warning: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:QueueLambdaSubscriber$sst:aws:Function$aws:iam/role:Role::SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionRole verification warning: The inline_policy argument is deprecated. Use the aws_iam_role_policy resource instead. If Terraform should exclusively manage all inline policy associations (the current behavior of this argument), use the aws_iam_role_policies_exclusive resource as well.
+    aws:iam:Role SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionRole  warning: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:QueueLambdaSubscriber$sst:aws:Function$aws:iam/role:Role::SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionRole verification warning: The inline_policy argument is deprecated. Use the aws_iam_role_policy resource instead. If Terraform should exclusively manage all inline policy associations (the current behavior of this argument), use the aws_iam_role_policies_exclusive resource as well.
+ ++ aws:s3:BucketObjectv2 SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionCode creating replacement (0s) [diff: ~key,source]
+@ updating.....
  ++ aws:s3:BucketObjectv2 SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionCode created replacement (2s) [diff: ~key,source]
  +- aws:s3:BucketObjectv2 SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionCode replacing (0s) [diff: ~key,source]
  +- aws:s3:BucketObjectv2 SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionCode replaced (0.00s) [diff: ~key,source]
  ~  aws:lambda:Function SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionFunction updating (0s) [diff: ~s3Key]
-@ updating....
- ++ aws:s3:BucketObjectv2 SyncWebsiteDefaultCode created replacement (4s) [diff: ~key,source]
- +- aws:s3:BucketObjectv2 SyncWebsiteDefaultCode replacing (0s) [diff: ~key,source]
- +- aws:s3:BucketObjectv2 SyncWebsiteDefaultCode replaced (0.00s) [diff: ~key,source]
-@ updating....
- ~  aws:lambda:Function SyncWebsiteDefaultFunction updating (0s) [diff: ~s3Key]
- ++ aws:s3:BucketObjectv2 SyncWebsiteImageOptimizerCode created replacement (5s) [diff: ~key,source]
- +- aws:s3:BucketObjectv2 SyncWebsiteImageOptimizerCode replacing (0s) [diff: ~key,source]
- +- aws:s3:BucketObjectv2 SyncWebsiteImageOptimizerCode replaced (0.00s) [diff: ~key,source]
- ~  aws:lambda:Function SyncWebsiteImageOptimizerFunction updating (0s) [diff: ~s3Key]
-@ updating........
+ ++ aws:s3:BucketObjectv2 SyncWebsiteRevalidationSeederCode created replacement (2s) [diff: ~key,source]
+ +- aws:s3:BucketObjectv2 SyncWebsiteRevalidationSeederCode replacing (0s) [diff: ~key,source]
+ +- aws:s3:BucketObjectv2 SyncWebsiteRevalidationSeederCode replaced (0.00s) [diff: ~key,source]
+ ~  aws:lambda:Function SyncWebsiteRevalidationSeederFunction updating (0s) [diff: ~s3Key]
+@ updating..........
  ~  aws:lambda:Function SyncWebsiteRevalidationSeederFunction updated (7s) [diff: ~s3Key]
  ~  aws:lambda:Function SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionFunction updated (7s) [diff: ~s3Key]
  ++ aws:lambda:Invocation SyncWebsiteRevalidationSeed creating replacement (0s) [diff: ~triggers]
@@ -76,50 +68,57 @@ Updating (production):
  +- aws:lambda:Invocation SyncWebsiteRevalidationSeed replacing (0s) [diff: ~triggers]
  +- aws:lambda:Invocation SyncWebsiteRevalidationSeed replaced (0.00s) [diff: ~triggers]
 @ updating....
- ~  aws:lambda:Function SyncWebsiteDefaultFunction updated (8s) [diff: ~s3Key]
-    aws:lambda:FunctionUrl SyncWebsiteDefaultUrl  
+ ++ aws:s3:BucketObjectv2 SyncWebsiteImageOptimizerCode created replacement (12s) [diff: ~key,source]
+ +- aws:s3:BucketObjectv2 SyncWebsiteImageOptimizerCode replacing (0s) [diff: ~key,source]
+ +- aws:s3:BucketObjectv2 SyncWebsiteImageOptimizerCode replaced (0.00s) [diff: ~key,source]
+ ~  aws:lambda:Function SyncWebsiteImageOptimizerFunction updating (0s) [diff: ~s3Key]
 @ updating....
- ~  aws:lambda:Function SyncWebsiteImageOptimizerFunction updated (8s) [diff: ~s3Key]
-    aws:lambda:FunctionUrl SyncWebsiteImageOptimizerUrl  
- ~  pulumi-nodejs:dynamic:Resource SyncWebsiteAssetFiles.sst.aws.BucketFiles updated (14s) [diff: ~files]
+ ++ aws:s3:BucketObjectv2 SyncWebsiteDefaultCode created replacement (13s) [diff: ~key,source]
+ +- aws:s3:BucketObjectv2 SyncWebsiteDefaultCode replacing (0s) [diff: ~key,source]
+ +- aws:s3:BucketObjectv2 SyncWebsiteDefaultCode replaced (0.00s) [diff: ~key,source]
+ ~  aws:lambda:Function SyncWebsiteDefaultFunction updating (0s) [diff: ~s3Key]
+@ updating..........
+ ~  pulumi-nodejs:dynamic:Resource SyncWebsiteAssetFiles.sst.aws.BucketFiles updated (20s) [diff: ~files]
     sst:aws:CDN SyncWebsiteCdn  
     sst:aws:Certificate SyncWebsiteCdnSsl  
     aws:acm:Certificate SyncWebsiteCdnSslCertificate  
     pulumi-nodejs:dynamic:Resource SyncWebsiteCdnSslCNAMEZoneLookupA0304c7881b136a8af6e652e502b5df1syncgetsynctech.sst.aws.HostedZoneLookup  
     aws:route53:Record SyncWebsiteCdnSslCNAMERecordA0304c7881b136a8af6e652e502b5df1syncgetsynctech  
     aws:acm:CertificateValidation SyncWebsiteCdnSslValidation  
-    aws:cloudfront:Distribution SyncWebsiteCdnDistribution  
+ ~  aws:lambda:Function SyncWebsiteDefaultFunction updated (7s) [diff: ~s3Key]
+    aws:lambda:FunctionUrl SyncWebsiteDefaultUrl  
+@ updating....
+ ~  aws:lambda:Function SyncWebsiteImageOptimizerFunction updated (8s) [diff: ~s3Key]
+    aws:lambda:FunctionUrl SyncWebsiteImageOptimizerUrl  
+ ~  aws:cloudfront:Distribution SyncWebsiteCdnDistribution updating (0s) [diff: ~orderedCacheBehaviors]
+@ updating.........
+ ~  aws:cloudfront:Distribution SyncWebsiteCdnDistribution updated (6s) [diff: ~orderedCacheBehaviors]
     pulumi-nodejs:dynamic:Resource SyncWebsiteCdnAZoneLookupSyncgetsynctech.sst.aws.HostedZoneLookup  
-    pulumi-nodejs:dynamic:Resource SyncWebsiteCdnWaiter.sst.aws.DistributionDeploymentWaiter  
  ~  pulumi-nodejs:dynamic:Resource SyncWebsiteCdnInvalidation.sst.aws.DistributionInvalidation updating (0s) [diff: ~version]
     pulumi-nodejs:dynamic:Resource SyncWebsiteCdnAAAAZoneLookupSyncgetsynctech.sst.aws.HostedZoneLookup  
+    pulumi-nodejs:dynamic:Resource SyncWebsiteCdnWaiter.sst.aws.DistributionDeploymentWaiter  
     aws:route53:Record SyncWebsiteCdnARecordSyncgetsynctech  
     aws:route53:Record SyncWebsiteCdnAAAARecordSyncgetsynctech  
-@ updating.....
+@ updating....
  ~  pulumi-nodejs:dynamic:Resource SyncWebsiteCdnInvalidation.sst.aws.DistributionInvalidation updated (1s) [diff: ~version]
  -- aws:lambda:Invocation SyncWebsiteRevalidationSeed deleting original (0s) [diff: ~triggers]
  -- aws:s3:BucketObjectv2 SyncWebsiteRevalidationSeederCode deleting original (0s) [diff: ~key,source]
- -- aws:s3:BucketObjectv2 SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionCode deleting original (0s) [diff: ~key,source]
  -- aws:s3:BucketObjectv2 SyncWebsiteDefaultCode deleting original (0s) [diff: ~key,source]
+ -- aws:s3:BucketObjectv2 SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionCode deleting original (0s) [diff: ~key,source]
  -- aws:s3:BucketObjectv2 SyncWebsiteImageOptimizerCode deleting original (0s) [diff: ~key,source]
  -- aws:lambda:Invocation SyncWebsiteRevalidationSeed deleted original (0.01s) [diff: ~triggers]
- -- aws:s3:BucketObjectv2 SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionCode deleted original (0.26s) [diff: ~key,source]
- -- aws:s3:BucketObjectv2 SyncWebsiteRevalidationSeederCode deleted original (0.27s) [diff: ~key,source]
- -- aws:s3:BucketObjectv2 SyncWebsiteImageOptimizerCode deleted original (0.36s) [diff: ~key,source]
- -- aws:s3:BucketObjectv2 SyncWebsiteDefaultCode deleted original (0.36s) [diff: ~key,source]
+@ updating....
+ -- aws:s3:BucketObjectv2 SyncWebsiteRevalidationSeederCode deleted original (0.79s) [diff: ~key,source]
+ -- aws:s3:BucketObjectv2 SyncWebsiteDefaultCode deleted original (0.79s) [diff: ~key,source]
+ -- aws:s3:BucketObjectv2 SyncWebsiteImageOptimizerCode deleted original (0.82s) [diff: ~key,source]
+ -- aws:s3:BucketObjectv2 SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionCode deleted original (0.83s) [diff: ~key,source]
     pulumi:pulumi:Stack sync-website-production  1 warning
 Diagnostics:
-  aws:iam:Role (SyncWebsiteImageOptimizerRole):
-    warning: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:iam/role:Role::SyncWebsiteImageOptimizerRole verification warning: The inline_policy argument is deprecated. Use the aws_iam_role_policy resource instead. If Terraform should exclusively manage all inline policy associations (the current behavior of this argument), use the aws_iam_role_policies_exclusive resource as well.
-
   aws:iam:Role (SyncWebsiteRevalidationSeederRole):
     warning: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:iam/role:Role::SyncWebsiteRevalidationSeederRole verification warning: The inline_policy argument is deprecated. Use the aws_iam_role_policy resource instead. If Terraform should exclusively manage all inline policy associations (the current behavior of this argument), use the aws_iam_role_policies_exclusive resource as well.
 
   aws:iam:Role (SyncWebsiteDefaultRole):
     warning: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:iam/role:Role::SyncWebsiteDefaultRole verification warning: The inline_policy argument is deprecated. Use the aws_iam_role_policy resource instead. If Terraform should exclusively manage all inline policy associations (the current behavior of this argument), use the aws_iam_role_policies_exclusive resource as well.
-
-  aws:iam:Role (SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionRole):
-    warning: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:QueueLambdaSubscriber$sst:aws:Function$aws:iam/role:Role::SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionRole verification warning: The inline_policy argument is deprecated. Use the aws_iam_role_policy resource instead. If Terraform should exclusively manage all inline policy associations (the current behavior of this argument), use the aws_iam_role_policies_exclusive resource as well.
 
   pulumi:pulumi:Stack (sync-website-production):
     warning: Attempting to deploy or update resources with 4 pending operations from previous deployment.
@@ -133,10 +132,16 @@ Diagnostics:
     
     Note that `pulumi refresh` will need to be run interactively to clear pending CREATE operations.
 
-Resources:
-    ~ 7 updated
-    +-5 replaced
-    12 changes. 44 unchanged
+  aws:iam:Role (SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionRole):
+    warning: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:QueueLambdaSubscriber$sst:aws:Function$aws:iam/role:Role::SyncWebsiteRevalidationEventsSubscriberUffhrsFunctionRole verification warning: The inline_policy argument is deprecated. Use the aws_iam_role_policy resource instead. If Terraform should exclusively manage all inline policy associations (the current behavior of this argument), use the aws_iam_role_policies_exclusive resource as well.
 
-Duration: 42s
+  aws:iam:Role (SyncWebsiteImageOptimizerRole):
+    warning: urn:pulumi:production::sync-website::sst:aws:Nextjs$sst:aws:Function$aws:iam/role:Role::SyncWebsiteImageOptimizerRole verification warning: The inline_policy argument is deprecated. Use the aws_iam_role_policy resource instead. If Terraform should exclusively manage all inline policy associations (the current behavior of this argument), use the aws_iam_role_policies_exclusive resource as well.
+
+Resources:
+    ~ 8 updated
+    +-5 replaced
+    13 changes. 43 unchanged
+
+Duration: 59s
 

@@ -3,7 +3,6 @@
 import Landing from "./components/Landing";
 import AboutSync from "./components/AboutSync";
 import Slider from "./components/Slider";
-import EffortlessCarpooling from "./components/EffortlessCarpooling";
 import { useTheme } from "next-themes";
 import { useCallback, useEffect } from "react";
 import isHotkey from "is-hotkey";
@@ -40,7 +39,6 @@ export default function Home() {
       <Slider />
       <VideoComponent />
       <HeroScroll />
-      <EffortlessCarpooling />
       <AboutSync />
     </>
   );

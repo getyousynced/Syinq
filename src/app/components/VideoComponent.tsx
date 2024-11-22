@@ -3,7 +3,7 @@ import React from 'react';
 
 const VideoComponent = () => {
     return (
-        <div className="bg-[#EEEDED] flex justify-evenly items-center">
+        <div className="flex justify-evenly items-center">
             {/* Phone Frame with Video */}
             <div className="relative items-center flex justify-center w-[300px] h-[600px]">
                 {/* Phone Frame */}
@@ -16,7 +16,7 @@ const VideoComponent = () => {
                 />
                 {/* Video */}
                 <video
-                    className="absolute rounded-[2.5rem] top-[10%] left-[11%] w-[75%] h-[80%] object-cover z-0"
+                    className="absolute rounded-[2.5rem] md:top-[10%] left-[13%] w-[75%] md:h-[80%] h-[70%] object-fit md:object-cover z-0"
                     src="/video.mp4" // Replace with your video file path
                     poster="/fallback-image.svg" // Replace with your fallback image file path
                     autoPlay

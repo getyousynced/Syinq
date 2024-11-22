@@ -46,7 +46,7 @@ const Slider: React.FC = () => {
           <div className="w-full">
             <label
               htmlFor="distance"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium "
             >
               How far is your workplace?{" "}
             </label>
@@ -70,7 +70,7 @@ const Slider: React.FC = () => {
           <div className="w-full">
             <label
               htmlFor="days"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium"
             >
               How many days do you commute per week?{" "}
             </label>

@@ -55,11 +55,10 @@ function AboutSync() {
             <div className="mt-6 lg:mt-0 lg:ml-5 flex justify-center lg:justify-start ">
               <Image
                 className="max-w-full object-contain h-auto transition-transform duration-500 ease-in-out"
-                src="/redCar.svg"
+                src="/history.png"
                 alt="red car"
                 width={700}
                 height={700}
-                
               />
             </div>
           </section>

@@ -21,9 +21,9 @@ export function HeroScroll() {
         <Image
           src={`/ipad.svg`}
           alt="hero"
-          height={720}
+          height={800}
           width={1400}
-          className="mx-auto rounded-2xl object-cover h-full object-left-top"
+          className="mx-auto rounded-2xl md:object-cover object-fill h-full object-left-top"
           draggable={false}
         />
       </ContainerScroll>
