@@ -1,5 +1,6 @@
 import { cn } from "./cardUtil";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { useState } from "react";
 
 export const HoverEffect = ({
@@ -88,7 +89,7 @@ export const CardImage = ({
   className?: string;
 }) => {
   return (
-    <img
+    <Image
       src={src}
       alt={alt}
       className={cn(
