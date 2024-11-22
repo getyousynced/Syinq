@@ -53,56 +53,39 @@ export const aboutSectionContent: aboutSectionContent[] = [
 export const cards: cards[] = [
   {
     id: 1,
-    img: "/cards_images/carLocation.svg",
-    leftimg: "10%",
-    top: "5%",
-    left: "10%",
-    content:
+    image: "/cards_images/carLocation.svg",
+    description:
       "Find rides by location, destination, and time. Our smart algorithm matches you with a ride companion based on both location and preferences.",
   },
   {
     id: 2,
-    img: "/cards_images/hand.svg",
-    leftimg: "15%",
-    top: "50%",
-    left: "10%",
-    content:
+    image: "/cards_images/hand.svg",
+    description:
       "Make extra cash and help fellow students by offering rides you're already taking. Set your fare, manage your schedule, and choose who to connect with.",
   },
   {
     id: 3,
-    img: "/cards_images/idea.svg",
-    leftimg: "25%",
-    top: "100%",
-    left: "25%",
-    content:
+    image: "/cards_images/idea.svg",
+    description:
       "Get updates on your ride with push notifications and in-app messaging.",
   },
   {
     id: 4,
-    img: "/cards_images/cash.svg",
-    leftimg: "62%",
-    top: "100%",
-    left: "55%",
-    content:
+    image: "/cards_images/cash.svg",
+    description:
       "Share the ride, share the costs. Split gas and parking, reduce wear on your car, and save extra cash for other student essentials.",
   },
   {
     id: 5,
-    img: "/cards_images/leaf.svg",
-    leftimg: "77%",
-    top: "50%",
-    left: "70%",
-    content:
+    image: "/cards_images/leaf.svg",
+    description:
       "Make extra cash and help fellow students by offering rides you're already taking. Set your fare, manage your schedule, and choose who to connect with.",
   },
   {
     id: 6,
-    img: "/cards_images/people.svg",
-    leftimg: "82%",
-    top: "5%",
-    left: "70%",
-    content:
+    image: "/cards_images/people.svg",
+    description:
       "Link your Sync account to your social media to view mutual friends and build trust with potential ride partners.",
   },
 ];
+
