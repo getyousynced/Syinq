@@ -1,4 +1,8 @@
-import type { Metadata } from "next";
+// app/layout.tsx
+'use client';
+
+// import type { Metadata } from "next";
+import { usePathname } from "next/navigation";
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "./components/Navbar";
@@ -13,34 +17,39 @@ const geistSans = localFont({
   variable: "--font-geist-sans",
   weight: "100 900",
 });
+
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
 });
 
-export const metadata: Metadata = {
-  title: "Sync",
-  description: "Connecting dots...",
-};
+// export const metadata: Metadata = {
+//   title: "Sync",
+//   description: "Connecting dots...",
+// };
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
+  const routesWithoutNavbar = ['/404', '/error', '/_error', '/500', '/about', '/blog', '/contact-us'];
+  const shouldShowNavigation = !routesWithoutNavbar.includes(pathname || '');
+
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <SidebarProvider>
           <ToasterProvider />
-          <Sidebar />
-          <Navbar />
-          <Provider>{children}</Provider>
+          {shouldShowNavigation && <Sidebar />}
+          {shouldShowNavigation && <Navbar />}
+          <Provider>
+            {children}
+          </Provider>
+          {shouldShowNavigation && <Footer />}
         </SidebarProvider>
-        <Footer />
       </body>
     </html>
   );
