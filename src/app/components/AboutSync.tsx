@@ -14,7 +14,7 @@ function AboutSync() {
   };
 
   return (
-    <section className="bg-white min-h-screen font-manrope px-4 sm:px-6 lg:px-8 py-8">
+    <section className=" min-h-screen font-manrope px-4 sm:px-6 lg:px-8 py-8">
       <div className="w-full flex justify-center">
         <div className="w-full max-w-7xl">
           <header className="text-[#099BE4] font-bold text-2xl sm:text-3xl lg:text-4xl mb-4 sm:mb-6 lg:mb-[3%] text-center sm:text-left">
@@ -74,17 +74,14 @@ function AboutSync() {
                 )}
               </>
             )}
-
-            <div className="mt-6 lg:mt-0 lg:ml-5 flex justify-center lg:justify-start">
-              <div className="h-[70vh] w-[700px] relative">
-                <Image
-                  className="max-w-full h-full object-contain transition-transform duration-500 ease-in-out"
-                  src="/redCar.svg"
-                  alt="Illustration of a red car"
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </div>
+            <div className="mt-6 lg:mt-0 lg:ml-5 flex justify-center lg:justify-start ">
+              <Image
+                className="max-w-full object-contain h-auto transition-transform duration-500 ease-in-out"
+                src="/history.png"
+                alt="red car"
+                width={700}
+                height={700}
+              />
             </div>
           </section>
         </div>

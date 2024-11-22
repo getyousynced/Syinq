@@ -6,7 +6,6 @@ import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import { useSidebar } from "../context/SidebarContext"
 
-
 const NavLinks = [
     { label: "How it works?", href: "/how-it-works" },
     { label: "About", href: "/about" },
@@ -19,7 +18,7 @@ export default function Sidebar() {
 
     return (
         <div className="md:hidden">
-            <div className="flex items-center p-4 bg-white">
+            <div className="flex items-center p-4">
                 <button
                     className="z-50"
                     onClick={toggle}
@@ -41,10 +40,10 @@ export default function Sidebar() {
             </div>
 
             <div
-                className={`
-                    fixed top-0 left-0 h-full w-full bg-white shadow-lg 
+                className={`fixed top-0 left-0 h-full w-full bg-white shadow-lg 
                     transform transition-transform duration-300 ease-in-out 
                     ${isOpen ? "translate-x-0" : "-translate-x-full"}
+                    z-50 
                 `}
             >
                 <div className="p-10">

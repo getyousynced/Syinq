@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import { SidebarProvider } from "./context/SidebarContext";
 import Footer from "./components/Footer";
+import ToasterProvider from "./providers/ToasterProvider";
+import Provider from "./components/Provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,14 +32,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased text-black`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <SidebarProvider>
+          <ToasterProvider />
           <Sidebar />
           <Navbar />
-          {children}
+          <Provider>{children}</Provider>
         </SidebarProvider>
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
