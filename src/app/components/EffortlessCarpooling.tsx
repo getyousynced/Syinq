@@ -1,5 +1,5 @@
 import React from "react";
-import { cards } from "../data/navLinks";
+// import { cards } from "../data/navLinks";
 import Image from "next/image";
 import { CardHoverEffectDemo } from "./CardHoverEffect";
 

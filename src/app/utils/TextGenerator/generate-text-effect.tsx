@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { motion, stagger, useAnimate } from "framer-motion";
 import { cn } from "./utils";
- 
+
 export const TextGenerateEffect = ({
   words,
   className,
@@ -15,7 +15,7 @@ export const TextGenerateEffect = ({
   duration?: number;
 }) => {
   const [scope, animate] = useAnimate();
-  let wordsArray = words.split(" ");
+  const wordsArray = words.split(" ");
   useEffect(() => {
     animate(
       "span",
@@ -29,7 +29,7 @@ export const TextGenerateEffect = ({
       }
     );
   }, [scope.current]);
- 
+
   const renderWords = () => {
     return (
       <motion.div ref={scope}>
@@ -37,7 +37,7 @@ export const TextGenerateEffect = ({
           return (
             <motion.span
               key={word + idx}
-              className="text-black opacity-0"
+              className="opacity-0 dark:text-white"
               style={{
                 filter: filter ? "blur(10px)" : "none",
               }}
@@ -49,7 +49,7 @@ export const TextGenerateEffect = ({
       </motion.div>
     );
   };
- 
+
   return (
     <div className={cn("font-medium", className)}>
       <div className="mt-4">
