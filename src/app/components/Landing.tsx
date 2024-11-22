@@ -10,7 +10,7 @@ export default function Landing() {
   const { isOpen } = useSidebar();
 
   return (
-    <div className=" flex sm:flex-row flex-col py-10 sm:p-28">
+    <div className="flex sm:flex-row flex-col py-10 sm:p-28">
       <div className="sm:w-1/2 flex justify-center">
         <div className="w-[85%] sm:w-[80%]">
           <p className="text-3xl font-bold pb-10">
@@ -35,11 +35,11 @@ export default function Landing() {
       </div>
       <div className="sm:w-1/2 w-full py-10 sm:p-0 flex justify-center">
         <Image
-          className="object-cover"
+          className="object-contain"
           src="/blue-car.svg"
           alt="blue car"
-          width={500}
-          height={500}
+          width={600}
+          height={600}
           priority
         />
       </div>

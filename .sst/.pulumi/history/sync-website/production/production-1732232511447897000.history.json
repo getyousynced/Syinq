@@ -1,0 +1,47 @@
+{
+    "kind": "update",
+    "startTime": 1732232451,
+    "message": "Merge pull request #3 from getyousynced/videoComponent",
+    "environment": {
+        "exec.kind": "auto.local",
+        "git.author": "Rupesh Shandilya",
+        "git.author.email": "121004951+rupeshshandilya@users.noreply.github.com",
+        "git.committer": "GitHub",
+        "git.committer.email": "noreply@github.com",
+        "git.dirty": "true",
+        "git.head": "c4f415a42a306264211416d2d7fe056c31bcab5d",
+        "git.headName": "refs/heads/main",
+        "pulumi.arch": "arm64",
+        "pulumi.env.PULUMI_CONFIG_PASSPHRASE": "set",
+        "pulumi.env.PULUMI_DEBUG_COMMANDS": "true",
+        "pulumi.env.PULUMI_HOME": "set",
+        "pulumi.env.PULUMI_SKIP_UPDATE_CHECK": "true",
+        "pulumi.flag.event-log": "set",
+        "pulumi.flag.exec-kind": "set",
+        "pulumi.flag.non-interactive": "true",
+        "pulumi.flag.skip-preview": "true",
+        "pulumi.flag.stack": "set",
+        "pulumi.flag.target-dependents": "true",
+        "pulumi.flag.verbose": "set",
+        "pulumi.flag.yes": "true",
+        "pulumi.os": "darwin",
+        "pulumi.version": "v3.115.2",
+        "updatePlan": "false",
+        "vcs.kind": "github.com",
+        "vcs.owner": "getyousynced",
+        "vcs.repo": "Sync-Website",
+        "vcs.root": ".sst"
+    },
+    "config": {
+        "aws:defaultTags": "{\"tags\":{\"sst:app\":\"sync-website\",\"sst:stage\":\"production\"}}",
+        "aws:region": "us-east-1"
+    },
+    "version": 0,
+    "result": "succeeded",
+    "endTime": 1732232511,
+    "resourceChanges": {
+        "replace": 5,
+        "same": 43,
+        "update": 8
+    }
+}

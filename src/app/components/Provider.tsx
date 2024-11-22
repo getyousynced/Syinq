@@ -7,8 +7,8 @@ const Provider = ({ children }: { children: React.ReactNode }) => {
     <ThemeProvider
       attribute="class"
       defaultTheme="system"
-      enableSystem
-      disableTransitionOnChange
+      enableSystem={true}
+      disableTransitionOnChange={true}
     >
       <Theme>{children}</Theme>
     </ThemeProvider>

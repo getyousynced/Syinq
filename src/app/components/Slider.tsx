@@ -36,7 +36,7 @@ const Slider: React.FC = () => {
           <h2 className="text-xl md:text-3xl text-center text-[#099BE4] font-semibold ">
             Calculate your savings with Sync&apos;s easy-to-use tool.
           </h2>
-          <p className="text-center text-black mt-2">
+          <p className="text-center mt-2">
             Adjust the sliders to see how much you could save with Sync!
           </p>
         </div>
@@ -46,7 +46,7 @@ const Slider: React.FC = () => {
           <div className="w-full">
             <label
               htmlFor="distance"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium "
             >
               How far is your workplace?{" "}
             </label>
@@ -60,7 +60,7 @@ const Slider: React.FC = () => {
                 onChange={handleDistanceChange}
                 className="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer mt-2 custom-slider-dist"
               />
-              <span className="text-black text-nowrap mt-2 ml-2 text-sm">
+              <span className="text-nowrap mt-2 ml-2 text-sm">
                 {distance} KM
               </span>
             </div>
@@ -70,7 +70,7 @@ const Slider: React.FC = () => {
           <div className="w-full">
             <label
               htmlFor="days"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium"
             >
               How many days do you commute per week?{" "}
             </label>
@@ -84,7 +84,7 @@ const Slider: React.FC = () => {
                 onChange={handleDaysChange}
                 className="w-full h-2 rounded-lg appearance-none cursor-pointer mt-2 bg-gray-300 custom-slider"
               />
-              <span className="text-black text-nowrap mt-2 ml-2 text-sm">
+              <span className="text-nowrap mt-2 ml-2 text-sm">
                 {days} Days
               </span>
             </div>
@@ -95,21 +95,21 @@ const Slider: React.FC = () => {
       {/* Information display */}
 
       <div className="border-2 border-[#099BE4] py-4 md:py-6 px-4 md:px-12 rounded-3xl text-start w-5/6 md:w-auto">
-        <p className="text-black font-semibold text-sm md:text-base mb-2 md:mb-0">
+        <p className="font-semibold text-sm md:text-base mb-2 md:mb-0">
           Save Money: Reduce your transportation costs by up to{" "}
           <span className="text-[#099BE4]">
             Rupees {annualCostReduction.toFixed(2)}
           </span>{" "}
           per year.
         </p>
-        <p className="text-black font-semibold text-sm md:text-base mb-2 md:mb-0">
+        <p className="font-semibold text-sm md:text-base mb-2 md:mb-0">
           Reduce Your Carbon Footprint: Save up to{" "}
           <span className="text-[#099BE4]">
             {annualCO2Reduction.toFixed(2)} kg
           </span>{" "}
           of CO2 annually.
         </p>
-        <p className="text-black font-semibold text-sm md:text-base mb-2 md:mb-0">
+        <p className="font-semibold text-sm md:text-base mb-2 md:mb-0">
           Meet New People: Connect with{" "}
           <span className="text-[#099BE4]">like-minded students</span> and build
           friendships.
