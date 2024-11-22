@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { aboutSectionContent } from "../data/navLinks";
 import { TextGenerateEffect } from "../utils/TextGenerator/generate-text-effect";
+import { AnimatedTestimonials } from "../utils/AnimatedTestonomials/animated-testimonials";
 
 function AboutSync() {
   const [activeNav, setActiveNav] = useState("History");
@@ -41,28 +42,37 @@ function AboutSync() {
           </div>
 
           <section className="flex flex-col lg:flex-row mt-6 sm:mt-8">
-            {aboutSectionContent?.length ? (
-              aboutSectionContent
-                .filter(({ contName }) => activeNav === contName)
-                .map(({ id, contHeading, contText }) => (
-                  <article
-                    key={id}
-                    className="font-[500] w-[100%] lg:w-[75%] p-3 text-base sm:text-lg lg:text-xl transition-opacity duration-500 ease-in-out"
-                  >
-                    <h2 className="text-xl sm:text-2xl mb-4">{contHeading}</h2>
-                    <p className="mt-3 sm:mt-5 whitespace-pre-line">
-                      <TextGenerateEffect
-                        duration={2}
-                        filter={false}
-                        words={contText}
-                      />
-                    </p>
-                  </article>
-                ))
+            {activeNav === "Team" ? (
+              <div className="w-full">
+                {/* Animated Testimonials for the Team Section */}
+                <AnimatedTestimonials />
+              </div>
             ) : (
-              <p className="text-center w-full">
-                No content available for this section.
-              </p>
+              <>
+                {aboutSectionContent?.length ? (
+                  aboutSectionContent
+                    .filter(({ contName }) => activeNav === contName)
+                    .map(({ id, contHeading, contText }) => (
+                      <article
+                        key={id}
+                        className="font-[500] w-[100%] lg:w-[75%] p-3 text-base sm:text-lg lg:text-xl transition-opacity duration-500 ease-in-out"
+                      >
+                        <h2 className="text-xl sm:text-2xl mb-4">{contHeading}</h2>
+                        <p className="mt-3 sm:mt-5 whitespace-pre-line">
+                          <TextGenerateEffect
+                            duration={2}
+                            filter={false}
+                            words={contText}
+                          />
+                        </p>
+                      </article>
+                    ))
+                ) : (
+                  <p className="text-center w-full">
+                    No content available for this section.
+                  </p>
+                )}
+              </>
             )}
 
             <div className="mt-6 lg:mt-0 lg:ml-5 flex justify-center lg:justify-start">
