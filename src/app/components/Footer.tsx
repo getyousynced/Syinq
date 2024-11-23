@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { sendMail } from "../helpers/mailer";
-import Image from "next/image";
+// import Image from "next/image";
 import { FaSquareXTwitter, FaLinkedin, FaSquareInstagram  } from "react-icons/fa6";
 import Link from "next/link";
 import toast from "react-hot-toast";
@@ -64,19 +64,19 @@ const socialLinks: { icon: React.ReactNode; href: string }[] = [
     <footer className=" text-center text-gray-800 py-6 bottom-0 w-full overflow-hidden relative">
       {/* SVG curve as a background element */}
       <div className="absolute inset-0 top-0 z-0">
-        <Image
+        {/* <Image
           src="/Shape.svg"
           width={2400}
           height={2400}
           alt="blue curve"
           priority={true}
-        />
+        /> */}
       </div>
       <div className="relative z-10 max-w-7xl mx-auto px-4 -mt-6 md:mt-0">
         <div className="flex flex-col items-center">
           <div className="border-2 rounded-xl flex flex-col md:flex-row items-center justify-between px-4 md:px-8 py-8 md:py-16 gap-4 mt-8 md:mt-16 shadow-xl w-full max-w-7xl mx-auto relative overflow-hidden">
             {/* Added relative and overflow-hidden */}
-            <h2 className="text-xl md:text-4xl w-full text-nowrap font-thin z-20">
+            <h2 className="text-xl md:text-4xl w-full text-nowrap font-thin z-20 dark:text-white">
               Join The Waitlist
             </h2>
             <form

@@ -25,8 +25,8 @@ const testimonials: Testimonial[] = [
   {
     id: 2,
     quote:
-      "Rupesh Shandillya, a co-founder of Sync, specializes in development. He is responsible for ensuring the app's technical excellence and seamless performance.",
-    name: "Rupesh Shandillya",
+      "Rupesh Shandilya, a co-founder of Sync, specializes in development. He is responsible for ensuring the app's technical excellence and seamless performance.",
+    name: "Rupesh Shandilya",
     designation: "Co Founder",
     src: "/Team_members/Rupesh.jpg",
   },
@@ -34,7 +34,7 @@ const testimonials: Testimonial[] = [
     id: 3,
     quote:
       "Abhi Tailor, a co-founder of Sync, excels in marketing, analysis, and media. He drives the app's visibility, user engagement, and strategic growth.",
-    name: "Abhi Taylor",
+    name: "Abhi Tailor",
     designation: "Co Founder",
     src: "/Team_members/Abhi.jpg",
   },

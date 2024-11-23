@@ -1,13 +1,13 @@
 "use client";
 
-import Landing from "./components/Landing";
-import AboutSync from "./components/AboutSync";
-import Slider from "./components/Slider";
+import Landing from "../components/Landing";
+import AboutSync from "../components/AboutSync";
+import Slider from "../components/Slider";
 import { useTheme } from "next-themes";
 import { useCallback, useEffect } from "react";
 import isHotkey from "is-hotkey";
-import VideoComponent from "./components/VideoComponent";
-import { HeroScroll } from "./components/HeroScrollDemo";
+import VideoComponent from "../components/VideoComponent";
+import { HeroScroll } from "../components/HeroScrollDemo";
 
 export default function Home() {
   const { setTheme } = useTheme();
