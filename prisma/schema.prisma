@@ -8,17 +8,27 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  Student
+  Faculty
+}
+
 model User {
   id String @id @default(uuid())
   name String 
   email String @unique
-  phoneNo Int @unique
-  isPhoneNoVerified Boolean 
+  phoneNumber BigInt @unique
+  isPhoneNoVerified Boolean @default(false)
+  // for email verification
+  isActivated Boolean @default(false)
   gender String?
   password String
   suspended Boolean @default(false)
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+
+  role Role
+
 
   cars Car[] @relation("UserCars")
   addressed Address[]
