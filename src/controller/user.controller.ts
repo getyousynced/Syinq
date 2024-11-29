@@ -2,7 +2,6 @@ import { sendEmail } from "./../service/SendMail.ts";
 import { prisma } from "../server.ts";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-
 import { NextFunction, Request, RequestHandler, Response } from "express";
 import ErrorResponse from "../utils/ErroResponse.ts";
 
@@ -216,24 +215,24 @@ const loginUser: RequestHandler = async (
       }
     );
 
-    // Genrate Refresh Token 
+    // Genrate Refresh Token
     const refreshToken = jwt.sign(
       {
         id: userExist.id,
-        email: userExist.email
+        email: userExist.email,
       },
       process.env.REFRESH_TOKEN_SECRET,
       {
-        expiresIn: "7d"
+        expiresIn: "7d",
       }
     );
 
-    res.cookie('refreshToken', refreshToken, {
+    res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: process.env.NODE_ENV === "production",
       // 7 days
-      maxAge: 7 * 24 * 60 * 60 * 1000, 
-    })
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    });
 
     res.status(200).json({
       message: "Login successful",
@@ -353,16 +352,18 @@ const ResetPassword: RequestHandler = async (
 ) => {
   const { token, otp, newPassword, confirmPassword } = req.body;
 
-  if(!token || !otp || !newPassword || !confirmPassword){
-    return next(new ErrorResponse("Missing token, OTP, password or confirm password", 400));
+  if (!token || !otp || !newPassword || !confirmPassword) {
+    return next(
+      new ErrorResponse("Missing token, OTP, password or confirm password", 400)
+    );
   }
 
   try {
     const decoded = jwt.verify(token, process.env.FORGOT_PASSWORD_SECRET);
 
     //check if the otp matches
-    if(decoded.otp !== otp){
-      return next(new ErrorResponse('Invalid or expired OTP',400))
+    if (decoded.otp !== otp) {
+      return next(new ErrorResponse("Invalid or expired OTP", 400));
     }
 
     //hash new Password
@@ -370,9 +371,9 @@ const ResetPassword: RequestHandler = async (
 
     //Update user's password in the database
     const updatedUser = await prisma.user.update({
-      where: {email: decoded.user.email},
-      data: {password: hashedPassword}
-    })
+      where: { email: decoded.user.email },
+      data: { password: hashedPassword },
+    });
 
     res.status(200).json({
       message: "Password Updated Successfully",
@@ -380,9 +381,9 @@ const ResetPassword: RequestHandler = async (
         ...updatedUser,
         phoneNumber: updatedUser.phoneNumber.toString(),
       },
-    })
+    });
   } catch (error) {
-    if (error.name === 'TokenExpiredError') {
+    if (error.name === "TokenExpiredError") {
       return next(new ErrorResponse("OTP has expired", 400));
     } else {
       return next(new ErrorResponse("Invalid token", 400));
@@ -390,17 +391,29 @@ const ResetPassword: RequestHandler = async (
   }
 };
 
-const Logout:RequestHandler = async(req: Request, res: Response, next: NextFunction) => {
+const Logout: RequestHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
-    res.cookie('refreshToken', '', {
+    res.cookie("refreshToken", "", {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      expires: new Date(0)  // Set the cookie to expire immediately
+      secure: process.env.NODE_ENV === "production",
+      expires: new Date(0), // Set the cookie to expire immediately
     });
     res.status(200).json({ message: "Logout successful" });
   } catch (error) {
     return next(new ErrorResponse("Failed to logout", 500));
   }
-}
+};
 
-export { registerUser, activateUser, loginUser, loggedInUser, ForgotPassword, ResetPassword, Logout };
+export {
+  registerUser,
+  activateUser,
+  loginUser,
+  loggedInUser,
+  ForgotPassword,
+  ResetPassword,
+  Logout,
+};
