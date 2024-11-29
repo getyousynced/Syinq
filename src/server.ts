@@ -1,7 +1,7 @@
 import express, { Express, json } from "express";
 import dotenv from "dotenv"
 import cors from 'cors';
-import userRouter from "../routes/user.routes.ts"
+import userRouter from "./routes/user.routes.ts"
 import { PrismaClient } from "@prisma/client";
 import cookieParser from "cookie-parser";
 
