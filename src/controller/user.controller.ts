@@ -1,5 +1,5 @@
 import { sendEmail } from "./../service/SendMail.ts";
-import { prisma } from "../src/server.ts";
+import { prisma } from "../server.ts";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
