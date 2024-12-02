@@ -18,7 +18,6 @@ model User {
   name String 
   email String @unique
   phoneNumber BigInt @unique
-  isPhoneNoVerified Boolean @default(false)
   // for email verification
   isActivated Boolean @default(false)
   gender String?
