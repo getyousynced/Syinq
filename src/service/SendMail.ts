@@ -9,7 +9,8 @@ export const sendEmail = async (
   to?: string,
   activationCode?: string,
   subject?: string,
-  template?: string
+  template?: string,
+  userName?: string,
 ) => {
   let transporter = createTransport({
     host: "smtp.gmail.com",
@@ -35,17 +36,14 @@ export const sendEmail = async (
 
   transporter.use("compile", hbs(handlebarsOption));
 
-  let message = activationCode;
-
   let mailOptions: SendMailOptions & TemplateOptions = {
     from: "getyousync@gmail.com",
     to: to,
     subject: subject,
-    // text: message,
-    // html: activationCode,
     template: template,
     context: {
       activationCode: activationCode,
+      userName: userName,
     },
   };
 
