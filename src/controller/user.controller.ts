@@ -80,7 +80,7 @@ const registerUser: RequestHandler = async (
     const activationCode = activationToken.activationCode;
     const activation_Token = activationToken.token;
 
-    sendEmail(email, activationCode, "Email Verification", "varificationmail");
+    sendEmail(email, activationCode, "Verify Email", "varificationmail",name);
 
     res.status(201).json({ activationToken: activation_Token });
   } catch (error) {
@@ -310,16 +310,13 @@ const ForgotPassword: RequestHandler = async (
     return next(
       new ErrorResponse("Email hasn't verified yet. Check your inbox", 400)
     );
-  }
+  }  
 
   const { token, otp } = await generateForgotPasswordToken(userExist);
 
-  const emailBody = `Your OTP for resetting your password is ${otp}. This OTP will expire in 5 minutes. Click on this link to proceed: ${token}`;
+  sendEmail(userExist.email, otp, "Reset Password", "forgotpassword",userExist.name);
 
-  // sendEmail(email, activationCode, "Email Verification", "varificationmail");
-  sendEmail(userExist.email, emailBody, "Password Forget", "forgotpassword");
-
-  res.status(200).json({ message: "Your Forgot password request successful" });
+  res.status(200).json({ token: token, message: "Your Forgot password request successful" });
 };
 
 const generateForgotPasswordToken = async (user: UserData) => {
