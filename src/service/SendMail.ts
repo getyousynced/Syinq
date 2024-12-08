@@ -21,15 +21,15 @@ export const sendEmail = async (
     },
   });
 
-  
   //using custom email template with node mailer
   const handlebarsOption: NodemailerExpressHandlebarsOptions = {
     viewEngine: {
       extname: ".handlebars",
-      partialsDir: path.resolve("./views"),
+      partialsDir: path.resolve("./src/views"),
+      layoutsDir: path.resolve("./src/views"),
       defaultLayout: false as unknown as string,
     },
-    viewPath: path.resolve('./views'),
+    viewPath: path.resolve("./src/views"),
     extname: ".handlebars",
   };
 
@@ -37,23 +37,21 @@ export const sendEmail = async (
 
   let message = activationCode;
 
-
-
-  let mailOptions:SendMailOptions & TemplateOptions = {
+  let mailOptions: SendMailOptions & TemplateOptions = {
     from: "getyousync@gmail.com",
     to: to,
     subject: subject,
-    text: message,
-    html: activationCode,
+    // text: message,
+    // html: activationCode,
     template: template,
-    // context: {
-    //   activationCode: activationCode
-    // }
+    context: {
+      activationCode: activationCode,
+    },
   };
 
   try {
     await transporter.sendMail(mailOptions);
   } catch (error) {
-    console.log('Error sending email:', error);
+    console.log("Error sending email:", error);
   }
 };
