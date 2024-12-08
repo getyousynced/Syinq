@@ -25,10 +25,11 @@ export const sendEmail = async (
   const handlebarsOption: NodemailerExpressHandlebarsOptions = {
     viewEngine: {
       extname: ".handlebars",
-      partialsDir: path.resolve("./views"),
+      partialsDir: path.resolve("./src/views"),
+      layoutsDir: path.resolve("./src/views"),
       defaultLayout: false as unknown as string,
     },
-    viewPath: path.resolve("./views"),
+    viewPath: path.resolve("./src/views"),
     extname: ".handlebars",
   };
 
@@ -40,8 +41,8 @@ export const sendEmail = async (
     from: "getyousync@gmail.com",
     to: to,
     subject: subject,
-    text: message,
-    html: activationCode,
+    // text: message,
+    // html: activationCode,
     template: template,
     context: {
       activationCode: activationCode,
