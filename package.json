@@ -8,8 +8,7 @@
     "format": "prisma format",
     "start": "server.ts",
     "dev": "bun --watch run ./src/server.ts",
-    "prisma:generate": "npx prisma generate --schema=src/prisma/schema.prisma",
-    "prisma:push": "npx prisma db push --schema=src/prisma/schema.prisma"
+    "schema": "npx prisma generate --schema=src/prisma/schema.prisma"
   },
   "keywords": [],
   "author": "",
