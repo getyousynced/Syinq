@@ -22,7 +22,7 @@ function HowItWorks() {
         {worksArr.map((work) => (
           <div
             key={work.id}
-            className={`flex flex-col md:flex-row justify-center items-center w-full gap-8 ${
+            className={`flex flex-col md:flex-row justify-center items-center w-full gap-10 ${
               work.id % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"
             }`}
           >
@@ -33,7 +33,7 @@ function HowItWorks() {
               height={256}
               className="w-[80%] md:w-[30%]"
             />
-            <div className="w-full md:w-[40%] text-center md:text-left">
+            <div className="w-full md:w-[25%] text-center md:text-left">
               <h1 className="text-[#273464] text-2xl md:text-3xl font-semibold mb-4">
                 {work.heading}
               </h1>
