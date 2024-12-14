@@ -21,6 +21,8 @@
     "react-dom": "^18",
     "sst": "^3.1.54",
     "tailwind-merge": "^2.5.5"
+    "react-icons": "^5.4.0",
+    "sst": "^3.1.54"
   },
   "devDependencies": {
     "@shadcn/ui": "^0.0.4",
