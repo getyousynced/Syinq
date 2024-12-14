@@ -8,7 +8,12 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'custom-gradient': 'linear-gradient(91.39deg, #CAF0F8 0%, #87DCED 100%)',
+        'custom-background': 'linear-gradient(180deg, rgba(202, 240, 248, 0) 0%, rgba(202, 240, 248, 0.5) 15%, rgba(202, 240, 248, 0) 50%)',
+      },
+    },
   },
   plugins: [],
 };
