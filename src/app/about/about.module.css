@@ -1,0 +1,132 @@
+.aboutTopContainer {
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+  justify-content: space-between;
+  margin-left: 130px;
+  margin-right: 55px;
+}
+.aboutTop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.aboutTopRight {
+  display: flex;
+  position: relative;
+  width: 40%;
+  justify-content: center;
+}
+.phoneBGimg3 {
+  position: absolute;
+  width: 50px;
+  left: 0;
+  top: 25%;
+}
+.abouttxt img {
+  width: 200px; /* Make the image cover the container */
+  height: auto;
+}
+.abouttxt {
+  position: relative;
+}
+.aboutHeading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 28px;
+  font-weight: 500;
+  text-align: center;
+  width: 100%;
+}
+.aboutR1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 40px;
+}
+.aboutTop {
+  height: 100%;
+}
+.aboutTopLeft {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.aboutR2 {
+  border: #d1c7be solid;
+  border-radius: 15px;
+  position: relative;
+  margin-right: 40px;
+}
+.aboutR2 p {
+  padding: 50px;
+}
+.quoteimg {
+  width: 40px;
+  position: absolute;
+  transform: translateY(-50%) rotate(180deg);
+  left: 7%;
+}
+.quoteimginline {
+  display: inline-block;
+  position: relative;
+  width: 25px;
+  margin-left: 10px;
+  margin-top: 8px;
+}
+
+.takea {
+  font-size: 100px;
+  font-weight: 700;
+}
+.R1sub {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: baseline;
+  border-bottom: 2px solid; /* Define the border size */
+  border-image: linear-gradient(to right, transparent 50%, black 50%) 1;
+}
+.look {
+  font-size: 48px;
+  font-weight: 600;
+}
+.phoneimg {
+  width: 280px;
+}
+.phoneBGimg1 {
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  bottom: 0;
+}
+
+.phoneBGimg2 {
+  position: absolute;
+  z-index: -1;
+  top: 20%;
+  right: 0;
+}
+.phoneBGimg4 {
+  position: absolute;
+  z-index: -1;
+  right: 2%;
+  top: 19%;
+}
+.phoneBGimg5 {
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  bottom: 13%;
+  width: 120px;
+}
+.bgimg {
+  position: absolute;
+  z-index: -1;
+}
