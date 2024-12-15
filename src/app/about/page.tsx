@@ -3,6 +3,13 @@ import styles from "./about.module.css";
 export default function AboutPage() {
   return (
     <>
+      <div>
+        <img
+          src="/images/about/Hero and Nav.png"
+          alt=""
+          className={styles.bgimg}
+        />
+      </div>
       <div className={styles.aboutTop}>
         <div className={styles.aboutTopContainer}>
           <div className={styles.aboutTopLeft}>
