@@ -31,8 +31,8 @@ const Slider: React.FC = () => {
     };
 
     return (
-        <>
-        <Image draggable="false" className='top-0 w-[90%]' src="/assets/hero-map.png" width={8000} height={8000} alt="Hero Map" />
+        <div className="sm:-mt-36  ">
+        <Image draggable="false" className='w-[90%] mx-auto' src="/assets/hero-map.png" width={8000} height={8000} alt="Hero Map" />
 
         <section className="flex flex-col items-center space-y-6 w-full md:w-2/3 mx-auto py-10 mt-10">
             <div className="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-20 mb-10">
@@ -125,7 +125,7 @@ const Slider: React.FC = () => {
                 </p>
             </div>
             </section>
-        </>
+        </div>
     );
 };
 
