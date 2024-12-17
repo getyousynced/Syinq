@@ -5,11 +5,11 @@ import { FaArrowRight } from 'react-icons/fa'
 const Hero = () => {
     return (
         <div
-            className="bg-[url('/assets/wave.svg')] pt-32 bg-cover bg-no-repeat"
+            className="bg-[url('/assets/wave.svg')] sm:pt-28 pt-20 bg-cover bg-no-repeat"
         >
-            <div className="h-screen flex py-10">
-                <div className="left pl-10 w-[60%] gap-6 flex flex-col">
-                    <div className="text-white text-5xl font-semibold">
+            <div className="sm:h-screen flex sm:flex-row flex-col py-10">
+                <div className="left pl-4 sm:pl-10 w-full sm:w-[60%] gap-6 flex flex-col">
+                    <div className="text-white text-xl sm:text-5xl font-semibold">
                         Your Campus Commute, Simplified - <br />
                         <span className="text-[#099BE4]">
                             Eco-friendly rides, socially connected!
@@ -32,9 +32,9 @@ const Hero = () => {
                         />
                     </div>
                 </div>
-                <div className="w-[70%]">
+                <div className="w-full sm:w-[65%] mx-auto">
                     <Image
-                        className="w-[90%] my-16"
+                        className="w-full sm:w-[90%] mt-16"
                         src="/assets/hero-people.png"
                         width={900}
                         height={900}
