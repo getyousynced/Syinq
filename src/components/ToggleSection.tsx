@@ -30,6 +30,9 @@ export default function ToggleSection() {
           Request
         </button>
       </div>
+      <div className="flex flex-col justify-center items-center">
+        <Image src="/assets/Frame.png" alt="frame" width={156} height={156} />
+      </div>
 
       <div className="relative">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-16">
