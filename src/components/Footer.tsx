@@ -2,6 +2,7 @@ import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { CiMail } from "react-icons/ci";
 import { FaLinkedin } from "react-icons/fa";
+import Image from "next/image";
 
 export default function Footer() {
     return (
@@ -43,12 +44,8 @@ export default function Footer() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* QR Code */}
               <div className="flex justify-center md:justify-start">
-                <div className="bg-white p-4 rounded-xl w-32 h-32">
-                  <img
-                    src=""
-                    alt="QR Code"
-                    className="w-full h-full"
-                  />
+                <div className="bg-white p-4 rounded-xl w-36 h-32">
+                <Image src="/assets/qr.png" alt="qr" width={156} height={156}/>
                 </div>
               </div>
               
