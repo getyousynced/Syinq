@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { worksArr } from "../../data/HowItWorksData";
+import { worksArr } from "../data/HowItWorksData";
 
 function HowItWorks() {
   return (
