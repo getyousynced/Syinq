@@ -18,14 +18,14 @@ const Navbar = () => {
     };
 
     return (
-        <div className="bg-black text-white max-w-full">
+        <div className="top-0 absolute w-full text-white">
             <div className="parent-container max-w-[90%] mx-auto flex justify-between items-center py-4">
                 <div className="w-1/2">
                     <Image src="/assets/white-sync.png" width={100} height={50} alt="Sync Logo" />
                 </div>
                 <div className="hidden md:flex w-1/2 justify-start">
                     <div className="w-fit py-3 px-4 border-2 border-white rounded-full">
-                        <ul className="flex gap-8">
+                        <ul className="flex gap-24">
                             {navLinks.map((navLink, index) => (
                                 <li
                                     key={index}
