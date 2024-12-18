@@ -86,7 +86,7 @@ export function ContactForm() {
 
       <Button
         type="submit"
-        className="w-full bg-gradient-to-r from-[#005884] to-[#00324D] hover:opacity-90"
+        className="w-full bg-gradient-to-r from-[#005884] to-[#00324D] text-white hover:opacity-90"
         disabled={!agreedToTerms}
       >
         Send Message
