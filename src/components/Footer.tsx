@@ -76,16 +76,16 @@ export default function Footer() {
   
               {/* Social Links */}
               <div className="flex justify-center gap-4">
-                <a href="#" className="w-10 h-10 bg-gray-900 rounded-full hover:bg-gray-800 flex items-center justify-center">
+                <a href="https://www.instagram.com/sync.india_/" target="_blank" className="w-10 h-10 bg-gray-900 rounded-full hover:bg-gray-800 flex items-center justify-center">
                     <FaInstagram className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-10 h-10 bg-gray-900 rounded-full hover:bg-gray-800 flex items-center justify-center">
+                <a href="https://x.com/getyou_synced" target="_blank" className="w-10 h-10 bg-gray-900 rounded-full hover:bg-gray-800 flex items-center justify-center">
                     <FaXTwitter className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-10 h-10 bg-gray-900 rounded-full hover:bg-gray-800 flex items-center justify-center">
+                <a href="mailto:getyousync@gmail.com" target="_blank" className="w-10 h-10 bg-gray-900 rounded-full hover:bg-gray-800 flex items-center justify-center">
                     <CiMail className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-10 h-10 bg-gray-900 rounded-full hover:bg-gray-800 flex items-center justify-center">
+                <a href="https://www.linkedin.com/company/rasync/" target="_blank" className="w-10 h-10 bg-gray-900 rounded-full hover:bg-gray-800 flex items-center justify-center">
                     <FaLinkedin className="w-5 h-5" />
                 </a>
               </div>
