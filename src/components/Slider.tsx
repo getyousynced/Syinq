@@ -6,6 +6,7 @@ import React, { useState } from "react";
 const Slider: React.FC = () => {
     const [distance, setDistance] = useState(10); //default distance
     const [days, setDays] = useState(3); //default days
+    const [weeks, setWeeks] = useState(15); //default weeks
 
     const costPerKm = 5; // SEK per kilometer
     const co2PerKm = 0.12; // kg CO2 per kilometer
@@ -30,8 +31,12 @@ const Slider: React.FC = () => {
         setDistance(Number(e.target.value));
     };
 
+    const handleWeeksChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setWeeks(Number(e.target.value))
+    }
+
     return (
-        <div className="sm:-mt-36  ">
+        <div className="sm:-mt-52">
         <Image draggable="false" className='w-[90%] mx-auto' src="/assets/hero-map.png" width={8000} height={8000} alt="Hero Map" />
 
         <section className="flex flex-col items-center space-y-6 w-full md:w-2/3 mx-auto py-10 mt-10">
@@ -45,7 +50,7 @@ const Slider: React.FC = () => {
                         {" "}your savings with Sync&apos;s easy-to-use tool.
                     </h2>
 
-                    <p className="text-center text-black mt-2">
+                    <p className="text-center text-black mt-10 mx-5">
                         Adjust the sliders to see how much you could save with Sync!
                     </p>
                 </div>
@@ -95,6 +100,30 @@ const Slider: React.FC = () => {
                             />
                             <span className="text-black text-nowrap mt-2 ml-2 text-sm">
                                 {days} Days
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* Weeks Slider */}
+                    <div className="w-full">
+                        <label
+                            htmlFor="weeks"
+                            className="block text-sm font-medium text-gray-700"
+                        >
+                            How far is your workplace?
+                        </label>
+                        <div className="flex items-center justify-center">
+                            <input
+                                id="weeks"
+                                type="range"
+                                min="1"
+                                max="52"
+                                value={weeks}
+                                onChange={handleWeeksChange}
+                                className="w-full h-2 rounded-lg appearance-none cursor-pointer mt-2 bg-gray-300 custom-slider"
+                            />
+                            <span className="text-black text-nowrap mt-2 ml-2 text-sm">
+                                {weeks} weeks
                             </span>
                         </div>
                     </div>
