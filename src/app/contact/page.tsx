@@ -23,7 +23,7 @@ export default function ContactPage() {
             Got questions or <span className="text-[#4CC4FF]">feedback?</span>
           </h1>
           <p className="text-lg md:text-xl opacity-90 text-gray-700">
-            We'd love to hear from you! Reach out to us for support, suggestions, or inquiries.
+            We&apos;d love to hear from you! Reach out to us for support, suggestions, or inquiries.
           </p>
           
         </div>
