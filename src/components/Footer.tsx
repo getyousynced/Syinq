@@ -45,7 +45,7 @@ export default function Footer() {
               {/* QR Code */}
               <div className="flex justify-center md:justify-start">
                 <div className="bg-white p-4 rounded-xl w-36 h-32">
-                <Image src="/assets/qr.png" alt="qr" width={156} height={156}/>
+                <Image src="/assets/qr.svg" alt="qr" width={156} height={156}/>
                 </div>
               </div>
               
