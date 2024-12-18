@@ -39,16 +39,22 @@ export default function ToggleSection() {
           <div className="text-center md:text-left">
             <div className="relative w-64 h-64">
               <Image
-                src="/assets/1.png"
+                src="/assets/1.svg"
                 alt="Search illustration"
                 width={256}
                 height={256}
                 className="w-full h-full object-contain"
               />
             </div>
-            <div className="mt-4">
-              <h3 className="text-lg font-semibold">Search</h3>
-              <p className="text-sm text-gray-600">
+            <div className="flex flex-col justify-center items-center text-center">
+              <Image
+                src="/assets/circle.svg"
+                alt="circle"
+                height={156}
+                width={156}
+              />
+              <h3 className="text-lg font-semibold sm:-mt-14 -mt-12">Search</h3>
+              <p className="text-sm text-gray-600 mt-7">
                 Look for where you heading towards?
               </p>
             </div>
@@ -57,34 +63,49 @@ export default function ToggleSection() {
           <div className="text-center">
             <div className="relative w-64 h-64">
               <Image
-                src="/assets/2.png"
+                src="/assets/2.svg"
                 alt="Choose illustration"
                 width={256}
                 height={256}
                 className="w-full h-full object-contain"
               />
             </div>
-            <div className="mt-4">
-              <h3 className="text-lg font-semibold ">Choose</h3>
-              <p className="text-sm text-gray-600">
+
+            <div className="flex flex-col justify-center items-center text-center">
+              <Image
+                src="/assets/circle.svg"
+                alt="circle"
+                height={156}
+                width={156}
+              />
+              <h3 className="text-lg font-semibold sm:-mt-14 -mt-12">Choose</h3>
+              <p className="text-sm text-gray-600 mt-7">
                 Choose for date & time, cab & pvt vehicle
               </p>
             </div>
           </div>
 
-          <div className="text-center md:text-right">
-            <div className="relative w-64 h-64">
+          <div className="md:text-right">
+            <div className=" w-64 h-64">
               <Image
-                src="/assets/3.png"
+                src="/assets/3.svg"
                 alt="Publish illustration"
                 width={256}
                 height={256}
                 className="w-full h-full object-contain"
               />
             </div>
-            <div className="mt-4">
-              <h3 className="text-lg font-semibold">Publish</h3>
-              <p className="text-sm text-gray-600">Get your ride published</p>
+            <div className="flex flex-col justify-center items-center text-center">
+              <Image
+                src="/assets/circle.svg"
+                alt="circle"
+                height={156}
+                width={156}
+              />
+              <h3 className="text-lg font-semibold sm:-mt-14 -mt-12">Publish</h3>
+              <p className="text-sm text-gray-600 mt-7">
+                Get your ride published
+              </p>
             </div>
           </div>
         </div>
