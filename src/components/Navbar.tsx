@@ -19,7 +19,7 @@ const Navbar = () => {
     };
 
     return (
-        <div className="top-0 absolute w-full text-white">
+        <div className="top-0 absolute w-full text-white z-10">
             <div className="parent-container max-w-[90%] mx-auto flex justify-between items-center py-4">
                 <div className="w-1/2">
                     <Link href="/">
