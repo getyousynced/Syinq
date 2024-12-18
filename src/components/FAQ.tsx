@@ -1,37 +1,42 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
+import { useState } from "react";
 
 interface FAQItem {
-  question: string
-  answer: string
+  question: string;
+  answer: string;
 }
 
 const faqs: FAQItem[] = [
   {
-    question: 'How does ride matching work in Sync?',
-    answer: 'Sync uses advanced algorithms to match riders going in the same direction...'
+    question: "How does ride matching work in Sync?",
+    answer:
+      "Sync connects you with the perfect ride buddy! Just enter your destination, and Sync’s smart algorithm pairs you with students headed the same way. Fast, efficient, and seamless – every trip feels tailor-made for you.",
   },
   {
-    question: 'What features does the Sync app offer for users?',
-    answer: 'Sync offers real-time tracking, secure payments, and ride scheduling...'
+    question: "What features does the Sync app offer for users?",
+    answer:
+      "Sync is more than just carpooling! Ride Matching: Find your ideal carpool in seconds. Community Connections: Chat and network with fellow students.Cost Splitting: Share rides, share costs, and save big.Eco Impact Tracker: See how your rides are making a difference for the planet!",
   },
   {
-    question: 'How can I create an account on Sync?',
-    answer: 'Download the app from your app store and follow the simple registration process...'
+    question: "How can I create an account on Sync?",
+    answer:
+      "Getting started is a breeze! Download the Sync app. Sign up using your university email. Set up your profile, and you’re ready to roll!",
   },
   {
-    question: 'Is Sync available outside of university campuses?',
-    answer: 'Currently, Sync is focused on serving university communities...'
+    question: "Is Sync available outside of university campuses?",
+    answer:
+      "Currently, Sync is designed exclusively for university students to enhance campus life. Expansion plans are on the roadmap, so stay tuned for when we roll out in your area!",
   },
   {
-    question: 'How does Sync promote sustainability?',
-    answer: 'By encouraging ride-sharing, Sync helps reduce carbon emissions...'
-  }
-]
+    question: "How does Sync promote sustainability?",
+    answer:
+      "Every ride counts! By sharing commutes, Sync reduces carbon emissions, saves fuel, and cuts down on traffic. Plus, our Eco Impact Tracker keeps you inspired by showing the collective environmental benefits of our community. 🌍💚",
+  },
+];
 
 export default function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <section className="max-w-4xl mx-auto px-4 py-16">
@@ -57,7 +62,9 @@ export default function FAQSection() {
               className="w-full px-6 py-4 text-left flex justify-between items-center"
             >
               <span className="font-medium text-navy-900">{faq.question}</span>
-              <span className="text-2xl">{openIndex === index ? '−' : '+'}</span>
+              <span className="text-2xl">
+                {openIndex === index ? "−" : "+"}
+              </span>
             </button>
             {openIndex === index && (
               <div className="px-6 pb-4">
@@ -68,6 +75,5 @@ export default function FAQSection() {
         ))}
       </div>
     </section>
-  )
+  );
 }
-
