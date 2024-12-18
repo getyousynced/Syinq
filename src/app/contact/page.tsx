@@ -1,7 +1,4 @@
-import Navbar from "@/components/Navbar"
-import Footer from "@/components/Footer"
 import { ContactForm } from "@/components/ContactForm"
-import TopFooter from "@/components/TopFooter"
 
 export default function ContactPage() {
   return (
@@ -14,7 +11,6 @@ export default function ContactPage() {
           backgroundPosition: 'bottom'
         }}
       >
-        <Navbar />
       </div>
       
       <div className="flex-1 bg-white">
@@ -37,12 +33,7 @@ export default function ContactPage() {
             <ContactForm />
           </div>
         </div>
-
-   
-       
       </div>
-      <TopFooter />
-      <Footer />
     </main>
   )
 }
