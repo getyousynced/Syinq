@@ -1,15 +1,16 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
     const navLinks = [
-        { name: "How it works" },
-        { name: "About" },
-        { name: "Blog" },
-        { name: "Contact us" },
+        { name: "How it works", href: "/" },
+        { name: "About", href: "/about" },
+        { name: "Blog", href: "/blog" },
+        { name: "Contact us", href: "/contact" },
     ];
     const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 
@@ -21,17 +22,21 @@ const Navbar = () => {
         <div className="top-0 absolute w-full text-white">
             <div className="parent-container max-w-[90%] mx-auto flex justify-between items-center py-4">
                 <div className="w-1/2">
-                    <Image src="/assets/white-sync.png" width={100} height={50} alt="Sync Logo" />
+                    <Link href="/">
+                        <Image src="/assets/white-sync.png" width={100} height={50} alt="Sync Logo" />
+                    </Link>
                 </div>
                 <div className="hidden md:flex w-1/2 justify-start">
                     <div className="w-fit py-3 px-4 border-2 border-white rounded-full">
                         <ul className="flex gap-24">
                             {navLinks.map((navLink, index) => (
-                                <li
-                                    key={index}
-                                    className="hover:text-gray-400 cursor-pointer text-lg"
-                                >
-                                    {navLink.name}
+                                <li key={index}>
+                                    <Link
+                                        href={navLink.href}
+                                        className="hover:text-gray-400 cursor-pointer text-lg"
+                                    >
+                                        {navLink.name}
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
@@ -56,14 +61,14 @@ const Navbar = () => {
                 </button>
                 <div className="mt-16 flex flex-col items-center gap-8">
                     {navLinks.map((navLink, index) => (
-                        <a
+                        <Link
                             key={index}
-                            href={`#${navLink.name.replace(/\s+/g, "").toLowerCase()}`}
+                            href={navLink.href}
                             className="hover:text-gray-400 cursor-pointer flex items-center gap-3 text-lg"
-                            onClick={toggleSidebar} // Close sidebar on link click
+                            onClick={toggleSidebar}
                         >
                             {navLink.name}
-                        </a>
+                        </Link>
                     ))}
                 </div>
             </div>
