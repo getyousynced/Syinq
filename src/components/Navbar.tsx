@@ -28,7 +28,7 @@ const Navbar = () => {
                 </div>
                 <div className="hidden md:flex w-1/2 justify-end">
                     <div className="w-fit py-3 px-4 border-2 border-white rounded-full">
-                        <ul className="flex gap-24">
+                        <ul className="flex gap-8 w-[25rem]">
                             {navLinks.map((navLink, index) => (
                                 <li key={index}>
                                     <Link
