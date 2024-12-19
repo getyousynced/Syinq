@@ -3,6 +3,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { CiMail } from "react-icons/ci";
 import { FaLinkedin } from "react-icons/fa";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
     return (
@@ -55,10 +56,10 @@ export default function Footer() {
               {/* Navigation */}
               <div className="flex justify-center items-center">
                 <nav className="flex gap-8">
-                  <a href="#" className="hover:text-gray-300">How it works</a>
-                  <a href="#" className="hover:text-gray-300">About</a>
-                  <a href="#" className="hover:text-gray-300">Blog</a>
-                  <a href="/contact" className="hover:text-gray-300">Contact</a>
+                  <Link href="/" className="hover:text-gray-300">How it works</Link>
+                  <Link href="/about" className="hover:text-gray-300">About</Link>
+                  <Link href="/" className="hover:text-gray-300">Blog</Link>
+                  <Link href="/contact" className="hover:text-gray-300">Contact</Link>
                 </nav>
               </div>
   
