@@ -37,7 +37,7 @@ export default function AboutPage() {
               </div>
               <div className="relative">
                 <Image
-                  src="/images/about/Ellipse 204.png"
+                  src="/images/about/Ellipse204.png"
                   alt=""
                   width={1080}
                   height={1080}
@@ -82,28 +82,28 @@ export default function AboutPage() {
             <Image
               width={1080}
               height={1080}
-              src="/images/about/Rectangle 34624113.png"
+              src="/images/about/Rectangle34624113.png"
               alt=""
               className="xl:w-[52%] sm:w-[220px] md:w-[280px] w-[220px]"
             />
             <Image
               width={1080}
               height={1080}
-              src="/images/about/Rectangle 34624110.png"
+              src="/images/about/Rectangle34624110.png"
               alt=""
               className="absolute left-0 top-[25%] xl:w-[10%] sm:w-[50px] w-[40px]"
             />
             <Image
               width={1080}
               height={1080}
-              src="/images/about/Rectangle 34624111.png"
+              src="/images/about/Rectangle34624111.png"
               alt=""
               className="absolute xl:bottom-[-3px] xl:left-[15px] bottom-0 left-0 z-[-1] xl:w-[50%] w-[200px]"
             />
             <Image
               width={1080}
               height={1080}
-              src="/images/about/Rectangle 34624112.png"
+              src="/images/about/Rectangle34624112.png"
               alt=""
               className="absolute xl:top-[20%] xl:right-[20px] right-0 z-[-1] xl:w-[50%] w-[200px]"
             />
@@ -114,14 +114,14 @@ export default function AboutPage() {
         <Image
           width={1080}
           height={1080}
-          src="/images/about/Ellipse 526.png"
+          src="/images/about/Ellipse526.png"
           alt=""
           className="absolute xl:top-[22%] xl:right-[4%] bottom-[380px] right-[10px] z-[-1] ] xl:block xl:w-[4%] w-[40px]"
         />
         <Image
           width={1080}
           height={1080}
-          src="/images/about/Ellipse 527.png"
+          src="/images/about/Ellipse527.png"
           alt=""
           className="absolute xl:bottom-[22%] xl:right-[-1px] right-0 bottom-[50px] w-[50px] z-[-1]  xl:block xl:w-[5%]"
         />
