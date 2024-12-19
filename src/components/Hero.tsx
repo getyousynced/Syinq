@@ -6,7 +6,7 @@ import { FaArrowRight } from "react-icons/fa";
 const Hero = () => {
   const typeWriterData = ["Simplified"];
   return (
-    <div className="bg-[url('/assets/wave.svg')] sm:pt-28 pt-20 bg-cover bg-no-repeat">
+    <div className="bg-[url('/assets/wave.svg')] sm:pt-28 pt-20 h-[61rem] bg-cover bg-no-repeat">
       <div className="sm:h-screen flex sm:flex-row flex-col py-10">
         <div className="left pl-4 sm:pl-10 w-full sm:w-[60%] gap-6 flex flex-col">
           <div className="text-white text-3xl sm:text-5xl font-semibold mt-10">
