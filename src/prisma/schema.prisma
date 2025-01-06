@@ -33,6 +33,10 @@ model User {
   addressed Address[]
   offerRide OfferRide?
   findRides FindRide[] @relation("riders")
+
+  //chat relations
+  chatRooms chatRoom[] @relation("ChatParticipants")
+  messages Message[]
 }
 
 model Car {
@@ -98,6 +102,18 @@ model FindRide {
 //   chat_users User[] @relation("ChatParticipants")
 //   chats Chat[]
 // }
+// wrote chats as chatroom
+
+model chatRoom{
+  charRoomId String @id @default(uuid())  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  //users who are part of the chatRoom
+  members User[] @relation("ChatParticipants")
+  
+  messages Message[]
+}
 
 // model Chat {
 //   chatId Int @id @default(autoincrement())
@@ -106,3 +122,17 @@ model FindRide {
 //   userId String
 //   content String
 // }
+// wrote chat as message
+model Message{
+  messageId String @id @default(uuid())
+  content String
+  timestamp DateTime @default(now())
+
+  // send of the message 
+  // relation to the user who sent the message
+  sender User @relation(fields: [senderId], references: [id])
+  senderId String
+
+  charRoom chatRoom @relation(fields: [chatRoomId], references: [charRoomId])
+  chatRoomId String
+}
