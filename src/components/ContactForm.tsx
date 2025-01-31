@@ -13,12 +13,22 @@ export function ContactForm() {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
+
+    // Validate the email using a regular expression or a built-in method
+    const emailValue = formData.get('email') as string
+    const emailPattern = /^[a-zA-Z0-9._%±]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(emailValue)) {
+      alert('Please enter a valid email address.')
+      return
+    }
+
     const data = {
       firstName: formData.get('firstName'),
       lastName: formData.get('lastName'),
-      email: formData.get('email'),
+      email: emailValue,
       message: formData.get('message'),
     }
+
     console.log('Form submitted:', data)
     alert('Message sent successfully!')
     event.currentTarget.reset()
@@ -50,6 +60,7 @@ export function ContactForm() {
 
       <div className="space-y-2">
         <Label htmlFor="email">Email Address</Label>
+        {/* Use HTML email validation with type="email" and an optional pattern attribute */}
         <Input
           id="email"
           name="email"
@@ -94,4 +105,3 @@ export function ContactForm() {
     </form>
   )
 }
-
