@@ -52,7 +52,7 @@ Sync solves all these issues in one platform, making daily life more convenient,
 
 ## ✨ Thanks to all contributors
 
-Thank you for your support in nammayatri's growth. Keep up the great work! 🥂
+Thank you for your support in Sync's growth. Keep up the great work! 🥂
 
 <a href="https://github.com/getyousynced/sync/graphs/contributors">
   <img src="https://contributors-img.web.app/image?repo=getyousynced/sync" alt="Contributors"/>
