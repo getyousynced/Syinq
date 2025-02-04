@@ -43,7 +43,7 @@ Finding trusted places to buy/sell books, gadgets, or services.
 A lack of a dedicated online space to connect with peers.
 Sync solves all these issues in one platform, making daily life more convenient, cost-effective, and socially engaging.
 
-## 🎯 📍 Our Journey So Far
+## 📍 Our Journey So Far
 - ✅ Developed a smart carpooling system.
 - ✅ Built a community forum for student discussions.
 - ✅ Created a student marketplace for buying/selling.
