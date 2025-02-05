@@ -5,6 +5,9 @@ import jwt from "jsonwebtoken";
 import { NextFunction, Request, RequestHandler, Response } from "express";
 import ErrorResponse from "../utils/ErroResponse.ts";
 
+// TODO: CREATE A SEPRATE ROUTE FOR OTP
+// TODO: RENAME SET PASSWORD
+
 interface UserData {
   name: string;
   email: string;
@@ -41,9 +44,9 @@ const registerUser: RequestHandler = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { name, email, phoneNumber, gender, password, role } = req.body;
+  const { name, email, phoneNumber, role } = req.body;
 
-  if (!name || !email || !phoneNumber || !password) {
+  if (!name || !email || !phoneNumber || !role) {
     return next(new ErrorResponse("Incorrect data", 400));
   }
 
@@ -61,18 +64,14 @@ const registerUser: RequestHandler = async (
       return next(new ErrorResponse("PhoneNumber already exists", 409));
     }
 
-    //protecting password
-    const hashedPassword = await bcrypt.hash(password, 12);
-
     // creating new user
     const user = await prisma.user.create({
       data: {
         name,
         email,
         phoneNumber,
-        gender,
         role,
-        password: hashedPassword,
+        password: "password not set yet",
       },
     });
 
@@ -80,7 +79,7 @@ const registerUser: RequestHandler = async (
     const activationCode = activationToken.activationCode;
     const activation_Token = activationToken.token;
 
-    sendEmail(email, activationCode, "Verify Email", "varificationmail",name);
+    sendEmail(email, activationCode, "Verify Email", "verificationmail", name);
 
     res.status(201).json({ activationToken: activation_Token });
   } catch (error) {
@@ -310,13 +309,21 @@ const ForgotPassword: RequestHandler = async (
     return next(
       new ErrorResponse("Email hasn't verified yet. Check your inbox", 400)
     );
-  }  
+  }
 
   const { token, otp } = await generateForgotPasswordToken(userExist);
 
-  sendEmail(userExist.email, otp, "Reset Password", "forgotpassword",userExist.name);
+  sendEmail(
+    userExist.email,
+    otp,
+    "Reset Password",
+    "forgotpassword",
+    userExist.name
+  );
 
-  res.status(200).json({ token: token, message: "Your Forgot password request successful" });
+  res
+    .status(200)
+    .json({ token: token, message: "Your Forgot password request successful" });
 };
 
 const generateForgotPasswordToken = async (user: UserData) => {
