@@ -5,9 +5,6 @@ import jwt from "jsonwebtoken";
 import { NextFunction, Request, RequestHandler, Response } from "express";
 import ErrorResponse from "../utils/ErroResponse.ts";
 
-// TODO: CREATE A SEPRATE ROUTE FOR OTP
-// TODO: RENAME SET PASSWORD
-
 interface UserData {
   name: string;
   email: string;
