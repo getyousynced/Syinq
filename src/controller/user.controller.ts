@@ -41,11 +41,19 @@ const registerUser: RequestHandler = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { name, email, phoneNumber, role } = req.body;
+  const { name, email, phoneNumber, role, password, confirmPassword } = req.body;
 
-  if (!name || !email || !phoneNumber || !role) {
+  if (
+    !name ||
+    !email ||
+    !phoneNumber ||
+    !role ||
+    !password ||
+    !confirmPassword
+  ) {
     return next(new ErrorResponse("Incorrect data", 400));
   }
+  if(confirmPassword !== password) return next(new ErrorResponse("Passwords do not match!", 400));
 
   try {
     let userExist = await prisma.user.findFirst({
@@ -60,7 +68,8 @@ const registerUser: RequestHandler = async (
       }
       return next(new ErrorResponse("PhoneNumber already exists", 409));
     }
-
+    //hash new Password
+    const hashedPassword = await bcrypt.hash(password, 12);
     // creating new user
     const user = await prisma.user.create({
       data: {
@@ -68,7 +77,7 @@ const registerUser: RequestHandler = async (
         email,
         phoneNumber,
         role,
-        password: "password not set yet",
+        password: hashedPassword,
       },
     });
 
