@@ -35,6 +35,6 @@ async function main(){
 main().then(async() => {
     await prisma.$connect();
 }).catch(async (e) => {
-    console.log(e);
     await prisma.$disconnect();
+    process.exit(1);
 })

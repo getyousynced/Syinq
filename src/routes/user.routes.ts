@@ -8,6 +8,7 @@ import {
   Logout,
   registerUser,
   ResetPassword,
+  verifyOTP,
 } from "../controller/user.controller.ts";
 
 const router = Router();
@@ -18,7 +19,8 @@ router.post("/login", loginUser);
 router.get("/getLoggedIn", verifyToken, loggedInUser);
 router.post("/forgotpassword", ForgotPassword);
 router.post("/resetpassword", ResetPassword);
-router.post('/logout', Logout);
+router.post("/logout", Logout);
+router.post("/verifyOtp", verifyOTP);
 
 /*
 Register - done
