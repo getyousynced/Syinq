@@ -158,6 +158,30 @@ const activateUser = async (
   }
 };
 
+// OTP Verification
+const verifyOTP: RequestHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { otp, token } = req.body;
+
+    const decoded = jwt.verify(token, process.env.FORGOT_PASSWORD_SECRET);
+
+    //check if the otp matches
+    if (decoded.otp !== otp) {
+      return next(new ErrorResponse("Invalid or expired OTP", 400));
+    }
+
+    res.status(200).json({
+      message: "OTP Verified Successfully",
+    });
+  } catch (error) {
+    return next(new ErrorResponse("OTP Verification failed", 500));
+  }
+};
+
 //login User
 const loginUser: RequestHandler = async (
   req: Request,
@@ -354,21 +378,16 @@ const ResetPassword: RequestHandler = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { token, otp, newPassword, confirmPassword } = req.body;
+  const { token, newPassword, confirmPassword } = req.body;
 
-  if (!token || !otp || !newPassword || !confirmPassword) {
+  if (!token || !newPassword || !confirmPassword) {
     return next(
-      new ErrorResponse("Missing token, OTP, password or confirm password", 400)
+      new ErrorResponse("Missing token, password or confirm password", 400)
     );
   }
 
   try {
     const decoded = jwt.verify(token, process.env.FORGOT_PASSWORD_SECRET);
-
-    //check if the otp matches
-    if (decoded.otp !== otp) {
-      return next(new ErrorResponse("Invalid or expired OTP", 400));
-    }
 
     //hash new Password
     const hashedPassword = await bcrypt.hash(newPassword, 12);
@@ -419,5 +438,6 @@ export {
   loggedInUser,
   ForgotPassword,
   ResetPassword,
+  verifyOTP,
   Logout,
 };
