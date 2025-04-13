@@ -1,15 +1,15 @@
-import { sendEmail } from "./../service/SendMail.ts";
-import { prisma } from "../server.ts";
+import { sendEmail } from "./../service/SendMail";
+import { prisma } from "../server";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { NextFunction, Request, RequestHandler, Response } from "express";
-import ErrorResponse from "../utils/ErroResponse.ts";
+import ErrorResponse from "../utils/ErroResponse";
 
 interface UserData {
   name: string;
   email: string;
   phoneNumber: bigint;
-  gender?: string;
+  gender?: string | null;
   password: string;
 }
 
@@ -36,24 +36,27 @@ interface AuthRequest extends Request {
   };
 }
 
+interface ActivationPayload {
+  user: UserData;
+  activationCode: string;
+}
+
+interface ForgotPasswordPayload {
+  user: UserData;
+  otp: string;
+}
+
 const registerUser: RequestHandler = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  const { name, email, phoneNumber, role, password, confirmPassword } = req.body;
+  const { name, email, phoneNumber, role, password } = req.body;
 
-  if (
-    !name ||
-    !email ||
-    !phoneNumber ||
-    !role ||
-    !password ||
-    !confirmPassword
-  ) {
+  if (!name || !email || !phoneNumber || !role || !password) {
+  console.log("data: ", name, email, phoneNumber, role, password);
     return next(new ErrorResponse("Incorrect data", 400));
   }
-  if(confirmPassword !== password) return next(new ErrorResponse("Passwords do not match!", 400));
 
   try {
     let userExist = await prisma.user.findFirst({
@@ -108,7 +111,7 @@ const createActivationToken = async (user: UserData) => {
       user: tokenData,
       activationCode,
     },
-    process.env.ACTIVATION_TOKEN,
+    process.env.ACTIVATION_TOKEN!,
     {
       expiresIn: "48h",
     }
@@ -125,7 +128,10 @@ const activateUser = async (
   const { activationToken, activationCode } = req.body;
 
   try {
-    const decoded = jwt.verify(activationToken, process.env.ACTIVATION_TOKEN);
+    const decoded = jwt.verify(
+      activationToken,
+      process.env.ACTIVATION_TOKEN!
+    ) as ActivationPayload;
 
     //if the provided activation code matches the one in the token
     if (decoded.activationCode !== activationCode) {
@@ -173,7 +179,10 @@ const verifyOTP: RequestHandler = async (
   try {
     const { otp, token } = req.body;
 
-    const decoded = jwt.verify(token, process.env.FORGOT_PASSWORD_SECRET);
+    const decoded = jwt.verify(
+      token,
+      process.env.FORGOT_PASSWORD_SECRET!
+    ) as ForgotPasswordPayload;
 
     //check if the otp matches
     if (decoded.otp !== otp) {
@@ -238,7 +247,7 @@ const loginUser: RequestHandler = async (
         id: userExist.id,
         email: userExist.email,
       },
-      process.env.ACCESS_TOKEN_SECRET,
+      process.env.ACCESS_TOKEN_SECRET!,
       {
         expiresIn: "1h",
       }
@@ -250,7 +259,7 @@ const loginUser: RequestHandler = async (
         id: userExist.id,
         email: userExist.email,
       },
-      process.env.REFRESH_TOKEN_SECRET,
+      process.env.REFRESH_TOKEN_SECRET!,
       {
         expiresIn: "7d",
       }
@@ -369,7 +378,7 @@ const generateForgotPasswordToken = async (user: UserData) => {
       user: tokenData,
       otp: otp,
     },
-    process.env.FORGOT_PASSWORD_SECRET,
+    process.env.FORGOT_PASSWORD_SECRET!,
     {
       expiresIn: "5m",
     }
@@ -393,7 +402,10 @@ const ResetPassword: RequestHandler = async (
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.FORGOT_PASSWORD_SECRET);
+    const decoded = jwt.verify(
+      token,
+      process.env.FORGOT_PASSWORD_SECRET!
+    ) as ForgotPasswordPayload;
 
     //hash new Password
     const hashedPassword = await bcrypt.hash(newPassword, 12);
@@ -412,11 +424,7 @@ const ResetPassword: RequestHandler = async (
       },
     });
   } catch (error) {
-    if (error.name === "TokenExpiredError") {
-      return next(new ErrorResponse("OTP has expired", 400));
-    } else {
-      return next(new ErrorResponse("Invalid token", 400));
-    }
+    return next(new ErrorResponse("Failed to reset password", 500));
   }
 };
 

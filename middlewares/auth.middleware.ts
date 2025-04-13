@@ -1,7 +1,7 @@
-import { AuthRequest } from './interface.ts';
+import { AuthRequest } from './interface';
 import jwt from "jsonwebtoken";
 import { NextFunction, Response } from "express";
-import ErrorResponse from "../utils/ErroResponse.ts";
+import ErrorResponse from "../utils/ErroResponse";
 
 
 
@@ -13,7 +13,7 @@ export const verifyToken = (req: AuthRequest, res: Response, next: NextFunction)
     }
   
     try {
-      const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET) as jwt.JwtPayload;
+      const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET!) as jwt.JwtPayload;
       req.user = {
         id: decoded.id as string, 
         email: decoded.email as string
