@@ -54,7 +54,7 @@ const registerUser: RequestHandler = async (
   const { name, email, phoneNumber, role, password } = req.body;
 
   if (!name || !email || !phoneNumber || !role || !password) {
-  console.log("data: ", name, email, phoneNumber, role, password);
+    console.log("data: ", name, email, phoneNumber, role, password);
     return next(new ErrorResponse("Incorrect data", 400));
   }
 
@@ -445,6 +445,38 @@ const Logout: RequestHandler = async (
   }
 };
 
+const updateProfile = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { username, gender, email } = req.body;
+
+    if (!username || !gender || !email) {
+      return next(new ErrorResponse("Incorrect data", 400));
+    }
+
+    const updateUser = await prisma.user.updateMany({
+      where: {
+        email: email,
+      },
+      data: {
+        name: username,
+        gender: gender,
+      },
+    });
+
+    res.status(201).json({
+      success: true,
+      message: "User Updated Successfully",
+      data: updateUser,
+    });
+  } catch (error) {
+    console.log("error");
+  }
+};
+
 export {
   registerUser,
   activateUser,
@@ -454,4 +486,5 @@ export {
   ResetPassword,
   verifyOTP,
   Logout,
+  updateProfile,
 };

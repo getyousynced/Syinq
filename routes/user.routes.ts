@@ -8,6 +8,7 @@ import {
   Logout,
   registerUser,
   ResetPassword,
+  updateProfile,
   verifyOTP,
 } from "../controller/user.controller";
 
@@ -21,6 +22,7 @@ userRouter.post("/forgotpassword", ForgotPassword);
 userRouter.post("/resetpassword", ResetPassword);
 userRouter.post("/logout", Logout);
 userRouter.post("/verifyOtp", verifyOTP);
+userRouter.patch("/updateUser", updateProfile);
 
 /*
 Register - done
