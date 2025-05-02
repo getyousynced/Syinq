@@ -1,79 +1,122 @@
-"use client";
-import Image from "next/image";
-import Link from "next/link";
-import React, { useState } from "react";
-import { FaTimes } from "react-icons/fa";
-import { GiHamburgerMenu } from "react-icons/gi";
+
+import React, { useState, useEffect } from 'react';
+import { cn } from "@/lib/utils";
+import { Button } from '@/components/ui/button';
+import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-    const navLinks = [
-        { name: "How it works", href: "/" },
-        { name: "About", href: "/about" },
-        { name: "Blog", href: "/blog" },
-        { name: "Contact us", href: "/contact" },
-    ];
-    const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    const toggleSidebar = () => {
-        setIsSidebarVisible(!isSidebarVisible);
+  // Handle scroll event to change navbar appearance
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
     };
 
-    return (
-        <div className="top-0 absolute w-full text-white z-10">
-            <div className="parent-container max-w-[90%] mx-auto flex justify-between items-center py-4">
-                <div className="w-1/2">
-                    <Link href="/">
-                        <Image src="/assets/Logo.svg" width={100} height={50} alt="Sync Logo" />
-                    </Link>
-                </div>
-                <div className="hidden md:flex w-1/2 justify-end">
-                    <div className="w-fit py-3 px-4 border-2 border-white rounded-full">
-                        <ul className="flex gap-8 w-[25rem]">
-                            {navLinks.map((navLink, index) => (
-                                <li key={index}>
-                                    <Link
-                                        href={navLink.href}
-                                        className="hover:text-gray-400 cursor-pointer text-lg"
-                                    >
-                                        {navLink.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
-                <button
-                    onClick={toggleSidebar}
-                    className="block md:hidden px-4 py-2 border-2 border-white rounded-lg hover:bg-white hover:text-black transition-all"
-                >
-                    <GiHamburgerMenu size={24} />
-                </button>
-            </div>
-            <div
-                className={`fixed top-0 right-0 h-full w-[250px] bg-black text-white shadow-lg z-50 transition-transform transform ${isSidebarVisible ? "translate-x-0" : "translate-x-full"
-                    } md:hidden`}
-            >
-                <button
-                    onClick={toggleSidebar}
-                    className="absolute top-4 right-4 bg-white text-black px-3 py-1 rounded-full hover:bg-gray-200"
-                >
-                    <FaTimes size={24} />
-                </button>
-                <div className="mt-16 flex flex-col items-center gap-8">
-                    {navLinks.map((navLink, index) => (
-                        <Link
-                            key={index}
-                            href={navLink.href}
-                            className="hover:text-gray-400 cursor-pointer flex items-center gap-3 text-lg"
-                            onClick={toggleSidebar}
-                        >
-                            {navLink.name}
-                        </Link>
-                    ))}
-                </div>
-            </div>
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <header
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        isScrolled 
+          ? "bg-white/80 backdrop-blur-md shadow-sm" 
+          : "bg-transparent"
+      )}
+    >
+      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div className="flex items-center">
+          <Link to="/" className="flex items-center">
+            <img 
+              src="/lovable-uploads/f46e85cb-2621-4539-948c-7fa0b22b88f7.png" 
+              alt="Syinq Logo" 
+              className="h-10" 
+            />
+          </Link>
         </div>
-    );
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-8">
+          <a href="#carpooling" className="text-syinq-dark hover:text-syinq-blue transition-colors">Carpooling</a>
+          <a href="#marketplace" className="text-syinq-dark hover:text-syinq-blue transition-colors">Marketplace</a>
+          <a href="#community" className="text-syinq-dark hover:text-syinq-blue transition-colors">Community</a>
+          <a href="#security" className="text-syinq-dark hover:text-syinq-blue transition-colors">Security</a>
+          <Button asChild className="bg-syinq-blue hover:bg-syinq-blue/90">
+            <Link to="/waitlist">Join Waitlist</Link>
+          </Button>
+          <Button asChild variant="outline" className="border-syinq-blue text-syinq-blue hover:bg-syinq-blue/10">
+            <Link to="/contact">Contact Us</Link>
+          </Button>
+        </nav>
+
+        {/* Mobile Menu Button */}
+        <button 
+          className="md:hidden text-syinq-dark"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile Navigation Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-white py-4 px-6 shadow-md">
+          <nav className="flex flex-col space-y-4">
+            <a 
+              href="#carpooling" 
+              className="text-syinq-dark py-2 hover:text-syinq-blue transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Carpooling
+            </a>
+            <a 
+              href="#marketplace" 
+              className="text-syinq-dark py-2 hover:text-syinq-blue transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Marketplace
+            </a>
+            <a 
+              href="#community" 
+              className="text-syinq-dark py-2 hover:text-syinq-blue transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Community
+            </a>
+            <a 
+              href="#security" 
+              className="text-syinq-dark py-2 hover:text-syinq-blue transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Security
+            </a>
+            <Link 
+              to="/waitlist"
+              className="bg-syinq-blue text-white py-2 px-4 rounded hover:bg-syinq-blue/90 transition-colors text-center"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Join Waitlist
+            </Link>
+            <Link 
+              to="/contact"
+              className="border border-syinq-blue text-syinq-blue py-2 px-4 rounded hover:bg-syinq-blue/10 transition-colors text-center"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Contact Us
+            </Link>
+          </nav>
+        </div>
+      )}
+    </header>
+  );
 };
 
 export default Navbar;

@@ -1,116 +1,104 @@
-import { FaInstagram } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { CiMail } from "react-icons/ci";
-import { FaLinkedin } from "react-icons/fa";
-import Image from "next/image";
-import Link from "next/link";
+import React from 'react';
+import { Instagram, Twitter, Linkedin, Heart } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-export default function Footer() {
-    return (
-      <footer className="bg-black text-white py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          {/* Newsletter Section */}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-12">
-            <h3 className="text-lg font-medium">
-              Connecting journeys, building communities
-            </h3>
-            <div className="relative w-full md:w-auto max-w-md">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full md:w-80 px-4 py-2 rounded-lg text-black pr-12"
+const Footer = () => {
+  return (
+    <footer className="bg-white border-t border-gray-200 py-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="md:col-span-2">
+            <h3 className="text-2xl font-bold text-syinq-dark mb-4">Syinq</h3>
+            <p className="text-syinq-gray mb-6 max-w-md">
+              One app for everything you need on campus. Carpooling, marketplace, and community forum 
+              designed exclusively for university students.
+            </p>
+            <div className="flex space-x-4">
+              <SocialLink 
+                icon={<Instagram size={18} />} 
+                href="https://www.instagram.com/_syinq_?igsh=MXJrN3B3bnZ3eXBnbA==" 
+                aria-label="Instagram"
               />
-              <button className="absolute right-2 top-1/2 -translate-y-1/2">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  className="text-black"
-                >
-                  <path
-                    d="M5 12h14M12 5l7 7-7 7"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
+              <SocialLink 
+                icon={<Twitter size={18} />} 
+                href="https://x.com/getyou_synced" 
+                aria-label="Twitter"
+              />
+              <SocialLink 
+                icon={<Linkedin size={18} />} 
+                href="https://www.linkedin.com/company/rasync" 
+                aria-label="LinkedIn"
+              />
             </div>
           </div>
-  
-          {/* Main Footer Content */}
-          <div className="border border-gray-800 rounded-2xl p-6 mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* QR Code */}
-              <div className="flex justify-center md:justify-start">
-                <div className="bg-white p-4 rounded-xl w-36 h-32">
-                <Image src="/assets/qr.svg" alt="qr" width={156} height={156}/>
-                </div>
-              </div>
-              
-
-              {/* <div className="w-px h-32 bg-gray-600 mx-auto my-4"></div> */}
-
-              {/* Navigation */}
-              <div className="flex justify-center items-center">
-                <nav className="flex gap-8">
-                  <Link href="/" className="hover:text-gray-300">How it works</Link>
-                  <Link href="/about" className="hover:text-gray-300">About</Link>
-                  <Link href="/" className="hover:text-gray-300">Blog</Link>
-                  <Link href="/contact" className="hover:text-gray-300">Contact</Link>
-                </nav>
-              </div>
-  
-              {/* Contact */}
-              <div className="flex justify-center items-center md:justify-end">
-                <span>getyousync@gmail.com</span>
-              </div>
-            </div>
-  
-            {/* Bottom Section */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 pt-8 border-t border-gray-600">
-              <div className="flex justify-center md:justify-start">
-                <span className="text-sm text-gray-400">CINU62090UP2024PTC209842</span>
-              </div>
-  
-              {/* Social Links */}
-              <div className="flex justify-center gap-4">
-                <a href="https://www.instagram.com/sync.india_/" target="_blank" className="w-10 h-10 bg-gray-900 rounded-full hover:bg-gray-800 flex items-center justify-center">
-                    <FaInstagram className="w-5 h-5" />
-                </a>
-                <a href="https://x.com/getyou_synced" target="_blank" className="w-10 h-10 bg-gray-900 rounded-full hover:bg-gray-800 flex items-center justify-center">
-                    <FaXTwitter className="w-5 h-5" />
-                </a>
-                <a href="mailto:getyousync@gmail.com" target="_blank" className="w-10 h-10 bg-gray-900 rounded-full hover:bg-gray-800 flex items-center justify-center">
-                    <CiMail className="w-5 h-5" />
-                </a>
-                <a href="https://www.linkedin.com/company/rasync/" target="_blank" className="w-10 h-10 bg-gray-900 rounded-full hover:bg-gray-800 flex items-center justify-center">
-                    <FaLinkedin className="w-5 h-5" />
-                </a>
-              </div>
-
-              {/* Ready to Start Button */}
-              <div className="flex justify-center md:justify-end">
-                <button className="bg-white text-black px-6 py-2 rounded-full hover:bg-gray-100 transition-colors">
-                  Ready to start?
-                </button>
-              </div>
-            </div>
+          
+          <div>
+            <h4 className="font-semibold text-syinq-dark mb-4">Platform</h4>
+            <ul className="space-y-3">
+              <FooterLink text="Carpooling" href="/#carpooling" />
+              <FooterLink text="Marketplace" href="/marketplace" isRouterLink={true} />
+              <FooterLink text="Community" href="/#community" />
+              <FooterLink text="Security" href="/#security" />
+            </ul>
           </div>
-  
-          {/* Copyright Section */}
-          <div className="text-center text-sm text-gray-400">
-            <p>© 2024 RASYNC GLOBAL SOLUTIONS PRIVATE LIMITED</p>
-            <div className="mt-2 space-x-4">
-              <a href="#" className="hover:text-gray-300">Terms of Use</a>
-              <a href="#" className="hover:text-gray-300">Privacy Policy</a>
-            </div>
+          
+          <div>
+            <h4 className="font-semibold text-syinq-dark mb-4">Company</h4>
+            <ul className="space-y-3">
+              <FooterLink text="About Syinq" href="/about" isRouterLink={true} />
+              <FooterLink text="Contact Us" href="/contact" isRouterLink={true} />
+              <FooterLink text="Terms & Privacy" href="/terms" isRouterLink={true} />
+              <FooterLink text="FAQ" href="/faq" isRouterLink={true} />
+            </ul>
           </div>
         </div>
-      </footer>
-    )
+        
+        <div className="mt-12 pt-8 border-t border-gray-100 flex flex-col md:flex-row items-center justify-between">
+          <p className="text-sm text-syinq-gray mb-4 md:mb-0">
+            © {new Date().getFullYear()} Syinq. All rights reserved.
+          </p>
+          
+          <p className="text-sm text-syinq-gray flex items-center">
+            Made with <Heart className="h-3 w-3 text-red-500 mx-1" /> for campuses everywhere.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+const SocialLink = ({ icon, href, ...props }: { icon: React.ReactNode; href: string; [x: string]: any }) => {
+  return (
+    <a 
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-10 h-10 rounded-full bg-syinq-lightgray flex items-center justify-center text-syinq-dark hover:bg-syinq-blue hover:text-white transition-colors"
+      {...props}
+    >
+      {icon}
+    </a>
+  );
+};
+
+const FooterLink = ({ text, href, isRouterLink = false }: { text: string; href: string; isRouterLink?: boolean }) => {
+  if (isRouterLink) {
+    return (
+      <li>
+        <Link to={href} className="text-syinq-gray hover:text-syinq-blue transition-colors">
+          {text}
+        </Link>
+      </li>
+    );
   }
   
-  
+  return (
+    <li>
+      <a href={href} className="text-syinq-gray hover:text-syinq-blue transition-colors">
+        {text}
+      </a>
+    </li>
+  );
+};
+
+export default Footer;
