@@ -5,9 +5,5 @@ import "sst"
 export {}
 declare module "sst" {
   export interface Resource {
-    "SyncWebsite": {
-      "type": "sst.aws.Nextjs"
-      "url": string
-    }
   }
 }

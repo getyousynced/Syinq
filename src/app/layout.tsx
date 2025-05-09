@@ -3,7 +3,8 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 import Footer from '@/components/Footer';
-import TopFooter from "@/components/TopFooter"
+import { Toaster } from '@/components/ui/toaster';
+import { Toaster as Sonner } from '@/components/ui/sonner';
 
 const roboto = Roboto({
   weight: "400",
@@ -26,7 +27,8 @@ export default function RootLayout({
       <body className={`${roboto.className} select-none`}>
         <Navbar />
         {children}
-        <TopFooter/>
+        <Toaster />
+        <Sonner />
         <Footer />
       </body>
     </html>

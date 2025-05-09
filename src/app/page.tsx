@@ -1,18 +1,23 @@
-import ToggleSection from '@/components/ToggleSection'
-import FAQSection from '@/components/FAQ'
-import Hero from '@/components/Hero';
-import Slider from '@/components/Slider';
-import HowItWorks from '@/components/HowItWorks'
+import AppShowcase from "@/components/AppShowcase";
+import CarPooling from "@/components/Carpooling";
+import ComingSoon from "@/components/ComingSoon";
+import Community from "@/components/Community";
+import Hero from "@/components/Hero";
+import Marketplace from "@/components/Marketplace";
+import ScrollReveal from "@/components/ScrollReveal";
+import Security from "@/components/Security";
 
 export default function Home() {
   return (
-    <main>
-      <Hero />
-      <Slider />
-      <HowItWorks />
-      <ToggleSection />
-      <FAQSection />
+    <main className="min-h-screen bg-white">
+    <Hero />
+    <CarPooling />
+    <Marketplace />
+    <Community />
+    <Security />
+    <AppShowcase />
+    <ComingSoon />
+    <ScrollReveal />
     </main>
-  )
+  );
 }
-
