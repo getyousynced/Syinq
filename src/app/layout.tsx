@@ -3,7 +3,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 import Footer from '@/components/Footer';
-import { Toaster } from '@/components/toaster';
+import { Toaster } from '@/components/ui/toaster';
 import { Toaster as Sonner } from '@/components/ui/sonner';
 
 const roboto = Roboto({

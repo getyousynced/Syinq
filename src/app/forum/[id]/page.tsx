@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
-import Link from 'next/link';
 import { notFound, useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { forumPosts } from '@/components/Community';

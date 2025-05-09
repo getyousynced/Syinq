@@ -15,9 +15,9 @@ export default $config({
     };
   },
   async run() {
-    new sst.aws.Nextjs("SyncWebsite", {
+    new sst.aws.Nextjs("SyinqWebsite", {
       domain: {
-        name: "sync.getsync.tech",
+        name: "",
       },
     });
   },
