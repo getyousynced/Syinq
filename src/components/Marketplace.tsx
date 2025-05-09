@@ -1,6 +1,8 @@
+"use client";
+
 import React from 'react';
 import { Book, Headphones, MessageSquare, Ban } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const Marketplace = () => {
   return <section id="marketplace" className="py-20 bg-syinq-lightgray relative overflow-hidden">
@@ -22,7 +24,7 @@ const Marketplace = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="relative reveal-on-scroll">
             <div className="relative grid grid-cols-2 gap-4">
-              <Link to="/marketplace" className="apple-card transform translate-y-12 hover:translate-y-10 transition-transform">
+              <Link href="/marketplace" className="apple-card transform translate-y-12 hover:translate-y-10 transition-transform">
                 <div className="w-full aspect-square bg-white rounded-lg shadow-sm mb-4 overflow-hidden flex items-center justify-center">
                   <Book className="h-12 w-12 text-syinq-blue" />
                 </div>
@@ -33,7 +35,7 @@ const Marketplace = () => {
                 </div>
               </Link>
               
-              <Link to="/marketplace" className="apple-card hover:translate-y-2 transition-transform">
+              <Link href="/marketplace" className="apple-card hover:translate-y-2 transition-transform">
                 <div className="w-full aspect-square bg-white rounded-lg shadow-sm mb-4 overflow-hidden flex items-center justify-center">
                   <Headphones className="h-12 w-12 text-syinq-green" />
                 </div>
@@ -44,7 +46,7 @@ const Marketplace = () => {
                 </div>
               </Link>
               
-              <Link to="/marketplace" className="apple-card relative transform translate-y-6 hover:translate-y-4 transition-transform col-span-2">
+              <Link href="/marketplace" className="apple-card relative transform translate-y-6 hover:translate-y-4 transition-transform col-span-2">
                 <div className="grid grid-cols-3 gap-4">
                   <div className="aspect-square bg-white rounded-lg shadow-sm flex items-center justify-center">
                     <svg className="w-10 h-10 text-syinq-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -106,7 +108,7 @@ const Marketplace = () => {
             </div>
             
             <div className="mt-8">
-              <Link to="/marketplace" className="apple-button bg-syinq-green inline-block">Browse Marketplace</Link>
+              <Link href="/marketplace" className="apple-button bg-syinq-green inline-block">Browse Marketplace</Link>
             </div>
           </div>
         </div>

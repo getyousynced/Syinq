@@ -1,7 +1,8 @@
+"use client";
 
 import React from 'react';
 import { Users } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
@@ -149,7 +150,7 @@ const Community = () => {
           
           <div className="mt-12 text-center">
             <Button asChild className="apple-button-secondary">
-              <Link to="/forum">View All Posts</Link>
+              <Link href="/forum">View All Posts</Link>
             </Button>
           </div>
         </div>

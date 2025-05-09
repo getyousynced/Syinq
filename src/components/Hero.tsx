@@ -1,4 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+"use client";
+
+import React from 'react';
 import { ChevronDown, Zap, Shield, Users, Check, MapPin, Clock, Car } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';

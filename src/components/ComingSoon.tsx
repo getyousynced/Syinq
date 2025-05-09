@@ -1,7 +1,8 @@
+"use client";
 
 import React from 'react';
 import { AppWindow, Loader } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const ComingSoon = () => {
   return (
@@ -58,7 +59,7 @@ const ComingSoon = () => {
           <p className="text-syinq-gray">Launching soon for all verified campus users.</p>
           
           <div className="mt-10">
-            <Link to="/waitlist" className="apple-button">
+            <Link href="/waitlist" className="apple-button">
               Join Waitlist
             </Link>
           </div>

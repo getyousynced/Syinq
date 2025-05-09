@@ -1,6 +1,8 @@
+"use client";
+
 import React from 'react';
 import { Instagram, Twitter, Linkedin, Heart } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -85,7 +87,7 @@ const FooterLink = ({ text, href, isRouterLink = false }: { text: string; href: 
   if (isRouterLink) {
     return (
       <li>
-        <Link to={href} className="text-syinq-gray hover:text-syinq-blue transition-colors">
+        <Link href={href} className="text-syinq-gray hover:text-syinq-blue transition-colors">
           {text}
         </Link>
       </li>
