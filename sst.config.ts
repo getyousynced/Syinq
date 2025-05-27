@@ -3,13 +3,13 @@
 export default $config({
   app(input) {
     return {
-      name: "sync-website", // use whatever your project is called here
+      name: "SyniqWebsite",
       removal: input?.stage === "production" ? "retain" : "remove",
       home: "aws",
       providers: {
         aws: {
           profile: "sync-dev",
-          region: "us-east-1",
+          region: "ap-south-1",
         },
       },
     };
@@ -17,7 +17,10 @@ export default $config({
   async run() {
     new sst.aws.Nextjs("SyinqWebsite", {
       domain: {
-        name: "",
+        name: "syinq.live",
+        dns: sst.aws.dns({
+          zone: "Z0665679EQ3G18FN222C",
+        }),
       },
     });
   },

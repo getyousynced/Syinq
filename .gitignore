@@ -118,3 +118,9 @@ dist
 .pnp.*
 
 # End of https://mrkandreev.name/snippets/gitignore-generator/#Node
+
+# sst
+.sst
+
+# open-next
+.open-next
