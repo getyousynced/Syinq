@@ -5,6 +5,9 @@ import { Roboto } from 'next/font/google';
 import Footer from '@/components/Footer';
 import { Toaster } from '@/components/ui/toaster';
 import { Toaster as Sonner } from '@/components/ui/sonner';
+import {
+  ClerkProvider,
+} from '@clerk/nextjs'
 
 const roboto = Roboto({
   weight: "400",
@@ -23,6 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+        <ClerkProvider>
     <html lang="en">
       <body className={`${roboto.className} select-none`}>
         <Navbar />
@@ -32,5 +36,6 @@ export default function RootLayout({
         <Footer />
       </body>
     </html>
+        </ClerkProvider>
   );
 }
