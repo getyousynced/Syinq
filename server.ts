@@ -4,6 +4,7 @@ import cors from "cors";
 import userRouter from "./routes/user.routes";
 import { PrismaClient } from "@prisma/client";
 import cookieParser from "cookie-parser";
+import poolRouter from "./routes/pool.routes";
 
 dotenv.config({
   path: "./.env",
@@ -19,18 +20,20 @@ async function main() {
   app.use(cookieParser());
   app.use(
     cors({
-      origin: [process.env.CORS_ORIGIN || "http://localhost:3000"],
+      origin: [process.env.CORS_ORIGIN || "exp://192.168.118.156:8081"],
       methods: ["GET", "POST", "PUT", "DELETE"],
       credentials: true,
     })
   );
 
-  app.listen(PORT, () => {
+  app.listen(8000, '0.0.0.0',() => {
     console.log(`⚙️ Server is running at port: ${PORT}`);
   });
 
   //User Routes
   app.use("/api/v1/users", userRouter);
+  // Pool Routes
+  app.use("/api/v1/pool", poolRouter);
 }
 
 main()
