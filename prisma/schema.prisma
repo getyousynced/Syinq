@@ -4,7 +4,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
@@ -14,125 +14,155 @@ enum Role {
 }
 
 model User {
-  id          String   @id @default(uuid())
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
   name        String
   email       String   @unique
-  phoneNumber BigInt   @unique
-  // for email verification
+  phoneNumber String   @unique
   isActivated Boolean  @default(false)
   gender      String?
   password    String
   suspended   Boolean  @default(false)
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
+  role        Role
 
-  role Role
+  // User owns many Cars
+  cars        Car[]       @relation("UserCars")
 
-  cars      Car[]      @relation("UserCars")
-  addressed Address[]
-  offerRide OfferRide?
-  findRides FindRide[] @relation("riders")
+  // Addresses owned by User
+  addressed   Address[]
 
-  //chat relations
-  chatRooms chatRoom[] @relation("ChatParticipants")
-  messages  Message[]
+  // User's OfferRide (one-to-one optional)
+  offerRide   OfferRide?
+
+  // Many-to-many with FindRide via join model
+  findRideRiders FindRideRider[]
+
+  // Messages sent by User
+  messages    Message[]
+
+  // Many-to-many with chatRoom via join model
+  userChatRooms UserChatRoom[]
 }
 
 model Car {
-  carId        String  @id @default(uuid())
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
   typeOfRide   String
   carNumber    String  @unique
   carName      String
   seatCapacity Int
-  ownerId      String?
-  owner        User?   @relation("UserCars", fields: [ownerId], references: [id])
+  ownerId      String?   @db.ObjectId
+  owner        User?     @relation("UserCars", fields: [ownerId], references: [id])
 
-  offerRides OfferRide[] @relation("CarOfferRides")
+  offerRides   OfferRide[] @relation("CarOfferRides")
+}
+
+model OfferRide {
+  id                   String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId               String  @unique @db.ObjectId
+  user                 User    @relation(fields: [userId], references: [id])
+
+  originAddressId      String  @db.ObjectId
+  originAddress        Address @relation("originAddressId", fields: [originAddressId], references: [id])
+
+  destinationAddressId String  @db.ObjectId
+  destinationAddress   Address @relation("destinationAddressId", fields: [destinationAddressId], references: [id])
+
+  askForFair Boolean
+  amount     Int
+  typeOfRide String
+
+  carId String?  @db.ObjectId
+  car   Car?     @relation("CarOfferRides", fields: [carId], references: [id])
+}
+
+model FindRide {
+  id              String            @id @default(auto()) @map("_id") @db.ObjectId
+  originAddressId String            @db.ObjectId
+  originAddress   Address           @relation("FindrideOrigin", fields: [originAddressId], references: [id])
+  dateTime        DateTime
+
+  findRideRiders  FindRideRider[]
+  stops           FindRideStop[]
+
+  seat_capacity   Int
+  ask_for_fair    Boolean
+  amount_asked    Int
+}
+
+model FindRideStop {
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  findRideId String    @db.ObjectId
+  addressId  String    @db.ObjectId
+
+  findRide   FindRide  @relation(fields: [findRideId], references: [id])
+  address    Address   @relation(fields: [addressId], references: [id])
+
+  @@unique([findRideId, addressId])
 }
 
 model Address {
-  addressId String  @id @default(uuid())
+  id String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String  @db.ObjectId
   user      User    @relation(fields: [userId], references: [id])
-  userId    String
   street1   String
   street2   String?
   landmark  String?
   pincode   Int
   state     String
   country   String
+  latitude  Float?
+  longitude Float?
+  placeId   String?
 
   offerRidesOrigin      OfferRide[] @relation("originAddressId")
   offerRidesDestination OfferRide[] @relation("destinationAddressId")
   findRidesOrigin       FindRide[]  @relation("FindrideOrigin")
-  findRidesStops        FindRide[]  @relation("FindrideStops")
+  findRideStops         FindRideStop[]
 }
 
-model OfferRide {
-  id                   String  @id @default(uuid())
-  user                 User    @relation(fields: [userId], references: [id])
-  userId               String  @unique
-  originAddress        Address @relation("originAddressId", fields: [originAddressId], references: [addressId])
-  originAddressId      String
-  destinationAddress   Address @relation("destinationAddressId", fields: [destinationAddressId], references: [addressId])
-  destinationAddressId String
 
-  askForFair Boolean
-  amount     Int
+model FindRideRider {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  findRideId  String   @db.ObjectId
+  userId      String   @db.ObjectId
 
-  typeOfRide String
+  findRide    FindRide @relation(fields: [findRideId], references: [id])
+  user        User     @relation(fields: [userId], references: [id])
 
-  car   Car?    @relation("CarOfferRides", fields: [carId], references: [carId])
-  carId String?
+  @@unique([findRideId, userId])
 }
-
-model FindRide {
-  rideId          String    @id @default(uuid())
-  originAddressId String
-  originAddress   Address   @relation("FindrideOrigin", fields: [originAddressId], references: [addressId])
-  stops           Address[] @relation("FindrideStops")
-  dateTime        DateTime
-  riders          User[]    @relation("riders")
-  seat_capacity   Int
-  ask_for_fair    Boolean
-  amount_asked    Int
-}
-
-// model Chats {
-//   chat_id Int @id @default(autoincrement())
-//   chat_users User[] @relation("ChatParticipants")
-//   chats Chat[]
-// }
-// wrote chats as chatroom
 
 model chatRoom {
-  charRoomId String   @id @default(uuid())
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  id            String          @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
 
-  //users who are part of the chatRoom
-  members User[] @relation("ChatParticipants")
+  // Explicit many-to-many join for members
+  userChatRooms UserChatRoom[]
 
-  messages Message[]
+  messages      Message[]
 }
 
-// model Chat {
-//   chatId Int @id @default(autoincrement())
-//   dateTime DateTime @default(now())
-//   user User @relation(fields: [userId], references: [id])
-//   userId String
-//   content String
-// }
-// wrote chat as message
+model UserChatRoom {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String   @db.ObjectId
+  chatRoomId  String   @db.ObjectId
+
+  user        User     @relation(fields: [userId], references: [id])
+  chatRoom    chatRoom @relation(fields: [chatRoomId], references: [id])
+
+  @@unique([userId, chatRoomId])
+}
+
 model Message {
-  messageId String   @id @default(uuid())
-  content   String
-  timestamp DateTime @default(now())
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  content     String
+  timestamp   DateTime @default(now())
 
-  // send of the message 
-  // relation to the user who sent the message
-  sender   User   @relation(fields: [senderId], references: [id])
-  senderId String
+  senderId    String   @db.ObjectId
+  sender      User     @relation(fields: [senderId], references: [id])
 
-  charRoom   chatRoom @relation(fields: [chatRoomId], references: [charRoomId])
-  chatRoomId String
+  chatRoomId  String   @db.ObjectId
+  chatRoom    chatRoom @relation(fields: [chatRoomId], references: [id])
 }
