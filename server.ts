@@ -26,7 +26,7 @@ async function main() {
     })
   );
 
-  app.listen(8000, '0.0.0.0',() => {
+  app.listen(PORT,() => {
     console.log(`⚙️ Server is running at port: ${PORT}`);
   });
 
