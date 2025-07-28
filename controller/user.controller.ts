@@ -8,9 +8,9 @@ import ErrorResponse from "../utils/ErroResponse";
 interface UserData {
   name: string;
   email: string;
-  phoneNumber: bigint;
+  phoneNumber: String;
+  role: string;
   gender?: string | null;
-  password: string;
 }
 
 interface ActivationRequest extends Request {
@@ -90,7 +90,11 @@ const registerUser: RequestHandler = async (
 
     sendEmail(email, activationCode, "Verify Email", "verificationmail", name);
 
-    res.status(201).json({ activationToken: activation_Token });
+    res.status(201).json({
+      success: true,
+      message: "User Registered Successfully",
+      activationToken: activation_Token,
+    });
   } catch (error) {
     return next(error);
   }
@@ -100,15 +104,9 @@ const registerUser: RequestHandler = async (
 const createActivationToken = async (user: UserData) => {
   const activationCode = Math.floor(1000 + Math.random() * 9000).toString();
 
-  //fix for bigint
-  const tokenData = {
-    ...user,
-    phoneNumber: user.phoneNumber.toString(),
-  };
-
   const token = jwt.sign(
     {
-      user: tokenData,
+      user: user,
       activationCode,
     },
     process.env.ACTIVATION_TOKEN!,
@@ -159,6 +157,7 @@ const activateUser = async (
     });
 
     res.status(200).json({
+      success: true,
       message: "User activated successfully",
       user: {
         ...updatedUser,
@@ -190,6 +189,7 @@ const verifyOTP: RequestHandler = async (
     }
 
     res.status(200).json({
+      success: true,
       message: "OTP Verified Successfully",
     });
   } catch (error) {
@@ -273,6 +273,7 @@ const loginUser: RequestHandler = async (
     });
 
     res.status(200).json({
+      success: true,
       message: "Login successful",
       accessToken,
       refreshToken,
@@ -280,6 +281,7 @@ const loginUser: RequestHandler = async (
         id: userExist.id,
         name: userExist.name,
         email: userExist.email,
+        role: userExist.role
       },
     });
   } catch (error) {
@@ -309,6 +311,7 @@ const loggedInUser: RequestHandler = async (
     }
 
     res.status(200).json({
+      success: true,
       message: "User retrieved successfully",
       user: {
         id: userExist.id,
@@ -362,7 +365,11 @@ const ForgotPassword: RequestHandler = async (
 
   res
     .status(200)
-    .json({ token: token, message: "Your Forgot password request successful" });
+    .json({
+      success: true,
+      message: "Your Forgot password request successful",
+      token: token,
+    });
 };
 
 const generateForgotPasswordToken = async (user: UserData) => {
@@ -393,11 +400,11 @@ const ResetPassword: RequestHandler = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { token, newPassword, confirmPassword } = req.body;
+  const { token, newPassword } = req.body;
 
-  if (!token || !newPassword || !confirmPassword) {
+  if (!token || !newPassword) {
     return next(
-      new ErrorResponse("Missing token, password or confirm password", 400)
+      new ErrorResponse("Missing token or password", 400)
     );
   }
 
@@ -417,6 +424,7 @@ const ResetPassword: RequestHandler = async (
     });
 
     res.status(200).json({
+      success: true,
       message: "Password Updated Successfully",
       user: {
         ...updatedUser,
@@ -477,6 +485,121 @@ const updateProfile = async (
   }
 };
 
+const resendVerificationOTP: RequestHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { email } = req.body;
+
+    // check if email is provided
+    if (!email) {
+      return next(new ErrorResponse("Email not present", 404));
+    }
+
+    // check if user exists
+    const user = await prisma.user.findUnique({
+      where: {
+        email: email,
+      },
+    });
+
+    if (!user) {
+      return next(new ErrorResponse("User not found", 404));
+    }
+
+    // create token
+    const activationToken = await createActivationToken({
+      name: user.name!,
+      email: user.email,
+      role: user.role,
+      phoneNumber: user.phoneNumber,
+    });
+
+    const activationCode = activationToken.activationCode;
+    const activation_Token = activationToken.token;
+
+    // send email
+    sendEmail(
+      email,
+      activationCode,
+      "Verify Email",
+      "verificationmail",
+      user.name!
+    );
+
+    res.status(200).json({
+      success: true,
+      message: "Verification OTP resent successfully",
+      activationToken: activation_Token,
+    });
+  } catch (error) {
+    return next(
+      new ErrorResponse(
+        `Something went wrong while resending verification OTP: ${error}`,
+        500
+      )
+    );
+  }
+};
+
+const resendForgotPasswordOTP: RequestHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { email } = req.body;
+
+    // check if user exists
+    if (!email) {
+      return next(new ErrorResponse("Email is not present", 400));
+    }
+
+    // check if user is verified
+    const userExist = await prisma.user.findUnique({
+      where: {
+        email: email
+      }
+    });
+    
+    if (!userExist) {
+      throw new ErrorResponse("User not found", 404);
+    }
+
+    // create token
+    const { token, otp } = await generateForgotPasswordToken({
+      name: userExist.name!,
+      email: userExist.email,
+      phoneNumber: userExist.phoneNumber,
+      role: userExist.role,
+    });
+
+    // send email
+    sendEmail(
+      userExist.email,
+      otp,
+      "Reset Password",
+      "forgotpassword",
+      userExist.name!
+    );
+
+    res.status(200).json({
+      success: true,
+      message: "Forgot password OTP resent successfully",
+      token,
+    });
+  } catch (error) {
+    return next(
+      new ErrorResponse(
+        `Something went wrong while resending forgot password OTP: ${error}`,
+        500
+      )
+    );
+  }
+};
+
 export {
   registerUser,
   activateUser,
@@ -487,4 +610,6 @@ export {
   verifyOTP,
   Logout,
   updateProfile,
+  resendVerificationOTP,
+  resendForgotPasswordOTP,
 };

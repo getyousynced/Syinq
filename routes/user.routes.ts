@@ -7,6 +7,8 @@ import {
   loginUser,
   Logout,
   registerUser,
+  resendForgotPasswordOTP,
+  resendVerificationOTP,
   ResetPassword,
   updateProfile,
   verifyOTP,
@@ -19,10 +21,13 @@ userRouter.post("/activateUser", activateUser);
 userRouter.post("/login", loginUser);
 userRouter.get("/getLoggedIn", verifyToken, loggedInUser);
 userRouter.post("/forgotpassword", ForgotPassword);
-userRouter.post("/resetpassword", ResetPassword);
+userRouter.put("/resetpassword", ResetPassword);
 userRouter.post("/logout", Logout);
+// To verify otp for reset password
 userRouter.post("/verifyOtp", verifyOTP);
 userRouter.patch("/updateUser", updateProfile);
+userRouter.post("/resendVeriifcationOtp", resendVerificationOTP);
+userRouter.post("/resendForgotPasswordOtp", resendForgotPasswordOTP);
 
 /*
 Register - done

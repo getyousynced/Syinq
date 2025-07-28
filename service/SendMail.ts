@@ -14,7 +14,7 @@ export const sendEmail = async (
     secure: false,
     auth: {
       user: "getyousync@gmail.com",
-      pass: "wfud kthn eeza khdr",
+      pass: "oguh mvjz aznp rarp",
     },
   });
 
