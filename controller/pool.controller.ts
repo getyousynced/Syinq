@@ -12,7 +12,7 @@ interface FindRideInput {
 interface OfferRideInput {
   originAddressId: String;
   destinationAddressId: String;
-  ypeOfRide: "Cab" | "Self";
+  typeOfRide: "Cab" | "Self";
   carId?: String; // only for "Self"
   askForFair: boolean;
   amount: number;
@@ -20,52 +20,59 @@ interface OfferRideInput {
 
 const offerRide = async (req: Request, res: Response, next: NextFunction) => {
   try {
+    const userId = req.user?.id;
+
+    if (!userId) {
+      return next(new ErrorResponse("User Id not present", 404));
+    }
+
     const {
-      userId,
-      originAddressId,
-      destinationAddressId,
-      typeOfRide,
-      carId,
-      askForFair,
-      amount,
+      originAddress,
+      originAddressLatitude,
+      originAddressLongitude,
+      originAddressPlaceId,
+      plannedTime,
+      destinationAddress,
+      destinationAddressLatitude,
+      destinationAddressLongitude,
+      destinationAddressPlaceId,
     } = req.body;
 
-    if (!userId || !originAddressId || !destinationAddressId || !typeOfRide) {
+    if (
+      !originAddress ||
+      originAddressLatitude === undefined ||
+      originAddressLatitude === null ||
+      originAddressLongitude === undefined ||
+      originAddressLongitude === null ||
+      !originAddressPlaceId ||
+      !plannedTime ||
+      !destinationAddress ||
+      destinationAddressLatitude === undefined ||
+      destinationAddressLatitude === null ||
+      destinationAddressLongitude === undefined ||
+      destinationAddressLongitude === null ||
+      !destinationAddressPlaceId
+    ) {
       return next(new ErrorResponse("Missing required fields.", 400));
     }
 
-    if (typeOfRide === "Self" && !carId) {
-      return next(
-        new ErrorResponse("carId is required for typeOfRide = Self.", 400)
-      );
-    }
-
-    console.log("originAddressId:", originAddressId);
-    const originAddressRecord = await prisma.address.findUnique({
-      where: { addressId: originAddressId },
-    });
-
-    if (!originAddressRecord) {
-      return next(
-        new ErrorResponse(
-          "Origin address not found. Please ensure the address exists.",
-          404
-        )
-      );
+    if (isNaN(Date.parse(plannedTime))) {
+      return next(new ErrorResponse("Invalid plannedTime format", 400));
     }
 
     try {
       const offerRide = await prisma.offerRide.create({
         data: {
-          user: { connect: { id: userId } },
-          originAddress: { connect: { addressId: originAddressId } },
-          destinationAddress: { connect: { addressId: destinationAddressId } },
-          askForFair: askForFair ?? false,
-          amount: askForFair ? amount : 0,
-          typeOfRide: typeOfRide,
-          ...(typeOfRide === "Self" && carId
-            ? { car: { connect: { carId } } }
-            : {}),
+          userId: userId,
+          originAddress,
+          originAddressLatitude,
+          originAddressLongitude,
+          originAddressPlaceId,
+          plannedTime: new Date(plannedTime),
+          destinationAddress,
+          destinationAddressLatitude,
+          destinationAddressLongitude,
+          destinationAddressPlaceId,
         },
       });
 
@@ -75,20 +82,103 @@ const offerRide = async (req: Request, res: Response, next: NextFunction) => {
         rideDetails: offerRide,
       });
     } catch (error) {
-      // console.log(error.message);
-
-      return next(new ErrorResponse("Something went wrong!", 400));
+      return next(new ErrorResponse(`Something went wrong!: ${error.message}`, 400));
     }
   } catch (error) {
-    return next(error);
+    return next(new ErrorResponse(error.message, 500));
   }
 };
 
 const findRide = async (req: Request, res: Response, next: NextFunction) => {
   try {
+    const {
+      originAddress,
+      originAddressLatitude,
+      originAddressLongitude,
+      originAddressPlaceId,
+      destinationAddress,
+      destinationAddressLatitude,
+      destinationAddressLongitude,
+      destinationAddressPlaceId,
+    } = req.body;
+
+    if (
+      !originAddress ||
+      originAddressLatitude === undefined ||
+      originAddressLatitude === null ||
+      originAddressLongitude === undefined ||
+      originAddressLongitude === null ||
+      !originAddressPlaceId ||
+      !destinationAddress ||
+      destinationAddressLatitude === undefined ||
+      destinationAddressLatitude === null ||
+      destinationAddressLongitude === undefined ||
+      destinationAddressLongitude === null ||
+      !destinationAddressPlaceId
+    ) {
+      return next(new ErrorResponse("Missing required fields.", 400));
+    }
+
+    const SEARCH_RADIUS_KM = 5;
+
+    // fetch all active offer rides
+    try {
+      const offerdRides = await prisma.offerRide.findMany();
+
+      // Filter rides based on proximity only
+      const matchedRides = offerdRides.filter((ride) => {
+        const originDist = getDistanceFromLatLonInKm(
+          originAddressLatitude,
+          originAddressLongitude,
+          ride.originAddressLatitude,
+          ride.originAddressLongitude
+        );
+
+        const destDist = getDistanceFromLatLonInKm(
+          destinationAddressLatitude,
+          destinationAddressLongitude,
+          ride.destinationAddressLatitude,
+          ride.destinationAddressLongitude
+        );
+
+        return originDist <= SEARCH_RADIUS_KM && destDist <= SEARCH_RADIUS_KM;
+      });
+
+      res.status(200).json({
+        success: true,
+        message: "Rides Featched",
+        count: matchedRides.length,
+        rides: matchedRides,
+      });
+    } catch (error) {
+      return next(new ErrorResponse("Something Went Wrong!", 500));
+    }
   } catch (error) {
-    console.log(error);
+    return next(new ErrorResponse(error.message, 500));
   }
 };
+
+function getDistanceFromLatLonInKm(
+  lat1: number,
+  lon1: number,
+  lat2: number,
+  lon2: number
+): number {
+  const R = 6371; // Earth radius in km
+  const dLat = deg2rad(lat2 - lat1);
+  const dLon = deg2rad(lon2 - lon1);
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(deg2rad(lat1)) *
+      Math.cos(deg2rad(lat2)) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+}
+
+function deg2rad(deg: number): number {
+  return deg * (Math.PI / 180);
+}
 
 export { findRide, offerRide };
