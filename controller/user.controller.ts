@@ -33,6 +33,7 @@ interface AuthRequest extends Request {
   user?: {
     id: string;
     email: string;
+    role: string;
   };
 }
 
@@ -281,7 +282,7 @@ const loginUser: RequestHandler = async (
         id: userExist.id,
         name: userExist.name,
         email: userExist.email,
-        role: userExist.role
+        role: userExist.role,
       },
     });
   } catch (error) {
@@ -363,13 +364,11 @@ const ForgotPassword: RequestHandler = async (
     userExist.name
   );
 
-  res
-    .status(200)
-    .json({
-      success: true,
-      message: "Your Forgot password request successful",
-      token: token,
-    });
+  res.status(200).json({
+    success: true,
+    message: "Your Forgot password request successful",
+    token: token,
+  });
 };
 
 const generateForgotPasswordToken = async (user: UserData) => {
@@ -403,9 +402,7 @@ const ResetPassword: RequestHandler = async (
   const { token, newPassword } = req.body;
 
   if (!token || !newPassword) {
-    return next(
-      new ErrorResponse("Missing token or password", 400)
-    );
+    return next(new ErrorResponse("Missing token or password", 400));
   }
 
   try {
@@ -560,10 +557,10 @@ const resendForgotPasswordOTP: RequestHandler = async (
     // check if user is verified
     const userExist = await prisma.user.findUnique({
       where: {
-        email: email
-      }
+        email: email,
+      },
     });
-    
+
     if (!userExist) {
       throw new ErrorResponse("User not found", 404);
     }

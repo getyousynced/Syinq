@@ -1,26 +1,110 @@
-import { AuthRequest } from './interface';
 import jwt from "jsonwebtoken";
 import { NextFunction, Response } from "express";
 import ErrorResponse from "../utils/ErroResponse";
+import { prisma } from '../server';
+import { AuthRequest } from "./interface";
 
+interface JwtPayload {
+  id: string;
+  email: string;
+  role: string;
+  iat?: number;
+  exp?: number;
+}
 
-
-export const verifyToken = (req: AuthRequest, res: Response, next: NextFunction) => {
-    const token = req.headers.authorization?.split(' ')[1];
-  
-    if (!token) {
-      return next(new ErrorResponse("No token provided", 401));
+declare global {
+  namespace Express {
+    interface Request {
+      user?: JwtPayload;
     }
-  
+  }
+}
+
+
+export const verifyToken = async (req: AuthRequest, res: Response, next: NextFunction) => {
+  try {
+    
+    let accessToken: string | undefined;
+    let refreshToken: string | undefined;
+
+    // Extract Access token from header
+    if(req.headers.authorization && req.headers.authorization.startsWith("Bearer ")){
+      accessToken = req.headers.authorization.split(" ")[1];
+    }
+
+    // Extract refresh token from X-Refresh-Token header
+    if (req.headers["x-refresh-token"]) {
+      refreshToken = req.headers["x-refresh-token"] as string;
+    }
+
+    if (!accessToken && refreshToken) {
+      try {
+        const decoded = jwt.verify(
+          refreshToken,
+          process.env.REFRESH_TOKEN_SECRET!
+        ) as JwtPayload;
+
+        const newAccessToken = jwt.sign(
+          {
+            id: decoded.id,
+            email: decoded.email,
+            role: decoded.role,
+          },
+          process.env.ACCESS_TOKEN_SECRET!,
+          {
+            expiresIn: "15m",
+          }
+        );
+
+        // Set user in request with role from refresh token
+        req.user = {
+          id: decoded.id,
+          email: decoded.email,
+          role: decoded.role,
+        };
+
+        // Send new access token in response header
+        res.setHeader("X-New-Access-Token", newAccessToken);
+
+        return next();
+      } catch (error) {
+        return next(new ErrorResponse("Invalid refresh token", 401));
+      }
+    }
+
+    if (!accessToken) {
+      return next(new ErrorResponse("No access token provided", 401));
+    }
+
     try {
-      const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET!) as jwt.JwtPayload;
-      req.user = {
-        id: decoded.id as string, 
-        email: decoded.email as string
-      };
+      // Verify the token
+      const decoded = jwt.verify(
+        accessToken,
+        process.env.ACCESS_TOKEN_SECRET!
+      ) as JwtPayload;
+
+      // Get user from database
+      const user = await prisma.user.findUnique({
+        where: { id: decoded.id },
+        select: {
+          id: true,
+          email: true,
+          name: true,
+          role: true,
+        },
+      });
+
+      if (!user) {
+        return next(new ErrorResponse("User not found", 401));
+      }
+
+      // Attach user to request object
+      req.user = user as any;
       next();
-    } catch (err) {
-      return next(new ErrorResponse("Invalid token", 401));
+    } catch (jwtError) {
+      return next(new ErrorResponse("Invalid or expired token", 401));
     }
-  };
+  } catch (error) {
+  }
+};
 
