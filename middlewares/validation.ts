@@ -24,6 +24,10 @@ const updateUserProfileSchema = z.object({
       }
     }, 'Invalid date format')
     .transform((str) => new Date(str))
+    .optional(),
+
+  profileImage: z.string()
+    .url('Profile image must be a valid URL')
     .optional()
 }).refine((data) => {
   const keys = Object.keys(data);
@@ -31,6 +35,7 @@ const updateUserProfileSchema = z.object({
 }, {
   message: "At least one field must be provided for update"
 });
+
 
 export const validateUpdateProfile = (req: AuthRequest, res: Response, next: NextFunction) => {
   try {
