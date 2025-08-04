@@ -1897,3 +1897,8 @@ yn@3.1.1:
   version "3.1.1"
   resolved "https://registry.npmjs.org/yn/-/yn-3.1.1.tgz"
   integrity sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==
+
+zod@^4.0.14:
+  version "4.0.14"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-4.0.14.tgz#cc3a0a21981e63e0f99c0f4f1decd92ec3be7e9f"
+  integrity sha512-nGFJTnJN6cM2v9kXL+SOBq3AtjQby3Mv5ySGFof5UGRHrRioSJ5iG680cYNjE/yWk671nROcpPj4hAS8nyLhSw==
