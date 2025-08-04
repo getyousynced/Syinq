@@ -1,10 +1,11 @@
 import express, { Express, json } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import userRouter from "./routes/user.routes";
 import { PrismaClient } from "@prisma/client";
 import cookieParser from "cookie-parser";
 import poolRouter from "./routes/pool.routes";
+import authRouter from "./routes/auth.routes";
+import userRouter from "./routes/user.route";
 
 dotenv.config({
   path: "./.env",
@@ -26,14 +27,15 @@ async function main() {
     })
   );
 
-  app.listen(PORT,() => {
+  app.listen(PORT, () => {
     console.log(`⚙️ Server is running at port: ${PORT}`);
   });
 
   //User Routes
-  app.use("/api/v1/users", userRouter);
+  app.use("/api/v1/auth", authRouter);
   // Pool Routes
   app.use("/api/v1/pool", poolRouter);
+  app.use("/api/v1/user", userRouter)
 }
 
 main()

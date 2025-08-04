@@ -26,6 +26,7 @@ model User {
   isActivated Boolean  @default(false)
   gender      String?
   password    String
+  dateOfBirth DateTime?
   suspended   Boolean  @default(false)
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
