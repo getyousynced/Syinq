@@ -1,17 +1,15 @@
-import Navbar from '@/components/Navbar';
-import './globals.css';
-import type { Metadata } from 'next';
-import { Roboto } from 'next/font/google';
-import Footer from '@/components/Footer';
-import { Toaster } from '@/components/ui/toaster';
-import { Toaster as Sonner } from '@/components/ui/sonner';
-import {
-  ClerkProvider,
-} from '@clerk/nextjs'
+import Navbar from "@/components/Navbar";
+import "./globals.css";
+import type { Metadata } from "next";
+import { Roboto } from "next/font/google";
+import Footer from "@/components/Footer";
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { Providers } from "./providers";
 
 const roboto = Roboto({
   weight: "400",
-  style: ["italic","normal"],
+  style: ["italic", "normal"],
   subsets: ["latin"],
 });
 
@@ -26,16 +24,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-        <ClerkProvider>
     <html lang="en">
       <body className={`${roboto.className} select-none`}>
-        <Navbar />
-        {children}
+        <Providers>
+          <Navbar />
+          {children}
         <Toaster />
         <Sonner />
         <Footer />
+        </Providers>
       </body>
     </html>
-        </ClerkProvider>
   );
 }
