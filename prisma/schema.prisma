@@ -1,0 +1,171 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  Student
+  Faculty
+}
+
+enum RideType {
+  Cab
+  Self_Car
+}
+
+model User {
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  userName     String    @unique
+  email        String    @unique
+  phoneNumber  String    @unique
+  googleId     String
+  gender       String?
+  profileImage String?
+  dateOfBirth  DateTime?
+  suspended    Boolean   @default(false)
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+  role         Role
+
+  // User owns many Cars
+  cars Car[] @relation("UserCars")
+
+  offerRide OfferRide[]
+
+  // Many-to-many with FindRide via join model
+  findRideRiders FindRideRider[]
+
+  // Messages sent by User
+  messages Message[]
+
+  // Many-to-many with chatRoom via join model
+  userChatRooms UserChatRoom[]
+}
+
+model Car {
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  typeOfRide   String
+  carNumber    String  @unique
+  carName      String
+  seatCapacity Int
+  ownerId      String? @db.ObjectId
+  owner        User?   @relation("UserCars", fields: [ownerId], references: [id])
+
+  // offerRides OfferRide[] @relation("CarOfferRides")
+}
+
+model OfferRide {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id])
+
+  originAddress          String
+  originAddressLatitude  Float
+  originAddressLongitude Float
+  originAddressPlaceId   String?
+
+  destinationAddress          String
+  destinationAddressLatitude  Float
+  destinationAddressLongitude Float
+  destinationAddressPlaceId   String?
+
+  plannedTime DateTime
+
+  // askForFair Boolean
+  // amount     Int
+  typeOfRide RideType @default(Cab)
+
+  // carId String? @db.ObjectId
+  // car   Car?    @relation("CarOfferRides", fields: [carId], references: [id])
+}
+
+model FindRide {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  originAddressId String   @db.ObjectId
+  originAddress   Address  @relation("FindrideOrigin", fields: [originAddressId], references: [id])
+  dateTime        DateTime
+
+  findRideRiders FindRideRider[]
+  stops          FindRideStop[]
+
+  seat_capacity Int
+  ask_for_fair  Boolean
+  amount_asked  Int
+}
+
+model FindRideStop {
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
+  findRideId String @db.ObjectId
+  addressId  String @db.ObjectId
+
+  findRide FindRide @relation(fields: [findRideId], references: [id])
+  address  Address  @relation(fields: [addressId], references: [id])
+
+  @@unique([findRideId, addressId])
+}
+
+model Address {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  street1   String
+  street2   String?
+  landmark  String?
+  pincode   Int
+  state     String
+  country   String
+  latitude  Float?
+  longitude Float?
+  placeId   String?
+
+  findRidesOrigin FindRide[]     @relation("FindrideOrigin")
+  findRideStops   FindRideStop[]
+}
+
+model FindRideRider {
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
+  findRideId String @db.ObjectId
+  userId     String @db.ObjectId
+
+  findRide FindRide @relation(fields: [findRideId], references: [id])
+  user     User     @relation(fields: [userId], references: [id])
+
+  @@unique([findRideId, userId])
+}
+
+model chatRoom {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Explicit many-to-many join for members
+  userChatRooms UserChatRoom[]
+
+  messages Message[]
+}
+
+model UserChatRoom {
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String @db.ObjectId
+  chatRoomId String @db.ObjectId
+
+  user     User     @relation(fields: [userId], references: [id])
+  chatRoom chatRoom @relation(fields: [chatRoomId], references: [id])
+
+  @@unique([userId, chatRoomId])
+}
+
+model Message {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  content   String
+  timestamp DateTime @default(now())
+
+  senderId String @db.ObjectId
+  sender   User   @relation(fields: [senderId], references: [id])
+
+  chatRoomId String   @db.ObjectId
+  chatRoom   chatRoom @relation(fields: [chatRoomId], references: [id])
+}
