@@ -1,10 +1,5 @@
+import { UpdateUserProfileData } from "../interface/user.interface";
 import { prisma } from "../server";
-
-export interface UpdateUserProfileData {
-  name?: string;
-  phoneNumber?: string;
-  dateOfBirth?: Date;
-}
 
 export class UserModel {
   static async updateProfile(id: string, data: UpdateUserProfileData) {

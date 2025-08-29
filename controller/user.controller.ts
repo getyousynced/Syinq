@@ -3,6 +3,27 @@ import ErrorResponse from "../utils/ErroResponse";
 import { AuthRequest } from "../middlewares/interface";
 import { UserService } from "../services/user.service";
 
+const addUserData: RequestHandler = async (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const userId = req.user?.id;
+
+    const userData = req.body;
+
+    if(!userId){
+      return new ErrorResponse("User not authenticated", 401);
+    }
+
+    
+
+  } catch (error) {
+    return new ErrorResponse(error.message, 500);
+  }
+}
+
 const updateUserProfile: RequestHandler = async (
   req: AuthRequest,
   res: Response,
@@ -27,7 +48,7 @@ const updateUserProfile: RequestHandler = async (
       data: updatedUser,
     });
   } catch (error) {
-    throw new ErrorResponse(error.message, 500);
+    return next(new ErrorResponse(error.message, 500));
   }
 };
 
@@ -47,7 +68,7 @@ const getProfile = async (req: AuthRequest, res: Response, next: NextFunction) =
     })
 
   } catch (error) {
-    throw new ErrorResponse(error.messgae, 500);
+    return next(new ErrorResponse(error.messgae, 500));
   }
 }
 
