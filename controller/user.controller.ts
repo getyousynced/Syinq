@@ -1,7 +1,7 @@
 import { NextFunction, Request, RequestHandler, Response } from "express";
 import ErrorResponse from "../utils/ErroResponse";
 import { AuthRequest } from "../middlewares/interface";
-import { UserService } from "../services/userService";
+import { UserService } from "../services/user.service";
 
 const updateUserProfile: RequestHandler = async (
   req: AuthRequest,

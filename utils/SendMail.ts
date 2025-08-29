@@ -3,10 +3,9 @@ import path from "path";
 
 export const sendEmail = async (
   to: string,
-  activationCode: string | undefined,
+  activationCode: number,
   subject: string,
-  template: string,
-  userName: string
+  template: string
 ) => {
   let transporter = createTransport({
     host: "smtp.gmail.com",
@@ -52,13 +51,14 @@ export const sendEmail = async (
       template,
       context: {
         activationCode,
-        userName,
       },
     };
 
     await transporter.sendMail(mailOptions);
+    console.log("Mail sended");
+    
     console.log("Email sent successfully!");
   } catch (error) {
-    console.error("Error sending email:", error);
+    console.log("Error sending email:", error);
   }
 };
