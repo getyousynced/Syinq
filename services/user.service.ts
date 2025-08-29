@@ -1,7 +1,9 @@
-import { UpdateUserProfileData, UserModel } from "../models/userModel";
+import { UpdateUserProfileData } from "../interface/user.interface";
+import { UserModel } from "../models/userModel";
 import ErrorResponse from "../utils/ErroResponse";
 
 export class UserService {
+
   static async updateUserProfile(userId: string, data: UpdateUserProfileData) {
     if (!userId) {
       throw new ErrorResponse("User ID is required", 400);

@@ -1,16 +1,9 @@
+import { Message } from './../node_modules/.prisma/client/index.d';
 import jwt from "jsonwebtoken";
 import { NextFunction, Response } from "express";
 import ErrorResponse from "../utils/ErroResponse";
 import { prisma } from '../server';
-import { AuthRequest } from "./interface";
-
-interface JwtPayload {
-  id: string;
-  email: string;
-  role: string;
-  iat?: number;
-  exp?: number;
-}
+import { AuthRequest, JwtPayload } from "../interface/auth.interace";
 
 declare global {
   namespace Express {
@@ -41,16 +34,16 @@ export const verifyToken = async (req: AuthRequest, res: Response, next: NextFun
       try {
         const decoded = jwt.verify(
           refreshToken,
-          process.env.REFRESH_TOKEN_SECRET!
+          process.env.JWT_REFRESH_SECRET!
         ) as JwtPayload;
 
         const newAccessToken = jwt.sign(
           {
-            id: decoded.id,
+            userId: decoded.userId,
             email: decoded.email,
             role: decoded.role,
           },
-          process.env.ACCESS_TOKEN_SECRET!,
+          process.env.JWT_ACCESS_SECRET!,
           {
             expiresIn: "15m",
           }
@@ -58,7 +51,7 @@ export const verifyToken = async (req: AuthRequest, res: Response, next: NextFun
 
         // Set user in request with role from refresh token
         req.user = {
-          id: decoded.id,
+          userId: decoded.userId,
           email: decoded.email,
           role: decoded.role,
         };
@@ -80,12 +73,12 @@ export const verifyToken = async (req: AuthRequest, res: Response, next: NextFun
       // Verify the token
       const decoded = jwt.verify(
         accessToken,
-        process.env.ACCESS_TOKEN_SECRET!
+        process.env.JWT_ACCESS_SECRET!
       ) as JwtPayload;
 
       // Get user from database
       const user = await prisma.user.findUnique({
-        where: { id: decoded.id },
+        where: { id: decoded.userId },
         select: {
           id: true,
           email: true,
