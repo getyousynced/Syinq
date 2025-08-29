@@ -42,17 +42,12 @@ export const validateUpdateProfile = (req: AuthRequest, res: Response, next: Nex
     const result = updateUserProfileSchema.safeParse(req.body);
     
     if (!result.success) {
-      const errorMessages = result.error.errors.map(err => {
-        const path = err.path.length > 0 ? err.path.join('.') : 'root';
-        return `${path}: ${err.message}`;
-      });
-      
-      return next(new ErrorResponse(`Validation failed - ${errorMessages.join(', ')}`, 400));
+      return next(new ErrorResponse(`Validation failed`, 500));
     }
     req.body = result.data;
     next();
     
   } catch (error) {
-    return next(new ErrorResponse('Validation error occurred', 400));
+    return next(new ErrorResponse('Validation error occurred', 500));
   }
 };
