@@ -15,15 +15,18 @@ export class UserModel {
         id: true,
         name: true,
         email: true,
+        college: true,
         phoneNumber: true,
         dateOfBirth: true,
         profileImage: true,
         gender: true,
+        year: true,
+        course: true,
         role: true,
         created_at: true,
         updated_at: true,
       },
-    });
+    }); 
   }
 
   static async findById(id: string) {
