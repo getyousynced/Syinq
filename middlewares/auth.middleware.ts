@@ -1,22 +1,11 @@
-import { Message } from './../node_modules/.prisma/client/index.d';
 import jwt from "jsonwebtoken";
 import { NextFunction, Response } from "express";
 import ErrorResponse from "../utils/ErroResponse";
 import { prisma } from '../server';
 import { AuthRequest, JwtPayload } from "../interface/auth.interace";
 
-declare global {
-  namespace Express {
-    interface Request {
-      user?: JwtPayload;
-    }
-  }
-}
-
-
 export const verifyToken = async (req: AuthRequest, res: Response, next: NextFunction) => {
   try {
-    
     let accessToken: string | undefined;
     let refreshToken: string | undefined;
 
@@ -25,11 +14,12 @@ export const verifyToken = async (req: AuthRequest, res: Response, next: NextFun
       accessToken = req.headers.authorization.split(" ")[1];
     }
 
-    // Extract refresh token from X-Refresh-Token header
+    // Extract refresh token from x-refresh-token header (case insensitive)
     if (req.headers["x-refresh-token"]) {
       refreshToken = req.headers["x-refresh-token"] as string;
     }
 
+    // Handle refresh token flow if no access token
     if (!accessToken && refreshToken) {
       try {
         const decoded = jwt.verify(
@@ -49,7 +39,7 @@ export const verifyToken = async (req: AuthRequest, res: Response, next: NextFun
           }
         );
 
-        // Set user in request with role from refresh token
+        // Set user in request
         req.user = {
           userId: decoded.userId,
           email: decoded.email,
@@ -70,20 +60,21 @@ export const verifyToken = async (req: AuthRequest, res: Response, next: NextFun
     }
 
     try {
-      // Verify the token
+      // Verify the access token
       const decoded = jwt.verify(
         accessToken,
         process.env.JWT_ACCESS_SECRET!
       ) as JwtPayload;
 
-      // Get user from database
+      // Get user from database to ensure they still exist
       const user = await prisma.user.findUnique({
         where: { id: decoded.userId },
         select: {
           id: true,
           email: true,
-          name: true,
           role: true,
+          isActivated: true,
+          suspended: true,
         },
       });
 
@@ -91,13 +82,26 @@ export const verifyToken = async (req: AuthRequest, res: Response, next: NextFun
         return next(new ErrorResponse("User not found", 401));
       }
 
-      // Attach user to request object
-      req.user = user as any;
+      if (user.suspended) {
+        return next(new ErrorResponse("Account suspended", 403));
+      }
+
+      if (!user.isActivated) {
+        return next(new ErrorResponse("Account not activated", 403));
+      }
+
+      // Attach user to request object with the format expected by controllers
+      req.user = {
+        userId: user.id,
+        email: user.email,
+        role: user.role,
+      };
+
       next();
-    } catch (jwtError) {
+    } catch (jwtError: any) {
       return next(new ErrorResponse("Invalid or expired token", 401));
     }
-  } catch (error) {
+  } catch (error: any) {
+    return next(new ErrorResponse("Authentication failed", 500));
   }
 };
-

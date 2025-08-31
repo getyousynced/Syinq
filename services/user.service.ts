@@ -1,5 +1,5 @@
 import { UpdateUserProfileData } from "../interface/user.interface";
-import { UserModel } from "../models/userModel";
+import { UserModel } from "../models/user.model";
 import ErrorResponse from "../utils/ErroResponse";
 
 export class UserService {

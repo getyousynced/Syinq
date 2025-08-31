@@ -21,7 +21,7 @@ async function main() {
   app.use(cookieParser());
   app.use(
     cors({
-      origin: [process.env.CORS_ORIGIN || "exp://192.168.118.156:8081"],
+      origin: [process.env.CORS_ORIGIN || "exp://192.168.1.10:8081"],
       methods: ["GET", "POST", "PUT", "DELETE"],
       credentials: true,
     })

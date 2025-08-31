@@ -29,16 +29,16 @@ export class AuthService {
         403
       );
     }
-    
+
     const { otp, token: activation_Token } = this.createOtp(user);
-    
-    if(isNewUser){
+
+    if (isNewUser) {
       sendEmail(email, otp, "Verify Email", "verificationmail");
     } else {
       sendEmail(email, otp, "Welcome Login", "verificationmail");
     }
 
-     return { user, isNewUser, activation_Token };
+    return { user, isNewUser, activation_Token };
   }
 
   static createOtp(user: User) {
