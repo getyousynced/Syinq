@@ -26,7 +26,7 @@ export class UserModel {
         created_at: true,
         updated_at: true,
       },
-    }); 
+    });
   }
 
   static async findById(id: string) {
@@ -54,6 +54,14 @@ export class UserModel {
       where: {
         phoneNumber,
         ...(excludeUserId && { NOT: { id: excludeUserId } }),
+      },
+    });
+  }
+
+  static async deleteUserById(userId: string) {
+    return await prisma.user.delete({
+      where: {
+        id: userId,
       },
     });
   }
