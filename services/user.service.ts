@@ -3,7 +3,6 @@ import { UserModel } from "../models/user.model";
 import ErrorResponse from "../utils/ErroResponse";
 
 export class UserService {
-
   static async updateUserProfile(userId: string, data: UpdateUserProfileData) {
     if (!userId) {
       throw new ErrorResponse("User ID is required", 400);
@@ -75,5 +74,21 @@ export class UserService {
     }
 
     return user;
+  }
+
+  static async deleteUserProfile(userId: string) {
+    if (!userId) {
+      throw new ErrorResponse("User ID is required", 400);
+    }
+
+    const user = await UserModel.findById(userId);
+
+    if (!user) {
+      throw new ErrorResponse("User not found", 404);
+    }
+
+    const deletedUser = await UserModel.deleteUserById(userId);
+
+    return deletedUser;
   }
 }

@@ -1,10 +1,11 @@
 import { Router } from "express";
 import { verifyToken } from "../middlewares/auth.middleware";
-import { getProfile, updateUserProfile } from "../controller/user.controller";
+import { deleteUserProfile, getProfile, updateUserProfile } from "../controller/user.controller";
 
 const userRouter = Router();
 
 userRouter.put("/profile", verifyToken, updateUserProfile);
-userRouter.get('/profile', verifyToken, getProfile);
+userRouter.get("/profile", verifyToken, getProfile);
+userRouter.delete("/delete", verifyToken, deleteUserProfile);
 
-export default userRouter
+export default userRouter;

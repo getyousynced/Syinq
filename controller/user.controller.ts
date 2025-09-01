@@ -35,10 +35,7 @@ const getProfile = async (req: AuthRequest, res: Response, next: NextFunction) =
   try {
     const userId = req.user?.userId;
     
-    console.log("Get profile request for user:", userId);
-    
     if (!userId) {
-      console.error("No userId in request.user:", req.user);
       return next(new ErrorResponse('User not authenticated', 401));
     }
     
@@ -49,9 +46,28 @@ const getProfile = async (req: AuthRequest, res: Response, next: NextFunction) =
       data: user
     });
   } catch (error: any) {
-    console.error("Get profile error:", error);
     return next(new ErrorResponse(error.message, 500));
   }
 }
 
-export { updateUserProfile, getProfile };
+const deleteUserProfile = async (req: AuthRequest, res: Response, next: NextFunction) => {
+  try {
+    const userId = req.user?.userId;
+
+    if(!userId){
+      return next(new ErrorResponse('User not authenticated', 401));
+    }
+
+    const userDeleted = await UserService.deleteUserProfile(userId);
+
+    res.status(200).json({
+      success: true,
+      message: 'User profile deleted successfully',
+      data: userDeleted
+    });
+  } catch (error) {
+    return next(new ErrorResponse(error.message, 500));
+  }
+}
+
+export { updateUserProfile, getProfile, deleteUserProfile };
