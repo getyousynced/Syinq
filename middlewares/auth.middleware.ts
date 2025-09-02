@@ -1,16 +1,24 @@
 import jwt from "jsonwebtoken";
 import { NextFunction, Response } from "express";
 import ErrorResponse from "../utils/ErroResponse";
-import { prisma } from '../server';
+import { prisma } from "../server";
 import { AuthRequest, JwtPayload } from "../interface/auth.interace";
+import { AuthService } from "../services/auth.service";
 
-export const verifyToken = async (req: AuthRequest, res: Response, next: NextFunction) => {
+export const verifyToken = async (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     let accessToken: string | undefined;
     let refreshToken: string | undefined;
 
     // Extract Access token from header
-    if(req.headers.authorization && req.headers.authorization.startsWith("Bearer ")){
+    if (
+      req.headers.authorization &&
+      req.headers.authorization.startsWith("Bearer ")
+    ) {
       accessToken = req.headers.authorization.split(" ")[1];
     }
 
@@ -22,6 +30,10 @@ export const verifyToken = async (req: AuthRequest, res: Response, next: NextFun
     // Handle refresh token flow if no access token
     if (!accessToken && refreshToken) {
       try {
+        // Check if refresh token is blacklisted
+        if (AuthService.isTokenBlacklisted(refreshToken)) {
+          return next(new ErrorResponse("Token has been revoked", 401));
+        }
         const decoded = jwt.verify(
           refreshToken,
           process.env.JWT_REFRESH_SECRET!
@@ -32,6 +44,7 @@ export const verifyToken = async (req: AuthRequest, res: Response, next: NextFun
             userId: decoded.userId,
             email: decoded.email,
             role: decoded.role,
+            jti: `${decoded.userId}-${Date.now()}`
           },
           process.env.JWT_ACCESS_SECRET!,
           {
@@ -60,6 +73,12 @@ export const verifyToken = async (req: AuthRequest, res: Response, next: NextFun
     }
 
     try {
+      
+      // Check if access token is blacklisted
+      if (AuthService.isTokenBlacklisted(accessToken)) {
+        return next(new ErrorResponse("Token has been revoked", 401));
+      }
+      
       // Verify the access token
       const decoded = jwt.verify(
         accessToken,

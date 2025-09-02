@@ -82,4 +82,31 @@ const verifyOtp: RequestHandler = async (req: Request, res: Response, next: Next
   }
 };
 
-export { authenticateByEmail, verifyOtp };
+const logout: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    // Since you're not storing tokens in DB, we'll use token blacklisting
+    const accessToken = req.headers.authorization?.split(" ")[1];
+    const refreshToken = req.headers["x-refresh-token"] as string;
+
+    if (!accessToken && !refreshToken) {
+      return next(new ErrorResponse("No tokens provided", 400));
+    }
+
+    // Add tokens to blacklist (you'll need to implement this)
+    if (accessToken) {
+      await AuthService.blacklistToken(accessToken);
+    }
+    if (refreshToken) {
+      await AuthService.blacklistToken(refreshToken);
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Logged out successfully"
+    });
+  } catch (error) {
+    return next(new ErrorResponse(error.message, 500));
+  }
+};
+
+export { authenticateByEmail, verifyOtp, logout };

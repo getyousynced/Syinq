@@ -13,6 +13,10 @@ interface User {
 
 // AuthService.ts
 export class AuthService {
+  // TODO: USE REDIS FOR PRODUCTION
+  // Simple in-memory blacklist
+  private static blacklistedTokens = new Set<string>();
+
   static async handleEmailAuth(email: string) {
     if (!email) throw new ErrorResponse("Email is not present", 404);
 
@@ -56,6 +60,7 @@ export class AuthService {
         email: user.email,
         role: user.role,
         isActivated: user.isActivated,
+        jti: `${user.id}-${Date.now()}`,
       },
       process.env.JWT_ACCESS_SECRET!,
       { expiresIn: process.env.JWT_ACCESS_EXPIRES_IN! } as jwt.SignOptions
@@ -64,7 +69,12 @@ export class AuthService {
 
   static generateRefreshToken(user: User) {
     return jwt.sign(
-      { userId: user.id, email: user.email, role: user.role },
+      {
+        userId: user.id,
+        email: user.email,
+        role: user.role,
+        jti: `${user.id}-${Date.now()}-refresh`,
+      },
       process.env.JWT_REFRESH_SECRET!,
       { expiresIn: process.env.JWT_REFRESH_EXPIRES_IN! } as jwt.SignOptions
     );
@@ -98,5 +108,19 @@ export class AuthService {
       refreshToken: this.generateRefreshToken(updatedUser),
       wasActivated,
     };
+  }
+
+  static async blacklistToken(token: string) {
+    const decoded = jwt.decode(token) as any;
+    const tokenId = decoded?.jti || token;
+
+    this.blacklistedTokens.add(tokenId);
+    return true;
+  }
+
+  static isTokenBlacklisted(token: string): boolean {
+    const decoded = jwt.decode(token) as any;
+    const tokenId = decoded?.jti || token;
+    return this.blacklistedTokens.has(tokenId);
   }
 }
