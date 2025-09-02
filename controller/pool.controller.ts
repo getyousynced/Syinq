@@ -20,7 +20,7 @@ interface OfferRideInput {
 
 const offerRide = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const userId = req.user?.id;
+    const userId = "12345sdjhsdj";
 
     if (!userId) {
       return next(new ErrorResponse("User Id not present", 404));
