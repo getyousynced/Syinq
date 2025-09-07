@@ -44,12 +44,13 @@ export const verifyToken = async (
             userId: decoded.userId,
             email: decoded.email,
             role: decoded.role,
-            jti: `${decoded.userId}-${Date.now()}`
+            isActivated: decoded.isActivated,
+            jti: `${decoded.userId}-${Date.now()}`,
           },
           process.env.JWT_ACCESS_SECRET!,
           {
-            expiresIn: "15m",
-          }
+            expiresIn: process.env.JWT_ACCESS_EXPIRES_IN!,
+          } as jwt.SignOptions
         );
 
         // Set user in request
@@ -78,7 +79,7 @@ export const verifyToken = async (
       if (AuthService.isTokenBlacklisted(accessToken)) {
         return next(new ErrorResponse("Token has been revoked", 401));
       }
-      
+
       // Verify the access token
       const decoded = jwt.verify(
         accessToken,
