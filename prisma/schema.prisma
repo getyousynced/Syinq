@@ -19,25 +19,18 @@ enum RideType {
 }
 
 model User {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  name        String
-  email       String   @unique
-  phoneNumber String?   @unique
-  isActivated Boolean  @default(false)
-  gender      String?
-  profileImage String?
-  dateOfBirth DateTime?
-  lastLogin   DateTime?
-  suspended   Boolean  @default(false)
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  email        String    @unique
+  isActivated  Boolean   @default(false)
+  lastLogin    DateTime?
+  suspended    Boolean   @default(false)
 
-  // College related fields
-  college     String?
-  course      String?
-  year        Int?
-  
-  created_at  DateTime @default(now())
-  updated_at  DateTime @updatedAt
-  role        Role
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  role       Role
+
+  profile     UserProfile? 
+  collegeInfo CollegeInfo?
 
   // User owns many Cars
   cars Car[] @relation("UserCars")
@@ -54,6 +47,36 @@ model User {
   userChatRooms UserChatRoom[]
 }
 
+model UserProfile {
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId       String    @unique @db.ObjectId
+  name         String
+  phoneNumber  String   @unique
+  gender       String
+  profileImage String?
+  dateOfBirth  DateTime
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+
+  // Relationship back to User
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model CollegeInfo {
+  id                 String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId             String  @unique @db.ObjectId
+  email              String? @unique
+  verifyMail         Boolean @default(false)
+  college            String
+  course             String
+  year               Int
+  created_at         DateTime @default(now())
+  updated_at         DateTime @updatedAt
+
+  // Relationship back to User
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
 model Car {
   id           String  @id @default(auto()) @map("_id") @db.ObjectId
   typeOfRide   String
@@ -67,9 +90,9 @@ model Car {
 }
 
 model OfferRide {
-  id                     String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId                 String  @db.ObjectId
-  user                   User    @relation(fields: [userId], references: [id])
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id])
 
   originAddress          String
   originAddressLatitude  Float

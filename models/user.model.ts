@@ -1,32 +1,103 @@
-import { UpdateUserProfileData } from "../interface/user.interface";
+import { UpdateUserCompleteProfileData } from "../interface/user.interface";
 import { prisma } from "../server";
 
 export class UserModel {
-  static async updateProfile(id: string, data: UpdateUserProfileData) {
-    return await prisma.user.update({
-      where: {
-        id,
-      },
-      data: {
-        ...data,
-        updated_at: new Date(),
-      },
-      select: {
-        id: true,
-        name: true,
-        email: true,
-        college: true,
-        phoneNumber: true,
-        dateOfBirth: true,
-        profileImage: true,
-        gender: true,
-        year: true,
-        course: true,
-        role: true,
-        created_at: true,
-        updated_at: true,
-      },
+  static async updateProfile(
+    userId: string,
+    data: UpdateUserCompleteProfileData
+  ) {
+    const profileData = {
+      ...(data.name && { name: data.name }),
+      ...(data.phoneNumber && { phoneNumber: data.phoneNumber }),
+      ...(data.gender && { gender: data.gender }),
+      ...(data.profileImage !== undefined && {
+        profileImage: data.profileImage,
+      }),
+      ...(data.dateOfBirth && { dateOfBirth: data.dateOfBirth }),
+    };
+
+    // Only include fields that are actually provided and have values
+    const collegeData: any = {};
+    if (data.collegeEmail) collegeData.email = data.collegeEmail;
+    if (data.verifyMail !== undefined) collegeData.verifyMail = data.verifyMail;
+    if (data.college) collegeData.college = data.college;
+    if (data.course) collegeData.course = data.course;
+    if (data.year !== undefined) collegeData.year = data.year;
+
+    const result = await prisma.$transaction(async (tx) => {
+      let updatedProfile = null;
+      let updatedCollegeInfo = null;
+
+      // Handle profile data
+      if (Object.keys(profileData).length > 0) {
+        updatedProfile = await tx.userProfile.upsert({
+          where: { userId },
+          create: {
+            userId,
+            name: profileData.name || "Unknown",
+            phoneNumber:
+              profileData.phoneNumber || `temp_${Date.now()}_${Math.random()}`,
+            gender: profileData.gender || "Not specified",
+            dateOfBirth: profileData.dateOfBirth || new Date("2000-01-01"),
+            profileImage: profileData.profileImage,
+          },
+          update: {
+            ...profileData,
+            updated_at: new Date(),
+          },
+        });
+      }
+
+      // Only create/update college info if meaningful data exists
+      const hasMeaningfulCollegeData =
+        data.college ||
+        data.course ||
+        data.year !== undefined ||
+        data.collegeEmail;
+
+      if (hasMeaningfulCollegeData) {
+        const existingCollegeInfo = await tx.collegeInfo.findUnique({
+          where: { userId },
+        });
+
+        if (existingCollegeInfo) {
+          // Update existing college info
+          updatedCollegeInfo = await tx.collegeInfo.update({
+            where: { userId },
+            data: {
+              ...collegeData,
+              updated_at: new Date(),
+            },
+          });
+        } else {
+          // Create new college info with only meaningful data
+          const createData: any = { userId };
+
+          // Only add fields that are explicitly provided
+          if (data.college) createData.college = data.college;
+          if (data.course) createData.course = data.course;
+          if (data.year !== undefined) createData.year = data.year;
+          if (data.collegeEmail) createData.email = data.collegeEmail;
+          if (data.verifyMail !== undefined)
+            createData.verifyMail = data.verifyMail;
+
+          // Provide defaults ONLY for required fields that aren't provided
+          if (!createData.college) createData.college = "";
+          if (!createData.course) createData.course = "";
+          if (createData.year === undefined) createData.year = 1;
+
+          // NEVER set email field if not provided - let it be undefined/missing
+
+          updatedCollegeInfo = await tx.collegeInfo.create({
+            data: createData,
+          });
+        }
+      }
+
+      return { updatedProfile, updatedCollegeInfo };
     });
+
+    return await this.findById(userId);
   }
 
   static async findById(id: string) {
@@ -36,24 +107,36 @@ export class UserModel {
       },
       select: {
         id: true,
-        name: true,
         email: true,
-        phoneNumber: true,
-        dateOfBirth: true,
-        profileImage: true,
-        college: true,
-        course: true,
-        year: true,
-        gender: true,
         role: true,
         isActivated: true,
         suspended: true,
+        created_at: true,
+        updated_at: true,
+        profile: {
+          select: {
+            name: true,
+            phoneNumber: true,
+            gender: true,
+            profileImage: true,
+            dateOfBirth: true,
+          },
+        },
+        collegeInfo: {
+          select: {
+            email: true,
+            college: true,
+            course: true,
+            year: true,
+            verifyMail: true,
+          },
+        },
       },
     });
   }
 
   static async findByPhoneNumber(phoneNumber: string, excludeUserId?: string) {
-    return await prisma.user.findUnique({
+    return await prisma.userProfile.findUnique({
       where: {
         phoneNumber,
         ...(excludeUserId && { NOT: { id: excludeUserId } }),
@@ -65,6 +148,62 @@ export class UserModel {
     return await prisma.user.delete({
       where: {
         id: userId,
+      },
+    });
+  }
+
+  static async addCollegeEmail(userId: string, email: string) {
+    return await prisma.collegeInfo.update({
+      where: {
+        userId: userId,
+      },
+      data: {
+        email: email,
+      },
+    });
+  }
+
+  static async findByEmail(email: string) {
+    return await prisma.collegeInfo.findUnique({
+      where: {
+        email: email,
+      },
+    });
+  }
+
+  static async verifyMail(email: string) {
+    return await prisma.collegeInfo.update({
+      where: {
+        email: email,
+      },
+      data: {
+        verifyMail: true,
+      },
+    });
+  }
+
+  static async findByCollegeEmail(email: string, excludeUserId?: string) {
+    const collegeInfo = await prisma.collegeInfo.findUnique({
+      where: { email },
+      include: { user: true },
+    });
+
+    // If found but it's the same user, return null (no conflict)
+    if (collegeInfo && excludeUserId && collegeInfo.userId === excludeUserId) {
+      return null;
+    }
+
+    return collegeInfo;
+  }
+
+  static async getCollegeEmail(userId: string) {
+    return await prisma.collegeInfo.findUnique({
+      where: {
+        userId: userId,
+      },
+      select: {
+        email: true,
+        verifyMail: true,
       },
     });
   }

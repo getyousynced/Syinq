@@ -27,7 +27,6 @@ export class AuthModel {
             data: {
                 email,
                 isActivated: false,
-                name: "",
                 suspended: false,
                 role: "Student",
             }

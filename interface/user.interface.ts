@@ -1,11 +1,15 @@
-export interface UpdateUserProfileData {
-  name: string;
-  phoneNumber: string;
-  gender: "Male" | "Female" | "Other";
-  dateOfBirth: Date;
+export interface UpdateUserCompleteProfileData {
+  // UserProfile fields
+  name?: string;
+  phoneNumber?: string;
+  gender?: string;
+  profileImage?: string;
+  dateOfBirth?: Date;
 
-  // College related
-  college: string;
-  course: string;
-  year: number;
+  // CollegeInfo fields
+  collegeEmail?: string;
+  verifyMail?: boolean;
+  college?: string;
+  course?: string;
+  year?: number;
 }
