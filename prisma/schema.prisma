@@ -14,8 +14,9 @@ enum Role {
 }
 
 enum RideType {
-  Cab
-  Self_Car
+  CAB
+  BIKE
+  CAR
 }
 
 model User {
@@ -106,9 +107,9 @@ model OfferRide {
 
   plannedTime DateTime
 
-  // askForFair Boolean
-  // amount     Int
-  typeOfRide RideType @default(Cab)
+  rideType RideType
+  seats        Int
+  VehicleNumber String?
 
   // carId String? @db.ObjectId
   // car   Car?    @relation("CarOfferRides", fields: [carId], references: [id])

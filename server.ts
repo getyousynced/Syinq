@@ -3,9 +3,9 @@ import dotenv from "dotenv";
 import cors from "cors";
 import { PrismaClient } from "@prisma/client";
 import cookieParser from "cookie-parser";
-import poolRouter from "./routes/pool.routes";
 import authRouter from "./routes/auth.routes";
 import userRouter from "./routes/user.route";
+import offerRouter from "./routes/offer.routes";
 
 dotenv.config({
   path: "./.env",
@@ -31,11 +31,10 @@ async function main() {
     console.log(`⚙️ Server is running at port: ${PORT}`);
   });
 
-  //User Routes
+  //Routes
   app.use("/api/v1/auth", authRouter);
-  // Pool Routes
-  app.use("/api/v1/pool", poolRouter);
   app.use("/api/v1/user", userRouter)
+  app.use("/api/v1/offer", offerRouter);
 }
 
 main()
