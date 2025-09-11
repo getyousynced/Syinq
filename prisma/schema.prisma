@@ -20,17 +20,17 @@ enum RideType {
 }
 
 model User {
-  id           String    @id @default(auto()) @map("_id") @db.ObjectId
-  email        String    @unique
-  isActivated  Boolean   @default(false)
-  lastLogin    DateTime?
-  suspended    Boolean   @default(false)
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  email       String    @unique
+  isActivated Boolean   @default(false)
+  lastLogin   DateTime?
+  suspended   Boolean   @default(false)
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
   role       Role
 
-  profile     UserProfile? 
+  profile     UserProfile?
   collegeInfo CollegeInfo?
 
   // User owns many Cars
@@ -49,30 +49,34 @@ model User {
 }
 
 model UserProfile {
-  id           String    @id @default(auto()) @map("_id") @db.ObjectId
-  userId       String    @unique @db.ObjectId
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId       String   @unique @db.ObjectId
   name         String
   phoneNumber  String   @unique
   gender       String
   profileImage String?
   dateOfBirth  DateTime
-  created_at   DateTime  @default(now())
-  updated_at   DateTime  @updatedAt
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+
+  // Add vehicle information to profile
+  carNumber  String?
+  bikeNumber String?
 
   // Relationship back to User
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model CollegeInfo {
-  id                 String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId             String  @unique @db.ObjectId
-  email              String? @unique
-  verifyMail         Boolean @default(false)
-  college            String
-  course             String
-  year               Int
-  created_at         DateTime @default(now())
-  updated_at         DateTime @updatedAt
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String   @unique @db.ObjectId
+  email      String?  @unique
+  verifyMail Boolean  @default(false)
+  college    String
+  course     String
+  year       Int
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 
   // Relationship back to User
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -107,8 +111,8 @@ model OfferRide {
 
   plannedTime DateTime
 
-  rideType RideType
-  seats        Int
+  rideType      RideType
+  seats         Int
   VehicleNumber String?
 
   // carId String? @db.ObjectId

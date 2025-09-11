@@ -40,35 +40,12 @@ export const publishRide = async (
       );
     }
 
-     // Conditional vehicle number validation
-    if (rideType !== RideType.CAB) {
-      if (!vehicleNumber || !vehicleNumber.trim()) {
-        return next(
-          new ErrorResponse(
-            `Vehicle number is required for ${rideType} rides`, 
-            400
-          )
-        );
-      }
-    } else {
-      // For CAB rides, vehicle number should not be provided
-      if (vehicleNumber && vehicleNumber.trim()) {
-        return next(
-          new ErrorResponse(
-            "Vehicle number should not be provided for CAB rides", 
-            400
-          )
-        );
-      }
-    }
-
     // Validate seats is a number
     const seatsNumber = parseInt(seats);
     if (isNaN(seatsNumber)) {
       return next(new ErrorResponse("Seats must be a valid number", 400));
     }
 
-    // Call service to handle business logic
     const newRide = await OfferRideService.publishRide({
       userId,
       currentLocation,
@@ -184,8 +161,6 @@ export const deleteRide = async (
   }
 };
 
-// Add this method to your existing controller
-
 export const updateRide = async (
   req: AuthRequest,
   res: Response,
@@ -227,30 +202,6 @@ export const updateRide = async (
       );
     }
 
-    // Validate vehicleNumber if provided
-    if (vehicleNumber && !vehicleNumber.trim()) {
-      return next(new ErrorResponse("Vehicle number cannot be empty", 400));
-    }
-
-     // Conditional vehicle number validation for updates
-    if (rideType) {
-      if (rideType !== RideType.CAB && vehicleNumber !== undefined && !vehicleNumber?.trim()) {
-        return next(
-          new ErrorResponse(
-            `Vehicle number is required for ${rideType} rides`, 
-            400
-          )
-        );
-      } else if (rideType === RideType.CAB && vehicleNumber && vehicleNumber.trim()) {
-        return next(
-          new ErrorResponse(
-            "Vehicle number should not be provided for CAB rides", 
-            400
-          )
-        );
-      }
-    }
-
     // Validate seats if provided
     let seatsNumber: number | undefined;
     if (seats !== undefined) {
@@ -260,7 +211,6 @@ export const updateRide = async (
       }
     }
 
-    // Call service to handle business logic
     const updatedRide = await OfferRideService.updateRide(id, userId, {
       currentLocation,
       destinationLocation,
@@ -268,7 +218,7 @@ export const updateRide = async (
       date,
       seats: seatsNumber,
       rideType,
-      vehicleNumber: vehicleNumber.trim() || undefined,
+      vehicleNumber: vehicleNumber?.trim(),
     });
 
     res.status(200).json({

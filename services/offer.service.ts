@@ -24,8 +24,15 @@ export class OfferRideService {
    */
   static async publishRide(rideData: PublishRideRequest) {
     try {
-      // Validate user can publish ride
-      await this.validateUserForPublishing(rideData.userId);
+      // Validate user can publish ride and get user data
+      const user = await this.validateUserForPublishing(rideData.userId);
+
+      // Auto-assign vehicle number based on ride type and profile
+      const finalVehicleNumber = await this.resolveVehicleNumber(
+        user,
+        rideData.rideType,
+        rideData.vehicleNumber
+      );
 
       // Validate and process date/time
       const plannedDateTime = this.processDateTime(
@@ -39,21 +46,14 @@ export class OfferRideService {
         rideData.destinationLocation
       );
 
-      // Validate seats
       // Validate seats with ride type
       this.validateSeatsWithRideType(rideData.seats, rideData.rideType);
 
-      // Validate ride type and vehicle number together
-      this.validateRideTypeAndVehicle(
-        rideData.rideType,
-        rideData.vehicleNumber || undefined
-      );
-
       // Check vehicle number uniqueness only if provided
-      if (rideData.vehicleNumber) {
+      if (finalVehicleNumber) {
         await this.validateVehicleNumberUniqueness(
           rideData.userId,
-          rideData.vehicleNumber
+          finalVehicleNumber
         );
       }
 
@@ -65,9 +65,7 @@ export class OfferRideService {
         plannedTime: plannedDateTime,
         seats: rideData.seats,
         rideType: rideData.rideType,
-        vehicleNumber: rideData.vehicleNumber
-          ? rideData.vehicleNumber.toUpperCase()
-          : null,
+        vehicleNumber: finalVehicleNumber,
       };
 
       // Create ride using model
@@ -79,6 +77,110 @@ export class OfferRideService {
         throw error;
       }
       throw new ErrorResponse(`Service error: ${error.message}`, 500);
+    }
+  }
+
+  /**
+   * Resolve vehicle number based on ride type and user profile
+   */
+  private static async resolveVehicleNumber(
+    user: any,
+    rideType: RideType,
+    providedVehicleNumber?: string | null
+  ): Promise<string | null> {
+    if (rideType === RideType.CAB) {
+      return null; // CAB rides don't need vehicle numbers
+    }
+
+    // For CAR and BIKE rides, check profile first
+    const profileVehicleNumber =
+      rideType === RideType.CAR
+        ? user.profile?.carNumber
+        : user.profile?.bikeNumber;
+
+    if (profileVehicleNumber) {
+      // Use existing vehicle number from profile
+      return profileVehicleNumber.toUpperCase();
+    }
+
+    // No vehicle number in profile - require one to be provided
+    if (!providedVehicleNumber || !providedVehicleNumber.trim()) {
+      throw new ErrorResponse(
+        `No ${rideType.toLowerCase()} number found in your profile. Please provide a vehicle number or update your profile.`,
+        400
+      );
+    }
+
+    // Validate the provided vehicle number
+    this.validateVehicleNumber(providedVehicleNumber);
+    this.validateVehicleNumberForRideType(providedVehicleNumber, rideType);
+
+    // Check if vehicle number is already associated with another user
+    await this.validateVehicleNumberOwnership(
+      providedVehicleNumber.toUpperCase(),
+      rideType,
+      user.id
+    );
+
+    // Save the new vehicle number to user profile
+    await this.saveVehicleNumberToProfile(
+      user.id,
+      rideType,
+      providedVehicleNumber.toUpperCase()
+    );
+
+    return providedVehicleNumber.toUpperCase();
+  }
+
+  /**
+   * Check if vehicle number is already registered to another user
+   */
+  private static async validateVehicleNumberOwnership(
+    vehicleNumber: string,
+    rideType: RideType,
+    currentUserId: string
+  ) {
+    try {
+      const existingOwner = await OfferRideModel.checkVehicleNumberOwnership(
+        vehicleNumber,
+        rideType,
+        currentUserId
+      );
+
+      if (existingOwner) {
+        throw new ErrorResponse(
+          `This ${rideType.toLowerCase()} number is already registered to another user account. Each vehicle can only be associated with one account.`,
+          409
+        );
+      }
+    } catch (error: any) {
+      if (error instanceof ErrorResponse) {
+        throw error;
+      }
+      throw new ErrorResponse(`Validation error: ${error.message}`, 500);
+    }
+  }
+
+  /**
+   * Save vehicle number to user profile
+   */
+  private static async saveVehicleNumberToProfile(
+    userId: string,
+    rideType: RideType,
+    vehicleNumber: string
+  ) {
+    try {
+      const updateData =
+        rideType === RideType.CAR
+          ? { carNumber: vehicleNumber }
+          : { bikeNumber: vehicleNumber };
+
+      await OfferRideModel.updateUserProfile(userId, updateData);
+    } catch (error: any) {
+      throw new ErrorResponse(
+        `Failed to save vehicle number to profile: ${error.message}`,
+        500
+      );
     }
   }
 
@@ -286,27 +388,6 @@ export class OfferRideService {
   }
 
   /**
-   * Private method to validate seats
-   */
-  private static validateSeats(seats: number) {
-    if (!seats || typeof seats !== "number") {
-      throw new ErrorResponse("Seats must be a valid number", 400);
-    }
-
-    if (!Number.isInteger(seats)) {
-      throw new ErrorResponse("Seats must be a whole number", 400);
-    }
-
-    if (seats < 1) {
-      throw new ErrorResponse("At least 1 seat must be available", 400);
-    }
-
-    if (seats > 8) {
-      throw new ErrorResponse("Maximum 8 seats allowed", 400);
-    }
-  }
-
-  /**
    * Helper method to calculate distance between two coordinates
    */
   private static calculateDistance(
@@ -333,9 +414,6 @@ export class OfferRideService {
     return deg * (Math.PI / 180);
   }
 
-  /**
-   * Update ride
-   */
   /**
    * Update ride
    */
@@ -400,130 +478,37 @@ export class OfferRideService {
 
       // Handle seats update
       if (updateData.seats !== undefined) {
-        this.validateSeats(updateData.seats);
+        this.validateSeatsWithRideType(updateData.seats, existingRide.rideType);
         updatePayload.seats = updateData.seats;
       }
 
-      // Handle rideType update
-      if (updateData.rideType) {
-        const currentRideType = existingRide.rideType;
-        const newRideType = updateData.rideType;
+      // Handle rideType and vehicle number updates
+      if (updateData.rideType || updateData.vehicleNumber !== undefined) {
+        const user = await OfferRideModel.validateUser(userId);
+        const newRideType = updateData.rideType || existingRide.rideType;
 
-        // Validate the new ride type with current seats if seats aren't being updated
-        const finalSeats =
-          updateData.seats !== undefined
-            ? updateData.seats
-            : existingRide.seats;
-        this.validateSeatsWithRideType(finalSeats, newRideType);
+        const finalVehicleNumber = await this.resolveVehicleNumberForUpdate(
+          user,
+          newRideType,
+          updateData.vehicleNumber,
+          existingRide.VehicleNumber ?? undefined
+        );
 
-        // Handle vehicle number requirements when changing ride types
-        if (currentRideType !== newRideType) {
-          // Ride type is actually changing
-
-          if (newRideType === RideType.CAB) {
-            // Changing TO CAB - remove vehicle number requirement
-            updatePayload.vehicleNumber = null;
-          } else if (currentRideType === RideType.CAB) {
-            // Changing FROM CAB to BIKE/CAR - require vehicle number
-            if (!updateData.vehicleNumber) {
-              throw new ErrorResponse(
-                `Vehicle number is required when changing from CAB to ${newRideType}`,
-                400
-              );
-            }
-            // Validate the provided vehicle number
-            this.validateVehicleNumber(updateData.vehicleNumber);
-            this.validateVehicleNumberForRideType(
-              updateData.vehicleNumber,
-              newRideType
-            );
-            updatePayload.vehicleNumber =
-              updateData.vehicleNumber.toUpperCase();
-          } else {
-            // Changing between BIKE and CAR - keep existing vehicle number if none provided
-            if (updateData.vehicleNumber) {
-              this.validateVehicleNumber(updateData.vehicleNumber);
-              this.validateVehicleNumberForRideType(
-                updateData.vehicleNumber,
-                newRideType
-              );
-              updatePayload.vehicleNumber =
-                updateData.vehicleNumber.toUpperCase();
-            }
-            // If no new vehicle number provided, keep the existing one (it will be validated later)
-          }
-        } else {
-          // Ride type isn't changing, just validate compatibility if vehicle number is being updated
-          if (
-            updateData.vehicleNumber !== undefined &&
-            newRideType !== RideType.CAB
-          ) {
-            if (!updateData.vehicleNumber) {
-              throw new ErrorResponse(
-                `Vehicle number is required for ${newRideType} rides`,
-                400
-              );
-            }
-            this.validateVehicleNumber(updateData.vehicleNumber);
-            this.validateVehicleNumberForRideType(
-              updateData.vehicleNumber,
-              newRideType
-            );
-          }
+        if (updateData.rideType) {
+          updatePayload.rideType = newRideType;
         }
 
-        updatePayload.rideType = newRideType;
-      }
-
-      // Handle vehicleNumber update (when ride type is not changing)
-      if (updateData.vehicleNumber !== undefined && !updateData.rideType) {
-        const currentRideType = existingRide.rideType;
-
-        if (currentRideType === RideType.CAB) {
-          // CAB rides should not have vehicle number
-          if (updateData.vehicleNumber && updateData.vehicleNumber.trim()) {
-            throw new ErrorResponse(
-              "Vehicle number should not be provided for CAB rides",
-              400
-            );
-          }
-          updatePayload.vehicleNumber = null;
-        } else {
-          // Non-CAB rides should have vehicle number
-          if (!updateData.vehicleNumber || !updateData.vehicleNumber.trim()) {
-            throw new ErrorResponse(
-              `Vehicle number is required for ${currentRideType} rides`,
-              400
-            );
-          }
-
-          this.validateVehicleNumber(updateData.vehicleNumber);
-          this.validateVehicleNumberForRideType(
-            updateData.vehicleNumber,
-            currentRideType
-          );
-
-          // Check uniqueness if vehicle number is changing
-          const cleanNewVehicleNumber = updateData.vehicleNumber.toUpperCase();
-          if (cleanNewVehicleNumber !== existingRide.VehicleNumber) {
-            await this.validateVehicleNumberUniqueness(
-              userId,
-              updateData.vehicleNumber,
-              rideId
-            );
-          }
-
-          updatePayload.vehicleNumber = cleanNewVehicleNumber;
+        if (updateData.vehicleNumber !== undefined || updateData.rideType) {
+          updatePayload.vehicleNumber = finalVehicleNumber;
         }
       }
 
       // Validate locations are not the same if both are being updated
-      // Fix the type conversion here
       const finalOrigin: LocationData = updatePayload.originLocation || {
         address: existingRide.originAddress,
         latitude: existingRide.originAddressLatitude,
         longitude: existingRide.originAddressLongitude,
-        placeId: existingRide.originAddressPlaceId || undefined, // Convert null to undefined
+        placeId: existingRide.originAddressPlaceId || undefined,
       };
 
       const finalDestination: LocationData =
@@ -531,7 +516,7 @@ export class OfferRideService {
           address: existingRide.destinationAddress,
           latitude: existingRide.destinationAddressLatitude,
           longitude: existingRide.destinationAddressLongitude,
-          placeId: existingRide.destinationAddressPlaceId || undefined, // Convert null to undefined
+          placeId: existingRide.destinationAddressPlaceId || undefined,
         };
 
       this.validateLocationDistance(finalOrigin, finalDestination);
@@ -548,6 +533,81 @@ export class OfferRideService {
     }
   }
 
+  /**
+   * Resolve vehicle number for updates
+   */
+  private static async resolveVehicleNumberForUpdate(
+    user: any,
+    rideType: RideType,
+    providedVehicleNumber: string | null | undefined,
+    currentVehicleNumber: string | null | undefined
+  ): Promise<string | null> {
+    if (rideType === RideType.CAB) {
+      return null;
+    }
+
+    // If vehicle number is explicitly provided (and not null)
+    if (providedVehicleNumber !== undefined && providedVehicleNumber !== null) {
+      if (!providedVehicleNumber.trim()) {
+        throw new ErrorResponse(
+          `Vehicle number is required for ${rideType} rides`,
+          400
+        );
+      }
+
+      this.validateVehicleNumber(providedVehicleNumber);
+      this.validateVehicleNumberForRideType(providedVehicleNumber, rideType);
+
+      // Check vehicle ownership if it's different from current profile vehicle
+      const profileVehicleNumber =
+        rideType === RideType.CAR
+          ? user.profile?.carNumber
+          : user.profile?.bikeNumber;
+
+      if (
+        providedVehicleNumber.toUpperCase() !== profileVehicleNumber?.toUpperCase() &&
+        providedVehicleNumber.toUpperCase() !== currentVehicleNumber?.toUpperCase()
+      ) {
+        await this.validateVehicleNumberOwnership(
+          providedVehicleNumber.toUpperCase(),
+          rideType,
+          user.id
+        );
+      }
+
+      return providedVehicleNumber.toUpperCase();
+    }
+
+    // If vehicle number is explicitly set to null (user wants to remove it)
+    if (providedVehicleNumber === null) {
+      throw new ErrorResponse(
+        `Vehicle number is required for ${rideType} rides and cannot be removed`,
+        400
+      );
+    }
+
+    // Check profile for existing vehicle number
+    const profileVehicleNumber =
+      rideType === RideType.CAR
+        ? user.profile?.carNumber
+        : user.profile?.bikeNumber;
+
+    if (profileVehicleNumber) {
+      return profileVehicleNumber.toUpperCase();
+    }
+
+    // Use current vehicle number if available (handle null case)
+    if (currentVehicleNumber) {
+      return currentVehicleNumber;
+    }
+
+    // No vehicle number available
+    throw new ErrorResponse(
+      `No ${rideType.toLowerCase()} number found. Please provide a vehicle number.`,
+      400
+    );
+  }
+
   private static validateVehicleNumber(vehicleNumber: string) {
     if (!vehicleNumber || !vehicleNumber.trim()) {
       throw new ErrorResponse("Vehicle number is required", 400);
@@ -556,7 +616,6 @@ export class OfferRideService {
     const cleanVehicleNumber = vehicleNumber.trim().toUpperCase();
 
     // Basic format validation - adjust regex based on your country's format
-    // This example is for Indian vehicle numbers (e.g., DL01AB1234, MH12CD5678)
     const vehicleNumberRegex = /^[A-Z]{2}[0-9]{1,2}[A-Z]{1,3}[0-9]{1,4}$/;
 
     if (!vehicleNumberRegex.test(cleanVehicleNumber)) {
@@ -573,11 +632,6 @@ export class OfferRideService {
         400
       );
     }
-
-    // Additional validations can be added here:
-    // - Check against banned words
-    // - Validate state codes
-    // - Check format based on ride type
   }
 
   private static async validateVehicleNumberUniqueness(
@@ -657,90 +711,6 @@ export class OfferRideService {
     }
   }
 
-  private static validateRideType(rideType: RideType) {
-    if (!rideType) {
-      throw new ErrorResponse("Ride type is required", 400);
-    }
-
-    if (!Object.values(RideType).includes(rideType)) {
-      throw new ErrorResponse(
-        "Invalid ride type. Must be CAB, BIKE, or CAR",
-        400
-      );
-    }
-
-    // Add specific validation based on ride type if needed
-    // For example, you might want to validate seat capacity based on ride type
-    // if (rideType === RideType.BIKE && seats > 1) {
-    //   throw new ErrorResponse("BIKE rides can have maximum 1 seat", 400);
-    // }
-  }
-
-  /**
-   * Private method to validate distance between two locations
-   */
-  private static validateLocationDistance(
-    origin: LocationData,
-    destination: LocationData
-  ) {
-    const distance = this.calculateDistance(
-      origin.latitude,
-      origin.longitude,
-      destination.latitude,
-      destination.longitude
-    );
-
-    if (distance < 0.5) {
-      // Less than 500 meters
-      throw new ErrorResponse(
-        "Origin and destination must be at least 500 meters apart",
-        400
-      );
-    }
-  }
-
-  /**
-   * Enhanced validation combining ride type and vehicle number
-   */
-  private static validateRideTypeAndVehicle(
-    rideType: RideType,
-    vehicleNumber?: string
-  ) {
-    if (!rideType) {
-      throw new ErrorResponse("Ride type is required", 400);
-    }
-
-    if (!Object.values(RideType).includes(rideType)) {
-      throw new ErrorResponse(
-        "Invalid ride type. Must be CAB, BIKE, or CAR",
-        400
-      );
-    }
-
-    // Conditional vehicle number validation based on ride type
-    if (rideType === RideType.CAB) {
-      if (vehicleNumber && vehicleNumber.trim()) {
-        throw new ErrorResponse(
-          "Vehicle number should not be provided for CAB rides",
-          400
-        );
-      }
-    } else {
-      if (!vehicleNumber || !vehicleNumber.trim()) {
-        throw new ErrorResponse(
-          `Vehicle number is required for ${rideType} rides`,
-          400
-        );
-      }
-
-      // Validate vehicle number format for non-CAB rides
-      this.validateVehicleNumber(vehicleNumber);
-
-      // Add ride type specific validations
-      this.validateVehicleNumberForRideType(vehicleNumber, rideType);
-    }
-  }
-
   /**
    * Enhanced seats validation with ride type considerations
    */
@@ -755,6 +725,15 @@ export class OfferRideService {
 
     if (seats < 1) {
       throw new ErrorResponse("At least 1 seat must be available", 400);
+    }
+
+    // Add ride type specific seat validations
+    if (rideType === RideType.BIKE && seats > 1) {
+      throw new ErrorResponse("Bike rides can have maximum 1 seat", 400);
+    }
+
+    if (seats > 6) {
+      throw new ErrorResponse("Maximum 6 seats allowed", 400);
     }
   }
 
@@ -788,6 +767,29 @@ export class OfferRideService {
         break;
       default:
         break;
+    }
+  }
+
+  /**
+   * Private method to validate distance between two locations
+   */
+  private static validateLocationDistance(
+    origin: LocationData,
+    destination: LocationData
+  ) {
+    const distance = this.calculateDistance(
+      origin.latitude,
+      origin.longitude,
+      destination.latitude,
+      destination.longitude
+    );
+
+    if (distance < 0.5) {
+      // Less than 500 meters
+      throw new ErrorResponse(
+        "Origin and destination must be at least 500 meters apart",
+        400
+      );
     }
   }
 }
