@@ -37,6 +37,8 @@ export class OfferRideModel {
                   phoneNumber: true,
                   profileImage: true,
                   gender: true,
+                  carNumber: true,
+                  bikeNumber: true,
                 },
               },
             },
@@ -48,6 +50,59 @@ export class OfferRideModel {
     } catch (error: any) {
       if (error.code === "P2002") {
         throw new ErrorResponse("Duplicate entry found", 400);
+      }
+      throw new ErrorResponse(`Database error: ${error.message}`, 500);
+    }
+  }
+
+  /**
+   * Check if vehicle number is already registered to another user
+   */
+  static async checkVehicleNumberOwnership(
+    vehicleNumber: string,
+    rideType: RideType,
+    currentUserId: string
+  ) {
+    try {
+      const field = rideType === RideType.CAR ? 'carNumber' : 'bikeNumber';
+      
+      const existingUser = await prisma.userProfile.findFirst({
+        where: {
+          [field]: vehicleNumber,
+          userId: {
+            not: currentUserId, // Exclude current user
+          },
+        },
+        include: {
+          user: {
+            select: {
+              id: true,
+              email: true,
+            },
+          },
+        },
+      });
+
+      return existingUser;
+    } catch (error: any) {
+      throw new ErrorResponse(`Database error: ${error.message}`, 500);
+    }
+  }
+
+  /**
+   * Update user profile with vehicle information
+   */
+  static async updateUserProfile(userId: string, data: { carNumber?: string; bikeNumber?: string }) {
+    try {
+      const updatedProfile = await prisma.userProfile.update({
+        where: { userId },
+        data: data,
+      });
+
+      return updatedProfile;
+    } catch (error: any) {
+      if (error.code === "P2025") {
+        throw new ErrorResponse("User profile not found", 404);
       }
       throw new ErrorResponse(`Database error: ${error.message}`, 500);
     }
@@ -112,6 +167,8 @@ export class OfferRideModel {
                   phoneNumber: true,
                   profileImage: true,
                   gender: true,
+                  carNumber: true,
+                  bikeNumber: true,
                 },
               },
             },
@@ -149,6 +206,8 @@ export class OfferRideModel {
                   phoneNumber: true,
                   profileImage: true,
                   gender: true,
+                  carNumber: true,
+                  bikeNumber: true,
                 },
               },
             },
@@ -163,14 +222,25 @@ export class OfferRideModel {
   }
 
   /**
-   * Validate user exists and get user details
+   * Enhanced validateUser method to include vehicle numbers
    */
   static async validateUser(userId: string) {
     try {
       const user = await prisma.user.findUnique({
         where: { id: userId },
         include: {
-          profile: true,
+          profile: {
+            select: {
+              id: true,
+              name: true,
+              phoneNumber: true,
+              gender: true,
+              profileImage: true,
+              dateOfBirth: true,
+              carNumber: true,    // Include car number
+              bikeNumber: true,   // Include bike number
+            }
+          },
           collegeInfo: true,
         },
       });
@@ -257,6 +327,8 @@ export class OfferRideModel {
                   phoneNumber: true,
                   profileImage: true,
                   gender: true,
+                  carNumber: true,
+                  bikeNumber: true,
                 },
               },
             },
