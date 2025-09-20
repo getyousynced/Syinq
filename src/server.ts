@@ -7,6 +7,7 @@ import authRouter from "./routes/auth.routes";
 import userRouter from "./routes/user.route";
 import offerRouter from "./routes/offer.routes";
 import { setupSwagger } from "./swagger";
+import findRouter from "./routes/find.routes";
 
 dotenv.config({
   path: "./.env",
@@ -46,6 +47,7 @@ async function main() {
   app.use("/api/v1/auth", authRouter);
   app.use("/api/v1/user", userRouter);
   app.use("/api/v1/offer", offerRouter);
+  app.use("/api/v1/find", findRouter);
 }
 
 main()
