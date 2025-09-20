@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import authRouter from "./routes/auth.routes";
 import userRouter from "./routes/user.route";
 import offerRouter from "./routes/offer.routes";
+import { setupSwagger } from "./swagger";
 
 dotenv.config({
   path: "./.env",
@@ -26,6 +27,9 @@ async function main() {
       credentials: true,
     })
   );
+
+  // Setup Swagger Documentation
+  setupSwagger(app);
 
   app.listen(PORT, () => {
     console.log(`⚙️ Server is running at port: ${PORT}`);
