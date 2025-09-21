@@ -5,7 +5,6 @@ import { Roboto } from "next/font/google";
 import Footer from "@/components/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { Providers } from "./providers";
 
 const roboto = Roboto({
   weight: "400",
@@ -14,8 +13,8 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Sync",
-  description: "Connecting dots...",
+  title: "Syinq",
+  description: "One App for every campus move",
 };
 
 export default function RootLayout({
@@ -26,13 +25,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.className} select-none`}>
-        <Providers>
           <Navbar />
           {children}
         <Toaster />
         <Sonner />
         <Footer />
-        </Providers>
       </body>
     </html>
   );

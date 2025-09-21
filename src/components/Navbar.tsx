@@ -76,15 +76,6 @@ const Navbar = () => {
           >
             Security
           </Link>
-          {/* {
-            !isSignedIn ? (
-              <Button asChild className="bg-syinq-blue hover:bg-syinq-blue/90">
-                <Link href="/sign-in">Signup</Link>
-                </Button>
-            ) : (
-              <UserButton />
-            )
-          } */}
           <Button asChild className="bg-syinq-blue hover:bg-syinq-blue/90">
             <Link href="/waitlist">Join Waitlist</Link>
           </Button>
@@ -134,17 +125,6 @@ const Navbar = () => {
             >
               Security
             </Link>
-            {/* {!isSignedIn ? (<Link 
-              href="/sign-in"
-              className="bg-syinq-blue text-white py-2 px-4 rounded hover:bg-syinq-blue/90 transition-colors text-center"
-            >
-              Signup
-            </Link>) : (
-              <div
-              className="text-syinq-dark py-2 hover:text-syinq-blue transition-colors">
-                <SignOutButton />
-              </div>
-            )} */}
             <Link 
               href="/waitlist"
               className="bg-syinq-blue text-white py-2 px-4 rounded hover:bg-syinq-blue/90 transition-colors text-center"
