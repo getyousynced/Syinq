@@ -2,31 +2,12 @@ import { NextFunction, Request, RequestHandler, Response } from "express";
 import ErrorResponse from "../utils/ErroResponse";
 import { AuthService } from "../services/auth.service";
 
-interface User {
-  id: string;
-  email: string;
-  phoneNumber: string | null;
-  name: string;
-  isActivated: boolean;
-  gender: string | null;
-  profileImage: string | null;
-  dateOfBirth: Date | null;
-  lastLogin: Date | null;
-  role: string;
-}
-
-interface EmailAuthResult {
-  user: User;
-  isNewUser: boolean;
-  activation_Token: string;
-}
-
 const authenticateByEmail: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { email } = req.body;
     if (!email) return next(new ErrorResponse("Email is required", 400));
 
-    const result: EmailAuthResult = await AuthService.handleEmailAuth(email);
+    const result = await AuthService.handleEmailAuth(email);
 
     if (result.isNewUser) {
       res.status(201).json({
