@@ -28,15 +28,15 @@ export const sendEmail = async (
     // Create an ExpressHandlebars instance
     const hbsInstance = create({
       extname: ".handlebars",
-      partialsDir: path.resolve("./views"),
-      layoutsDir: path.resolve("./views"),
+      partialsDir: path.resolve("./src/views"),
+      layoutsDir: path.resolve("./src/views"),
       defaultLayout: false,
     });
 
     // Configure Handlebars for Nodemailer
     const handlebarsOptions = {
       viewEngine: hbsInstance, // Pass the correct instance
-      viewPath: path.resolve("./views"),
+      viewPath: path.resolve("./src/views"),
       extName: ".handlebars",
     };
 
