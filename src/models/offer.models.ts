@@ -64,8 +64,8 @@ export class OfferRideModel {
     currentUserId: string
   ) {
     try {
-      const field = rideType === RideType.CAR ? 'carNumber' : 'bikeNumber';
-      
+      const field = rideType === RideType.CAR ? "carNumber" : "bikeNumber";
+
       const existingUser = await prisma.userProfile.findFirst({
         where: {
           [field]: vehicleNumber,
@@ -92,7 +92,10 @@ export class OfferRideModel {
   /**
    * Update user profile with vehicle information
    */
-  static async updateUserProfile(userId: string, data: { carNumber?: string; bikeNumber?: string }) {
+  static async updateUserProfile(
+    userId: string,
+    data: { carNumber?: string; bikeNumber?: string }
+  ) {
     try {
       const updatedProfile = await prisma.userProfile.update({
         where: { userId },
@@ -237,9 +240,9 @@ export class OfferRideModel {
               gender: true,
               profileImage: true,
               dateOfBirth: true,
-              carNumber: true,    // Include car number
-              bikeNumber: true,   // Include bike number
-            }
+              carNumber: true, // Include car number
+              bikeNumber: true, // Include bike number
+            },
           },
           collegeInfo: true,
         },

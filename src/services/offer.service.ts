@@ -565,8 +565,10 @@ export class OfferRideService {
           : user.profile?.bikeNumber;
 
       if (
-        providedVehicleNumber.toUpperCase() !== profileVehicleNumber?.toUpperCase() &&
-        providedVehicleNumber.toUpperCase() !== currentVehicleNumber?.toUpperCase()
+        providedVehicleNumber.toUpperCase() !==
+          profileVehicleNumber?.toUpperCase() &&
+        providedVehicleNumber.toUpperCase() !==
+          currentVehicleNumber?.toUpperCase()
       ) {
         await this.validateVehicleNumberOwnership(
           providedVehicleNumber.toUpperCase(),

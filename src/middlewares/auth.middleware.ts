@@ -74,7 +74,6 @@ export const verifyToken = async (
     }
 
     try {
-      
       // Check if access token is blacklisted
       if (AuthService.isTokenBlacklisted(accessToken)) {
         return next(new ErrorResponse("Token has been revoked", 401));

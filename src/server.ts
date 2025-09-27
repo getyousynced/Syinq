@@ -1,4 +1,4 @@
-import express, { Express, json } from "express";
+import express, { Express, json, Request, Response } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import { PrismaClient } from "@prisma/client";
@@ -31,13 +31,20 @@ async function main() {
   // Setup Swagger Documentation
   setupSwagger(app);
 
+  app.get("/health", (_req: Request, res: Response) => {
+    res.status(200).json({
+      success: true,
+      message: "Api is healthy",
+    });
+  });
+
   app.listen(PORT, () => {
     console.log(`⚙️ Server is running at port: ${PORT}`);
   });
 
   //Routes
   app.use("/api/v1/auth", authRouter);
-  app.use("/api/v1/user", userRouter)
+  app.use("/api/v1/user", userRouter);
   app.use("/api/v1/offer", offerRouter);
 }
 
