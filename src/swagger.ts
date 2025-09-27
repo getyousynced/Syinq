@@ -6,12 +6,12 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Ride Sharing API',
+      title: 'Syinq API',
       version: '1.0.0',
-      description: 'API documentation for the Ride Sharing platform',
+      description: 'API documentation for the   Syinq platform',
       contact: {
         name: 'API Support',
-        email: 'support@ridesharing.com',
+        email: 'getyousync@gmail.com',
       },
     },
     servers: [
@@ -40,7 +40,7 @@ const options = {
       },
     ],
   },
-  apis: ['./routes/*.ts', './controller/*.ts'], // Path to the API files
+  apis: ['./src/routes/*.ts', './src/controller/*.ts'],
 };
 
 const swaggerSpec = swaggerJSDoc(options);
