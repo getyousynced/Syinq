@@ -27,6 +27,7 @@ WORKDIR /home/app
 COPY --from=builder /home/build/dist dist/
 COPY --from=builder /home/build/package*.json .
 COPY --from=builder /home/build/yarn.lock .
+COPY --from=builder /home/build/src/views src/views
 COPY --from=builder /home/build/.env .env
 COPY --from=builder /home/build/node_modules/.prisma node_modules/.prisma
 COPY --from=builder /home/build/node_modules/@prisma node_modules/@prisma
