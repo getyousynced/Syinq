@@ -184,8 +184,7 @@ export class UserModel {
 
   static async findByCollegeEmail(email: string, excludeUserId?: string) {
     const collegeInfo = await prisma.collegeInfo.findUnique({
-      where: { email },
-      include: { user: true },
+      where: { email }
     });
 
     // If found but it's the same user, return null (no conflict)
