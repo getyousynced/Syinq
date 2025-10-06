@@ -17,7 +17,7 @@ const sections: LegalSection[] = [
   { id: 'section-12', title: '12. Termination', content: <p>We may suspend or terminate access for violations of these Terms or for conduct that harms the platform or users.</p> },
   { id: 'section-13', title: '13. Changes to Terms', content: <p>We may update these Terms. Continued use after changes constitutes acceptance. The “Last Updated” date reflects the latest revision.</p> },
   { id: 'section-14', title: '14. Governing Law', content: <p>These Terms are governed by applicable laws in the jurisdiction in which Syinq operates. Disputes will be resolved in the competent courts of that jurisdiction.</p> },
-  { id: 'section-15', title: '15. Contact', content: <p>Questions about these Terms? Reach us at <a href="mailto:legal@syinq.app" className="text-syinq-blue">legal@syinq.app</a>.</p> }
+  { id: 'section-15', title: '15. Contact', content: <p>Questions about these Terms? Reach us at <a href="mailto:support@syinq.com" className="text-syinq-blue">support@syinq.com</a>.</p> }
 ];
 export default function TermsPage() {
   return (
