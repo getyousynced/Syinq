@@ -204,3 +204,11 @@ model Message {
   chatRoomId String   @db.ObjectId
   chatRoom   chatRoom @relation(fields: [chatRoomId], references: [id])
 }
+
+model Rides {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  rideId String @db.ObjectId
+
+  srcCellToken  String // s2 level 15 cell token of source
+  destCellToken String // s2 level 15 cell token of destination
+}

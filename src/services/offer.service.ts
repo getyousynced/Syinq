@@ -3,6 +3,7 @@ import {
   CreateOfferRideData,
   LocationData,
   UpdateRideRequest,
+  IndexRideRequest,
 } from "../interface/offer.interface";
 import { OfferRideModel } from "../models/offer.models";
 import ErrorResponse from "../utils/ErroResponse";
@@ -72,6 +73,21 @@ export class OfferRideService {
       const newRide = await OfferRideModel.create(createData);
 
       return newRide;
+    } catch (error: any) {
+      if (error instanceof ErrorResponse) {
+        throw error;
+      }
+      throw new ErrorResponse(`Service error: ${error.message}`, 500);
+    }
+  }
+
+
+  /**
+   * geo index of riders while publishing
+   */
+  static async indexRides(rideData: IndexRideRequest[]) {
+    try {
+      await OfferRideModel.indexRides(rideData);
     } catch (error: any) {
       if (error instanceof ErrorResponse) {
         throw error;
