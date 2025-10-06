@@ -110,10 +110,10 @@ const Contact = () => {
                 For general inquiries and support
               </p>
               <a
-                href="mailto:getyousync@gmail.com"
+                href="mailto:support@syinq.com"
                 className="text-syinq-blue hover:underline inline-flex items-center"
               >
-                getyousync@gmail.com
+                support@syinq.com
                 <ExternalLink className="ml-1 h-4 w-4" />
               </a>
             </div>
