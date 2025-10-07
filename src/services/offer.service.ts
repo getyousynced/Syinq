@@ -286,27 +286,27 @@ export class OfferRideService {
       );
     }
 
-    if (!user.collegeInfo.verifyMail) {
-      throw new ErrorResponse(
-        "Please verify your college email before publishing a ride",
-        400
-      );
-    }
-
     return user;
   }
 
   /**
    * Private method to process and validate date/time
+   * Preserves the exact local time without timezone conversion
    */
   private static processDateTime(date: string, timing: string): Date {
-    const plannedDateTime = new Date(`${date}T${timing}`);
+    // Create date string in local timezone
+    const dateTimeString = `${date}T${timing}:00`;
+    const plannedDateTime = new Date(dateTimeString);
 
     if (isNaN(plannedDateTime.getTime())) {
       throw new ErrorResponse("Invalid date or time format", 400);
     }
 
-    if (plannedDateTime <= new Date()) {
+    // Preserve local time by compensating for timezone offset
+    const offset = plannedDateTime.getTimezoneOffset() * 60000; // Convert minutes to milliseconds
+    const preservedDateTime = new Date(plannedDateTime.getTime() - offset);
+
+    if (preservedDateTime <= new Date()) {
       throw new ErrorResponse("Planned time must be in the future", 400);
     }
 
@@ -314,14 +314,14 @@ export class OfferRideService {
     const thirtyDaysFromNow = new Date();
     thirtyDaysFromNow.setDate(thirtyDaysFromNow.getDate() + 30);
 
-    if (plannedDateTime > thirtyDaysFromNow) {
+    if (preservedDateTime > thirtyDaysFromNow) {
       throw new ErrorResponse(
         "Cannot schedule rides more than 30 days in advance",
         400
       );
     }
 
-    return plannedDateTime;
+    return preservedDateTime;
   }
 
   /**
