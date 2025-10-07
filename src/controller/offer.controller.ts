@@ -3,7 +3,6 @@ import ErrorResponse from "../utils/ErroResponse";
 import { AuthRequest } from "../interface/auth.interace";
 import { OfferRideService } from "../services/offer.service";
 import { RideType } from "@prisma/client";
-import { util } from "../utils/util";
 
 export const publishRide = async (
   req: AuthRequest,
@@ -72,110 +71,6 @@ export const publishRide = async (
     );
   }
 };
-
-export const publishRideV2 = async (
-  req: AuthRequest,
-  res: Response,
-  next: NextFunction
-) => {
-  try {
-    const {
-      currentLocation,
-      destinationLocation,
-      timing,
-      date,
-      seats,
-      rideType,
-      vehicleNumber,
-    } = req.body;
-    const userId = req.user?.userId;
-
-    // Basic validation
-    if (
-      !currentLocation ||
-      !destinationLocation ||
-      !timing ||
-      !date ||
-      !seats ||
-      !userId ||
-      !rideType
-    ) {
-      return next(new ErrorResponse("All fields are required", 400));
-    }
-
-    if (!Object.values(RideType).includes(rideType)) {
-      return next(
-        new ErrorResponse("Invalid ride type. Must be CAB, BIKE, or CAR", 400)
-      );
-    }
-
-    // Validate seats is a number
-    const seatsNumber = parseInt(seats);
-    if (isNaN(seatsNumber)) {
-      return next(new ErrorResponse("Seats must be a valid number", 400));
-    }
-
-    const newRide = await OfferRideService.publishRide({
-      userId,
-      currentLocation,
-      destinationLocation,
-      timing,
-      date,
-      seats: seatsNumber,
-      rideType,
-      vehicleNumber: vehicleNumber ? vehicleNumber.trim() : undefined
-    });
-
-    indexRides(
-      currentLocation.latitude,
-      currentLocation.longitude,
-      destinationLocation.latitude,
-      destinationLocation.longitude,
-      newRide.id
-    );
-
-    res.status(201).json({
-      success: true,
-      message: "Ride published successfully",
-      data: newRide,
-    });
-  } catch (error: any) {
-    if (error instanceof ErrorResponse) {
-      return next(error);
-    }
-    return next(
-      new ErrorResponse(error.message || "Failed to publish ride", 500)
-    );
-  }
-};
-
-
-async function indexRides(
-  srcLat: number,
-  srcLng: number,
-  destLat: number,
-  destLng: number,
-  rideId: string) {
-  try {
-    const nearBySrcTokens = util.nearByS2Cells(srcLat, srcLng, 15);
-    const destCellTokens = util.nearByS2Cells(destLat, destLng, 15);
-
-    const requests = [];
-    for (const srcToken of nearBySrcTokens) {
-      for (const destToken of destCellTokens) {
-        requests.push({
-          rideId,
-          srcCellToken: srcToken,
-          destCellToken: destToken
-        });
-      }
-    }
-
-    OfferRideService.indexRides(requests);
-  } catch (error) {
-    console.error("Error indexing ride:", error);
-  }
-}
 
 export const getUserRides = async (
   req: AuthRequest,
