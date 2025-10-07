@@ -13,13 +13,13 @@ export class UserModel {
       ...(data.profileImage !== undefined && {
         profileImage: data.profileImage,
       }),
-      ...(data.dateOfBirth && { dateOfBirth: data.dateOfBirth }),
+      ...(data.dateOfBirth && {
+        dateOfBirth: new Date(data.dateOfBirth).toISOString(),
+      }),
     };
 
     // Only include fields that are actually provided and have values
     const collegeData: any = {};
-    if (data.collegeEmail) collegeData.email = data.collegeEmail;
-    if (data.verifyMail !== undefined) collegeData.verifyMail = data.verifyMail;
     if (data.college) collegeData.college = data.college;
     if (data.course) collegeData.course = data.course;
     if (data.year !== undefined) collegeData.year = data.year;
@@ -50,10 +50,7 @@ export class UserModel {
 
       // Only create/update college info if meaningful data exists
       const hasMeaningfulCollegeData =
-        data.college ||
-        data.course ||
-        data.year !== undefined ||
-        data.collegeEmail;
+        data.college || data.course || data.year !== undefined;
 
       if (hasMeaningfulCollegeData) {
         const existingCollegeInfo = await tx.collegeInfo.findUnique({
@@ -77,9 +74,6 @@ export class UserModel {
           if (data.college) createData.college = data.college;
           if (data.course) createData.course = data.course;
           if (data.year !== undefined) createData.year = data.year;
-          if (data.collegeEmail) createData.email = data.collegeEmail;
-          if (data.verifyMail !== undefined)
-            createData.verifyMail = data.verifyMail;
 
           // Provide defaults ONLY for required fields that aren't provided
           if (!createData.college) createData.college = "";
@@ -124,11 +118,9 @@ export class UserModel {
         },
         collegeInfo: {
           select: {
-            email: true,
             college: true,
             course: true,
             year: true,
-            verifyMail: true,
           },
         },
       },
@@ -148,61 +140,6 @@ export class UserModel {
     return await prisma.user.delete({
       where: {
         id: userId,
-      },
-    });
-  }
-
-  static async addCollegeEmail(userId: string, email: string) {
-    return await prisma.collegeInfo.update({
-      where: {
-        userId: userId,
-      },
-      data: {
-        email: email,
-      },
-    });
-  }
-
-  static async findByEmail(email: string) {
-    return await prisma.collegeInfo.findUnique({
-      where: {
-        email: email,
-      },
-    });
-  }
-
-  static async verifyMail(email: string) {
-    return await prisma.collegeInfo.update({
-      where: {
-        email: email,
-      },
-      data: {
-        verifyMail: true,
-      },
-    });
-  }
-
-  static async findByCollegeEmail(email: string, excludeUserId?: string) {
-    const collegeInfo = await prisma.collegeInfo.findUnique({
-      where: { email }
-    });
-
-    // If found but it's the same user, return null (no conflict)
-    if (collegeInfo && excludeUserId && collegeInfo.userId === excludeUserId) {
-      return null;
-    }
-
-    return collegeInfo;
-  }
-
-  static async getCollegeEmail(userId: string) {
-    return await prisma.collegeInfo.findUnique({
-      where: {
-        userId: userId,
-      },
-      select: {
-        email: true,
-        verifyMail: true,
       },
     });
   }

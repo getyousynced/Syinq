@@ -70,8 +70,6 @@ model UserProfile {
 model CollegeInfo {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
   userId     String   @unique @db.ObjectId
-  email      String?  @unique
-  verifyMail Boolean  @default(false)
   college    String
   course     String
   year       Int

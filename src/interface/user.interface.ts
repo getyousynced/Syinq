@@ -7,8 +7,6 @@ export interface UpdateUserCompleteProfileData {
   dateOfBirth?: Date;
 
   // CollegeInfo fields
-  collegeEmail?: string;
-  verifyMail?: boolean;
   college?: string;
   course?: string;
   year?: number;
