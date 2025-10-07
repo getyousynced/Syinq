@@ -26,7 +26,7 @@
 
 import express from 'express';
 import { verifyToken } from '../middlewares/auth.middleware';
-import { deleteRide, getRideById, getUserRides, publishRide, publishRideV2, updateRide } from '../controller/offer.controller';
+import { deleteRide, getRideById, getUserRides, publishRide, updateRide } from '../controller/offer.controller';
 
 const offerRouter = express.Router();
 
@@ -278,7 +278,6 @@ offerRouter.use(verifyToken);
  *         description: Internal server error
  */
 offerRouter.post('/publish', publishRide);
-offerRouter.post('/publish/v2', publishRideV2);
 
 /**
  * @swagger
