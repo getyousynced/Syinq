@@ -16,7 +16,33 @@ const sections: LegalSection[] = [
   { id: 'sec-11', title: '11. International Transfers', content: <p>Where data crosses borders, we implement appropriate safeguards (e.g., standard contractual clauses) consistent with applicable regulations.</p> },
   { id: 'sec-12', title: '12. Children / Minors', content: <p>The platform is intended for university-level students. We do not knowingly collect data from individuals below the minimum age for higher education enrollment in their jurisdiction.</p> },
   { id: 'sec-13', title: '13. Changes to Policy', content: <p>We may update this Policy; material changes will be communicated via in-app notice or email. Continued use after updates signifies acceptance.</p> },
-  { id: 'sec-14', title: '14. Contact', content: <p>All inquiries: <a href="mailto:support@syinq.com" className="text-syinq-blue">support@syinq.com</a>.</p> }
+  { id: 'sec-14', title: '14. Account Deletion', content: <div className="space-y-4 text-sm"><span id="account-deletion" className="block -mt-24 pt-24" aria-hidden="true"></span>
+      <p>You can request deletion of your Syinq account if you no longer wish to use the platform. Deletion is irreversible and permanently removes most personal data associated with your account.</p>
+      <div>
+        <h4 className="font-medium mb-1">How to Request Account Deletion</h4>
+        <ol className="list-decimal pl-5 space-y-1">
+          <li><span className="font-semibold">From the App:</span> Go to <em>Profile → Settings &amp; Privacy → Delete Account</em> and follow the confirmation steps.</li>
+          <li><span className="font-semibold">Via Email:</span> Send an email to <a href="mailto:support@syinq.com" className="text-syinq-blue">support@syinq.com</a> with subject line <em>“Delete My Account”</em> from the same email address linked to your Syinq profile.</li>
+        </ol>
+      </div>
+      <div>
+        <h4 className="font-medium mb-1">Data That Will Be Deleted</h4>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Profile information (name, email, phone number, photo)</li>
+          <li>Ride offers, requests, and history</li>
+          <li>Chats &amp; likes</li>
+          <li>Marketplace listings <span className="ml-2 inline-block text-[10px] uppercase tracking-wide bg-gray-200 text-gray-700 px-2 py-0.5 rounded">Coming Soon</span></li>
+          <li>Community forum posts <span className="ml-2 inline-block text-[10px] uppercase tracking-wide bg-gray-200 text-gray-700 px-2 py-0.5 rounded">Coming Soon</span></li>
+          <li>Verification documents</li>
+        </ul>
+      </div>
+      <div>
+        <h4 className="font-medium mb-1">Data That May Be Retained (Up to 90 Days)</h4>
+        <p className="leading-relaxed">Certain limited data may be retained for up to 90 days after deletion strictly for: legal or regulatory compliance, security &amp; fraud prevention, or dispute resolution. After this period, any remaining personal data is permanently deleted.</p>
+      </div>
+      <p>Need help or want to revoke a pending deletion request? Contact us promptly at <a href="mailto:support@syinq.com" className="text-syinq-blue">support@syinq.com</a>.</p>
+    </div> },
+  { id: 'sec-15', title: '15. Contact', content: <p>All inquiries: <a href="mailto:support@syinq.com" className="text-syinq-blue">support@syinq.com</a>.</p> }
 ];
 export default function PrivacyPage() { return (<LegalLayout docTitle="Privacy Policy" subtitle="This Privacy Policy explains what data we collect, why we collect it, and how we safeguard it to keep the Syinq community safe." lastUpdated={LAST_UPDATED} sections={sections} crossLink={{ href: '/terms', label: 'Terms & Conditions', prefix: 'Need our Terms?' }} />); }
 

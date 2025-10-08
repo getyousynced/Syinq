@@ -51,6 +51,7 @@ const Footer = () => {
               <FooterLink text="Contact Us" href="/contact" isRouterLink={true} />
               <FooterLink text="Terms & Conditions" href="/terms" isRouterLink={true} />
               <FooterLink text="Privacy Policy" href="/privacy" isRouterLink={true} />
+              <FooterLink text="Account Deletion" href="/account-deletion" isRouterLink={true} />
               <FooterLink text="FAQ" href="/faq" isRouterLink={true} />
             </ul>
           </div>
