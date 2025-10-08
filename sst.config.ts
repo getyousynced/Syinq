@@ -17,10 +17,11 @@ export default $config({
   async run() {
     new sst.aws.Nextjs("SyinqWebsite", {
       domain: {
-        name: "syinq.live",
+        name: "syinq.com",
         dns: sst.aws.dns({
-          zone: "Z0665679EQ3G18FN222C",
+          zone: "Z06181831OF6LPR0FXMIV",
         }),
+        cert: "arn:aws:acm:us-east-1:831926620158:certificate/41abc802-e907-48df-a68d-f1edfbbaa3c2",
       },
     });
   },
