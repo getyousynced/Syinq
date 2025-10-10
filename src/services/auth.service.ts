@@ -46,7 +46,9 @@ export class AuthService {
   }
 
   static createOtp(user: User) {
-    const otp = randomInt(100000, 999999);
+    // Check for test account 
+    const isTestAccount = user.email === "user@test.edu.in"
+    const otp = isTestAccount ? 123456 : randomInt(100000, 999999);
     const token = jwt.sign({ user, otp }, process.env.ACTIVATION_TOKEN!, {
       expiresIn: "48h",
     });
