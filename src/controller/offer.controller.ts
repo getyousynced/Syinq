@@ -47,14 +47,13 @@ export const publishRide = async (
       return next(new ErrorResponse("Seats must be a valid number", 400));
     }
 
-
-    currentLocation.cellToken = util.getS2CellToken(
+    currentLocation.cellID = util.getS2CellToken(
       currentLocation.latitude,
       currentLocation.longitude
     );
 
 
-    destinationLocation.cellToken = util.getS2CellToken(
+    destinationLocation.cellID = util.getS2CellToken(
       destinationLocation.latitude,
       destinationLocation.longitude
     );
