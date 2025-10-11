@@ -130,7 +130,7 @@ export class FindRideModel {
         whereConditions.push({ rideType: rideType as RideType });
       }
 
-      const rides = await prisma.offerRide.findMany({
+      const rides = await prisma.ride.findMany({
         where: {
           AND: whereConditions
         },
@@ -232,7 +232,7 @@ export class FindRideModel {
         whereConditions.push({ rideType: rideType as RideType });
       }
 
-      const rides = await prisma.offerRide.findMany({
+      const rides = await prisma.ride.findMany({
         where: {
           AND: whereConditions
         },
@@ -334,7 +334,7 @@ export class FindRideModel {
         whereConditions.push({ rideType: rideType as RideType });
       }
 
-      const rides = await prisma.offerRide.findMany({
+      const rides = await prisma.ride.findMany({
         where: {
           AND: whereConditions
         },
@@ -373,7 +373,7 @@ export class FindRideModel {
     try {
       const bounds = this.calculateBounds(latitude, longitude, radius);
 
-      const rides = await prisma.offerRide.findMany({
+      const rides = await prisma.ride.findMany({
         where: {
           AND: [
             { userId: { not: userId } },
@@ -451,7 +451,7 @@ export class FindRideModel {
    */
   static async getPopularRoutes() {
     try {
-      const popularRoutes = await prisma.offerRide.groupBy({
+      const popularRoutes = await prisma.ride.groupBy({
         by: ['originAddress', 'destinationAddress'],
         _count: {
           id: true
