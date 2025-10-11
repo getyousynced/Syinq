@@ -98,11 +98,13 @@ model OfferRide {
   user   User   @relation(fields: [userId], references: [id])
 
   originAddress          String
+  originCellToken        String
   originAddressLatitude  Float
   originAddressLongitude Float
   originAddressPlaceId   String?
 
   destinationAddress          String
+  destinationCellToken        String
   destinationAddressLatitude  Float
   destinationAddressLongitude Float
   destinationAddressPlaceId   String?

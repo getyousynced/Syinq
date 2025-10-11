@@ -13,10 +13,12 @@ export class OfferRideModel {
         data: {
           userId: data.userId,
           originAddress: data.originLocation.address,
+          originCellToken: data.originLocation.cellID,
           originAddressLatitude: data.originLocation.latitude,
           originAddressLongitude: data.originLocation.longitude,
           originAddressPlaceId: data.originLocation.placeId || null,
           destinationAddress: data.destinationLocation.address,
+          destinationCellToken: data.destinationLocation.cellID,
           destinationAddressLatitude: data.destinationLocation.latitude,
           destinationAddressLongitude: data.destinationLocation.longitude,
           destinationAddressPlaceId: data.destinationLocation.placeId || null,
