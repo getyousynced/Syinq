@@ -21,7 +21,7 @@ export function calculateDistance(lat1: number, lon1: number, lat2: number, lon2
     return R * c; // Distance in kilometers
 }
 
-export function nearByS2Cells(
+export function nearByS2CellTokens(
     lat: number,
     lng: number,
     radiusKm: number,
@@ -43,7 +43,6 @@ export function nearByS2Cells(
     if (!cellUnion) {
         return [];
     }
-
 
     return cellUnion.cellUnionBound().map(cellId => s2.cellid.toToken(cellId));
 }

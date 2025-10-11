@@ -3,6 +3,7 @@ import ErrorResponse from "../utils/ErroResponse";
 import { AuthRequest } from "../interface/auth.interace";
 import { RideType } from "@prisma/client";
 import { FindRideService } from "../services/find.service";
+import { util } from "../utils/util";
 
 export const searchRides = async (
   req: AuthRequest,
@@ -90,10 +91,24 @@ export const searchRides = async (
       rideType,
       originRadius: originRadiusNum,
       destinationRadius: destinationRadiusNum,
-      maxRadius: maxRadiusNum
+      maxRadius: maxRadiusNum,
+      srcCellTokens: [] as string[], // Add empty array or compute tokens based on originLocation
+      destCellTokens: [] as string[] // Add empty array or compute tokens based on destinationLocation
     };
 
-    const searchResults = await FindRideService.searchRidesWithRadius(searchRequest);
+    searchRequest.srcCellTokens = util.nearByS2CellTokens(
+      originLocation.latitude,
+      originLocation.longitude,
+      originRadiusNum
+    );
+
+    searchRequest.destCellTokens = util.nearByS2CellTokens(
+      destinationLocation.latitude,
+      destinationLocation.longitude,
+      destinationRadiusNum
+    );
+
+    const searchResults = await FindRideService.serchRidesWithSrcDestCellToken(searchRequest);
 
     res.status(200).json({
       success: true,
