@@ -26,3 +26,9 @@ export interface UpdateRideRequest {
   rideType?: RideType;
   vehicleNumber?: string | null;
 }
+
+export interface IndexRideRequest {
+  srcCellToken: string;
+  destCellToken: string;
+  rideId: string;
+}
