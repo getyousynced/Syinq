@@ -9,7 +9,7 @@ export class OfferRideModel {
    */
   static async create(data: CreateOfferRideData) {
     try {
-      const offerRide = await prisma.offerRide.create({
+      const offerRide = await prisma.ride.create({
         data: {
           userId: data.userId,
           originAddress: data.originLocation.address,
@@ -62,7 +62,7 @@ export class OfferRideModel {
    */
   static async indexRides(data: IndexRideRequest[]) {
     try {
-      await prisma.rides.createMany({
+      await prisma.rideIndex.createMany({
         data: data.map(item => ({
           rideId: item.rideId,
           srcCellToken: item.srcCellToken,
@@ -157,7 +157,7 @@ export class OfferRideModel {
         };
       }
 
-      const rides = await prisma.offerRide.findMany({
+      const rides = await prisma.ride.findMany({
         where: whereCondition,
         select: {
           id: true,
@@ -179,7 +179,7 @@ export class OfferRideModel {
    */
   static async findById(id: string) {
     try {
-      const offerRide = await prisma.offerRide.findUnique({
+      const offerRide = await prisma.ride.findUnique({
         where: { id },
         include: {
           user: {
@@ -217,7 +217,7 @@ export class OfferRideModel {
    */
   static async findByUserId(userId: string) {
     try {
-      const offerRides = await prisma.offerRide.findMany({
+      const offerRides = await prisma.ride.findMany({
         where: { userId },
         orderBy: { plannedTime: "desc" },
         include: {
@@ -282,7 +282,7 @@ export class OfferRideModel {
    */
   static async delete(id: string) {
     try {
-      await prisma.offerRide.delete({
+      await prisma.ride.delete({
         where: { id },
       });
 
@@ -338,7 +338,7 @@ export class OfferRideModel {
         updatePayload.VehicleNumber = data.vehicleNumber || null;
       }
 
-      const updatedRide = await prisma.offerRide.update({
+      const updatedRide = await prisma.ride.update({
         where: { id },
         data: updatePayload,
         include: {
