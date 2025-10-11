@@ -1,9 +1,23 @@
-import { SearchRideRequest, SearchRideResponse, RadiusSearchRequest } from "../interface/find.interface";
+import { SearchRideRequest, SearchRideResponse, RadiusSearchRequest, MultiSearchRideRequest } from "../interface/find.interface";
 import { FindRideModel } from "../models/find.models";
 import ErrorResponse from "../utils/ErroResponse";
+import {util} from "../utils/util"
 import { RideType } from "@prisma/client";
 
 export class FindRideService {
+  static async serchRidesWithSrcDestCellToken(searchRequest: MultiSearchRideRequest): Promise<SearchRideResponse[]> {
+    try {
+      const results = await FindRideModel.searchRidesWithSrcDestCellToken(searchRequest);
+
+      return this.processSearchResults(results, searchRequest, false);
+
+    } catch (error: any) {
+      if (error instanceof ErrorResponse) {
+        throw error;
+      }
+      throw new ErrorResponse(`Search error: ${error.message}`, 500);
+    }
+  }
   /**
    * New method: Search rides with flexible radius for origin and destination
    */
@@ -257,18 +271,19 @@ export class FindRideService {
    */
   private static processSearchResults(
     rides: any[],
-    searchRequest: SearchRideRequest,
+    searchRequest : SearchRideRequest | MultiSearchRideRequest,
     isExactMatch: boolean
   ): SearchRideResponse[] {
     return rides.map(ride => {
-      const originDistance = this.calculateDistance(
+
+      const originDistance = util.calculateDistance(
         searchRequest.originLocation.latitude,
         searchRequest.originLocation.longitude,
         ride.originAddressLatitude,
         ride.originAddressLongitude
       );
 
-      const destinationDistance = this.calculateDistance(
+      const destinationDistance = util.calculateDistance(
         searchRequest.destinationLocation.latitude,
         searchRequest.destinationLocation.longitude,
         ride.destinationAddressLatitude,

@@ -1,15 +1,46 @@
-import { SearchRideRequest, RadiusSearchRequest } from "../interface/find.interface";
+import { SearchRideRequest, RadiusSearchRequest, MultiSearchRideRequest } from "../interface/find.interface";
 import { prisma } from "../server";
 import ErrorResponse from "../utils/ErroResponse";
 import { RideType } from "@prisma/client";
 
 export class FindRideModel {
   /**
+   * New method: Search rides by exact origin and destination cell tokens with seat and future time filter
+   */
+  static async searchRidesWithSrcDestCellToken(searchRequest: MultiSearchRideRequest) {
+    try {
+      const srcCellTokens = searchRequest.srcCellTokens; // Array of source cell tokens
+      const destCellTokens = searchRequest.destCellTokens; // Array of destination cell tokens
+      const minSeats = searchRequest.seats;
+      const now = new Date();
+
+      const page = searchRequest.page || 1;        // Default to page 1 if not provided
+      const limit = searchRequest.limit || 10;     // Default to 10 items per page
+      const skip = (page - 1) * limit;             // Calculate offset
+
+      // Prisma query with proper array filtering
+      const rides = await prisma.ride.findMany({
+        where: {
+          originCellToken: { in: srcCellTokens },       // Match any source token in the list
+          destinationCellToken: { in: destCellTokens }, // Match any destination token in the list
+          seats: { gte: minSeats },                      // More than minSeats
+          plannedTime: { gte: now },                     // Date in the future
+        },
+        include: { user: true },
+        skip,          // Skip records for pagination
+        take: limit,   // Limit the number of records for pagination
+      });
+      return rides;
+    } catch (error: any) {
+      throw new ErrorResponse(`Database error in search by srcTokens and destTokens: ${error.message}`, 500);
+    }
+  }
+  /**
    * New method: Find rides within specified radius for both origin and destination
    */
   static async findRidesWithRadius(
-    searchRequest: RadiusSearchRequest, 
-    originRadius: number, 
+    searchRequest: RadiusSearchRequest,
+    originRadius: number,
     destinationRadius: number
   ) {
     try {
@@ -17,13 +48,13 @@ export class FindRideModel {
 
       // Calculate coordinate bounds for both origin and destination
       const originBounds = this.calculateBounds(
-        originLocation.latitude, 
-        originLocation.longitude, 
+        originLocation.latitude,
+        originLocation.longitude,
         originRadius
       );
       const destinationBounds = this.calculateBounds(
-        destinationLocation.latitude, 
-        destinationLocation.longitude, 
+        destinationLocation.latitude,
+        destinationLocation.longitude,
         destinationRadius
       );
 
@@ -43,10 +74,10 @@ export class FindRideModel {
       const whereConditions: any[] = [
         // Exclude user's own rides
         { userId: { not: userId } },
-        
+
         // Date filter
         dateFilter,
-        
+
         // Location proximity filter - rides where:
         // 1. Origin is within radius of search origin AND destination is within radius of search destination
         // OR
@@ -189,7 +220,7 @@ export class FindRideModel {
       const whereConditions: any[] = [
         // Exclude user's own rides
         { userId: { not: userId } },
-        
+
         // Origin within bounds
         {
           originAddressLatitude: {
@@ -203,7 +234,7 @@ export class FindRideModel {
             lte: originBounds.maxLng
           }
         },
-        
+
         // Destination within bounds
         {
           destinationAddressLatitude: {
@@ -217,7 +248,7 @@ export class FindRideModel {
             lte: destinationBounds.maxLng
           }
         },
-        
+
         // Date filter
         dateFilter
       ];
@@ -291,7 +322,7 @@ export class FindRideModel {
       const whereConditions: any[] = [
         // Exclude user's own rides
         { userId: { not: userId } },
-        
+
         // Origin within bounds
         {
           originAddressLatitude: {
@@ -305,7 +336,7 @@ export class FindRideModel {
             lte: originBounds.maxLng
           }
         },
-        
+
         // Destination within bounds
         {
           destinationAddressLatitude: {
@@ -319,7 +350,7 @@ export class FindRideModel {
             lte: destinationBounds.maxLng
           }
         },
-        
+
         // Date filter
         dateFilter
       ];
@@ -484,7 +515,7 @@ export class FindRideModel {
    */
   private static calculateBounds(latitude: number, longitude: number, radiusKm: number) {
     const kmPerDegree = 111.32; // Approximate km per degree at equator
-    
+
     const latRange = radiusKm / kmPerDegree;
     const lngRange = radiusKm / (kmPerDegree * Math.cos(latitude * Math.PI / 180));
 

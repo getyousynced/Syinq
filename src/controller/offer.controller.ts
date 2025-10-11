@@ -168,8 +168,8 @@ async function indexRides(
   destLng: number,
   rideId: string) {
   try {
-    const nearBySrcTokens = util.nearByS2Cells(srcLat, srcLng, 15);
-    const destCellTokens = util.nearByS2Cells(destLat, destLng, 15);
+    const nearBySrcTokens = util.nearByS2CellTokens(srcLat, srcLng, 15);
+    const destCellTokens = util.nearByS2CellTokens(destLat, destLng, 15);
 
     const requests = [];
     for (const srcToken of nearBySrcTokens) {
