@@ -1,4 +1,4 @@
-import { CreateOfferRideData } from "../interface/offer.interface";
+import { CreateOfferRideData, IndexRideRequest } from "../interface/offer.interface";
 import { prisma } from "../server";
 import ErrorResponse from "../utils/ErroResponse";
 import { RideType } from "@prisma/client";
@@ -50,6 +50,27 @@ export class OfferRideModel {
     } catch (error: any) {
       if (error.code === "P2002") {
         throw new ErrorResponse("Duplicate entry found", 400);
+      }
+      throw new ErrorResponse(`Database error: ${error.message}`, 500);
+    }
+  }
+
+  /**
+   * index rides for geo queries
+   */
+  static async indexRides(data: IndexRideRequest[]) {
+    try {
+      await prisma.rides.createMany({
+        data: data.map(item => ({
+          rideId: item.rideId,
+          srcCellToken: item.srcCellToken,
+          destCellToken: item.destCellToken,
+        }))
+      });
+    } catch (error: any) {
+      if (error.code === "P2002") {
+        // Prisma duplicate key error — can safely ignore if skipDuplicates is not supported
+        return;
       }
       throw new ErrorResponse(`Database error: ${error.message}`, 500);
     }
