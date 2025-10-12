@@ -49,14 +49,12 @@ export const publishRide = async (
 
 
     currentLocation.cellToken = util.getS2CellToken(
-    currentLocation.cellID = util.getS2CellToken(
       currentLocation.latitude,
       currentLocation.longitude
     );
 
 
     destinationLocation.cellToken = util.getS2CellToken(
-    destinationLocation.cellID = util.getS2CellToken(
       destinationLocation.latitude,
       destinationLocation.longitude
     );
