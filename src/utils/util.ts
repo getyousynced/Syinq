@@ -1,4 +1,4 @@
-import { s2 } from 's2js';
+import { s1, s2 } from 's2js';
 
 // Corrected function
 export function getS2CellToken(lat: number, lng: number, level: number = 15): string {
@@ -31,8 +31,8 @@ export function nearByS2CellTokens(
     const centerLatLng = new s2.LatLng(lat, lng);
     const centerPoint = s2.Point.fromLatLng(centerLatLng);
 
-    const angle = (radiusKm * 1000) / 6371000;
-    const cap = new s2.Cap(centerPoint, angle);
+    const radian = kmToRadians(radiusKm);
+    const cap = new s2.Cap(centerPoint, s1.chordangle.fromAngle(radian));
 
     const coverer = new s2.RegionCoverer();
     coverer.minLevel = level;
@@ -44,7 +44,20 @@ export function nearByS2CellTokens(
         return [];
     }
 
-    return cellUnion.cellUnionBound().map(cellId => s2.cellid.toToken(cellId));
+    // Validate cell levels and return tokens
+    const tokens: string[] = [];
+    cellUnion.forEach(cellId => {
+        if (s2.cellid.level(cellId) !== level) {
+            throw new Error('CellUnion contains cells of incorrect level');
+        }
+        tokens.push(s2.cellid.toToken(cellId));
+    });
+    return tokens;
+}
+
+export function kmToRadians(km: number): number {
+    const earthRadiusKm = 6371; // Average radius of the Earth in kilometers
+    return km / earthRadiusKm;
 }
 
 export function isValidLatitude(lat: number): boolean {
