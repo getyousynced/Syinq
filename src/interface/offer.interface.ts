@@ -1,12 +1,5 @@
 import { RideType } from "@prisma/client";
-
-export interface LocationData {
-  address: string;
-  latitude: number;
-  longitude: number;
-  cellID: string; // s2 cell token level 15
-  placeId?: string | null;
-}
+import { LocationData } from "./common";
 
 export interface CreateOfferRideData {
   userId: string;

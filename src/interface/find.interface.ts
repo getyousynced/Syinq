@@ -1,10 +1,16 @@
 import { RideType } from "@prisma/client";
+import { LocationData } from "./common";
 
-export interface LocationData {
-  address: string;
-  latitude: number;
-  longitude: number;
-  placeId?: string;
+export interface MultiSearchRideRequest {
+  userId: string;
+  srcCellTokens: string[];
+  destCellTokens: string[];
+  originLocation: LocationData;
+  destinationLocation: LocationData;
+  seats?: number;
+  rideType?: RideType; // Use RideType enum instead of string
+  page?: number;
+  limit?: number;
 }
 
 export interface SearchRideRequest {

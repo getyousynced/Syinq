@@ -1,7 +1,7 @@
 import { RideType } from "@prisma/client";
+import { LocationData } from "../interface/common";
 import {
   CreateOfferRideData,
-  LocationData,
   UpdateRideRequest,
   IndexRideRequest,
 } from "../interface/offer.interface";
@@ -522,6 +522,7 @@ export class OfferRideService {
       // Validate locations are not the same if both are being updated
       const finalOrigin: LocationData = updatePayload.originLocation || {
         address: existingRide.originAddress,
+        cellToken: existingRide.originCellToken,
         latitude: existingRide.originAddressLatitude,
         longitude: existingRide.originAddressLongitude,
         placeId: existingRide.originAddressPlaceId || undefined,
@@ -530,6 +531,7 @@ export class OfferRideService {
       const finalDestination: LocationData =
         updatePayload.destinationLocation || {
           address: existingRide.destinationAddress,
+          cellToken: existingRide.destinationCellToken,
           latitude: existingRide.destinationAddressLatitude,
           longitude: existingRide.destinationAddressLongitude,
           placeId: existingRide.destinationAddressPlaceId || undefined,
