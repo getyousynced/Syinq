@@ -304,6 +304,7 @@ export class OfferRideModel {
 
       if (data.originLocation) {
         updatePayload.originAddress = data.originLocation.address;
+         updatePayload.originCellToken = data.originLocation.cellToken;
         updatePayload.originAddressLatitude = data.originLocation.latitude;
         updatePayload.originAddressLongitude = data.originLocation.longitude;
         updatePayload.originAddressPlaceId =
@@ -311,6 +312,7 @@ export class OfferRideModel {
       }
 
       if (data.destinationLocation) {
+          updatePayload.destinationCellToken = data.destinationLocation.cellToken; 
         updatePayload.destinationAddress = data.destinationLocation.address;
         updatePayload.destinationAddressLatitude =
           data.destinationLocation.latitude;

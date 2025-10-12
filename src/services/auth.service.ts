@@ -36,17 +36,24 @@ export class AuthService {
 
     const { otp, token: activation_Token } = this.createOtp(user);
 
-    if (isNewUser) {
-      sendEmail(email, otp, "Verify Email", "verificationmail");
-    } else {
-      sendEmail(email, otp, "Welcome Login", "verificationmail");
+    try {
+      
+      if (isNewUser) {
+       await sendEmail(email, otp, "Verify Email", "verificationmail");
+      } else {
+        await sendEmail(email, otp, "Welcome Login", "verificationmail");
+      }
+    } catch (error) {
+      console.log("Error sending email:", error);
+      
     }
-
     return { user, isNewUser, activation_Token };
   }
 
   static createOtp(user: User) {
-    const otp = randomInt(100000, 999999);
+    // Check for test account 
+    const isTestAccount = user.email === "user@test.edu.in"
+    const otp = isTestAccount ? 123456 : randomInt(100000, 999999);
     const token = jwt.sign({ user, otp }, process.env.ACTIVATION_TOKEN!, {
       expiresIn: "48h",
     });

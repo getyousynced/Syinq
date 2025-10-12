@@ -3,6 +3,7 @@ import {
   searchRides,
   getNearbyRides,
   getPopularRoutes,
+  searchAllRides,
 } from "../controller/find.controller";
 import { verifyToken } from "../middlewares/auth.middleware";
 
@@ -60,4 +61,6 @@ findRouter.get("/nearby", verifyToken, getNearbyRides);
  */
 findRouter.get("/popular-routes", verifyToken, getPopularRoutes);
 
+
+findRouter.get("/search-all", verifyToken, searchAllRides);
 export default findRouter;
