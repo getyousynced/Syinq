@@ -7,25 +7,27 @@ export const sendEmail = async (
   subject: string,
   template: string
 ) => {
-  let transporter = createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
-    auth: {
-      user: "getyousync@gmail.com",
-      pass: "oguh mvjz aznp rarp",
-    },
-  });
-
   try {
-    // Dynamic import to handle ES module compatibility
+    let transporter = createTransport({
+      host: "smtpout.secureserver.net", // Changed to recommended host
+      port: 587,
+      secure: false, // CRITICAL: false for port 587
+      auth: {
+        user: "support@syinq.com",
+        pass: "6Ds$5An%@syinq", // Use EMAIL account password, not GoDaddy login
+      },
+      tls: {
+        ciphers: 'SSLv3',
+        rejectUnauthorized: false // Add this if certificate issues persist
+      }
+    });
+
     const hbsModule = await import("nodemailer-express-handlebars");
-    const hbs = hbsModule.default; // Extract default export
+    const hbs = hbsModule.default;
 
     const expressHandlebarsModule = await import("express-handlebars");
     const { create } = expressHandlebarsModule;
 
-    // Create an ExpressHandlebars instance
     const hbsInstance = create({
       extname: ".handlebars",
       partialsDir: path.resolve("./src/views"),
@@ -33,19 +35,16 @@ export const sendEmail = async (
       defaultLayout: false,
     });
 
-    // Configure Handlebars for Nodemailer
     const handlebarsOptions = {
-      viewEngine: hbsInstance, // Pass the correct instance
+      viewEngine: hbsInstance,
       viewPath: path.resolve("./src/views"),
       extName: ".handlebars",
     };
 
-    // Attach Handlebars plugin dynamically
     transporter.use("compile", hbs(handlebarsOptions));
 
-    // Mail options
     const mailOptions: SendMailOptions & { template: string; context: any } = {
-      from: "getyousync@gmail.com",
+      from: "support@syinq.com",
       to,
       subject,
       template,
@@ -54,11 +53,11 @@ export const sendEmail = async (
       },
     };
 
-    await transporter.sendMail(mailOptions);
-    console.log("Mail sended");
-    
-    console.log("Email sent successfully!");
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Email sent successfully:", info.messageId);
+    return info;
   } catch (error) {
-    console.log("Error sending email:", error);
+    console.error("Email sending error details:", error);
+    throw error; // Re-throw to see actual error
   }
 };
