@@ -47,6 +47,7 @@ export const publishRide = async (
       return next(new ErrorResponse("Seats must be a valid number", 400));
     }
 
+
     currentLocation.cellToken = util.getS2CellToken(
       currentLocation.latitude,
       currentLocation.longitude
@@ -57,7 +58,6 @@ export const publishRide = async (
       destinationLocation.latitude,
       destinationLocation.longitude
     );
-
 
     const newRide = await OfferRideService.publishRide({
       userId,

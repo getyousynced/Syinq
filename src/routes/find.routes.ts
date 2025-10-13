@@ -61,6 +61,6 @@ findRouter.get("/nearby", verifyToken, getNearbyRides);
  */
 findRouter.get("/popular-routes", verifyToken, getPopularRoutes);
 
-findRouter.get("/search-all", verifyToken, searchAllRides);
 
+findRouter.get("/search-all", verifyToken, searchAllRides);
 export default findRouter;
