@@ -56,18 +56,6 @@ export const searchRides = async (
     const destinationRadiusNum = parseFloat(destinationRadius);
     const maxRadiusNum = parseFloat(maxRadius);
 
-    if (isNaN(originRadiusNum) || originRadiusNum < 1 || originRadiusNum > 5) {
-      return next(new ErrorResponse("Origin radius must be between 1 and 5 km", 400));
-    }
-
-    if (isNaN(destinationRadiusNum) || destinationRadiusNum < 1 || destinationRadiusNum > 5) {
-      return next(new ErrorResponse("Destination radius must be between 1 and 5 km", 400));
-    }
-
-    if (isNaN(maxRadiusNum) || maxRadiusNum < 1 || maxRadiusNum > 5) {
-      return next(new ErrorResponse("Max radius must be between 1 and 5 km", 400));
-    }
-
     // Validate optional parameters
     if (seats && (isNaN(parseInt(seats)) || parseInt(seats) < 1)) {
       return next(new ErrorResponse("Seats must be a positive number", 400));
