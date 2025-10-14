@@ -2,7 +2,7 @@ import { s1, s2 } from 's2js';
 
 // Corrected function
 export function getS2CellToken(lat: number, lng: number, level: number = 15): string {
-    const latlng = new s2.LatLng(lat, lng);
+    const latlng = s2.LatLng.fromDegrees(lat, lng);
     const cellId = s2.cellid.parent(s2.cellid.fromLatLng(latlng), level);
     return s2.cellid.toToken(cellId);
 }
@@ -28,7 +28,7 @@ export function nearByS2CellTokens(
     level: number = 15
 ): string[] {
     // Convert lat/lng to S2LatLng and then to Point
-    const centerLatLng = new s2.LatLng(lat, lng);
+    const centerLatLng = s2.LatLng.fromDegrees(lat, lng);
     const centerPoint = s2.Point.fromLatLng(centerLatLng);
 
     const radian = kmToRadians(radiusKm);
