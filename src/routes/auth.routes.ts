@@ -3,6 +3,7 @@ import { Router } from "express";
 import {
   authenticateByEmail,
   logout,
+  refreshAccessToken,
   verifyOtp,
 } from "../controller/auth.controller";
 
@@ -371,5 +372,6 @@ authRouter.post('/verifyUser', verifyOtp);
  *               $ref: '#/components/schemas/ErrorResponse'
  */
 authRouter.post("/logout", verifyToken, logout);
+authRouter.post("/refresh-token", refreshAccessToken);
 
 export default authRouter;

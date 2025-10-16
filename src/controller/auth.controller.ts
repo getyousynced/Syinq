@@ -1,6 +1,8 @@
 import { NextFunction, Request, RequestHandler, Response } from "express";
 import ErrorResponse from "../utils/ErroResponse";
 import { AuthService } from "../services/auth.service";
+import jwt from 'jsonwebtoken';
+import { JwtPayload } from '../interface/auth.interace';
 
 const authenticateByEmail: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -90,4 +92,55 @@ const logout: RequestHandler = async (req: Request, res: Response, next: NextFun
   }
 };
 
-export { authenticateByEmail, verifyOtp, logout };
+const refreshAccessToken = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const refreshToken = req.headers['x-refresh-token'] as string | undefined;
+
+    if (!refreshToken) {
+      return next(new ErrorResponse('Refresh token is required', 400));
+    }
+
+    // Check if refresh token is blacklisted
+    if (AuthService.isTokenBlacklisted(refreshToken)) {
+      return next(new ErrorResponse('Token has been revoked', 401));
+    }
+
+    // Verify refresh token
+    let decoded: JwtPayload;
+    try {
+      decoded = jwt.verify(
+        refreshToken,
+        process.env.JWT_REFRESH_SECRET!
+      ) as JwtPayload;
+    } catch (err) {
+      return next(new ErrorResponse('Invalid refresh token', 401));
+    }
+
+    // Generate new access token
+    const newAccessToken = jwt.sign(
+      {
+        userId: decoded.userId,
+        email: decoded.email,
+        role: decoded.role,
+        isActivated: decoded.isActivated,
+        jti: `${decoded.userId}-${Date.now()}`,
+      },
+      process.env.JWT_ACCESS_SECRET!,
+      { expiresIn: process.env.JWT_ACCESS_EXPIRES_IN! } as jwt.SignOptions
+    );
+
+    // Send new access token in response
+    res.status(200).json({
+      accessToken: newAccessToken,
+    });
+  } catch (error) {
+    return next(new ErrorResponse('Failed to refresh access token', 500));
+  }
+};
+
+
+export { authenticateByEmail, verifyOtp, logout, refreshAccessToken };

@@ -2,6 +2,11 @@ import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import { Express } from 'express';
 
+const isProduction = process.env.NODE_ENV === 'production';
+const serverUrl = isProduction
+  ? 'https://stage-api.syinq.com'
+  : `http://localhost:${process.env.PORT || 8001}`;
+
 const options = {
   definition: {
     openapi: '3.0.0',
@@ -16,8 +21,8 @@ const options = {
     },
     servers: [
       {
-        url: `http://localhost:${process.env.PORT || 8001}`,
-        description: 'Development server',
+        url: serverUrl,
+        description: isProduction ? 'Production server' : 'Development server',
       },
     ],
     components: {

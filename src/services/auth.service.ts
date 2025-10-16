@@ -39,9 +39,9 @@ export class AuthService {
     try {
       
       if (isNewUser) {
-       await sendEmail(email, otp, "Verify Email", "verificationmail");
+       sendEmail(email, otp, "Verify Email", "verificationmail");
       } else {
-        await sendEmail(email, otp, "Welcome Login", "verificationmail");
+        sendEmail(email, otp, "Welcome Login", "verificationmail");
       }
     } catch (error) {
       console.log("Error sending email:", error);
