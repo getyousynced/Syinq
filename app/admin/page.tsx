@@ -12,7 +12,7 @@ const Page = () => {
         height={150}
       />
       <p className='text-6xl text-red-300 font-bold tracking-tighter'>&lsquo;Oops&lsquo;</p>
-      <p className=' text-8xl text-black/30 font-bold tracking-tighter'> Admin page isn&apos;t available</p>
+      <p className=' text-8xl text-black/30 font-bold tracking-tighter text-center'> Admin page isn&apos;t available</p>
     </div>
   )
 }
