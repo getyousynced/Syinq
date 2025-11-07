@@ -1,0 +1,28 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+build/
+.next/
+out/
+
+# system files
+.DS_Store
+Thumbs.db
+
+# environment files (very important)
+
+.env.local
+
+
+# logs
+npm-debug.log*
+
+
+# editor settings
+.vscode/
+.idea/
+
+# lock files 
+package-lock.json
