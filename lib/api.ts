@@ -75,14 +75,16 @@ export const AdminAPI = {
   },
 
   // ❌ Reject a university
-  async reject(id: string) {
-    const res = await fetchWithTimeout(`${API_BASE}/universities/${String(id)}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ status: "rejected" }),
-    });
-    const updated = await res.json();
-    console.log("❌ Rejected:", updated);
-    return updated;
-  },
+  async reject(id: string | number, remarks?: string) {
+  const res = await fetchWithTimeout(`${API_BASE}/universities/${String(id)}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      status: "rejected",
+      remarks: remarks ?? "No remarks provided",
+    }),
+  });
+  return res.json();
+},
+
 };

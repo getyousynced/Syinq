@@ -19,12 +19,6 @@ export default function Header() {
           <span className="hidden sm:block text-gray-400 font-semibold">Admin</span>
         </div>
         </Link>
-        {/* <div className="flex-1" /> */}
-        
-        {/* <nav className="flex items-center gap-2">
-          <Link className="btn border border-primary text-primary hover:bg-blue-50" href="/admin/[slug]/login" as="/admin/access/login">Login</Link>
-          <Link className="btn bg-primary hover:bg-blue-400 text-white" href="/admin/dashboard">Dashboard</Link>
-        </nav> */}
       </div>
     </header>
   );

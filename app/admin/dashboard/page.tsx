@@ -33,11 +33,7 @@ export default function DashboardPage() {
 
   const filtered = list.filter(u => filter === "all" ? true : u.status === filter);
 
-  // function optimisticUpdate(id: number, status: "accepted" | "rejected", action: () => Promise<any>) {
-  //   const prev = [...list];
-  //   setList(prev.map(u => u.id === id ? { ...u, status } : u));
-  //   action().catch(() => setList(prev)); // revert on failure
-  // }
+
   function optimisticUpdate(
     id: string,
     status: "accepted" | "rejected",
@@ -82,10 +78,82 @@ export default function DashboardPage() {
                     <span className="inline-flex items-center border border-border rounded-lg px-2 py-1 text-xs bg-white">At: {u.at}</span>
                   </div>
                 </div>
-                <div className="flex gap-2">
-                  <Button variant="success" onClick={() => optimisticUpdate(u.id, "accepted", () => AdminAPI.accept(u.id))}>Accept</Button>
-                  <Button variant="danger" onClick={() => optimisticUpdate(u.id, "rejected", () => AdminAPI.reject(u.id))}>Reject</Button>
-                </div>
+                {u.status === "rejected" && u.remarks && (
+                  <div className="text-sm text-red-500 mt-2 italic">Remarks: {u.remarks}</div>
+                )}
+
+                {u.status === "pending" ? (
+                  <div className="flex gap-2">
+                    <Button variant="success" onClick={() => optimisticUpdate(u.id, "accepted", () => AdminAPI.accept(u.id))}>Accept</Button>
+                    <Button
+                      variant="danger"
+                      onClick={() =>
+                        setList((prev) =>
+                          prev.map((x) =>
+                            x.id === u.id ? { ...x, showRemarkBox: true } : x
+                          )
+                        )
+                      }
+                    >
+                      Reject
+                    </Button>
+
+                  </div>
+                ) : null}
+
+                {u.showRemarkBox && (
+                  <div className="absolute inset-0 bg-black/30 flex items-center justify-center rounded-lg">
+                    <div className="bg-white rounded-lg shadow-lg p-4 w-72">
+                      <h4 className="font-semibold mb-2 text-gray-800">Add Remarks</h4>
+                      <textarea
+                        placeholder="Write reason for rejection..."
+                        className="w-full border border-gray-300 rounded-md p-2 text-sm resize-none focus:ring-2 focus:ring-blue-100 outline-none"
+                        rows={3}
+                        onChange={(e) =>
+                          setList((prev) =>
+                            prev.map((x) =>
+                              x.id === u.id ? { ...x, tempRemark: e.target.value } : x
+                            )
+                          )
+                        }
+                      />
+                      <div className="flex justify-end gap-2 mt-3">
+                        <Button
+                          variant="outline"
+                          
+                          onClick={() =>
+                            setList((prev) =>
+                              prev.map((x) =>
+                                x.id === u.id ? { ...x, showRemarkBox: false } : x
+                              )
+                            )
+                          }
+                        >
+                          Cancel
+                        </Button>
+                        <Button
+                          variant="danger"
+                          onClick={() => {
+                            const remark = u.remarks?.trim() || "No remark provided";
+                            optimisticUpdate(u.id, "rejected", () =>
+                              AdminAPI.reject(u.id, remark)
+                            );
+                            setList((prev) =>
+                              prev.map((x) =>
+                                x.id === u.id
+                                  ? { ...x, showRemarkBox: false, remarks: remark }
+                                  : x
+                              )
+                            );
+                          }}
+                        >
+                          Submit
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
               </article>
             ))}
           </div>
