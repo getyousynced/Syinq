@@ -1,0 +1,102 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  Student
+  Faculty
+}
+
+enum RideType {
+  CAB
+  BIKE
+  CAR
+}
+
+model User {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  email       String    @unique
+  isActivated Boolean   @default(false)
+  lastLogin   DateTime?
+  suspended   Boolean   @default(false)
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  role       Role
+
+  profile     UserProfile?
+  collegeInfo CollegeInfo?
+
+  ride Ride[]
+}
+
+model UserProfile {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId       String   @unique @db.ObjectId
+  name         String
+  phoneNumber  String   @unique
+  gender       String
+  profileImage String?
+  dateOfBirth  DateTime
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+
+  // Add vehicle information to profile
+  carNumber  String?
+  bikeNumber String?
+
+  // Relationship back to User
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model CollegeInfo {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String   @unique @db.ObjectId
+  college    String
+  course     String
+  year       Int
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  // Relationship back to User
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Ride {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+
+  originAddress          String
+  originCellToken        String
+  originAddressLatitude  Float
+  originAddressLongitude Float
+  originAddressPlaceId   String?
+
+  destinationAddress          String
+  destinationCellToken        String
+  destinationAddressLatitude  Float
+  destinationAddressLongitude Float
+  destinationAddressPlaceId   String?
+
+  plannedTime DateTime
+
+  rideType      RideType
+  seats         Int
+  VehicleNumber String?
+}
+
+model RideIndex {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  rideId String @db.ObjectId
+
+  srcCellToken  String // s2 level 15 cell token of source
+  destCellToken String // s2 level 15 cell token of destination
+}
