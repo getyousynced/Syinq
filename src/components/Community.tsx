@@ -106,11 +106,11 @@ export const forumPosts = [
 
 const Community = () => {
   return (
-    <section id="community" className="py-20 relative overflow-hidden">
+    <section id="community" className="py-14 md:py-16 relative overflow-hidden">
       <div className="absolute -right-20 bottom-1/3 w-80 h-80 bg-syinq-blue/5 rounded-full blur-3xl"></div>
       
       <div className="section-container">
-        <div className="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+        <div className="text-center max-w-3xl mx-auto mb-10 reveal-on-scroll">
           <div className="inline-block bg-syinq-blue/10 p-3 rounded-2xl mb-4">
             <Users className="h-6 w-6 text-syinq-blue" />
           </div>
@@ -150,7 +150,7 @@ const Community = () => {
             </div>
           </Carousel>
           
-          <div className="mt-12 text-center">
+          <div className="mt-8 text-center">
             <Button className="apple-button-secondary" disabled>
               Forum (Coming soon)
             </Button>

@@ -4,9 +4,9 @@ import { Shield, GraduationCap, Car, Building, Lock } from 'lucide-react';
 
 const Security = () => {
   return (
-    <section id="security" className="bg-syinq-lightgray relative overflow-hidden py-16">
+    <section id="security" className="bg-syinq-lightgray relative overflow-hidden py-12 md:py-14">
       <div className="section-container">
-        <div className="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+        <div className="text-center max-w-3xl mx-auto mb-10 reveal-on-scroll">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Your Campus. Your Safety.
             <span className="block text-syinq-blue">Our Priority.</span>
@@ -54,7 +54,7 @@ const Security = () => {
           </div>
         </div>
         
-        <div className="mt-16 text-center reveal-on-scroll">
+        <div className="mt-10 text-center reveal-on-scroll">
           <p className="mb-4 text-gray-900 text-center font-bold text-2xl">
             Your safety is our top priority
           </p>

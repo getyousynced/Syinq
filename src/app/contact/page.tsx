@@ -170,7 +170,7 @@ const Contact = () => {
                       App Store
                     </a>
                   </Button>
-                  <Button asChild variant="outline" className="w-full border-syinq-blue text-syinq-blue hover:bg-syinq-blue/10">
+                  <Button asChild className="w-full bg-syinq-blue hover:bg-syinq-blue/90 text-white">
                     <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer">
                       Play Store
                     </a>
