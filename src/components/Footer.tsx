@@ -12,8 +12,7 @@ const Footer = () => {
           <div className="md:col-span-2">
             <h3 className="text-2xl font-bold text-syinq-dark mb-4">Syinq</h3>
             <p className="text-syinq-gray mb-6 max-w-md">
-              One app for everything you need on campus. Carpooling, marketplace, and community forum 
-              designed exclusively for university students.
+              One app for campus life. Carpooling is live today — Marketplace and Community Forum are coming soon.
             </p>
             <div className="flex space-x-4">
               <SocialLink 
@@ -38,8 +37,8 @@ const Footer = () => {
             <h4 className="font-semibold text-syinq-dark mb-4">Platform</h4>
             <ul className="space-y-3">
               <FooterLink text="Carpooling" href="/#carpooling" />
-              <FooterLink text="Marketplace" href="/marketplace" isRouterLink={true} />
-              <FooterLink text="Community" href="/#community" />
+              <FooterLink text="Marketplace (Coming soon)" href="/marketplace" isRouterLink={true} />
+              <FooterLink text="Community Forum (Coming soon)" href="/#community" />
               <FooterLink text="Security" href="/#security" />
             </ul>
           </div>

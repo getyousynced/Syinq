@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Users } from 'lucide-react';
-import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
@@ -122,6 +121,9 @@ const Community = () => {
           <p className="text-lg text-syinq-gray">
             Connect with peers, share information, and stay updated on campus events.
           </p>
+          <div className="mt-4 inline-flex items-center rounded-full bg-syinq-blue/10 px-3 py-1 text-sm font-medium text-syinq-blue">
+            Coming soon
+          </div>
         </div>
         
         <div className="max-w-4xl mx-auto reveal-on-scroll">
@@ -149,8 +151,8 @@ const Community = () => {
           </Carousel>
           
           <div className="mt-12 text-center">
-            <Button asChild className="apple-button-secondary">
-              <Link href="/forum">View All Posts</Link>
+            <Button className="apple-button-secondary" disabled>
+              Forum (Coming soon)
             </Button>
           </div>
         </div>

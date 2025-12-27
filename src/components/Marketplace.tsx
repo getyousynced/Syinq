@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Book, Headphones, MessageSquare, Ban } from 'lucide-react';
-import Link from 'next/link';
 
 const Marketplace = () => {
   return <section id="marketplace" className="py-20 bg-syinq-lightgray relative overflow-hidden">
@@ -19,12 +18,15 @@ const Marketplace = () => {
           <p className="text-lg text-syinq-gray">
             A safe, student-exclusive marketplace for textbooks, electronics, dorm essentials and more.
           </p>
+          <div className="mt-4 inline-flex items-center rounded-full bg-syinq-green/10 px-3 py-1 text-sm font-medium text-syinq-green">
+            Coming soon
+          </div>
         </div>
         
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="relative reveal-on-scroll">
             <div className="relative grid grid-cols-2 gap-4">
-              <Link href="/marketplace" className="apple-card transform translate-y-12 hover:translate-y-10 transition-transform">
+              <div className="apple-card transform translate-y-12">
                 <div className="w-full aspect-square bg-white rounded-lg shadow-sm mb-4 overflow-hidden flex items-center justify-center">
                   <Book className="h-12 w-12 text-syinq-blue" />
                 </div>
@@ -33,9 +35,9 @@ const Marketplace = () => {
                   <p className="text-sm text-syinq-gray mb-2">Like new condition</p>
                   <p className="font-medium text-syinq-blue">₹450</p>
                 </div>
-              </Link>
+              </div>
               
-              <Link href="/marketplace" className="apple-card hover:translate-y-2 transition-transform">
+              <div className="apple-card">
                 <div className="w-full aspect-square bg-white rounded-lg shadow-sm mb-4 overflow-hidden flex items-center justify-center">
                   <Headphones className="h-12 w-12 text-syinq-green" />
                 </div>
@@ -44,9 +46,9 @@ const Marketplace = () => {
                   <p className="text-sm text-syinq-gray mb-2">Used for 3 months</p>
                   <p className="font-medium text-syinq-green">₹ 1499</p>
                 </div>
-              </Link>
+              </div>
               
-              <Link href="/marketplace" className="apple-card relative transform translate-y-6 hover:translate-y-4 transition-transform col-span-2">
+              <div className="apple-card relative transform translate-y-6 col-span-2">
                 <div className="grid grid-cols-3 gap-4">
                   <div className="aspect-square bg-white rounded-lg shadow-sm flex items-center justify-center">
                     <svg className="w-10 h-10 text-syinq-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -70,7 +72,7 @@ const Marketplace = () => {
                   <h3 className="font-semibold">Marketplace Features</h3>
                   <p className="text-sm text-syinq-gray">List items easily with photos + details</p>
                 </div>
-              </Link>
+              </div>
             </div>
           </div>
           
@@ -108,7 +110,9 @@ const Marketplace = () => {
             </div>
             
             <div className="mt-8">
-              <Link href="/marketplace" className="apple-button bg-syinq-green inline-block">Browse Marketplace</Link>
+              <span className="apple-button-secondary inline-flex bg-syinq-lightgray text-syinq-gray cursor-not-allowed" aria-disabled="true">
+                Marketplace (Coming soon)
+              </span>
             </div>
           </div>
         </div>
