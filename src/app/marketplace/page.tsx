@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useEffect } from "react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Book, Laptop, Coffee, ShoppingBag } from "lucide-react";
 import Image from "next/image";
+import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/appLinks";
 
 const MarketplaceGIF = () => (
   <div className="mx-auto max-w-3xl mb-10">
@@ -84,15 +84,20 @@ const CampusMarket = () => {
                   Coming Soon to Your Campus!
                 </h3>
                 <p className="text-syinq-gray mb-6 max-w-lg">
-                  Be the first to know when our exclusive student marketplace
-                  launches at your university.
+                  The Marketplace feature will be available very soon. Download Syinq today and you’ll see it unlock as we roll it out.
                 </p>
-                <Button
-                  asChild
-                  className="bg-syinq-green hover:bg-syinq-green/90"
-                >
-                  <Link href="/waitlist">Join the Waitlist</Link>
-                </Button>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Button asChild className="bg-syinq-blue hover:bg-syinq-blue/90">
+                    <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
+                      Download on App Store
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline" className="border-syinq-blue text-syinq-blue hover:bg-syinq-blue/10">
+                    <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer">
+                      Get it on Play Store
+                    </a>
+                  </Button>
+                </div>
               </div>
               <div className="w-full md:w-auto">
                 <Image
@@ -107,15 +112,11 @@ const CampusMarket = () => {
           </div>
 
           <div className="text-center mb-10">
-            <Button
-              asChild
-              size="lg"
-              className="bg-syinq-blue hover:bg-syinq-blue/90"
-            >
-              <Link href="/waitlist" className="flex items-center gap-2">
+            <Button size="lg" className="bg-syinq-lightgray text-syinq-gray hover:bg-syinq-lightgray" disabled>
+              <span className="flex items-center gap-2">
                 <ShoppingBag className="h-4 w-4" />
-                <span>Join Waitlist to Start Buying & Selling</span>
-              </Link>
+                <span>Marketplace (Coming soon)</span>
+              </span>
             </Button>
           </div>
         </div>

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Home } from 'lucide-react';
 import Image from 'next/image';
+import { APP_STORE_URL, PLAY_STORE_URL } from '@/lib/appLinks';
 
 export const metadata = {
   title: "About Syinq",
@@ -86,12 +87,20 @@ export default function AboutPage() {
           <div className="text-center">
             <h2 className="text-2xl font-bold mb-6">Join Us</h2>
             <p className="text-syinq-gray max-w-2xl mx-auto mb-8">
-              We&apos;re excited to bring Syinq to your campus. Join our waitlist to be among the first to experience
-              the future of campus connectivity.
+              Syinq is now available. Download the app and get synced with your campus.
             </p>
-            <Button asChild className="bg-syinq-blue hover:bg-syinq-blue/90">
-              <Link href="/waitlist">Join Waitlist</Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Button asChild className="bg-syinq-blue hover:bg-syinq-blue/90">
+                <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
+                  Download on App Store
+                </a>
+              </Button>
+              <Button asChild variant="outline" className="border-syinq-blue text-syinq-blue hover:bg-syinq-blue/10">
+                <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer">
+                  Get it on Play Store
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </div>

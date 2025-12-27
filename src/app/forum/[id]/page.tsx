@@ -70,6 +70,7 @@ export default function PostPage({ params }: { params: { id: string } }) {
   const router = useRouter();
   const { toast } = useToast();
   const [replyText, setReplyText] = useState('');
+  const isForumLive = false;
   
   // Find the post from our mock data
   const postId = Number(params.id);
@@ -86,6 +87,15 @@ export default function PostPage({ params }: { params: { id: string } }) {
   // Handle reply submission
   const handleSubmitReply = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!isForumLive) {
+      toast({
+        title: "Coming Soon",
+        description: "Replies will be enabled very soon.",
+      });
+      return;
+    }
+
     if (!replyText.trim()) {
       toast({
         title: "Empty reply",
@@ -133,6 +143,11 @@ export default function PostPage({ params }: { params: { id: string } }) {
       </Button>
 
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-8">
+        {!isForumLive && (
+          <div className="mb-6 inline-flex items-center rounded-full bg-syinq-blue/10 px-3 py-1 text-sm font-medium text-syinq-blue">
+            Forum is coming soon
+          </div>
+        )}
         <div className="flex justify-between items-start mb-6">
           <span className={`text-xs px-3 py-1 rounded-full ${colorClasses[post.color as 'blue' | 'green' | 'gray'].light} ${colorClasses[post.color as 'blue' | 'green' | 'gray'].text}`}>
             {post.tag}
@@ -201,9 +216,12 @@ export default function PostPage({ params }: { params: { id: string } }) {
               value={replyText}
               onChange={(e) => setReplyText(e.target.value)}
               required
+              disabled={!isForumLive}
             />
           </div>
-          <Button type="submit">Post Reply</Button>
+          <Button type="submit" disabled={!isForumLive}>
+            Post Reply
+          </Button>
         </form>
       </div>
     </div>

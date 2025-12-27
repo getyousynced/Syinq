@@ -13,9 +13,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Phone, Mail, MapPin, Send, ExternalLink} from "lucide-react";
-import Link from "next/link";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/appLinks";
 interface ContactFormValues {
   name: string;
   email: string;
@@ -73,7 +73,7 @@ const Contact = () => {
       } else {
         throw new Error("Failed to submit form");
       }
-    } catch (error) {
+    } catch {
       toast.error("Failed to send message. Please try again later.");
     } finally {
       setIsSubmitting(false);
@@ -160,17 +160,22 @@ const Contact = () => {
               </p>
 
               <div className="bg-syinq-blue/5 rounded-xl p-6 border border-syinq-blue/20">
-                <h3 className="text-lg font-medium mb-3">Join our waitlist</h3>
+                <h3 className="text-lg font-medium mb-3">Download Syinq</h3>
                 <p className="text-sm text-syinq-gray mb-4">
-                  Want to be notified when Syinq launches at your campus? Join
-                  our waitlist and be among the first to know!
+                  Syinq is live on iOS and Android. Download the app to start carpooling today.
                 </p>
-                <Button
-                  asChild
-                  className="w-full bg-syinq-blue hover:bg-syinq-blue/90 text-white"
-                >
-                  <Link href="/waitlist">Join Waitlist</Link>
-                </Button>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <Button asChild className="w-full bg-syinq-blue hover:bg-syinq-blue/90 text-white">
+                    <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
+                      App Store
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline" className="w-full border-syinq-blue text-syinq-blue hover:bg-syinq-blue/10">
+                    <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer">
+                      Play Store
+                    </a>
+                  </Button>
+                </div>
               </div>
             </div>
 

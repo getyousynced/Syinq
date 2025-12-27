@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { HelpCircle } from "lucide-react";
+import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/appLinks";
 import {
   Accordion,
   AccordionContent,
@@ -59,10 +60,9 @@ const FAQ = () => {
                   How do I sign up for Syinq?
                 </AccordionTrigger>
                 <AccordionContent className="text-syinq-gray">
-                  Syinq is currently in development and available through our
-                  waitlist. You can join the waitlist to be notified when we
-                  launch at your campus. When we launch, you&apos;ll need a
-                  valid university email address to sign up.
+                  Download Syinq from the App Store or Play Store and sign up
+                  using your university email address. We verify students to
+                  keep the platform safe.
                 </AccordionContent>
               </AccordionItem>
 
@@ -71,10 +71,9 @@ const FAQ = () => {
                   Is Syinq available at my university?
                 </AccordionTrigger>
                 <AccordionContent className="text-syinq-gray">
-                  We&apos;re rolling out to select universities first. Join our
-                  waitlist and we&apos;ll notify you when Syinq becomes
-                  available at your campus. We&apos;re expanding rapidly and aim
-                  to be available at most major universities soon.
+                  We&apos;re rolling out campus-by-campus. Download the app and
+                  try signing up — availability may vary as we expand to more
+                  universities.
                 </AccordionContent>
               </AccordionItem>
 
@@ -160,12 +159,20 @@ const FAQ = () => {
           <div className="text-center">
             <h2 className="text-2xl font-bold mb-4">Ready to join Syinq?</h2>
             <p className="text-syinq-gray mb-6 max-w-xl mx-auto">
-              Be the first to experience the benefits of Syinq when we launch at
-              your campus.
+              Download the app and get synced with your campus.
             </p>
-            <Button asChild className="bg-syinq-green hover:bg-syinq-green/90">
-              <Link href="/waitlist">Join Waitlist</Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Button asChild className="bg-syinq-blue hover:bg-syinq-blue/90">
+                <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
+                  Download on App Store
+                </a>
+              </Button>
+              <Button asChild variant="outline" className="border-syinq-blue text-syinq-blue hover:bg-syinq-blue/10">
+                <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer">
+                  Get it on Play Store
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </div>
