@@ -59,7 +59,7 @@ const config: Config = {
           dark: "#1D1D1F",
           gray: "#86868B",
           background: "#F5F5F7",
-          lightgray: "#F2F2F2",
+          lightgray: "#ffffffff",
           cardgray: "#FAFAFA",
         },
       },

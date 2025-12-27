@@ -62,25 +62,19 @@ const Navbar = () => {
             href={isHomePage ? "#marketplace" : "/#marketplace"} 
             className="text-syinq-dark hover:text-syinq-blue transition-colors"
           >
-            Marketplace (Soon)
+            Marketplace
           </Link>
           <Link 
             href={isHomePage ? "#community" : "/#community"} 
             className="text-syinq-dark hover:text-syinq-blue transition-colors"
           >
-            Community (Soon)
+            Community
           </Link>
           <Link 
             href={isHomePage ? "#security" : "/#security"} 
             className="text-syinq-dark hover:text-syinq-blue transition-colors"
           >
             Security
-          </Link>
-          <Link 
-            href={isHomePage ? "#download" : "/#download"} 
-            className="text-syinq-dark hover:text-syinq-blue transition-colors"
-          >
-            Download
           </Link>
           <Button asChild className="bg-syinq-blue hover:bg-syinq-blue/90">
             <Link href={isHomePage ? "#download" : "/#download"}>Download App</Link>
@@ -130,13 +124,6 @@ const Navbar = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               Security
-            </Link>
-            <Link 
-              href={isHomePage ? "#download" : "/#download"}
-              className="text-syinq-dark py-2 hover:text-syinq-blue transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Download
             </Link>
             <Link 
               href={isHomePage ? "#download" : "/#download"}

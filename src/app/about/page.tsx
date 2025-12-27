@@ -95,7 +95,7 @@ export default function AboutPage() {
                   Download on App Store
                 </a>
               </Button>
-              <Button asChild variant="outline" className="border-syinq-blue text-syinq-blue hover:bg-syinq-blue/10">
+              <Button asChild className="bg-syinq-blue hover:bg-syinq-blue/90 text-white">
                 <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer">
                   Get it on Play Store
                 </a>

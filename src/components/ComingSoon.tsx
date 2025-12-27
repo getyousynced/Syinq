@@ -1,8 +1,8 @@
 "use client";
 
 import React from 'react';
-import { AppWindow } from 'lucide-react';
 import { APP_STORE_URL, PLAY_STORE_URL } from '@/lib/appLinks';
+import Image from 'next/image';
 
 const ComingSoon = () => {
   return (
@@ -11,9 +11,14 @@ const ComingSoon = () => {
       
       <div className="section-container">
         <div className="max-w-3xl mx-auto text-center reveal-on-scroll">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-syinq-blue/10 rounded-2xl mb-6">
-            <AppWindow className="h-10 w-10 text-syinq-blue" />
-          </div>
+          <Image
+            src="/images/syinq app icon.png"
+            alt="Syinq app icon"
+            width={80}
+            height={80}
+            className="mx-auto mb-6 rounded-[18px]"
+            priority
+          />
           
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
             <span className="text-syinq-blue">Download Syinq</span>
@@ -25,7 +30,7 @@ const ComingSoon = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-lg mx-auto mb-8">
             <a
-              className="apple-button-secondary flex justify-center items-center space-x-3"
+              className="apple-button flex justify-center items-center space-x-3"
               href={APP_STORE_URL}
               target="_blank"
               rel="noopener noreferrer"
@@ -38,16 +43,16 @@ const ComingSoon = () => {
             </a>
             
             <a
-              className="apple-button-secondary flex justify-center items-center space-x-3"
+              className="apple-button flex justify-center items-center space-x-3"
               href={PLAY_STORE_URL}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12.2037 10.5163L3.78453 19.7774C3.78453 19.7774 3.78453 19.7774 3.76461 19.7774C4.17607 20.3386 4.90717 20.739 5.71805 20.739C6.1096 20.739 6.46138 20.6592 6.79323 20.4995L6.87269 20.4597L16.035 15.0862L12.2037 10.5163Z" />
-                <path d="M20.2157 9.37245C19.725 8.97205 19.1547 8.73228 18.5647 8.63242L18.5051 8.59254C17.9152 8.49267 17.3252 8.57261 16.7949 8.8323L16.7353 8.85224L12.0051 11.5941L16.0944 16.4641L20.1837 14.0226C20.6744 13.7629 21.0659 13.3625 21.3182 12.8623C21.5507 12.3621 21.6699 11.8419 21.6501 11.3019V11.2619C21.6103 10.562 21.065 9.83232 20.2157 9.37245Z" />
-                <path d="M3.08691 3.94169C3.00745 4.1216 2.96762 4.32139 2.96762 4.5411V19.4186C2.96762 19.6583 3.0274 19.8781 3.12677 20.078L11.8434 10.516L3.08691 3.94169Z" />
-                <path d="M12.1042 10.4767L16.5732 7.89507L12.5038 3.4217L5.71802 3.26196C4.90714 3.26196 4.19597 3.64244 3.78451 4.20361C3.76459 4.2235 3.76459 4.2235 3.76459 4.24338L12.1042 10.4767Z" />
+              <svg className="w-6 h-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path
+                  d="M7.2 4.55c-.66-.38-1.2.02-1.2.8v13.3c0 .78.54 1.18 1.2.8l11.4-6.65c.6-.35.6-1.25 0-1.6L7.2 4.55z"
+                  fill="currentColor"
+                />
               </svg>
               <span>Play Store</span>
             </a>

@@ -4,11 +4,11 @@ import React from 'react';
 import { Book, Headphones, MessageSquare, Ban } from 'lucide-react';
 
 const Marketplace = () => {
-  return <section id="marketplace" className="py-20 bg-syinq-lightgray relative overflow-hidden">
+  return <section id="marketplace" className="py-14 md:py-16 bg-syinq-lightgray relative overflow-hidden">
       <div className="absolute -left-20 top-1/3 w-80 h-80 bg-syinq-green/5 rounded-full blur-3xl"></div>
       
       <div className="section-container">
-        <div className="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+        <div className="text-center max-w-3xl mx-auto mb-10 reveal-on-scroll">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Marketplace – Buy. Sell. Rent.
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-syinq-blue to-syinq-green">

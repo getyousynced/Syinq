@@ -1,6 +1,6 @@
-import LegalLayout, { LegalSection } from '@/components/LegalLayout';
+"use client";
 
-export const metadata = { title: 'Terms & Conditions | Syinq', description: 'Read the Terms & Conditions governing the use of the Syinq platform.' };
+import LegalLayout, { LegalSection } from '@/components/LegalLayout';
 const LAST_UPDATED = 'September 22, 2025';
 const sections: LegalSection[] = [
   { id: 'section-1', title: '1. Acceptance of Terms', content: <p>By creating an account, accessing, or using Syinq, you agree to be bound by these Terms. If you do not agree, you must discontinue use of the platform.</p> },
