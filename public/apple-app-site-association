@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "PY4QXQWKL8.com.rasync.sync",
+        "paths": ["/trip/*"]
+      }
+    ]
+  }
+}
