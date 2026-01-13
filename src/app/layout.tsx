@@ -1,10 +1,9 @@
-import Navbar from "@/components/Navbar";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import Footer from "@/components/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
+import LayoutWrapper from "@/components/LayoutWrapper";
 
 const roboto = Roboto({
   weight: "400",
@@ -19,17 +18,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body className={`${roboto.className} select-none`}>
-          <Navbar />
-          {children}
+        <LayoutWrapper>{children}</LayoutWrapper>
         <Toaster />
         <Sonner />
-        <Footer />
       </body>
     </html>
   );
