@@ -18,7 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const hideLayoutWrapper = pathname.startsWith("/admin") || pathname === "/login";
+  const hideLayoutWrapper =
+    pathname.startsWith("/admin") || pathname === "/login";
 
   return (
     <html lang="en">
