@@ -31,31 +31,14 @@ export default function AdminRegister() {
     console.log("🟡 [Register] Password:", password ? "***" : "missing");
 
     try {
-      const response = await fetch(
-        "http://localhost:8080/api/v1/admin/auth/register",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
-          body: JSON.stringify({ email, password, name }),
-        }
-      );
+      console.log("🟡 [Register] Calling api util");
 
-      const text = await response.text(); // 👈 raw response
-      console.log("🟣 [Register] RAW RESPONSE:", text);
+      const data = await api("/admin/auth/register", {
+        method: "POST",
+        body: { email, password, name },
+      });
 
-      let data;
-      try {
-        data = JSON.parse(text);
-      } catch {
-        throw new Error("Backend did not return JSON");
-      }
-
-      if (!response.ok) {
-        throw new Error(data.message || "Registration failed");
-      }
-
-      console.log("🟢 [Register] Parsed response:", data);
+      console.log("🟢 [Register] Response:", data);
 
       toast.success("Registration successful!");
       setTimeout(() => {

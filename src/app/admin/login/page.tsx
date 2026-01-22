@@ -34,7 +34,7 @@ export default function AdminLogin() {
         throw new Error(data?.message || "Login failed");
       }
 
-      toast.success("Login successful! Redirecting...");
+      toast.success("Login successful!");
       setTimeout(() => {
         window.location.href = "/admin/dashboard";
       }, 1000);
