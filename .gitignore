@@ -123,4 +123,4 @@ dist
 .sst
 
 # open-next
-.open-next
+.open-next.DS_Store

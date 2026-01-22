@@ -12,6 +12,7 @@ export default function ForumPage() {
   const { toast } = useToast();
   const [filter, setFilter] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const isForumLive = false;
 
   // Available tags from our data
   const tags = Array.from(new Set(forumPosts.map(post => post.tag)));
@@ -55,6 +56,11 @@ export default function ForumPage() {
           <p className="text-lg text-syinq-gray">
             Connect with peers, share information, and stay updated on campus events.
           </p>
+          {!isForumLive && (
+            <div className="mt-4 inline-flex items-center rounded-full bg-syinq-blue/10 px-3 py-1 text-sm font-medium text-syinq-blue">
+              Coming soon
+            </div>
+          )}
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
@@ -63,6 +69,7 @@ export default function ForumPage() {
               variant={!filter ? "default" : "outline"}
               onClick={() => setFilter(null)}
               className="text-sm h-9"
+              disabled={!isForumLive}
             >
               All Posts
             </Button>
@@ -72,6 +79,7 @@ export default function ForumPage() {
                 variant={filter === tag ? "default" : "outline"}
                 onClick={() => setFilter(tag)}
                 className="text-sm h-9"
+                disabled={!isForumLive}
               >
                 {tag}
               </Button>
@@ -85,8 +93,9 @@ export default function ForumPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="px-4 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-syinq-blue/20"
+              disabled={!isForumLive}
             />
-            <Button onClick={handleCreatePost}>
+            <Button onClick={handleCreatePost} disabled={!isForumLive}>
               Create Post
             </Button>
           </div>

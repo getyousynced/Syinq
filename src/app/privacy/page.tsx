@@ -1,6 +1,6 @@
-import LegalLayout, { LegalSection } from '@/components/LegalLayout';
+"use client";
 
-export const metadata = { title: 'Privacy Policy | Syinq', description: 'Understand how Syinq collects, uses, and protects your personal information.' };
+import LegalLayout, { LegalSection } from '@/components/LegalLayout';
 const LAST_UPDATED = 'September 22, 2025';
 const sections: LegalSection[] = [
   { id: 'sec-1', title: '1. Information We Collect', content: <p>We collect information you provide (account details, university verification data, listings, forum posts) and technical data (device, usage logs, coarse location for carpool relevance). We minimize collection and do not harvest unrelated personal data.</p> },

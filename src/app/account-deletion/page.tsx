@@ -1,9 +1,6 @@
-import LegalLayout, { LegalSection } from '@/components/LegalLayout';
+"use client";
 
-export const metadata = {
-  title: 'Account Deletion | Syinq',
-  description: 'How to request deletion of your Syinq account and what data is removed or retained.'
-};
+import LegalLayout, { LegalSection } from '@/components/LegalLayout';
 
 const LAST_UPDATED = 'September 22, 2025';
 

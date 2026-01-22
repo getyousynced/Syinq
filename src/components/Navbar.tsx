@@ -77,7 +77,7 @@ const Navbar = () => {
             Security
           </Link>
           <Button asChild className="bg-syinq-blue hover:bg-syinq-blue/90">
-            <Link href="/waitlist">Join Waitlist</Link>
+            <Link href={isHomePage ? "#download" : "/#download"}>Download App</Link>
           </Button>
           <Button asChild variant="outline" className="border-syinq-blue text-syinq-blue hover:bg-syinq-blue/10">
             <Link href="/contact">Contact Us</Link>
@@ -109,14 +109,14 @@ const Navbar = () => {
               className="text-syinq-dark py-2 hover:text-syinq-blue transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Marketplace
+              Marketplace (Soon)
             </Link>
             <Link 
               href={isHomePage ? "#community" : "/#community"}
               className="text-syinq-dark py-2 hover:text-syinq-blue transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Community
+              Community (Soon)
             </Link>
             <Link 
               href={isHomePage ? "#security" : "/#security"}
@@ -126,11 +126,11 @@ const Navbar = () => {
               Security
             </Link>
             <Link 
-              href="/waitlist"
+              href={isHomePage ? "#download" : "/#download"}
               className="bg-syinq-blue text-white py-2 px-4 rounded hover:bg-syinq-blue/90 transition-colors text-center"
               onClick={() => setIsMenuOpen(false)}
             >
-              Join Waitlist
+              Download App
             </Link>
             <Link 
               href="/contact"

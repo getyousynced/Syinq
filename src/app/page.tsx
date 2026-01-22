@@ -6,6 +6,8 @@ import Hero from "@/components/Hero";
 import Marketplace from "@/components/Marketplace";
 import ScrollReveal from "@/components/ScrollReveal";
 import Security from "@/components/Security";
+import Testimonials from "@/components/Testimonials";
+import HowToUse from "@/components/HowToUse";
 
 export default function Home() {
   return (
@@ -15,6 +17,8 @@ export default function Home() {
     <Marketplace />
     <Community />
     <Security />
+    <Testimonials />
+    <HowToUse />
     <AppShowcase />
     <ComingSoon />
     <ScrollReveal />

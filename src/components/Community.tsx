@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Users } from 'lucide-react';
-import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
@@ -107,11 +106,11 @@ export const forumPosts = [
 
 const Community = () => {
   return (
-    <section id="community" className="py-20 relative overflow-hidden">
+    <section id="community" className="py-14 md:py-16 relative overflow-hidden">
       <div className="absolute -right-20 bottom-1/3 w-80 h-80 bg-syinq-blue/5 rounded-full blur-3xl"></div>
       
       <div className="section-container">
-        <div className="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+        <div className="text-center max-w-3xl mx-auto mb-10 reveal-on-scroll">
           <div className="inline-block bg-syinq-blue/10 p-3 rounded-2xl mb-4">
             <Users className="h-6 w-6 text-syinq-blue" />
           </div>
@@ -122,6 +121,9 @@ const Community = () => {
           <p className="text-lg text-syinq-gray">
             Connect with peers, share information, and stay updated on campus events.
           </p>
+          <div className="mt-4 inline-flex items-center rounded-full bg-syinq-blue/10 px-3 py-1 text-sm font-medium text-syinq-blue">
+            Coming soon
+          </div>
         </div>
         
         <div className="max-w-4xl mx-auto reveal-on-scroll">
@@ -148,9 +150,9 @@ const Community = () => {
             </div>
           </Carousel>
           
-          <div className="mt-12 text-center">
-            <Button asChild className="apple-button-secondary">
-              <Link href="/forum">View All Posts</Link>
+          <div className="mt-8 text-center">
+            <Button className="apple-button-secondary" disabled>
+              Forum (Coming soon)
             </Button>
           </div>
         </div>
