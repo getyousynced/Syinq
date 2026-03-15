@@ -11,15 +11,15 @@ interface WheelSegment {
 }
 
 const SEGMENTS: WheelSegment[] = [
-  { label: "Free Coffee", icon: "coffee", color: "#FACC15" },
-  { label: "Free Cold Coffee", icon: "cold-coffee", color: "#1F2937" },
-  { label: "Uber Voucher", icon: "car", color: "#FACC15" },
-  { label: "Early Access Badge", icon: "badge", color: "#1F2937" },
-  { label: "Surprise Reward", icon: "gift", color: "#FACC15" },
-  { label: "Fuel Saver Badge", icon: "fuel", color: "#1F2937" },
-  { label: "Ride Priority Pass", icon: "ticket", color: "#FACC15" },
-  { label: "Campus Influencer", icon: "star", color: "#1F2937" },
-  { label: "Try Again", icon: "retry", color: "#6B7280" },
+  { label: "Free Coffee", icon: "coffee", color: "#147EFB" },
+  { label: "Free Cold Coffee", icon: "cold-coffee", color: "#FFFFFF" },
+  { label: "Uber Voucher", icon: "car", color: "#147EFB" },
+  { label: "Early Access Badge", icon: "badge", color: "#FFFFFF" },
+  { label: "Surprise Reward", icon: "gift", color: "#147EFB" },
+  { label: "Fuel Saver Badge", icon: "fuel", color: "#FFFFFF" },
+  { label: "Ride Priority Pass", icon: "ticket", color: "#147EFB" },
+  { label: "Campus Influencer", icon: "star", color: "#FFFFFF" },
+  { label: "Try Again", icon: "retry", color: "#E5E7EB" },
 ];
 
 const FUNNY_MESSAGES: Record<string, string> = {
@@ -88,7 +88,7 @@ const SegmentIcon = ({ type, className }: { type: string; className?: string }) 
 };
 
 const Confetti = () => {
-  const colors = ["#FACC15", "#1F2937", "#F59E0B", "#FDE68A", "#374151"];
+  const colors = ["#147EFB", "#FFFFFF", "#0A5BC4", "#93C5FD", "#1D1D1F"];
   const confettiPieces = Array.from({ length: 50 }, (_, i) => ({
     id: i,
     left: `${Math.random() * 100}%`,
@@ -204,7 +204,7 @@ export default function SpinWheel() {
           />
           <g transform={`translate(${iconX}, ${iconY})`}>
             <foreignObject x="-12" y="-12" width="24" height="24">
-              <div className={`w-6 h-6 ${segment.color === "#FACC15" ? "text-gray-900" : "text-yellow-400"}`}>
+              <div className={`w-6 h-6 ${segment.color === "#147EFB" ? "text-white" : "text-[#147EFB]"}`}>
                 <SegmentIcon type={segment.icon} className="w-full h-full" />
               </div>
             </foreignObject>
@@ -212,7 +212,7 @@ export default function SpinWheel() {
           <text
             x={textX}
             y={textY}
-            fill={segment.color === "#FACC15" ? "#1F2937" : "#FACC15"}
+            fill={segment.color === "#147EFB" ? "#FFFFFF" : "#147EFB"}
             fontSize="7"
             fontWeight="600"
             textAnchor="middle"
@@ -233,13 +233,13 @@ export default function SpinWheel() {
       </AnimatePresence>
 
       {/* Pointer Arrow */}
-      <div className="absolute -top-2 z-10 w-0 h-0 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent border-t-[28px] border-t-yellow-400 drop-shadow-lg" />
+      <div className="absolute -top-2 z-10 w-0 h-0 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent border-t-[28px] border-t-[#147EFB] drop-shadow-lg" />
 
       {/* Glow Effect */}
       <motion.div
         className="absolute w-[340px] h-[340px] md:w-[420px] md:h-[420px] rounded-full"
         style={{
-          background: "radial-gradient(circle, rgba(250,204,21,0.3) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(20,126,251,0.3) 0%, transparent 70%)",
         }}
         animate={{
           scale: isSpinning ? [1, 1.1, 1] : 1,
@@ -267,15 +267,25 @@ export default function SpinWheel() {
           className="md:w-[400px] md:h-[400px] drop-shadow-2xl"
         >
           {/* Outer ring */}
-          <circle cx="150" cy="150" r="148" fill="none" stroke="#FACC15" strokeWidth="4" />
-          <circle cx="150" cy="150" r="144" fill="none" stroke="#1F2937" strokeWidth="2" />
+          <circle cx="150" cy="150" r="148" fill="none" stroke="#147EFB" strokeWidth="4" />
+          <circle cx="150" cy="150" r="144" fill="none" stroke="#1D1D1F" strokeWidth="2" />
           
           {/* Segments */}
           {createWheelSegments()}
           
-          {/* Inner decorative rings */}
-          <circle cx="150" cy="150" r="45" fill="#1F2937" stroke="#FACC15" strokeWidth="3" />
-          <circle cx="150" cy="150" r="38" fill="#FACC15" />
+          {/* Inner circle for logo */}
+          <circle cx="150" cy="150" r="48" fill="#1D1D1F" stroke="#147EFB" strokeWidth="3" />
+          
+          {/* Logo will be overlaid via foreignObject */}
+          <foreignObject x="110" y="110" width="80" height="80">
+            <div className="w-full h-full flex items-center justify-center">
+              <img 
+                src="/images/spin/syinq-logo.png" 
+                alt="Syinq" 
+                className="w-16 h-16 object-contain"
+              />
+            </div>
+          </foreignObject>
         </svg>
       </motion.div>
 
@@ -283,7 +293,7 @@ export default function SpinWheel() {
       <motion.button
         onClick={spin}
         disabled={isSpinning}
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 md:w-24 md:h-24 rounded-full bg-gray-900 text-yellow-400 font-bold text-lg md:text-xl shadow-xl border-4 border-yellow-400 hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors z-10"
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 md:w-28 md:h-28 rounded-full bg-[#147EFB] text-white font-bold text-lg md:text-xl shadow-xl border-4 border-white hover:bg-[#0A5BC4] disabled:opacity-50 disabled:cursor-not-allowed transition-colors z-10"
         whileHover={{ scale: isSpinning ? 1 : 1.05 }}
         whileTap={{ scale: isSpinning ? 1 : 0.95 }}
       >
