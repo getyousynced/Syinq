@@ -24,6 +24,10 @@ export default function LayoutWrapper({
   return (
     <>
       <Navbar />
+      <div
+        aria-hidden="true"
+        className="h-[144px] bg-white md:h-[98px]"
+      />
       {children}
       <Footer />
     </>

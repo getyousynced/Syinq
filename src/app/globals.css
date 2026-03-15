@@ -130,4 +130,26 @@
            bg-syinq-lightgray text-syinq-dark font-medium transition-all duration-300
            hover:bg-opacity-80 hover:scale-[1.02] active:scale-100;
   }
+
+  .sitewide-marquee {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .sitewide-marquee-track {
+    display: inline-flex;
+    align-items: center;
+    min-width: max-content;
+    animation: sitewide-marquee 28s linear infinite;
+  }
+
+  @keyframes sitewide-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
   
