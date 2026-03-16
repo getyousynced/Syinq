@@ -1,14 +1,13 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-
 const bannerItems = [
-  "Student-verified campus rides",
-  "Safer pickups and smoother drop-offs",
-  "Carpool in minutes with people from your campus",
-  "Marketplace and community in one app",
-  "Built for everyday campus movement",
+  "Your petrol bill needs therapy",
+  "That ₹300 cab could have been ₹60",
+  "Your classmates are already going there",
+  "Stop going solo. Start carpooling",
+  "Because petrol isn't getting cheaper",
+  "Split the ride. Not your wallet",
+  "Less cabs. More carpools"
 ];
 
 const repeatedItems = [...bannerItems, ...bannerItems];
@@ -46,14 +45,6 @@ export default function SiteWideCtaBanner() {
               ))}
             </div>
           </div>
-
-          <Link
-            href="/#download"
-            className="hidden shrink-0 items-center gap-1 rounded-full bg-gradient-to-r from-syinq-blue to-syinq-green px-4 py-2 text-sm font-semibold text-white transition-transform duration-300 hover:scale-[1.02] md:inline-flex"
-          >
-            Download App
-            <ArrowUpRight className="h-4 w-4" />
-          </Link>
         </div>
       </div>
     </div>
