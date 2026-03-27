@@ -71,10 +71,10 @@ export default function AdminUsersShell() {
       setLoading(true);
 
       const [statsResponse, usersResponse] = await Promise.all([
-        fetch(`${apiBaseUrl}/api/v1/admin/user/stats`, {
+        fetch(`${apiBaseUrl}/admin/user/stats`, {
           credentials: "include",
         }),
-        fetch(`${apiBaseUrl}/api/v1/admin/user?page=${page}&limit=25`, {
+        fetch(`${apiBaseUrl}/admin/user?page=${page}&limit=25`, {
           credentials: "include",
         }),
       ]);
@@ -141,7 +141,7 @@ export default function AdminUsersShell() {
       setActionUserId(user.id);
 
       const response = await fetch(
-        `${apiBaseUrl}/api/v1/admin/user/${user.id}/suspension`,
+        `${apiBaseUrl}/admin/user/${user.id}/suspension`,
         {
           method: "PATCH",
           headers: {

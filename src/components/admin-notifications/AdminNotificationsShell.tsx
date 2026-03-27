@@ -89,7 +89,7 @@ export default function AdminNotificationsShell() {
     try {
       setIsSubmitting(true);
 
-      const response = await fetch(`${apiBaseUrl}/api/v1/admin/promotion/notify`, {
+      const response = await fetch(`${apiBaseUrl}/admin/promotion/notify`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

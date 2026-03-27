@@ -76,7 +76,7 @@ export default function AdminPortalShell() {
     try {
       setIsSubmitting(true);
 
-      const response = await fetch(`${apiBaseUrl}/api/v1/admin/auth/login`, {
+      const response = await fetch(`${apiBaseUrl}/admin/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
