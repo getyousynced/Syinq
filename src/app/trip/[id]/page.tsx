@@ -47,7 +47,7 @@ export default function TripFallbackPage() {
       try {
         setLoading(true);
         const response = await fetch(
-          `https://stage-api.syinq.com/api/v1/offer/${id}`
+          `${process.env.NEXT_PUBLIC_BACKEND_API}/offer/${id}`
         );
         const data = await response.json();
 

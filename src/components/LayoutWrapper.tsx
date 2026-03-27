@@ -13,7 +13,12 @@ export default function LayoutWrapper({
 
   // Define standalone routes
   const isStandalone =
-    pathname.startsWith("/trip") || pathname.startsWith("/admin/login");
+    pathname.startsWith("/trip") ||
+    pathname.startsWith("/admin/login") ||
+    pathname.startsWith("/admin-portal") ||
+    pathname.startsWith("/admin-dashboard") ||
+    pathname.startsWith("/admin-notifications") ||
+    pathname.startsWith("/admin-users");
 
   // Standalone → no navbar/footer
   if (isStandalone) {
