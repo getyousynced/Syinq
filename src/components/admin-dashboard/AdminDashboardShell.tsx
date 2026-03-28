@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useAdminSession } from "@/hooks/useAdminSession";
 import {
   Users,
 } from "lucide-react";
@@ -37,20 +37,12 @@ const events: DashboardEvent[] = [
   },
 ];
 
-type StoredAdmin = {
-  name?: string;
-  email?: string;
-};
-
 export default function AdminDashboardShell() {
-  const [admin, setAdmin] = useState<StoredAdmin | null>(null);
+  const { admin, loading } = useAdminSession();
 
-  useEffect(() => {
-    const stored = window.localStorage.getItem("syinqAdmin");
-    if (stored) {
-      setAdmin(JSON.parse(stored) as StoredAdmin);
-    }
-  }, []);
+  if (loading) {
+    return null;
+  }
 
   return (
     <main className="min-h-screen bg-[#f5f7ff] p-6 lg:p-8">
@@ -59,7 +51,7 @@ export default function AdminDashboardShell() {
 
         <section className="overflow-hidden rounded-[32px] bg-white shadow-[0_22px_70px_rgba(72,101,167,0.16)]">
           <div className="flex flex-col lg:flex-row">
-            <DashboardSidebar activeLabel="Dashboard" />
+            <DashboardSidebar activeLabel="Dashboard" profileName={admin?.name} />
 
             <div className="flex-1 p-6 lg:p-7">
               <AdminTopBar

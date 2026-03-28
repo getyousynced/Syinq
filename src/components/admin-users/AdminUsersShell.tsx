@@ -15,6 +15,7 @@ import {
 import { toast } from "@/components/ui/sonner";
 import AdminTopBar from "@/components/admin-dashboard/AdminTopBar";
 import DashboardSidebar from "@/components/admin-dashboard/DashboardSidebar";
+import { useAdminSession } from "@/hooks/useAdminSession";
 
 type UserStats = {
   totalActiveUsers: number;
@@ -52,6 +53,7 @@ const roleFilters = ["All Roles", "Staff", "Alumni", "Student"] as const;
 type RoleFilter = (typeof roleFilters)[number];
 
 export default function AdminUsersShell() {
+  const { admin, loading: sessionLoading } = useAdminSession();
   const [stats, setStats] = useState<UserStats | null>(null);
   const [usersData, setUsersData] = useState<UsersResponse | null>(null);
   const [activeTab, setActiveTab] = useState<Tab>("All Users");
@@ -172,13 +174,14 @@ export default function AdminUsersShell() {
   };
 
   return (
+    sessionLoading ? null : (
     <main className="min-h-screen bg-[#f5f7ff] p-6 lg:p-8">
       <div className="mx-auto max-w-[1440px]">
         <div className="mb-4 text-xl font-semibold text-[#4e7ccf]">User Management</div>
 
         <section className="overflow-hidden rounded-[32px] bg-white shadow-[0_22px_70px_rgba(72,101,167,0.16)]">
           <div className="flex flex-col lg:flex-row">
-            <DashboardSidebar activeLabel="User Management" />
+            <DashboardSidebar activeLabel="User Management" profileName={admin?.name} />
 
             <div className="flex-1 p-6 lg:p-7">
               <AdminTopBar profileName="Admin Central" profileSubtitle="Superuser" />
@@ -420,6 +423,7 @@ export default function AdminUsersShell() {
         </section>
       </div>
     </main>
+    )
   );
 }
 
