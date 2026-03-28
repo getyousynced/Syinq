@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import {
   Bell,
   CarFront,
@@ -25,9 +27,33 @@ const items: DashboardNavItem[] = [
 
 export default function DashboardSidebar({
   activeLabel,
+  profileName,
 }: {
   activeLabel: string;
+  profileName?: string;
 }) {
+  const router = useRouter();
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
+
+  const handleLogout = async () => {
+    const apiBaseUrl = process.env.NEXT_PUBLIC_BACKEND_API;
+
+    try {
+      setIsLoggingOut(true);
+
+      if (apiBaseUrl) {
+        await fetch(`${apiBaseUrl}/admin/auth/logout`, {
+          method: "POST",
+          credentials: "include",
+        });
+      }
+    } finally {
+      window.localStorage.removeItem("syinqAdmin");
+      setIsLoggingOut(false);
+      router.replace("/admin-portal");
+    }
+  };
+
   return (
     <aside className="flex min-h-[760px] w-full max-w-[250px] flex-col justify-between border-r border-slate-100 bg-[#fbfcff] p-5">
       <div>
@@ -58,19 +84,21 @@ export default function DashboardSidebar({
       <div className="space-y-5">
         <button
           type="button"
+          onClick={handleLogout}
+          disabled={isLoggingOut}
           className="inline-flex items-center gap-2 text-sm font-semibold text-[#f05d5e]"
         >
           <LogOut className="h-4 w-4" />
-          <span>Logout</span>
+          <span>{isLoggingOut ? "Logging out..." : "Logout"}</span>
         </button>
 
         <div className="rounded-2xl bg-[#111827] px-4 py-3 text-white">
           <div className="flex items-center gap-3">
             <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#0f6bff] text-sm font-bold">
-              S
+              {(profileName || "A").slice(0, 1).toUpperCase()}
             </div>
             <div>
-              <p className="text-sm font-semibold">Super Admin</p>
+              <p className="text-sm font-semibold">{profileName || "Super Admin"}</p>
               <p className="text-[11px] text-white/50">v2.4.0-stable</p>
             </div>
           </div>

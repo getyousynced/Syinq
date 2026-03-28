@@ -11,6 +11,7 @@ import {
 import { toast } from "@/components/ui/sonner";
 import AdminTopBar from "@/components/admin-dashboard/AdminTopBar";
 import DashboardSidebar from "@/components/admin-dashboard/DashboardSidebar";
+import { useAdminSession } from "@/hooks/useAdminSession";
 
 type Audience = "All Users" | "Students Only" | "Alumni" | "Faculty/Staff";
 type Channel = "Push" | "Email" | "SMS";
@@ -56,6 +57,7 @@ const initialBroadcasts = [
 ];
 
 export default function AdminNotificationsShell() {
+  const { admin, loading } = useAdminSession();
   const [selectedAudience, setSelectedAudience] = useState<Audience>("All Users");
   const [selectedChannel, setSelectedChannel] = useState<Channel>("Push");
   const [title, setTitle] = useState("");
@@ -155,6 +157,10 @@ export default function AdminNotificationsShell() {
     }
   };
 
+  if (loading) {
+    return null;
+  }
+
   return (
     <main className="min-h-screen bg-[#f5f7ff] p-6 lg:p-8">
       <div className="mx-auto max-w-[1440px]">
@@ -162,7 +168,7 @@ export default function AdminNotificationsShell() {
 
         <section className="overflow-hidden rounded-[32px] bg-white shadow-[0_22px_70px_rgba(72,101,167,0.16)]">
           <div className="flex flex-col lg:flex-row">
-            <DashboardSidebar activeLabel="Notifications" />
+            <DashboardSidebar activeLabel="Notifications" profileName={admin?.name} />
 
             <div className="flex-1 p-6 lg:p-7">
               <AdminTopBar profileName="Admin Central" profileSubtitle="System Owner" />
