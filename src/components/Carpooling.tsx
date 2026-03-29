@@ -8,7 +8,7 @@ const CarPooling = () => {
 
   return (
     <section id="carpooling" className="py-14 md:py-16 relative overflow-hidden">
-      <div className="absolute -right-20 top-1/3 w-80 h-80 bg-syinq-blue/5 rounded-full blur-3xl"></div>
+      <div className="absolute right-0 top-1/3 w-80 h-80 bg-syinq-blue/5 rounded-full blur-3xl translate-x-1/2 pointer-events-none"></div>
       <div className="section-container">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1 reveal-on-scroll">

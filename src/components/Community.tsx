@@ -151,9 +151,10 @@ const Community = () => {
           </Carousel>
           
           <div className="mt-8 text-center">
-            <Button className="apple-button-secondary" disabled>
-              Forum (Coming soon)
-            </Button>
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-syinq-lightgray text-syinq-gray text-sm font-medium cursor-default">
+              <span>Community Forum</span>
+              <span className="bg-syinq-blue/10 text-syinq-blue text-xs px-2 py-0.5 rounded-full">Coming soon</span>
+            </div>
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ import { Book, Headphones, MessageSquare, Ban } from 'lucide-react';
 
 const Marketplace = () => {
   return <section id="marketplace" className="py-14 md:py-16 bg-syinq-lightgray relative overflow-hidden">
-      <div className="absolute -left-20 top-1/3 w-80 h-80 bg-syinq-green/5 rounded-full blur-3xl"></div>
+      <div className="absolute left-0 top-1/3 w-80 h-80 bg-syinq-green/5 rounded-full blur-3xl -translate-x-1/2 pointer-events-none"></div>
       
       <div className="section-container">
         <div className="text-center max-w-3xl mx-auto mb-10 reveal-on-scroll">
@@ -44,7 +44,7 @@ const Marketplace = () => {
                 <div className="text-left">
                   <h3 className="font-semibold mb-1">Noise Cancelling Headphones</h3>
                   <p className="text-sm text-syinq-gray mb-2">Used for 3 months</p>
-                  <p className="font-medium text-syinq-green">₹ 1499</p>
+                  <p className="font-medium text-syinq-blue">₹ 1499</p>
                 </div>
               </div>
               

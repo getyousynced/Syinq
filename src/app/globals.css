@@ -92,6 +92,7 @@
   
     html {
       @apply scroll-smooth;
+      scroll-padding-top: 80px;
     }
   
     body {
@@ -99,6 +100,12 @@
     }
   }
   
+  *:focus-visible {
+    outline: 2px solid #147EFB;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
   .section-container {
     @apply max-w-7xl mx-auto px-6 md:px-12 py-10 md:py-12;
   }

@@ -264,6 +264,7 @@ const Contact = () => {
                       type="submit"
                       className="w-full bg-syinq-blue hover:bg-syinq-blue/90 flex items-center justify-center"
                       disabled={isSubmitting}
+                      aria-busy={isSubmitting}
                     >
                       {isSubmitting ? (
                         <>

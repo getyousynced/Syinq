@@ -20,8 +20,8 @@ export default function ForumPage() {
   // Filter posts based on selected tag and search query
   const filteredPosts = forumPosts.filter(post => {
     const matchesTag = filter ? post.tag === filter : true;
-    const matchesSearch = searchQuery 
-      ? post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    const matchesSearch = searchQuery
+      ? post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         post.author.toLowerCase().includes(searchQuery.toLowerCase())
       : true;
     return matchesTag && matchesSearch;
@@ -31,7 +31,7 @@ export default function ForumPage() {
   const sortedPosts = [...filteredPosts].sort((a, b) => {
     if (a.featured && !b.featured) return -1;
     if (!a.featured && b.featured) return 1;
-    return 0; // In a real app, we'd sort by date here
+    return 0;
   });
 
   const handleCreatePost = () => {
@@ -44,7 +44,7 @@ export default function ForumPage() {
   return (
     <div className="bg-gradient-to-b from-blue-50/50 to-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
-        
+
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-block bg-syinq-blue/10 p-3 rounded-2xl mb-4">
             <Users className="h-6 w-6 text-syinq-blue" />
@@ -64,12 +64,13 @@ export default function ForumPage() {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
-          <div className="w-full md:w-auto flex flex-wrap gap-2">
+          <div className="w-full md:w-auto flex flex-wrap gap-2" role="group" aria-label="Filter posts by tag">
             <Button
               variant={!filter ? "default" : "outline"}
               onClick={() => setFilter(null)}
               className="text-sm h-9"
               disabled={!isForumLive}
+              aria-pressed={!filter}
             >
               All Posts
             </Button>
@@ -80,6 +81,7 @@ export default function ForumPage() {
                 onClick={() => setFilter(tag)}
                 className="text-sm h-9"
                 disabled={!isForumLive}
+                aria-pressed={filter === tag}
               >
                 {tag}
               </Button>
@@ -87,14 +89,18 @@ export default function ForumPage() {
           </div>
 
           <div className="w-full md:w-auto flex gap-2">
-            <input
-              type="text"
-              placeholder="Search posts..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="px-4 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-syinq-blue/20"
-              disabled={!isForumLive}
-            />
+            <div className="relative">
+              <label htmlFor="forum-search" className="sr-only">Search posts</label>
+              <input
+                id="forum-search"
+                type="text"
+                placeholder="Search posts..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="px-4 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-syinq-blue/20"
+                disabled={!isForumLive}
+              />
+            </div>
             <Button onClick={handleCreatePost} disabled={!isForumLive}>
               Create Post
             </Button>
@@ -120,11 +126,15 @@ export default function ForumPage() {
               </Link>
             ))
           ) : (
-            <div className="col-span-full text-center py-12">
-              <p className="text-lg text-syinq-gray">No posts found matching your criteria.</p>
-              <Button 
-                variant="outline" 
-                className="mt-4"
+            <div className="col-span-full text-center py-16 flex flex-col items-center gap-4">
+              <div className="w-16 h-16 rounded-full bg-syinq-blue/10 flex items-center justify-center">
+                <Users className="h-8 w-8 text-syinq-blue" />
+              </div>
+              <p className="text-xl font-semibold text-syinq-dark">No posts found</p>
+              <p className="text-syinq-gray text-sm">Try adjusting your filters or search query.</p>
+              <Button
+                variant="outline"
+                className="mt-2"
                 onClick={() => {
                   setFilter(null);
                   setSearchQuery('');
