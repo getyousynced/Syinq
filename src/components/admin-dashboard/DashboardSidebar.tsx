@@ -19,7 +19,7 @@ const items: DashboardNavItem[] = [
   { label: "Dashboard", icon: LayoutGrid, href: "/admin-dashboard" },
   { label: "User Management", icon: Users, href: "/admin-users" },
   { label: "Verification", icon: ShieldCheck, href: "/admin-dashboard" },
-  { label: "Ride Management", icon: CarFront, href: "/admin-dashboard" },
+  { label: "Ride Management", icon: CarFront, href: "/admin-rides" },
   { label: "Reports & Safety", icon: FileBarChart2, href: "/admin-dashboard" },
   { label: "Notifications", icon: Bell, href: "/admin-notifications" },
   { label: "Settings", icon: Settings, href: "/admin-dashboard" },
