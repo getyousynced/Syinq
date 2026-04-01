@@ -16,6 +16,7 @@ export default function LayoutWrapper({
     pathname.startsWith("/trip") ||
     pathname.startsWith("/admin/login") ||
     pathname.startsWith("/admin-portal") ||
+    pathname.startsWith("/admin-rides") ||
     pathname.startsWith("/admin-dashboard") ||
     pathname.startsWith("/admin-notifications") ||
     pathname.startsWith("/admin-users");

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import {
   Ban,
@@ -47,6 +48,25 @@ type UsersResponse = {
   };
 };
 
+type UserDetails = {
+  id: string;
+  name: string;
+  phoneNumber: string;
+  email: string | null;
+  gender: string | null;
+  role: string;
+  college: string | null;
+  year: number | null;
+  course: string | null;
+  designation: string | null;
+  currentCompany: string | null;
+  profileImageUrl: string | null;
+  notificationEnabled: boolean;
+  suspended: boolean;
+  isProfileCompleted: boolean;
+  joinedDate: string;
+};
+
 const tabs = ["All Users", "Pending", "Flagged"] as const;
 type Tab = (typeof tabs)[number];
 const roleFilters = ["All Roles", "Staff", "Alumni", "Student"] as const;
@@ -61,6 +81,8 @@ export default function AdminUsersShell() {
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [actionUserId, setActionUserId] = useState<string | null>(null);
+  const [detailUser, setDetailUser] = useState<UserDetails | null>(null);
+  const [detailLoading, setDetailLoading] = useState(false);
 
   const fetchUsers = async (page = currentPage) => {
     const apiBaseUrl = process.env.NEXT_PUBLIC_BACKEND_API;
@@ -170,6 +192,36 @@ export default function AdminUsersShell() {
       );
     } finally {
       setActionUserId(null);
+    }
+  };
+
+  const handleViewUser = async (userId: string) => {
+    const apiBaseUrl = process.env.NEXT_PUBLIC_BACKEND_API;
+    if (!apiBaseUrl) {
+      toast.error("Backend API URL is missing.");
+      return;
+    }
+
+    try {
+      setDetailLoading(true);
+
+      const response = await fetch(`${apiBaseUrl}/admin/user/${userId}`, {
+        credentials: "include",
+      });
+
+      const payload = await response.json();
+
+      if (!response.ok || !payload.success || !payload.data) {
+        throw new Error(payload.message || "Unable to load user details.");
+      }
+
+      setDetailUser(payload.data as UserDetails);
+    } catch (error) {
+      toast.error(
+        error instanceof Error ? error.message : "Unable to load user details.",
+      );
+    } finally {
+      setDetailLoading(false);
     }
   };
 
@@ -346,7 +398,11 @@ export default function AdminUsersShell() {
                         </div>
 
                         <div className="flex items-center gap-3 text-slate-500">
-                          <button type="button" className="transition hover:text-slate-900">
+                          <button
+                            type="button"
+                            onClick={() => void handleViewUser(user.id)}
+                            className="transition hover:text-slate-900"
+                          >
                             <Eye className="h-4 w-4" />
                           </button>
                           <button
@@ -422,6 +478,89 @@ export default function AdminUsersShell() {
           </div>
         </section>
       </div>
+      {detailUser || detailLoading ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/35 px-4">
+          <div className="w-full max-w-2xl rounded-[28px] bg-white p-6 shadow-[0_20px_80px_rgba(15,23,42,0.28)]">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.12em] text-slate-400">
+                  User Details
+                </p>
+                <h2 className="mt-2 text-2xl font-bold text-slate-900">
+                  {detailLoading ? "Loading..." : detailUser?.name}
+                </h2>
+              </div>
+              <button
+                type="button"
+                onClick={() => setDetailUser(null)}
+                className="rounded-xl bg-[#f4f7ff] px-4 py-2 text-sm font-semibold text-slate-500"
+              >
+                Close
+              </button>
+            </div>
+
+            {detailLoading ? (
+              <div className="mt-6 text-sm text-slate-400">Loading user profile...</div>
+            ) : detailUser ? (
+              <div className="mt-6">
+                <div className="mb-5 flex items-center gap-4">
+                  {detailUser.profileImageUrl ? (
+                    <Image
+                      src={detailUser.profileImageUrl}
+                      alt={detailUser.name}
+                      width={80}
+                      height={80}
+                      className="h-20 w-20 rounded-3xl object-cover"
+                    />
+                  ) : (
+                    <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-[#3568da] text-2xl font-bold text-white">
+                      {detailUser.name.slice(0, 1).toUpperCase()}
+                    </div>
+                  )}
+                  <div>
+                    <p className="text-lg font-bold text-slate-900">{detailUser.name}</p>
+                    <p className="mt-1 text-sm text-slate-500">{formatRole(detailUser.role)}</p>
+                  </div>
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-2">
+                <DetailCard label="Phone Number" value={detailUser.phoneNumber} />
+                <DetailCard label="Email" value={detailUser.email || "Not provided"} />
+                <DetailCard label="Gender" value={detailUser.gender || "Not provided"} />
+                <DetailCard label="Role" value={formatRole(detailUser.role)} />
+                <DetailCard label="College" value={detailUser.college || "Not provided"} />
+                <DetailCard
+                  label="Year"
+                  value={detailUser.year ? String(detailUser.year) : "Not provided"}
+                />
+                <DetailCard label="Course" value={detailUser.course || "Not provided"} />
+                {detailUser.role === "STAFF" ? (
+                  <DetailCard
+                    label="Designation"
+                    value={detailUser.designation || "Not provided"}
+                  />
+                ) : null}
+                {detailUser.role === "ALUMNI" ? (
+                  <DetailCard
+                    label="Current Company"
+                    value={detailUser.currentCompany || "Not provided"}
+                  />
+                ) : null}
+                <DetailCard
+                  label="Notifications"
+                  value={detailUser.notificationEnabled ? "Enabled" : "Disabled"}
+                />
+                <DetailCard
+                  label="Profile"
+                  value={detailUser.isProfileCompleted ? "Completed" : "Pending"}
+                />
+                <DetailCard label="Joined" value={formatDate(detailUser.joinedDate)} />
+                </div>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      ) : null}
     </main>
     )
   );
@@ -471,6 +610,17 @@ function FilterChip({ label }: { label: string }) {
       <span>{label}</span>
       <ChevronDown className="h-4 w-4" />
     </button>
+  );
+}
+
+function DetailCard({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-[20px] bg-[#f8faff] p-4">
+      <p className="text-xs font-bold uppercase tracking-[0.12em] text-slate-400">
+        {label}
+      </p>
+      <p className="mt-2 text-sm font-semibold text-slate-900">{value}</p>
+    </div>
   );
 }
 
