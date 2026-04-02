@@ -77,9 +77,14 @@ export default function Testimonials() {
                   <p className="text-syinq-gray leading-relaxed">{t.quote}</p>
                 </div>
 
-                <div className="mt-6">
-                  <p className="font-semibold text-syinq-dark">{t.name}</p>
-                  <p className="text-sm text-syinq-gray">{t.title}</p>
+                <div className="mt-6 flex items-center gap-3">
+                  <div className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-semibold shrink-0 ${accentStyles.chip}`}>
+                    {t.name.split(' ').map((n: string) => n[0]).join('').slice(0, 2)}
+                  </div>
+                  <div>
+                    <p className="font-semibold text-syinq-dark">{t.name}</p>
+                    <p className="text-sm text-syinq-gray">{t.title}</p>
+                  </div>
                 </div>
               </div>
             );

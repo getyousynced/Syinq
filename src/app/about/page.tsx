@@ -54,8 +54,9 @@ export default function AboutPage() {
                 src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHIyanQzN3p4Zjl2NzVzYm5oaG1pajhmY3Zra2hyajdidjF2N3hqaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT9IgzoKnwFNmISR8I/giphy.gif"
                 alt="Students collaborating"
                 className="rounded-xl shadow-lg max-w-full h-auto"
-                height={100}
-                width={100}
+                height={400}
+                width={500}
+                unoptimized
               />
             </div>
           </div>

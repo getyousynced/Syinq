@@ -12,8 +12,21 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Syinq",
-  description: "One App for every campus move",
+  title: "Syinq – Campus Carpooling App",
+  description: "One App for every campus move. Carpool with verified students on Syinq.",
+  keywords: ["carpooling", "campus app", "student app", "university rides", "student carpooling"],
+  openGraph: {
+    title: "Syinq – Campus Carpooling App",
+    description: "One App for every campus move. Carpool with verified students on Syinq.",
+    url: "https://syinq.com",
+    siteName: "Syinq",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Syinq – Campus Carpooling App",
+    description: "One App for every campus move. Carpool with verified students.",
+  },
 };
 
 export default function RootLayout({
@@ -23,7 +36,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${roboto.className} select-none`}>
+      <body className={`${roboto.className}`}>
         <LayoutWrapper>{children}</LayoutWrapper>
         <Toaster />
         <Sonner />

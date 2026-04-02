@@ -23,7 +23,7 @@ const Security = () => {
             <Shield className="w-12 h-12 lg:w-16 lg:h-16 text-syinq-blue" />
           </div>
           
-          <div className="grid grid-cols-2 gap-6 relative z-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 relative z-10">
             <SecurityFeature 
               icon={<GraduationCap className="h-8 w-8 text-white" />} 
               title="Verified Campus ID" 
@@ -54,11 +54,6 @@ const Security = () => {
           </div>
         </div>
         
-        <div className="mt-10 text-center reveal-on-scroll">
-          <p className="mb-4 text-gray-900 text-center font-bold text-2xl">
-            Your safety is our top priority
-          </p>
-        </div>
       </div>
     </section>
   );

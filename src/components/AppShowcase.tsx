@@ -2,9 +2,11 @@
 
 import React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 const AppShowcase = () => {
+  const prefersReduced = useReducedMotion();
+
   const slides = [
     {
       src: "/images/App%20Store%20previews.png",
@@ -46,11 +48,21 @@ const AppShowcase = () => {
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.45, delay: index * 0.03 }}
-                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 0.45, delay: index * 0.08 }}
                 style={{ willChange: "transform" }}
               >
-                <div
+                <motion.div
+                  animate={prefersReduced ? {} : { y: [0, -6, 0] }}
+                  transition={
+                    prefersReduced
+                      ? {}
+                      : {
+                          duration: 3 + index * 0.4,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: index * 0.5,
+                        }
+                  }
                   className={
                     index % 3 === 0
                       ? "rotate-[-3deg]"
@@ -60,7 +72,7 @@ const AppShowcase = () => {
                   }
                 >
                   <PhoneFrame imageSrc={slide.src} alt={slide.alt} />
-                </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>

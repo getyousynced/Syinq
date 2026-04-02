@@ -125,7 +125,7 @@ export default function HowToUse() {
             <div className="relative">
               <div className="absolute left-[18px] top-1 bottom-1 w-px bg-gray-100" aria-hidden="true" />
 
-              <div className="space-y-4">
+              <ol className="space-y-4 list-none">
                 {steps.map((step, index) => (
                   <StepItem
                     key={step.title}
@@ -136,7 +136,7 @@ export default function HowToUse() {
                     accent={step.accent}
                   />
                 ))}
-              </div>
+              </ol>
             </div>
           </div>
         </div>
@@ -162,7 +162,7 @@ function StepItem({
   const dot = accent === "green" ? "bg-syinq-green" : "bg-syinq-blue";
 
   return (
-    <motion.div
+    <motion.li
       className="relative pl-12"
       initial={{ opacity: 0, y: 14 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -193,7 +193,7 @@ function StepItem({
           </span>
         </div>
       </div>
-    </motion.div>
+    </motion.li>
   );
 }
 
