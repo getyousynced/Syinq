@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   Ban,
   ChevronDown,
@@ -67,6 +67,15 @@ type UserDetails = {
   joinedDate: string;
 };
 
+type ExportUsersResponse = {
+  users: UserRow[];
+  filters: {
+    role: "ALL" | "STUDENT" | "STAFF" | "ALUMNI";
+    status: "ALL" | "PENDING" | "FLAGGED";
+  };
+  total: number;
+};
+
 const tabs = ["All Users", "Pending", "Flagged"] as const;
 type Tab = (typeof tabs)[number];
 const roleFilters = ["All Roles", "Staff", "Alumni", "Student"] as const;
@@ -80,11 +89,12 @@ export default function AdminUsersShell() {
   const [activeRoleFilter, setActiveRoleFilter] = useState<RoleFilter>("All Roles");
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [exporting, setExporting] = useState(false);
   const [actionUserId, setActionUserId] = useState<string | null>(null);
   const [detailUser, setDetailUser] = useState<UserDetails | null>(null);
   const [detailLoading, setDetailLoading] = useState(false);
 
-  const fetchUsers = async (page = currentPage) => {
+  const fetchUsers = useCallback(async (page = currentPage) => {
     const apiBaseUrl = process.env.NEXT_PUBLIC_BACKEND_API;
     if (!apiBaseUrl) {
       toast.error("Backend API URL is missing.");
@@ -123,11 +133,11 @@ export default function AdminUsersShell() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentPage]);
 
   useEffect(() => {
     void fetchUsers();
-  }, [currentPage]);
+  }, [fetchUsers]);
 
   const filteredUsers = useMemo(() => {
     let users = usersData?.users ?? [];
@@ -225,6 +235,45 @@ export default function AdminUsersShell() {
     }
   };
 
+  const handleExportCsv = async () => {
+    const apiBaseUrl = process.env.NEXT_PUBLIC_BACKEND_API;
+    if (!apiBaseUrl) {
+      toast.error("Backend API URL is missing.");
+      return;
+    }
+
+    try {
+      setExporting(true);
+
+      const params = new URLSearchParams({
+        role: getRoleFilterValue(activeRoleFilter),
+        status: getStatusFilterValue(activeTab),
+      });
+
+      const response = await fetch(`${apiBaseUrl}/admin/user/export?${params.toString()}`, {
+        credentials: "include",
+      });
+      const payload = await response.json();
+
+      if (!response.ok || !payload.success || !payload.data) {
+        throw new Error(payload.message || "Unable to export users.");
+      }
+
+      const exportData = payload.data as ExportUsersResponse;
+      const csv = buildUsersCsv(exportData.users);
+      const date = new Date().toISOString().slice(0, 10);
+
+      downloadCsv(`syinq-users-${date}.csv`, csv);
+      toast.success(`Exported ${exportData.total} users to CSV.`);
+    } catch (error) {
+      toast.error(
+        error instanceof Error ? error.message : "Unable to export users.",
+      );
+    } finally {
+      setExporting(false);
+    }
+  };
+
   return (
     sessionLoading ? null : (
     <main className="min-h-screen bg-[#f5f7ff] p-6 lg:p-8">
@@ -252,9 +301,16 @@ export default function AdminUsersShell() {
                 <div className="flex items-center gap-3">
                   <button
                     type="button"
-                    className="rounded-xl bg-[#eef2ff] px-4 py-2 text-sm font-semibold text-slate-400"
+                    onClick={() => void handleExportCsv()}
+                    disabled={exporting}
+                    className={[
+                      "rounded-xl px-4 py-2 text-sm font-semibold transition",
+                      exporting
+                        ? "cursor-not-allowed bg-[#eef2ff] text-slate-400"
+                        : "bg-[#eef2ff] text-[#3568da] hover:bg-[#e2eaff]",
+                    ].join(" ")}
                   >
-                    Export CSV
+                    {exporting ? "Exporting..." : "Export CSV"}
                   </button>
                   <button
                     type="button"
@@ -632,7 +688,13 @@ function formatRole(role: string) {
 }
 
 function formatDate(dateValue: string) {
-  return new Date(dateValue).toLocaleDateString("en-US", {
+  const parsedDate = new Date(dateValue);
+
+  if (Number.isNaN(parsedDate.getTime())) {
+    return "Unknown";
+  }
+
+  return parsedDate.toLocaleDateString("en-US", {
     month: "short",
     day: "2-digit",
     year: "numeric",
@@ -645,4 +707,68 @@ function getPageNumbers(currentPage: number, totalPages: number) {
   return Array.from(pages)
     .filter((page) => page >= 1 && page <= totalPages)
     .sort((left, right) => left - right);
+}
+
+function getStatusFilterValue(tab: Tab): "ALL" | "PENDING" | "FLAGGED" {
+  if (tab === "Pending") return "PENDING";
+  if (tab === "Flagged") return "FLAGGED";
+  return "ALL";
+}
+
+function getRoleFilterValue(role: RoleFilter): "ALL" | "STUDENT" | "STAFF" | "ALUMNI" {
+  if (role === "Student") return "STUDENT";
+  if (role === "Staff") return "STAFF";
+  if (role === "Alumni") return "ALUMNI";
+  return "ALL";
+}
+
+function csvEscape(value: string | number | boolean | null | undefined) {
+  const normalizedValue = value == null ? "" : String(value);
+
+  return `"${normalizedValue.replace(/"/g, '""')}"`;
+}
+
+function buildUsersCsv(users: UserRow[]) {
+  const headers = [
+    "User ID",
+    "Name",
+    "Email",
+    "Phone Number",
+    "Role",
+    "Verification Status",
+    "Profile Completed",
+    "Suspended",
+    "Joined Date",
+  ];
+
+  const rows = users.map((user) =>
+    [
+      user.id,
+      user.name,
+      user.email,
+      user.phoneNumber,
+      formatRole(user.role),
+      user.verificationStatus,
+      user.isProfileCompleted ? "Yes" : "No",
+      user.suspended ? "Yes" : "No",
+      formatDate(user.joinedDate),
+    ]
+      .map(csvEscape)
+      .join(","),
+  );
+
+  return [headers.map(csvEscape).join(","), ...rows].join("\n");
+}
+
+function downloadCsv(filename: string, content: string) {
+  const blob = new Blob([content], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
 }
