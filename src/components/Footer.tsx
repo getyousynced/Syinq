@@ -58,7 +58,7 @@ const Footer = () => {
         
         <div className="mt-12 pt-8 border-t border-gray-100 flex flex-col md:flex-row items-center justify-between">
           <p className="text-sm text-syinq-gray mb-4 md:mb-0">
-            © {new Date().getFullYear()} Syinq. All rights reserved.
+            © {new Date().getFullYear()} Rasync Global Solutions Private Limited. All rights reserved.
           </p>
           
           <p className="text-sm text-syinq-gray flex items-center">
