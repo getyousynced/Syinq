@@ -21,6 +21,7 @@ type RideRow = {
   destinationAddress: string;
   plannedTime: string;
   status: "ACTIVE" | "CANCELLED";
+  mode: "LOOKING" | "OFFERED";
   rideType: "CAB" | "BIKE" | "CAR";
   seats: number;
   VehicleNumber?: string | null;
@@ -125,6 +126,14 @@ const getAcceptedRequests = (ride: RideRow) =>
 const getPendingRequestsForRide = (ride: RideRow) =>
   ride.requests.filter((request) => request.status === "PENDING");
 
+const getRideModeLabel = (mode: RideRow["mode"]) =>
+  mode === "LOOKING" ? "Looking" : "Offered";
+
+const getRideModeClassName = (mode: RideRow["mode"]) =>
+  mode === "LOOKING"
+    ? "bg-[#fff8ec] text-[#b46a16]"
+    : "bg-[#eef3ff] text-[#3568da]";
+
 export default function AdminRidesShell() {
   const { admin, loading: sessionLoading } = useAdminSession();
   const [ridesData, setRidesData] = useState<RidesResponse | null>(null);
@@ -212,6 +221,16 @@ export default function AdminRidesShell() {
     [rides],
   );
 
+  const lookingRides = useMemo(
+    () => rides.filter((ride) => ride.mode === "LOOKING"),
+    [rides],
+  );
+
+  const offeredRides = useMemo(
+    () => rides.filter((ride) => ride.mode === "OFFERED"),
+    [rides],
+  );
+
   const totalRequestedSeats = useMemo(
     () => rides.reduce((sum, ride) => sum + ride._count.requests, 0),
     [rides],
@@ -265,7 +284,7 @@ export default function AdminRidesShell() {
                 </button>
               </div>
 
-              <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-6">
                 <MetricCard
                   icon={<CarFront className="h-5 w-5" />}
                   label="Total Rides"
@@ -277,6 +296,18 @@ export default function AdminRidesShell() {
                   label="Upcoming"
                   value={String(upcomingRides.length)}
                   helper="Rides with planned time ahead"
+                />
+                <MetricCard
+                  icon={<Users className="h-5 w-5" />}
+                  label="Looking"
+                  value={String(lookingRides.length)}
+                  helper="Users searching for a ride"
+                />
+                <MetricCard
+                  icon={<Route className="h-5 w-5" />}
+                  label="Offered"
+                  value={String(offeredRides.length)}
+                  helper="Users offering available seats"
                 />
                 <MetricCard
                   icon={<Users className="h-5 w-5" />}
@@ -342,6 +373,10 @@ export default function AdminRidesShell() {
                       </div>
 
                       <div className="mt-6 space-y-4">
+                        <RideDetail
+                          label="Mode"
+                          value={getRideModeLabel(featuredRide.mode)}
+                        />
                         <RideDetail label="Origin" value={featuredRide.originAddress} />
                         <RideDetail
                           label="Destination"
@@ -380,7 +415,7 @@ export default function AdminRidesShell() {
                       <p className="mt-1 text-sm text-slate-500">
                         {loading
                           ? "Loading rides..."
-                          : `${rides.length} rides in this page • ${completedRides.length} completed • ${cancelledRides.length} cancelled • ${totalRequestedSeats} total requests • ${totalAcceptedRequests} accepted`}
+                          : `${rides.length} rides in this page • ${lookingRides.length} looking • ${offeredRides.length} offered • ${completedRides.length} completed • ${cancelledRides.length} cancelled • ${totalRequestedSeats} total requests • ${totalAcceptedRequests} accepted`}
                       </p>
                     </div>
                     <span className="rounded-full bg-[#eef3ff] px-3 py-1 text-xs font-semibold text-[#3568da]">
@@ -429,6 +464,14 @@ export default function AdminRidesShell() {
 
                             <div>
                               <p className="font-semibold text-slate-800">{ride.rideType}</p>
+                              <span
+                                className={[
+                                  "mt-2 inline-flex rounded-full px-3 py-1 text-xs font-semibold",
+                                  getRideModeClassName(ride.mode),
+                                ].join(" ")}
+                              >
+                                {getRideModeLabel(ride.mode)}
+                              </span>
                               <p className="mt-1 text-xs text-slate-400">
                                 {ride.seats} seat{ride.seats === 1 ? "" : "s"}
                               </p>
