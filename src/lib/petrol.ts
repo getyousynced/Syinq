@@ -11,7 +11,7 @@
  *     just as public reference sites display a non-live reference price.
  *
  * Wire any provider (PurePrice, Zyla, RapidAPI, a gov-data mirror, or your own
- * backend route) by setting PETROL_PRICE_API_URL — no code change needed.
+ * backend route) by setting PETROL_PRICE_API_URL, no code change needed.
  */
 
 export type PetrolPrice = {
@@ -48,7 +48,7 @@ export async function getPetrolPrice(): Promise<PetrolPrice> {
     if (!Number.isFinite(value) || value <= 0) throw new Error("no usable price");
     return { price: Math.round(value * 10) / 10, source: "live", asOf: today };
   } catch {
-    // Graceful degradation — never break the page on a flaky upstream.
+    // Graceful degradation, never break the page on a flaky upstream.
     return { price: REFERENCE_PRICE, source: "reference", asOf: today };
   }
 }

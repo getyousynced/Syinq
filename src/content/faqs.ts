@@ -9,7 +9,7 @@ export const FAQS: Faq[] = [
   {
     category: "Basics",
     q: "What is Syinq?",
-    a: "Syinq is a verified campus commute network. It lets verified members of the same college find, offer and coordinate shared rides with each other, then split the cost fairly. Syinq does not own vehicles — it is the coordination and trust layer between members.",
+    a: "Syinq is a verified campus commute network. It lets verified members of the same college find, offer and coordinate shared rides with each other, then split the cost fairly. Syinq does not own vehicles, it is the coordination and trust layer between members.",
   },
   {
     category: "Basics",
@@ -19,7 +19,7 @@ export const FAQS: Faq[] = [
   {
     category: "Basics",
     q: "Who can use Syinq?",
-    a: "Verified members of a supported campus — students, faculty, staff and approved alumni. Everyone joins through a campus-verification step, so you are coordinating with real people from your own university network, not anonymous strangers.",
+    a: "Verified members of a supported campus, students, faculty, staff and approved alumni. Everyone joins through a campus-verification step, so you are coordinating with real people from your own university network, not anonymous strangers.",
   },
   {
     category: "Basics",
@@ -29,12 +29,12 @@ export const FAQS: Faq[] = [
   {
     category: "Safety & Trust",
     q: "Is student carpooling safe on Syinq?",
-    a: "Syinq is built around verified-campus trust: only verified members can join, every ride uses OTP proof-of-pool, rides have live status and SOS readiness, and members rate each other afterwards. Syinq supports safer coordination but cannot guarantee any outcome — always use your own judgement and the in-app safety tools.",
+    a: "Syinq is built around verified-campus trust: only verified members can join, every ride uses OTP proof-of-pool, rides have live status and SOS readiness, and members rate each other afterwards. Syinq supports safer coordination but cannot guarantee any outcome, always use your own judgement and the in-app safety tools.",
   },
   {
     category: "Safety & Trust",
     q: "What is proof-of-pool?",
-    a: "Proof-of-pool is Syinq's OTP boarding check: the Host receives a one-time code and the Rider enters it at pickup to confirm the right people are in the right ride. It creates a verifiable record that a shared ride actually happened — the foundation of campus trust and accountability.",
+    a: "Proof-of-pool is Syinq's OTP boarding check: the Host receives a one-time code and the Rider enters it at pickup to confirm the right people are in the right ride. It creates a verifiable record that a shared ride actually happened, the foundation of campus trust and accountability.",
   },
   {
     category: "Safety & Trust",
@@ -44,12 +44,12 @@ export const FAQS: Faq[] = [
   {
     category: "Safety & Trust",
     q: "Is carpooling legal in India?",
-    a: "Genuine cost-sharing carpooling between private individuals is widely practised in India, but rules around using a private vehicle for commercial hire vary by state and over time. Syinq is positioned as non-commercial cost-sharing between verified members — you split running costs, you do not pay a Syinq fare. Members should follow their campus and local regulations.",
+    a: "Genuine cost-sharing carpooling between private individuals is widely practised in India, but rules around using a private vehicle for commercial hire vary by state and over time. Syinq is positioned as non-commercial cost-sharing between verified members, you split running costs, you do not pay a Syinq fare. Members should follow their campus and local regulations.",
   },
   {
     category: "Cost",
     q: "How is the cost split?",
-    a: "You split the ride's running cost fairly between members — it is 'your share', not a Syinq fare. Syinq suggests a fair amount based on distance, seats and time, and you settle directly with your Host. Syinq never owns the ride or sets a commercial price.",
+    a: "You split the ride's running cost fairly between members, it is 'your share', not a Syinq fare. Syinq suggests a fair amount based on distance, seats and time, and you settle directly with your Host. Syinq never owns the ride or sets a commercial price.",
   },
   {
     category: "Cost",
@@ -59,7 +59,7 @@ export const FAQS: Faq[] = [
   {
     category: "Hosts",
     q: "What does a Host do?",
-    a: "A Host is a member who offers spare seats in their own vehicle on a route they are already travelling. You set the route, time and seats, choose who joins, and share the running cost — filling empty seats instead of driving alone.",
+    a: "A Host is a member who offers spare seats in their own vehicle on a route they are already travelling. You set the route, time and seats, choose who joins, and share the running cost, filling empty seats instead of driving alone.",
   },
   {
     category: "Hosts",
@@ -74,7 +74,7 @@ export const FAQS: Faq[] = [
   {
     category: "Basics",
     q: "What is Quick Cabpool?",
-    a: "Quick Cabpool (planned) is lightweight coordination for members who want to share an external cab — for example to a station or airport. Syinq helps you group up and estimate a fair split; it is coordination only, and never a 'Syinq cab'.",
+    a: "Quick Cabpool (planned) is lightweight coordination for members who want to share an external cab, for example to a station or airport. Syinq helps you group up and estimate a fair split; it is coordination only, and never a 'Syinq cab'.",
   },
 ];
 

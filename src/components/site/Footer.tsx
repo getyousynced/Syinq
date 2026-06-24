@@ -8,11 +8,12 @@ import Lottie from "@/components/site/Lottie";
 export default function Footer() {
   return (
     <footer className="border-t border-slate-200 bg-white">
-      <div className="w-full overflow-hidden border-b border-slate-100 bg-gradient-to-b from-brand-50/40 to-white">
+      <div className="w-full overflow-hidden border-b border-slate-100 bg-white">
         <Lottie
           src="/revamp/lottie/footer-loading.lottie"
-          label="Syinq — campus commute, in motion"
-          className="mx-auto h-44 w-full max-w-content sm:h-60"
+          loop
+          label="Syinq campus commute in motion"
+          className="h-40 w-full sm:h-56"
         />
       </div>
       <div className="container-shell py-14">
@@ -27,7 +28,7 @@ export default function Footer() {
             />
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-600">
               India&apos;s verified campus commute network. Find trusted people from your
-              campus going the same way — and split the cost fairly.
+              campus going the same way, and split the cost fairly.
             </p>
             <div className="mt-6">
               <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">

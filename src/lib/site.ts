@@ -15,7 +15,7 @@ export const SITE = {
   title: "Campus Carpooling with Verified Students | Syinq",
   tagline: "One App, For Every Campus Move.",
   description:
-    "Syinq is India's verified campus commute network. Find, offer and coordinate shared rides with verified students from your own college — split costs fairly with OTP proof-of-pool.",
+    "Syinq is India's verified campus commute network. Find, offer and coordinate shared rides with verified students from your own college, split costs fairly with OTP proof-of-pool.",
   email: "support@syinq.com",
   locale: "en_IN",
 } as const;
@@ -35,12 +35,12 @@ export const SOCIAL = {
   linkedin: "https://www.linkedin.com/company/rasync",
 } as const;
 
-/** App facts for SoftwareApplication schema — keep accurate, never inflate. */
+/** App facts for SoftwareApplication schema, keep accurate, never inflate. */
 export const APP_FACTS = {
   operatingSystem: "ANDROID, IOS",
   applicationCategory: "TravelApplication",
   priceINR: "0",
-  // Review counts are tiny (~10 Play / 2 Apple) — rating markup intentionally omitted.
+  // Review counts are tiny (~10 Play / 2 Apple), rating markup intentionally omitted.
 } as const;
 
 export const FOUNDERS = [
@@ -48,7 +48,7 @@ export const FOUNDERS = [
     name: "Raunak Shukla",
     role: "Co-founder & CEO",
     bio: "Leads product and campus strategy at Syinq, turning everyday campus movement into a verified, structured network students can trust.",
-    note: "Campus already moves together every single day — we're giving that energy a home. My vision for Syinq is simple: make every campus move feel trusted, effortless and shared, then grow that into the network India's students actually run their day on.",
+    note: "Campus already moves together every single day, we're giving that energy a home. My vision for Syinq is simple: make every campus move feel trusted, effortless and shared, then grow that into the network India's students actually run their day on.",
     photo: "/revamp/photos/founder-raunak.webp",
     linkedin: "https://www.linkedin.com/company/rasync",
     email: "support@syinq.com",
@@ -57,7 +57,7 @@ export const FOUNDERS = [
   {
     name: "Rupesh Shandillya",
     role: "Co-founder & CTO",
-    bio: "Builds Syinq's matching, verification and ride-lifecycle systems — the proof-of-pool and trust layer underneath every shared ride.",
+    bio: "Builds Syinq's matching, verification and ride-lifecycle systems, the proof-of-pool and trust layer underneath every shared ride.",
     note: "I obsess over the boring stuff that makes trust real: matching, verification, OTP proof-of-pool. If a shared ride feels safe and just works, that's the whole game. We're engineering Syinq to feel faster than a WhatsApp message.",
     photo: "/revamp/photos/founder-rupesh.webp",
     linkedin: "https://www.linkedin.com/company/rasync",

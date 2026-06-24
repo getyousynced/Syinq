@@ -106,7 +106,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
       />
 
       {/* Article header on a tinted band */}
-      <section className="bg-brand-soft pt-10 pb-12 sm:pt-12 sm:pb-16">
+      <section className="bg-page pt-10 pb-12 sm:pt-12 sm:pb-16">
         <Container>
           <div className="mx-auto max-w-3xl">
             <nav aria-label="Breadcrumb" className="text-sm text-slate-500">
@@ -159,7 +159,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
 
             <p className="mt-12 border-t border-slate-200 pt-6 text-sm text-slate-500">
               This guide is general information, not legal advice. Syinq supports safer coordination
-              but cannot guarantee any outcome — always use your judgement and the in-app safety
+              but cannot guarantee any outcome, always use your judgement and the in-app safety
               tools.
             </p>
           </article>

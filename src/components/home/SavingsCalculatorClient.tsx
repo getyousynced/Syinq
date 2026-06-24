@@ -159,10 +159,10 @@ export default function SavingsCalculatorClient({ petrol }: { petrol: PetrolPric
         <SectionHeading
           eyebrow="Why pool to campus"
           title="Watch what you'd save pooling to campus"
-          subtitle="Going solo burns fuel and cash. Drag the numbers and watch your monthly saving move — this is your share of the running cost, never a Syinq fare."
+          subtitle="Going solo burns fuel and cash. Drag the numbers and watch your monthly saving move, this is your share of the running cost, never a Syinq fare."
         />
 
-        {/* Final saving — shown OUTSIDE the tablet */}
+        {/* Final saving, shown OUTSIDE the tablet */}
         <Reveal className="mx-auto mt-10 max-w-4xl text-center">
           <p className="text-sm font-medium text-slate-500">Estimated monthly saving</p>
           <p className="tnum mt-1 text-6xl font-bold leading-none sm:text-7xl">
@@ -175,7 +175,7 @@ export default function SavingsCalculatorClient({ petrol }: { petrol: PetrolPric
         <Reveal className="mx-auto mt-8 max-w-4xl">
           <TabletFrame>
             <div className="grid md:grid-cols-2 md:items-stretch">
-              {/* Left half — the calculator (inputs + breakdown), no coins */}
+              {/* Left half, the calculator (inputs + breakdown), no coins */}
               <div className="space-y-5 p-6 sm:p-7">
                 <div>
                   <label htmlFor="campus" className="flex items-center gap-2 text-sm font-medium text-slate-600">
@@ -230,13 +230,13 @@ export default function SavingsCalculatorClient({ petrol }: { petrol: PetrolPric
                 </div>
               </div>
 
-              {/* Right half — embedded UI/UX animation */}
-              <div className="flex items-center justify-center bg-slate-50 p-6 sm:p-8">
+              {/* Right half, embedded UI/UX animation */}
+              <div className="flex items-center justify-center bg-slate-50 p-4 sm:p-6">
                 <Lottie
                   src="/revamp/lottie/ui-ux.lottie"
                   loop
                   label="Syinq app interface in motion"
-                  className="h-full min-h-[260px] w-full max-w-[360px]"
+                  className="h-full min-h-[320px] w-full max-w-[480px]"
                 />
               </div>
             </div>

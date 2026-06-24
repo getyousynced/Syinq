@@ -24,7 +24,7 @@
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 200 92% 47%;
-    --radius: 0.875rem; /* 14px — DS inputs/buttons */
+    --radius: 0.875rem; /* 14px, DS inputs/buttons */
 
     /* ---- Syinq design-system raw tokens ---- */
     --blue-500: #099BE4;
@@ -74,7 +74,7 @@
 }
 
 @layer components {
-  /* Centered content shell — 16px gutter (DS), widening on larger screens */
+  /* Centered content shell, 16px gutter (DS), widening on larger screens */
   .container-shell {
     @apply mx-auto w-full max-w-content px-4 sm:px-6 lg:px-8;
   }
@@ -92,7 +92,7 @@
 }
 
 /* ============================================================
-   Reveal-on-scroll — JS-GATED so content is visible without JS.
+   Reveal-on-scroll, JS-GATED so content is visible without JS.
    Hidden state only applies once <html> has .js (added on mount).
    Honors prefers-reduced-motion.
    ============================================================ */
@@ -115,7 +115,6 @@
   display: inline-flex;
   flex-shrink: 0;
   align-items: center;
-  min-width: 100%;
   will-change: transform;
 }
 

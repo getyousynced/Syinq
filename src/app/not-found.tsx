@@ -5,7 +5,7 @@ import { CTAButton } from "@/components/site/buttons";
 
 export default function NotFound() {
   return (
-    <section className="bg-brand-soft">
+    <section className="bg-page">
       <Container className="flex min-h-[70vh] flex-col items-center justify-center py-20 text-center">
         <p className="bg-brand-gradient bg-clip-text text-[110px] font-bold leading-none text-transparent sm:text-[150px]">
           404

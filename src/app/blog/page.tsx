@@ -14,7 +14,7 @@ import { BLOG_POSTS } from "@/content/blog";
 export const metadata: Metadata = pageMeta({
   title: "Resources & Blog",
   description:
-    "Answer-first guides to campus commuting in India — carpooling legality, proof-of-pool explained, and how to start a campus carpool that lasts.",
+    "Answer-first guides to campus commuting in India, carpooling legality, proof-of-pool explained, and how to start a campus carpool that lasts.",
   path: "/blog",
 });
 
@@ -39,7 +39,7 @@ export default function BlogHubPage() {
       />
 
       {/* Page hero */}
-      <section className="bg-brand-soft py-16 sm:py-20 lg:py-24">
+      <section className="bg-page py-16 sm:py-20 lg:py-24">
         <Container className="relative">
           <Reveal className="max-w-3xl">
             <span className="eyebrow">Resources</span>
@@ -47,7 +47,7 @@ export default function BlogHubPage() {
               Campus commuting, explained
             </h1>
             <p className="mt-5 text-lg leading-relaxed text-slate-600">
-              Clear, answer-first guides for verified campus members — the legality of carpooling in
+              Clear, answer-first guides for verified campus members, the legality of carpooling in
               India, how proof-of-pool builds trust, and a playbook for starting a campus carpool
               that actually keeps running. Written to be read in minutes.
             </p>

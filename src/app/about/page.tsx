@@ -96,9 +96,7 @@ export default function AboutPage() {
       />
 
       {/* Page hero */}
-      <section className="relative overflow-hidden bg-brand-soft">
-        <div className="pointer-events-none absolute -right-32 -top-24 h-[420px] w-[420px] rounded-full bg-brand-200/40 blur-3xl" />
-        <div className="pointer-events-none absolute -left-24 bottom-0 h-[320px] w-[320px] rounded-full bg-brand-100/50 blur-3xl" />
+      <section className="relative overflow-hidden bg-page">
         <Container className="relative py-16 sm:py-20 lg:py-24">
           <Reveal className="max-w-3xl">
             <span className="eyebrow">About Syinq</span>
@@ -168,7 +166,7 @@ export default function AboutPage() {
 
             <Reveal delay={80} className="lg:order-last">
               <div className="relative">
-                <div className="absolute inset-0 -z-10 translate-y-6 rounded-[2rem] bg-brand-soft blur-xl" />
+                <div className="absolute inset-0 -z-10 translate-y-6 rounded-[2rem] bg-page blur-xl" />
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-slate-200 shadow-lg">
                   <Image
                     src="/revamp/photos/students-group-phone.webp"
@@ -238,7 +236,7 @@ export default function AboutPage() {
           <SectionHeading
             eyebrow="How we build"
             title="Principles that keep Syinq honest"
-            subtitle="We're a coordinator for verified campus members — not a ride operator. These principles shape every decision, screen and route."
+            subtitle="We're a coordinator for verified campus members, not a ride operator. These principles shape every decision, screen and route."
           />
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

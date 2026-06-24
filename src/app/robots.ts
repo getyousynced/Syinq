@@ -3,7 +3,7 @@ import { SITE } from "@/lib/site";
 
 /**
  * Explicitly welcome AI search/citation crawlers (GEO). A blanket disallow or
- * blocking the search bots kills AI citations — the opposite of the goal.
+ * blocking the search bots kills AI citations, the opposite of the goal.
  * Admin surfaces are kept out of the index.
  */
 const AI_BOTS = [

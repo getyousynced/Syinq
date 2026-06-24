@@ -18,7 +18,7 @@ export default function Founders() {
         <SectionHeading
           eyebrow="The humans behind Syinq"
           title="Notes from the founders"
-          subtitle="No faceless-startup energy here — just two campus builders shipping the verified commute network we wished already existed."
+          subtitle="No faceless-startup energy here, just two campus builders shipping the verified commute network we wished already existed."
         />
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
@@ -92,7 +92,7 @@ export default function Founders() {
 
         <Reveal className="mt-10 flex flex-col items-center gap-4 text-center" delay={120}>
           <p className="max-w-xl text-sm leading-relaxed text-slate-600">
-            Got an idea, a bug, or a campus you want Syinq on next? We actually read every message —
+            Got an idea, a bug, or a campus you want Syinq on next? We actually read every message, 
             reach out and help us build the commute your campus deserves.
           </p>
           <CTAButton href={`mailto:${SITE.email}?subject=Hey Syinq team`}>

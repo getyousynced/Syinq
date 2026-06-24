@@ -20,7 +20,7 @@ type IconScoutIcon = ComponentType<UniconProps>;
 
 // Each module sits in one of three reveal tiers:
 //  - full    → shown clearly once the roadmap is peeked (Stage 1, Live).
-//  - glimpse → partially revealed teaser (Stage 2, Planned) — "up next", not open.
+//  - glimpse → partially revealed teaser (Stage 2, Planned), "up next", not open.
 //  - locked  → stays blurred behind a teaser veil (Stages 3-4, Concept).
 type Tier = "full" | "glimpse" | "locked";
 
@@ -37,14 +37,14 @@ const phases: { icon: IconScoutIcon; name: string; status: string; text: string;
     name: "Quick Cabpool",
     status: "Planned",
     tier: "glimpse",
-    text: "Lightweight coordination to share an external cab to stations, airports and events. Coordination only — never a Syinq cab.",
+    text: "Lightweight coordination to share an external cab to stations, airports and events. Coordination only, never a Syinq cab.",
   },
   {
     icon: UilShoppingBag,
     name: "Campus Exchange",
     status: "Concept",
     tier: "locked",
-    text: "A verified, campus-only space to buy, sell, rent and exchange — books, electronics, hostel essentials.",
+    text: "A verified, campus-only space to buy, sell, rent and exchange, books, electronics, hostel essentials.",
   },
   {
     icon: UilCommentDots,
@@ -76,7 +76,7 @@ export default function Roadmap() {
 
   // Only lock once JS has hydrated. SSR / no-JS / reduced-motion users get the
   // fully readable cards (blur is purely visual, content stays in the DOM).
-  // The roadmap stays a deliberate secret — it only opens on click.
+  // The roadmap stays a deliberate secret, it only opens on click.
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -101,7 +101,7 @@ export default function Roadmap() {
         <SectionHeading
           eyebrow="The bigger picture"
           title="Starting with commute. Building something bigger."
-          subtitle="The wedge is rides — but the roadmap runs deeper. Reveal what's live today, catch a glimpse of what's next, and unlock the rest in the app."
+          subtitle="The wedge is rides, but the roadmap runs deeper. Reveal what's live today, catch a glimpse of what's next, and unlock the rest in the app."
         />
 
         <div className="relative mt-12">
@@ -139,7 +139,7 @@ export default function Roadmap() {
                     <p className="mt-2 text-sm leading-relaxed text-slate-600">{p.text}</p>
                   </div>
 
-                  {/* Stage 2 glimpse — a peek, not a full open. */}
+                  {/* Stage 2 glimpse, a peek, not a full open. */}
                   <AnimatePresence>
                     {tiered && p.tier === "glimpse" && (
                       <motion.div
@@ -158,7 +158,7 @@ export default function Roadmap() {
                     )}
                   </AnimatePresence>
 
-                  {/* Stages 3-4 stay locked — teased, never opened on the site. */}
+                  {/* Stages 3-4 stay locked, teased, never opened on the site. */}
                   <AnimatePresence>
                     {tiered && p.tier === "locked" && (
                       <motion.div
@@ -172,7 +172,7 @@ export default function Roadmap() {
                         {p.name === "Campus Exchange" ? (
                           <Lottie
                             src={EXCHANGE_LOTTIE}
-                            label="Campus Exchange — a verified campus marketplace, coming later"
+                            label="Campus Exchange, a verified campus marketplace, coming later"
                             className="h-12 w-12"
                           />
                         ) : (
@@ -192,7 +192,7 @@ export default function Roadmap() {
             })}
           </div>
 
-          {/* Initial locked secret panel — peeks the roadmap, never opens it fully. */}
+          {/* Initial locked secret panel, peeks the roadmap, never opens it fully. */}
           <AnimatePresence>
             {secret && (
               <motion.div
@@ -224,7 +224,7 @@ export default function Roadmap() {
                     Something bigger is coming
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                    Rides are live today. Peek the roadmap to see a glimpse of what&apos;s next — the
+                    Rides are live today. Peek the roadmap to see a glimpse of what&apos;s next, the
                     rest stays under wraps until it ships.
                   </p>
                   <button
@@ -241,7 +241,7 @@ export default function Roadmap() {
           </AnimatePresence>
         </div>
 
-        {/* Second CTA — routes to the app download; never opens Stages 3-4 on the site. */}
+        {/* Second CTA, routes to the app download; never opens Stages 3-4 on the site. */}
         <AnimatePresence>
           {showAppCta && (
             <motion.div
@@ -262,7 +262,7 @@ export default function Roadmap() {
                 Get early access in the app
               </a>
               <p className="text-xs text-slate-500">
-                Campus Exchange and Pulse are still concepts — get the app to be first in line.
+                Campus Exchange and Pulse are still concepts, get the app to be first in line.
               </p>
             </motion.div>
           )}

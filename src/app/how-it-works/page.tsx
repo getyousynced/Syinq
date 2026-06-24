@@ -27,7 +27,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = pageMeta({
   title: "How Campus Carpooling Works",
   description:
-    "See how Syinq campus carpooling works — find or offer a ride, match with verified students, board with OTP proof-of-pool, then split the cost and rate. Step by step.",
+    "See how Syinq campus carpooling works, find or offer a ride, match with verified students, board with OTP proof-of-pool, then split the cost and rate. Step by step.",
   path: "/how-it-works",
 });
 
@@ -42,7 +42,7 @@ const STEP_DETAILS: Record<number, { lead: string; points: string[] }> = {
     ],
   },
   2: {
-    lead: "Syinq matches on the three things that actually matter — route, timing and shared campus — so you only see realistic pools. Send a request, the Host reviews and accepts, and together you agree a fair split of the running cost. That's your share, never a fare Syinq invents.",
+    lead: "Syinq matches on the three things that actually matter, route, timing and shared campus, so you only see realistic pools. Send a request, the Host reviews and accepts, and together you agree a fair split of the running cost. That's your share, never a fare Syinq invents.",
     points: [
       "Matching weighs route overlap, departure timing and your campus",
       "Verification badges and ratings show before you commit",
@@ -50,7 +50,7 @@ const STEP_DETAILS: Record<number, { lead: string; points: string[] }> = {
     ],
   },
   3: {
-    lead: "At pickup, the Host's one-time code is entered in the app to confirm the right members climbed into the right ride. This is proof-of-pool — a verifiable record that a shared campus ride genuinely happened, and the accountability layer the whole network is built on.",
+    lead: "At pickup, the Host's one-time code is entered in the app to confirm the right members climbed into the right ride. This is proof-of-pool, a verifiable record that a shared campus ride genuinely happened, and the accountability layer the whole network is built on.",
     points: [
       "The Host shares a one-time code at the pickup point",
       "Entering it confirms the correct pool boarded the correct ride",
@@ -99,10 +99,10 @@ const RIDE_STATES = [
 ];
 
 const HERO_LEAD =
-  "Campus carpooling on Syinq runs one trusted lifecycle: you find a ride or offer your own, match with verified students heading the same way on route and timing, board with OTP proof-of-pool, then ride with live status and settle your share — splitting the running cost, never paying a fare Syinq sets.";
+  "Campus carpooling on Syinq runs one trusted lifecycle: you find a ride or offer your own, match with verified students heading the same way on route and timing, board with OTP proof-of-pool, then ride with live status and settle your share, splitting the running cost, never paying a fare Syinq sets.";
 
 const LOOKING_LEAD =
-  "When no ride matches yet, your search doesn't vanish — it becomes Looking, a saved record of where and when you need to go. Syinq keeps watching the network, and the moment a verified Host publishes a matching route, you're notified so demand turns into a real pool instead of a dead end.";
+  "When no ride matches yet, your search doesn't vanish, it becomes Looking, a saved record of where and when you need to go. Syinq keeps watching the network, and the moment a verified Host publishes a matching route, you're notified so demand turns into a real pool instead of a dead end.";
 
 const LOOKING_POINTS = [
   "A failed search is captured as saved demand, not discarded",
@@ -127,9 +127,7 @@ export default function HowItWorksPage() {
       />
 
       {/* Page hero */}
-      <section className="relative overflow-hidden bg-brand-soft">
-        <div className="pointer-events-none absolute -right-28 -top-24 h-[380px] w-[380px] rounded-full bg-brand-200/40 blur-3xl" />
-        <div className="pointer-events-none absolute -left-24 bottom-0 h-[300px] w-[300px] rounded-full bg-brand-100/50 blur-3xl" />
+      <section className="relative overflow-hidden bg-page">
         <Container className="relative py-16 sm:py-20 lg:py-24">
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="eyebrow">How it works</span>
@@ -161,7 +159,7 @@ export default function HowItWorksPage() {
           <SectionHeading
             eyebrow="The ride lifecycle"
             title="Four steps from search to settled"
-            subtitle="Every ride — whether you find one or host one — runs the same trusted lifecycle. Here's exactly what happens at each stage, and what you see in the app."
+            subtitle="Every ride, whether you find one or host one, runs the same trusted lifecycle. Here's exactly what happens at each stage, and what you see in the app."
           />
 
           <div className="mt-14 space-y-16 lg:space-y-24">
@@ -204,7 +202,7 @@ export default function HowItWorksPage() {
                     className={cn("flex justify-center", flip && "lg:order-1")}
                   >
                     <div className="relative w-full max-w-[300px]">
-                      <div className="absolute inset-0 -z-10 translate-y-6 rounded-[2rem] bg-brand-soft blur-xl" />
+                      <div className="absolute inset-0 -z-10 translate-y-6 rounded-[2rem] bg-page blur-xl" />
                       <div className="rounded-[1.8rem] border border-slate-200 bg-white p-1.5 shadow-lg">
                         <Image
                           src={step.screen}
@@ -284,7 +282,7 @@ export default function HowItWorksPage() {
           <SectionHeading
             eyebrow="Every state, handled"
             title="The full lifecycle, end to end"
-            subtitle="From the first search to the final rating, every state of a campus pool has a clear, accountable step in the app — nothing is left to a guess."
+            subtitle="From the first search to the final rating, every state of a campus pool has a clear, accountable step in the app, nothing is left to a guess."
           />
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -308,7 +306,7 @@ export default function HowItWorksPage() {
 
           <Reveal className="mx-auto mt-8 max-w-3xl rounded-xl border border-slate-200 bg-white/70 p-4 text-center text-sm text-slate-500">
             Syinq supports safer coordination but cannot guarantee any outcome. Proof-of-pool and
-            live status are accountability tools, not safety guarantees — always use your judgement
+            live status are accountability tools, not safety guarantees, always use your judgement
             and the in-app safety tools.
           </Reveal>
         </Container>

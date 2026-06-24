@@ -91,9 +91,7 @@ const Contact = () => {
   return (
     <div className="flex min-h-screen flex-col bg-white">
       {/* Page hero */}
-      <section className="relative overflow-hidden bg-brand-soft">
-        <div className="pointer-events-none absolute -right-32 -top-28 h-[380px] w-[380px] rounded-full bg-brand-200/40 blur-3xl" />
-        <div className="pointer-events-none absolute -left-24 bottom-0 h-[280px] w-[280px] rounded-full bg-brand-100/50 blur-3xl" />
+      <section className="relative overflow-hidden bg-page">
         <Container className="relative py-16 sm:py-20 lg:py-24">
           <Reveal className="max-w-2xl">
             <span className="eyebrow">Contact</span>
@@ -109,7 +107,7 @@ const Contact = () => {
               >
                 support@syinq.com
               </a>{" "}
-              or send a message below — we read everything and reply as soon as we can.
+              or send a message below, we read everything and reply as soon as we can.
             </p>
           </Reveal>
 
@@ -172,11 +170,11 @@ const Contact = () => {
 
               <Reveal
                 delay={140}
-                className="rounded-2xl border border-slate-200 bg-brand-soft p-6 shadow-sm"
+                className="rounded-2xl border border-slate-200 bg-page p-6 shadow-sm"
               >
                 <h2 className="text-lg font-semibold text-slate-900">Get the app</h2>
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                  Syinq is live on iOS and Android — verified campus rides, all in one
+                  Syinq is live on iOS and Android, verified campus rides, all in one
                   app.
                 </p>
                 <StoreButtons className="mt-4" />

@@ -10,7 +10,7 @@ import { StoreButtons } from "@/components/site/buttons";
 const highlights = [
   "Map-first home that reads like a route",
   "Looking / Watchlist captures demand when no ride exists yet",
-  "Fare adjuster keeps the split fair — budget, fair or premium",
+  "Fare adjuster keeps the split fair, budget, fair or premium",
   "Your Rides: active, upcoming, completed and what you've saved",
 ];
 

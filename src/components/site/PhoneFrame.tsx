@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 
 /**
  * Cohesive phone bezel: a single thin dark frame whose outer radius closely
- * matches the inner screen radius. No background glow behind it — the prototype
+ * matches the inner screen radius. No background glow behind it, the prototype
  * sits clean on the section. Parent controls width.
  * (`glow` is accepted for back-compat but intentionally ignored.)
  */

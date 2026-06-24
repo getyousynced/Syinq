@@ -20,9 +20,9 @@ import { breadcrumbSchema } from "@/lib/schema";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = pageMeta({
-  title: "Offer a Ride — For Hosts",
+  title: "Offer a Ride, For Hosts",
   description:
-    "Drive to campus with empty seats? Host on Syinq to share your running cost with verified students going your way — you control who joins, with OTP proof-of-pool.",
+    "Drive to campus with empty seats? Host on Syinq to share your running cost with verified students going your way, you control who joins, with OTP proof-of-pool.",
   path: "/for-hosts",
 });
 
@@ -36,22 +36,22 @@ const benefits: Benefit[] = [
   {
     icon: Fuel,
     title: "Cover your fuel",
-    text: "Offer the seats you're already driving and split the running cost. Each Rider settles their share toward fuel and wear — it's cost-sharing, never a commercial fare Syinq sets.",
+    text: "Offer the seats you're already driving and split the running cost. Each Rider settles their share toward fuel and wear, it's cost-sharing, never a commercial fare Syinq sets.",
   },
   {
     icon: UserCheck,
     title: "Control who joins",
-    text: "You see every request and accept or decline it yourself. Only verified campus Riders heading your way can ask — so you choose your company, every time.",
+    text: "You see every request and accept or decline it yourself. Only verified campus Riders heading your way can ask, so you choose your company, every time.",
   },
   {
     icon: KeyRound,
     title: "OTP proof-of-pool",
-    text: "A one-time code at pickup confirms exactly who boarded your ride. It's a verifiable record that the right members joined — accountability built into every shared trip.",
+    text: "A one-time code at pickup confirms exactly who boarded your ride. It's a verifiable record that the right members joined, accountability built into every shared trip.",
   },
   {
     icon: LayoutDashboard,
     title: "Manage it in one place",
-    text: "Track active and upcoming rides, see what each Rider has settled, and review your history in the Your Rides tab — no scattered WhatsApp threads to chase.",
+    text: "Track active and upcoming rides, see what each Rider has settled, and review your history in the Your Rides tab, no scattered WhatsApp threads to chase.",
   },
 ];
 
@@ -65,7 +65,7 @@ const steps: Step[] = [
   {
     n: "1",
     title: "Publish your route & seats",
-    text: "Set the route you already drive, your timing and how many seats are free. Suggest a fair split for the trip — Riders see it up front before they ask.",
+    text: "Set the route you already drive, your timing and how many seats are free. Suggest a fair split for the trip, Riders see it up front before they ask.",
   },
   {
     n: "2",
@@ -99,7 +99,7 @@ const trustPoints: TrustPoint[] = [
   {
     icon: Route,
     title: "You set the terms",
-    text: "Your route, your timing, your seats, your call on who joins. Syinq coordinates the match — you stay in the driver's seat for every decision.",
+    text: "Your route, your timing, your seats, your call on who joins. Syinq coordinates the match, you stay in the driver's seat for every decision.",
   },
 ];
 
@@ -114,9 +114,7 @@ export default function ForHostsPage() {
       />
 
       {/* Page hero */}
-      <section className="relative overflow-hidden bg-brand-soft">
-        <div className="pointer-events-none absolute -right-32 -top-24 h-[420px] w-[420px] rounded-full bg-brand-200/40 blur-3xl" />
-        <div className="pointer-events-none absolute -left-24 bottom-0 h-[320px] w-[320px] rounded-full bg-brand-100/50 blur-3xl" />
+      <section className="relative overflow-hidden bg-page">
 
         <Container className="relative grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-2 lg:gap-12 lg:py-24">
           <Reveal>
@@ -127,7 +125,7 @@ export default function ForHostsPage() {
             <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
               A Host offers spare seats on a route they&apos;re already driving, picks who comes
               along, and splits the running cost with verified students heading the same way. Your
-              Riders settle their share toward fuel and wear — it&apos;s cost-sharing, never a
+              Riders settle their share toward fuel and wear, it&apos;s cost-sharing, never a
               commercial fare Syinq sets for you.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -177,7 +175,7 @@ export default function ForHostsPage() {
           <SectionHeading
             eyebrow="Why host on Syinq"
             title="Turn an empty seat into a shared cost"
-            subtitle="You're already making the drive. Hosting lets verified campus Riders chip in for the trip — on your terms, with trust built into every step."
+            subtitle="You're already making the drive. Hosting lets verified campus Riders chip in for the trip, on your terms, with trust built into every step."
           />
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -202,7 +200,7 @@ export default function ForHostsPage() {
           <SectionHeading
             eyebrow="How hosting works"
             title="Three steps from empty seats to a settled pool"
-            subtitle="Publish the route you already drive, accept the Riders you choose, and board with proof-of-pool — every ride runs on the same trusted lifecycle."
+            subtitle="Publish the route you already drive, accept the Riders you choose, and board with proof-of-pool, every ride runs on the same trusted lifecycle."
           />
 
           <div className="mt-12 grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
@@ -255,7 +253,7 @@ export default function ForHostsPage() {
                   className={cn("w-full max-w-[200px]", phone.flip && "mt-8 sm:mt-12")}
                 >
                   <div className="relative">
-                    <div className="absolute inset-0 -z-10 translate-y-5 rounded-[1.8rem] bg-brand-soft blur-xl" />
+                    <div className="absolute inset-0 -z-10 translate-y-5 rounded-[1.8rem] bg-page blur-xl" />
                     <Image
                       src={phone.src}
                       alt={phone.alt}
@@ -299,7 +297,7 @@ export default function ForHostsPage() {
           </div>
 
           <Reveal className="mx-auto mt-8 max-w-3xl rounded-xl border border-slate-200 bg-white/70 p-4 text-center text-sm text-slate-500">
-            Syinq is a coordination platform for cost-sharing between verified campus members — not a
+            Syinq is a coordination platform for cost-sharing between verified campus members, not a
             taxi or transport service. Syinq does not own or operate any vehicles, and supports safer
             coordination but cannot guarantee any outcome. Always use your judgement and the in-app
             safety tools.

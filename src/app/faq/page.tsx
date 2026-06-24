@@ -12,7 +12,7 @@ import { faqsByCategory, faqPairs, type Faq } from "@/content/faqs";
 export const metadata: Metadata = pageMeta({
   title: "Frequently Asked Questions",
   description:
-    "Answers about Syinq campus carpooling — how it works, safety and OTP proof-of-pool, splitting costs, hosting, carpooling legality in India, and campus partnerships.",
+    "Answers about Syinq campus carpooling, how it works, safety and OTP proof-of-pool, splitting costs, hosting, carpooling legality in India, and campus partnerships.",
   path: "/faq",
 });
 
@@ -30,7 +30,7 @@ const CATEGORIES: CategoryBlock[] = [
   {
     category: "Safety & Trust",
     subtitle:
-      "Verification, OTP proof-of-pool, live status and SOS readiness — and where cost-sharing stands in India.",
+      "Verification, OTP proof-of-pool, live status and SOS readiness, and where cost-sharing stands in India.",
   },
   {
     category: "Cost",
@@ -63,12 +63,12 @@ export default function FaqPage() {
       />
 
       {/* Page hero */}
-      <section className="bg-brand-soft">
+      <section className="bg-page">
         <Container className="py-16 sm:py-20 lg:py-24">
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="eyebrow">FAQ</span>
             <h1 className="mt-4 text-balance text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl">
-              Syinq FAQ — campus carpooling, answered
+              Syinq FAQ, campus carpooling, answered
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
               Straight answers on how Syinq works, why verified-campus trust and OTP proof-of-pool
@@ -115,7 +115,7 @@ export default function FaqPage() {
                 {isSafety && (
                   <p className="mt-6 rounded-xl border border-slate-200 bg-white/70 p-4 text-sm leading-relaxed text-slate-500">
                     Syinq supports safer coordination but cannot guarantee any outcome. Proof-of-pool
-                    is an accountability tool, not a safety guarantee — always use your judgement and
+                    is an accountability tool, not a safety guarantee, always use your judgement and
                     the in-app safety tools.
                   </p>
                 )}

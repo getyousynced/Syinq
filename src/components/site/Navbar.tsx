@@ -110,7 +110,7 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile menu — glass card under the pill */}
+      {/* Mobile menu, glass card under the pill */}
       <div
         id="mobile-menu"
         className={cn(

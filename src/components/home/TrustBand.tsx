@@ -24,7 +24,7 @@ const layers = [
   {
     icon: BadgeCheck,
     title: "Verified campus members",
-    text: "Everyone joins through campus verification, so you coordinate with real people from your own university — not anonymous strangers.",
+    text: "Everyone joins through campus verification, so you coordinate with real people from your own university, not anonymous strangers.",
   },
   {
     icon: Car,
@@ -34,7 +34,7 @@ const layers = [
   {
     icon: KeyRound,
     title: "OTP proof-of-pool",
-    text: "A one-time code confirms the right members boarded the right ride — a verifiable record that a shared ride really happened.",
+    text: "A one-time code confirms the right members boarded the right ride, a verifiable record that a shared ride really happened.",
   },
   {
     icon: Siren,
@@ -49,7 +49,7 @@ const layers = [
   {
     icon: MessagesSquare,
     title: "In-app coordination",
-    text: "Routes, requests, matches and history live in one place — replacing scattered WhatsApp groups and manual DMs.",
+    text: "Routes, requests, matches and history live in one place, replacing scattered WhatsApp groups and manual DMs.",
   },
 ];
 
@@ -132,7 +132,7 @@ function VerificationBand() {
                   "relative z-10 flex items-center gap-2.5 rounded-2xl border px-3 py-2.5 transition-colors duration-300 sm:flex-col sm:gap-2 sm:px-4 sm:text-center",
                   isVerified ? "border-green-200 bg-green-50" : "border-slate-200 bg-white",
                 )}
-                aria-label={`${step.label}${step.tag ? ` (${step.tag})` : ""} — ${
+                aria-label={`${step.label}${step.tag ? ` (${step.tag})` : ""}, ${
                   isVerified ? "verified" : "pending"
                 }`}
               >
@@ -190,7 +190,7 @@ function VerificationBand() {
       </div>
 
       <p className="mt-4 text-center text-xs text-slate-500">
-        How a member becomes verified — each check is confirmed before they appear in your pool.
+        How a member becomes verified, each check is confirmed before they appear in your pool.
       </p>
     </div>
   );
@@ -235,7 +235,7 @@ export default function TrustBand() {
 
         <Reveal className="mx-auto mt-8 max-w-3xl rounded-xl border border-slate-200 bg-white/70 p-4 text-center text-sm text-slate-500">
           Syinq supports safer coordination but cannot guarantee any outcome. Proof-of-pool is an
-          accountability tool, not a safety guarantee — always use your judgement and the in-app
+          accountability tool, not a safety guarantee, always use your judgement and the in-app
           safety tools.
         </Reveal>
       </Container>

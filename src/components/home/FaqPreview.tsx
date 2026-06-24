@@ -32,7 +32,7 @@ export default function FaqPreview({ items }: { items: Faq[] }) {
 
   return (
     <section className="relative overflow-hidden bg-page py-16 sm:py-20 lg:py-24">
-      {/* Faint decorative question/route motif — static, reduced-motion safe */}
+      {/* Faint decorative question/route motif, static, reduced-motion safe */}
       <svg
         aria-hidden="true"
         viewBox="0 0 200 200"

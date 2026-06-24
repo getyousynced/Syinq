@@ -15,13 +15,15 @@ export default function Marquee({
   className?: string;
 }) {
   return (
-    <div
-      className={cn("group relative flex w-full overflow-hidden", className)}
-      style={{ "--marquee-duration": `${durationSec}s` } as CSSProperties}
-    >
-      <div className="marquee-track animate-marquee gap-4 pr-4">{children}</div>
-      <div className="marquee-track animate-marquee gap-4 pr-4" aria-hidden="true">
-        {children}
+    <div className={cn("group relative flex w-full overflow-hidden", className)}>
+      <div
+        className="flex w-max shrink-0 animate-marquee"
+        style={{ "--marquee-duration": `${durationSec}s` } as CSSProperties}
+      >
+        <div className="flex shrink-0 items-center gap-4 pr-4">{children}</div>
+        <div className="flex shrink-0 items-center gap-4 pr-4" aria-hidden="true">
+          {children}
+        </div>
       </div>
       {/* edge fades */}
       <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-page to-transparent" />

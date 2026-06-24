@@ -31,7 +31,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = pageMeta({
   title: "Safety & Trust",
   description:
-    "How Syinq keeps campus carpooling safe: verified members, OTP proof-of-pool, live ride status, SOS readiness and two-way ratings — plus a clear take on carpooling legality in India.",
+    "How Syinq keeps campus carpooling safe: verified members, OTP proof-of-pool, live ride status, SOS readiness and two-way ratings, plus a clear take on carpooling legality in India.",
   path: "/safety",
 });
 
@@ -48,7 +48,7 @@ const LAYERS = [
   {
     icon: BadgeCheck,
     title: "Verified campus members",
-    text: "Everyone joins through campus verification, so you coordinate with real people from your own university — not anonymous strangers.",
+    text: "Everyone joins through campus verification, so you coordinate with real people from your own university, not anonymous strangers.",
   },
   {
     icon: Car,
@@ -58,7 +58,7 @@ const LAYERS = [
   {
     icon: KeyRound,
     title: "OTP proof-of-pool",
-    text: "A one-time code confirms the right members boarded the right ride — a verifiable record that a shared ride really happened.",
+    text: "A one-time code confirms the right members boarded the right ride, a verifiable record that a shared ride really happened.",
   },
   {
     icon: Siren,
@@ -86,7 +86,7 @@ const LIVE_SAFETY_POINTS = [
 const POOL_POINTS = [
   "Codes are generated per ride and checked at pickup, so a match on screen becomes a confirmed pool.",
   "Every confirmed boarding adds to a member's ride history and reputation.",
-  "It is an accountability tool, not a safety guarantee — Syinq supports safer coordination but cannot guarantee any outcome.",
+  "It is an accountability tool, not a safety guarantee, Syinq supports safer coordination but cannot guarantee any outcome.",
 ];
 
 const COST_SHARING = [
@@ -136,7 +136,7 @@ export default function SafetyPage() {
       />
 
       {/* Hero */}
-      <section className="bg-brand-soft py-16 sm:py-20 lg:py-24">
+      <section className="bg-page py-16 sm:py-20 lg:py-24">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="eyebrow justify-center">Safety &amp; Trust</span>
@@ -147,7 +147,7 @@ export default function SafetyPage() {
               Campus carpooling on Syinq is built for safety: every member joins through campus
               verification, each ride boards with OTP proof-of-pool, trips carry live status, SOS
               readiness and trip sharing, and members rate each other afterwards. Syinq supports
-              safer coordination, but it cannot guarantee any outcome — your judgement still matters.
+              safer coordination, but it cannot guarantee any outcome, your judgement still matters.
             </p>
             <div className="mt-7 flex flex-wrap justify-center gap-2">
               {HERO_PILLS.map((p) => (
@@ -170,7 +170,7 @@ export default function SafetyPage() {
           <SectionHeading
             eyebrow="Verification layers"
             title="Trust is layered into every shared ride"
-            subtitle="Syinq's whole reason to exist is verified-campus trust. Here are the layers that sit under each pool — from who can join to how a ride is proven, watched and rated."
+            subtitle="Syinq's whole reason to exist is verified-campus trust. Here are the layers that sit under each pool, from who can join to how a ride is proven, watched and rated."
           />
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -215,7 +215,7 @@ export default function SafetyPage() {
             </Reveal>
 
             <Reveal delay={80} className="relative flex justify-center gap-4 sm:gap-6">
-              <div className="pointer-events-none absolute inset-0 -z-10 translate-y-10 rounded-[3rem] bg-brand-soft blur-2xl" />
+              <div className="pointer-events-none absolute inset-0 -z-10 translate-y-10 rounded-[3rem] bg-page blur-2xl" />
               <Phone
                 src="/revamp/app/safety-support.webp"
                 alt="Syinq in-app safety and support screen to report an issue or talk to the team during a campus carpool"
@@ -231,7 +231,7 @@ export default function SafetyPage() {
 
           <Reveal className="mx-auto mt-12 max-w-3xl rounded-xl border border-slate-200 bg-page/70 p-4 text-center text-sm text-slate-500">
             Syinq supports safer coordination but cannot guarantee any outcome. These tools build
-            accountability — they are not a safety guarantee, so always use your judgement and the
+            accountability, they are not a safety guarantee, so always use your judgement and the
             in-app safety tools.
           </Reveal>
         </Container>
@@ -243,7 +243,7 @@ export default function SafetyPage() {
           <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
             <Reveal className="flex justify-center lg:order-2">
               <div className="relative w-full max-w-[260px]">
-                <div className="pointer-events-none absolute inset-0 -z-10 translate-y-8 rounded-[2.4rem] bg-brand-soft blur-2xl" />
+                <div className="pointer-events-none absolute inset-0 -z-10 translate-y-8 rounded-[2.4rem] bg-page blur-2xl" />
                 <Phone
                   src="/revamp/app/otp-verify.webp"
                   alt="Syinq OTP proof-of-pool verification screen confirming the right members boarded the shared campus ride"
@@ -265,7 +265,7 @@ export default function SafetyPage() {
                 Proof-of-pool is Syinq's OTP boarding check. The Host gets a one-time code and the
                 Rider enters it at pickup, confirming the right members are in the right ride. It
                 turns &ldquo;someone said they&rsquo;d carpool&rdquo; into a verifiable record that a
-                shared ride actually happened — the backbone of campus accountability.
+                shared ride actually happened, the backbone of campus accountability.
               </p>
               <ul className="mt-6 space-y-3">
                 {POOL_POINTS.map((point) => (
@@ -295,7 +295,7 @@ export default function SafetyPage() {
               Genuine cost-sharing between private individuals is widely practised across India, while
               using a private vehicle for commercial hire is regulated and varies by state and over
               time. Syinq is positioned as non-commercial cost-sharing: members split a ride&rsquo;s
-              running costs as your share — never a Syinq fare. Always follow your campus and local
+              running costs as your share, never a Syinq fare. Always follow your campus and local
               rules.
             </p>
           </Reveal>
@@ -307,7 +307,7 @@ export default function SafetyPage() {
                   <ShieldCheck size={22} />
                 </span>
                 <h3 className="mt-4 text-lg font-semibold text-slate-900">
-                  Non-commercial cost-sharing — how Syinq works
+                  Non-commercial cost-sharing, how Syinq works
                 </h3>
                 <ul className="mt-4 space-y-2.5">
                   {COST_SHARING.map((point) => (
@@ -326,7 +326,7 @@ export default function SafetyPage() {
                   <Scale size={22} />
                 </span>
                 <h3 className="mt-4 text-lg font-semibold text-slate-900">
-                  Commercial hire — what Syinq is not
+                  Commercial hire, what Syinq is not
                 </h3>
                 <ul className="mt-4 space-y-2.5">
                   {COMMERCIAL_HIRE.map((point) => (
@@ -347,7 +347,7 @@ export default function SafetyPage() {
             </CTAButton>
             <p className="mx-auto max-w-2xl text-sm text-slate-500">
               This is general information, not legal advice. Syinq supports safer, lower-cost
-              coordination but cannot guarantee any outcome — members are responsible for following
+              coordination but cannot guarantee any outcome, members are responsible for following
               the rules that apply on their campus and route.
             </p>
           </Reveal>

@@ -21,7 +21,7 @@ export const TESTIMONIALS: Testimonial[] = [
     route: "Campus → Pari Chowk",
     saving: "₹140 / day",
     quote:
-      "I used to spend ₹200+ on a solo cab to the metro. Now I pool with two classmates from my own batch — same route, verified faces, and we split it three ways.",
+      "I used to spend ₹200+ on a solo cab to the metro. Now I pool with two classmates from my own batch, same route, verified faces, and we split it three ways.",
     photo: "/revamp/photos/testimonial-f.webp",
   },
   {

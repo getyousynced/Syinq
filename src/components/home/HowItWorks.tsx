@@ -150,7 +150,7 @@ function ScrollyRoute() {
           <SectionHeading
             eyebrow="How it works"
             title="Ride the route. Learn it as you scroll."
-            subtitle="Every Syinq ride follows the same trusted journey — scroll and the road fills in beneath you, stop by stop."
+            subtitle="Every Syinq ride follows the same trusted journey, scroll and the road fills in beneath you, stop by stop."
           />
         </div>
       </Container>
@@ -204,7 +204,7 @@ function ScrollyRoute() {
                 </div>
               </div>
 
-              {/* Steps — stops along the route */}
+              {/* Steps, stops along the route */}
               <ol className="flex flex-1 flex-col justify-between py-1">
                 {STEPS.map((step, i) => {
                   const Icon = STEP_ICONS[i];
@@ -305,7 +305,7 @@ export default function HowItWorks() {
           <SectionHeading
             eyebrow="How it works"
             title="Ride the route. Learn it as you scroll."
-            subtitle="Every Syinq ride follows the same trusted journey — scroll and the road fills in beneath you, stop by stop."
+            subtitle="Every Syinq ride follows the same trusted journey, scroll and the road fills in beneath you, stop by stop."
           />
           <StaticSteps />
           <div className="mt-14 text-center">

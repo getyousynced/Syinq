@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 /**
- * Admin-route hardening (defense-in-depth — NOT the primary access control).
+ * Admin-route hardening (defense-in-depth, NOT the primary access control).
  *
  * Sets `noindex` + `no-store` on every admin response so the admin surface is
  * never indexed by search engines or stored in shared/CDN caches, even if

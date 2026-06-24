@@ -24,16 +24,18 @@ export default function SocialProof() {
       <p className="container-shell mb-5 text-center text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">
         Rolling out campus-by-campus across the Delhi-NCR belt
       </p>
-      <Marquee durationSec={32}>
-        {campuses.map((c) => (
-          <span
-            key={c}
-            className="mx-2 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600"
-          >
-            <GraduationCap size={16} className="text-brand-500" />
-            {c}
-          </span>
-        ))}
+      <Marquee durationSec={22}>
+        {Array.from({ length: 3 }).flatMap((_, r) =>
+          campuses.map((c) => (
+            <span
+              key={`${r}-${c}`}
+              className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600"
+            >
+              <GraduationCap size={16} className="text-brand-500" />
+              {c}
+            </span>
+          )),
+        )}
       </Marquee>
     </section>
   );

@@ -24,7 +24,7 @@ const MODES: Record<Mode, { label: string; icon: typeof User; image: string; alt
     icon: Car,
     image: "/revamp/app/hero-host.webp",
     alt: "Syinq host home screen showing offer-a-ride and vehicle and licence verification steps",
-    caption: "Offer your empty seats and share the running cost — coordination, not a taxi.",
+    caption: "Offer your empty seats and share the running cost, coordination, not a taxi.",
   },
 };
 
@@ -58,7 +58,7 @@ export default function Hero() {
           <span className="bg-brand-gradient bg-clip-text text-transparent">For Every Campus Move.</span>
         </motion.h1>
 
-        {/* Hero illustration — man waiting for a campus ride */}
+        {/* Hero illustration, man waiting for a campus ride */}
         <motion.div
           initial={reduce ? false : { opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -117,7 +117,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Caption — single line, bigger, headline colour (reacts to the toggle) */}
+        {/* Caption, single line, bigger, headline colour (reacts to the toggle) */}
         <div className="mt-8 w-full">
           <AnimatePresence mode="wait">
             <motion.p
@@ -126,14 +126,14 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               exit={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }}
               transition={fade}
-              className="mx-auto max-w-3xl text-balance text-lg font-bold text-slate-900 sm:text-xl"
+              className="mx-auto max-w-3xl text-balance bg-brand-gradient bg-clip-text text-lg font-bold text-transparent sm:text-xl"
             >
               {m.caption}
             </motion.p>
           </AnimatePresence>
         </div>
 
-        {/* App prototype (left) + user-reviews animation (right) — fills the vacant sides */}
+        {/* App prototype (left) + user-reviews animation (right), fills the vacant sides */}
         <div className="mt-10 grid w-full items-center gap-8 lg:grid-cols-2 lg:gap-12">
           <div className="flex justify-center lg:justify-end">
             <AnimatePresence mode="wait">

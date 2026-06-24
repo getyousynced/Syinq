@@ -48,7 +48,7 @@ const sections: LegalSection[] = [
   {
     id: 'timeline',
     title: '5. Processing Timeline',
-    content: <p>Most deletions complete within 7 days. Some residual backups may require up to 30–90 days to cycle out, during which data is isolated and not used for active processing.</p>
+    content: <p>Most deletions complete within 7 days. Some residual backups may require up to 30, 90 days to cycle out, during which data is isolated and not used for active processing.</p>
   },
   {
     id: 'contact',

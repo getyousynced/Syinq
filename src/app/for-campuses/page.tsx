@@ -27,7 +27,7 @@ import { breadcrumbSchema } from "@/lib/schema";
 export const metadata: Metadata = pageMeta({
   title: "For Campuses & Clubs",
   description:
-    "Partner with Syinq to launch verified student ride coordination on your campus — cut gate congestion and parking load while giving students safer, cheaper commutes.",
+    "Partner with Syinq to launch verified student ride coordination on your campus, cut gate congestion and parking load while giving students safer, cheaper commutes.",
   path: "/for-campuses",
 });
 
@@ -35,7 +35,7 @@ const partners = [
   {
     icon: Building2,
     title: "Campus administration",
-    text: "Work with us to ease gate congestion and parking pressure with verified, accountable ride coordination — no vehicles for you to run or manage.",
+    text: "Work with us to ease gate congestion and parking pressure with verified, accountable ride coordination, no vehicles for you to run or manage.",
   },
   {
     icon: Rocket,
@@ -58,7 +58,7 @@ const benefits = [
   {
     icon: TrafficCone,
     title: "Reduced gate congestion & parking load",
-    text: "Pooled rides mean fewer solo cars arriving at peak hours — easing pressure at gates and on limited campus parking.",
+    text: "Pooled rides mean fewer solo cars arriving at peak hours, easing pressure at gates and on limited campus parking.",
   },
   {
     icon: MapPinned,
@@ -68,7 +68,7 @@ const benefits = [
   {
     icon: BadgeCheck,
     title: "A verified-only network",
-    text: "Every member joins through campus verification, and Hosts pass vehicle and licence checks — so coordination stays within your community.",
+    text: "Every member joins through campus verification, and Hosts pass vehicle and licence checks, so coordination stays within your community.",
   },
   {
     icon: CalendarDays,
@@ -78,7 +78,7 @@ const benefits = [
   {
     icon: Leaf,
     title: "A real sustainability story",
-    text: "Fewer solo rides is a measurable, ownable sustainability narrative for your campus — fewer trips, lower emissions, less congestion.",
+    text: "Fewer solo rides is a measurable, ownable sustainability narrative for your campus, fewer trips, lower emissions, less congestion.",
   },
   {
     icon: Megaphone,
@@ -91,7 +91,7 @@ const steps = [
   {
     icon: Handshake,
     title: "Partner & verify your campus",
-    text: "We set up your campus as a verified community and align on goals — congestion, fest mobility, safety visibility or all three.",
+    text: "We set up your campus as a verified community and align on goals, congestion, fest mobility, safety visibility or all three.",
   },
   {
     icon: Sprout,
@@ -116,9 +116,7 @@ export default function ForCampusesPage() {
       />
 
       {/* Page hero */}
-      <section className="relative overflow-hidden bg-brand-soft">
-        <div className="pointer-events-none absolute -right-32 -top-24 h-[420px] w-[420px] rounded-full bg-brand-200/40 blur-3xl" />
-        <div className="pointer-events-none absolute -left-24 bottom-0 h-[320px] w-[320px] rounded-full bg-brand-100/50 blur-3xl" />
+      <section className="relative overflow-hidden bg-page">
 
         <Container className="relative grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-2 lg:gap-12 lg:py-24">
           <Reveal>
@@ -128,8 +126,8 @@ export default function ForCampusesPage() {
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-600">
               Syinq partners with colleges, E-Cells, clubs and ambassadors to launch verified
-              campus pooling — reducing gate congestion and parking load while giving students
-              safer, cheaper commutes. No vehicles to run and no pricing to manage — just verified
+              campus pooling, reducing gate congestion and parking load while giving students
+              safer, cheaper commutes. No vehicles to run and no pricing to manage, just verified
               members splitting the running cost of routes they already travel.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -198,7 +196,7 @@ export default function ForCampusesPage() {
 
             <Reveal delay={120} className="order-1 lg:order-2">
               <div className="relative">
-                <div className="absolute inset-0 -z-10 translate-y-6 rounded-[2rem] bg-brand-soft blur-2xl" />
+                <div className="absolute inset-0 -z-10 translate-y-6 rounded-[2rem] bg-page blur-2xl" />
                 <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white p-1.5 shadow-lg">
                   <Image
                     src="/revamp/photos/team-table.webp"
@@ -241,7 +239,7 @@ export default function ForCampusesPage() {
           <Reveal className="mx-auto mt-8 max-w-3xl rounded-xl border border-slate-200 bg-white/70 p-4 text-center text-sm text-slate-500">
             Syinq supports safer coordination but cannot guarantee any outcome. Verification and
             proof-of-pool are accountability tools that help your community coordinate with
-            confidence — not safety guarantees.
+            confidence, not safety guarantees.
           </Reveal>
         </Container>
       </Section>
@@ -275,7 +273,7 @@ export default function ForCampusesPage() {
           </div>
 
           <Reveal className="mx-auto mt-8 max-w-3xl text-center text-sm text-slate-500">
-            We started in the Delhi-NCR and Greater Noida campus clusters for exactly this reason —
+            We started in the Delhi-NCR and Greater Noida campus clusters for exactly this reason, 
             dense, verified communities where shared routes overlap every day.
           </Reveal>
         </Container>
@@ -285,7 +283,7 @@ export default function ForCampusesPage() {
       <Section className="bg-page">
         <Container>
           <Reveal>
-            <div className="overflow-hidden rounded-3xl border border-brand-100 bg-brand-soft px-6 py-12 sm:px-12">
+            <div className="overflow-hidden rounded-3xl border border-brand-100 bg-page px-6 py-12 sm:px-12">
               <div className="grid items-center gap-8 lg:grid-cols-[1fr_auto] lg:gap-12">
                 <div>
                   <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white text-brand-600 shadow-sm">
@@ -295,7 +293,7 @@ export default function ForCampusesPage() {
                     Are you a student who wants to launch Syinq on your campus?
                   </h2>
                   <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-600">
-                    Campus ambassadors are the first movers — onboarding verified members, seeding
+                    Campus ambassadors are the first movers, onboarding verified members, seeding
                     the routes everyone already travels and building the daily liquidity that makes
                     pooling reliable. Get early access, hands-on launch support and recognition for
                     bringing verified ride coordination to your community.
@@ -326,7 +324,7 @@ export default function ForCampusesPage() {
                 </h2>
                 <p className="mx-auto mt-4 max-w-xl text-base text-white/85">
                   Tell us about your campus, club or E-Cell and we&apos;ll map out a verified
-                  pooling launch — routes, ambassadors and rollout support included.
+                  pooling launch, routes, ambassadors and rollout support included.
                 </p>
                 <div className="mt-8 flex justify-center">
                   <CTAButton
