@@ -62,7 +62,7 @@ const values = [
   {
     icon: Route,
     title: "Route-led, not marketing-led",
-    text: "We grow where real routes exist. Liquidity beats hype \u2014 one campus that pools reliably is worth more than ten that don\u2019t.",
+    text: "We grow where real routes exist. Liquidity beats hype one campus that pools reliably is worth more than ten that don\u2019t.",
   },
   {
     icon: Eye,
@@ -72,12 +72,12 @@ const values = [
   {
     icon: Scale,
     title: "Honest framing",
-    text: "Cost is your share, split fairly and settled with your Host. Syinq is a coordinator \u2014 we never own vehicles, set fares or guarantee outcomes.",
+    text: "Cost is your share, split fairly and settled with your Host. Syinq is a coordinator we never own vehicles, set fares or guarantee outcomes.",
   },
   {
     icon: MapPin,
     title: "Campus by campus",
-    text: "We launch cluster by cluster \u2014 Delhi-NCR and Greater Noida first \u2014 so route liquidity and trust build before we expand.",
+    text: "We launch cluster by cluster \u2014 Delhi-NCR and Greater Noida first so route liquidity and trust build before we expand.",
   },
 ];
 
@@ -105,7 +105,7 @@ export default function AboutPage() {
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600">
               Most campus problems are really trust problems. Syinq makes campus coordination
-              simple, trusted and structured &mdash; starting with the daily commute. Rides are our
+              simple, trusted and structured starting with the daily commute. Rides are our
               wedge; verified campus trust is the moat. We&rsquo;re building the network that lets
               students move together with confidence, one campus at a time.
             </p>
@@ -255,7 +255,7 @@ export default function AboutPage() {
 
           <Reveal className="mx-auto mt-8 max-w-3xl rounded-xl border border-slate-200 bg-white/70 p-4 text-center text-sm text-slate-500">
             Syinq supports safer coordination but cannot guarantee any outcome. Verification and
-            proof-of-pool are accountability tools, not safety guarantees &mdash; always use your
+            proof-of-pool are accountability tools, not safety guarantees always use your
             judgement and the in-app safety tools.
           </Reveal>
         </Container>
