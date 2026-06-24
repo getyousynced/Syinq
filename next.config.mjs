@@ -26,10 +26,11 @@ const nextConfig = {
         headers: securityHeaders,
       },
       {
-        // hashed/static brand + media assets — long-lived immutable cache
+        // Brand + media assets use descriptive (un-hashed) names, so they must
+        // stay revalidatable — cache a day, serve stale while revalidating.
         source: "/revamp/:path*",
         headers: [
-          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+          { key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" },
         ],
       },
       {

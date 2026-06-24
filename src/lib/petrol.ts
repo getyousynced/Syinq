@@ -8,7 +8,7 @@
  *     optionally with PETROL_PRICE_API_KEY as a Bearer token. Expected JSON:
  *     { "price": <number ₹/L> }  (also accepts { petrol } or { value }).
  *   - Otherwise it returns a clearly-labelled reference value (NCR / UP belt),
- *     exactly like the reference sites show "₹110/L (fallback)".
+ *     just as public reference sites display a non-live reference price.
  *
  * Wire any provider (PurePrice, Zyla, RapidAPI, a gov-data mirror, or your own
  * backend route) by setting PETROL_PRICE_API_URL — no code change needed.

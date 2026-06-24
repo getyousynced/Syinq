@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 /**
  * Infinite marquee. Renders children twice and animates the track to -50% so
@@ -17,7 +17,7 @@ export default function Marquee({
   return (
     <div
       className={cn("group relative flex w-full overflow-hidden", className)}
-      style={{ ["--marquee-duration" as string]: `${durationSec}s` }}
+      style={{ "--marquee-duration": `${durationSec}s` } as CSSProperties}
     >
       <div className="marquee-track animate-marquee gap-4 pr-4">{children}</div>
       <div className="marquee-track animate-marquee gap-4 pr-4" aria-hidden="true">

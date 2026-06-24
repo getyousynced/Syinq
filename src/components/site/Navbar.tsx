@@ -63,7 +63,7 @@ export default function Navbar() {
 
         <ul className="hidden items-center gap-0.5 lg:flex">
           {NAV.map((item) => {
-            const active = pathname === item.href;
+            const active = pathname === item.href || (item.href !== "/" && pathname.startsWith(`${item.href}/`));
             const Icon = NAV_ICONS[item.href];
             return (
               <li key={item.href}>

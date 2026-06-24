@@ -13,8 +13,9 @@ const DotLottieReact = dynamic(
 type DotLottieLike = { play: () => void; stop: () => void; setFrame: (f: number) => void };
 
 /**
- * Plays ONCE each time it enters the viewport (and replays when you scroll back
- * to it) — never an infinite loop. Reduced-motion shows the first frame static.
+ * Lazy-mounts on first view. By default plays ONCE per entry (replays when you
+ * scroll back). With `loop`, it loops while in view and stops when scrolled
+ * off-screen to save CPU/battery. Reduced-motion shows the first frame static.
  */
 export default function Lottie({
   src,
@@ -41,10 +42,10 @@ export default function Lottie({
     if (!el) return;
     const io = new IntersectionObserver(
       ([entry]) => {
+        const dl = inst.current;
         if (entry.isIntersecting) {
           setInView(true);
-          // Replay from the start on each re-entry (no continuous loop).
-          const dl = inst.current;
+          // Replay from the start on each re-entry.
           if (dl) {
             try {
               dl.setFrame(0);
@@ -52,6 +53,13 @@ export default function Lottie({
             } catch {
               /* instance not ready */
             }
+          }
+        } else if (dl) {
+          // Stop when off-screen so a looping animation doesn't keep running.
+          try {
+            dl.stop();
+          } catch {
+            /* instance not ready */
           }
         }
       },
@@ -62,7 +70,13 @@ export default function Lottie({
   }, []);
 
   return (
-    <div ref={ref} className={cn("relative", className)} role="img" aria-label={label}>
+    <div
+      ref={ref}
+      className={cn("relative", className)}
+      role={label ? "img" : undefined}
+      aria-label={label}
+      aria-hidden={label ? undefined : true}
+    >
       {inView && (
         <DotLottieReact
           src={src}
