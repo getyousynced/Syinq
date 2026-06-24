@@ -23,7 +23,7 @@ const sections: LegalSection[] = [
     content: <ul className="list-disc pl-5 space-y-1 text-sm">
       <li>Profile info (name, email, phone, photo)</li>
       <li>Ride offers, ride requests, history</li>
-      <li>Chats, likes, marketplace listings</li>
+      <li>Chats, likes, and Campus Exchange listings (Concept)</li>
       <li>Verification documents & uploaded IDs (when stored)</li>
     </ul>
   },
@@ -53,7 +53,7 @@ const sections: LegalSection[] = [
   {
     id: 'contact',
     title: '6. Questions',
-    content: <p>Questions about deletion, data portability, or privacy? Email <a className="text-syinq-blue" href="mailto:support@syinq.com">support@syinq.com</a>.</p>
+    content: <p>Syinq is operated by Rasync Global Solutions Private Limited. Questions about deletion, data portability, or privacy? Email <a className="text-syinq-blue" href="mailto:support@syinq.com">support@syinq.com</a>.</p>
   }
 ];
 

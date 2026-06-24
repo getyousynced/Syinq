@@ -1,183 +1,156 @@
-"use client";
+import type { Metadata } from "next";
+import { Container } from "@/components/site/primitives";
+import Reveal from "@/components/site/Reveal";
+import { CTAButton, StoreButtons } from "@/components/site/buttons";
+import Lottie from "@/components/site/Lottie";
+import FaqAccordion from "@/components/site/FaqAccordion";
+import JsonLd from "@/components/JsonLd";
+import { pageMeta } from "@/lib/seo";
+import { breadcrumbSchema, faqPageSchema } from "@/lib/schema";
+import { faqsByCategory, faqPairs, type Faq } from "@/content/faqs";
 
-import React, { useEffect } from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { HelpCircle } from "lucide-react";
-import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/appLinks";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+export const metadata: Metadata = pageMeta({
+  title: "Frequently Asked Questions",
+  description:
+    "Answers about Syinq campus carpooling — how it works, safety and OTP proof-of-pool, splitting costs, hosting, carpooling legality in India, and campus partnerships.",
+  path: "/faq",
+});
 
-const FAQ = () => {
-  useEffect(() => {
-    // Update document title
-    document.title = "FAQ - Syinq";
-
-    // Scroll to top on page load
-    window.scrollTo(0, 0);
-  }, []);
-
-  return (
-    <div className="min-h-screen bg-white flex flex-col">
-      <div className="pt-24 flex-grow">
-        <div className="max-w-6xl mx-auto px-6 py-12">
-          <div className="text-center mb-16">
-            <div className="flex justify-center items-center gap-3 mb-6">
-              <div className="inline-block bg-syinq-blue/10 p-3 rounded-2xl">
-                <HelpCircle className="h-6 w-6 text-syinq-blue" />
-              </div>
-              <h1 className="text-3xl md:text-4xl font-bold">
-                Frequently Asked{" "}
-                <span className="text-syinq-blue">Questions</span>
-              </h1>
-            </div>
-            <p className="text-lg text-syinq-gray max-w-2xl mx-auto">
-              Find answers to common questions about Syinq and how it works.
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto mb-16">
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="item-1">
-                <AccordionTrigger className="text-lg font-medium text-left">
-                  What is Syinq?
-                </AccordionTrigger>
-                <AccordionContent className="text-syinq-gray">
-                  Syinq is an all-in-one campus app designed exclusively for
-                  university students. It combines carpooling, marketplace, and
-                  community features to help students connect, buy and sell
-                  items, and find rides more easily within their campus
-                  community.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-2">
-                <AccordionTrigger className="text-lg font-medium text-left">
-                  How do I sign up for Syinq?
-                </AccordionTrigger>
-                <AccordionContent className="text-syinq-gray">
-                  Download Syinq from the App Store or Play Store and sign up
-                  using your university email address. We verify students to
-                  keep the platform safe.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-3">
-                <AccordionTrigger className="text-lg font-medium text-left">
-                  Is Syinq available at my university?
-                </AccordionTrigger>
-                <AccordionContent className="text-syinq-gray">
-                  We&apos;re rolling out campus-by-campus. Download the app and
-                  try signing up — availability may vary as we expand to more
-                  universities.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-4">
-                <AccordionTrigger className="text-lg font-medium text-left">
-                  How does the carpooling feature work?
-                </AccordionTrigger>
-                <AccordionContent className="text-syinq-gray">
-                  Our carpooling feature connects drivers and passengers headed
-                  in the same direction. Drivers can post their routes and
-                  available seats, while passengers can search for rides that
-                  match their needs. All users are verified students, making it
-                  a safe alternative to public rides.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-5">
-                <AccordionTrigger className="text-lg font-medium text-left">
-                  Is the marketplace feature free to use?
-                </AccordionTrigger>
-                <AccordionContent className="text-syinq-gray">
-                  Yes! The marketplace feature has no listing fees or
-                  commissions. You can buy, sell, or rent items to other
-                  verified students without any additional charges. We&apos;re
-                  committed to keeping the platform student-friendly and
-                  affordable.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-6">
-                <AccordionTrigger className="text-lg font-medium text-left">
-                  How does Syinq verify students?
-                </AccordionTrigger>
-                <AccordionContent className="text-syinq-gray">
-                  We verify students through their university email addresses.
-                  In some cases, we may require additional verification such as
-                  a student ID to ensure the security and integrity of our
-                  platform.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-7">
-                <AccordionTrigger className="text-lg font-medium text-left">
-                  What can I sell on the Syinq marketplace?
-                </AccordionTrigger>
-                <AccordionContent className="text-syinq-gray">
-                  You can sell textbooks, electronics, dormitory items,
-                  clothing, and other items that may be useful to fellow
-                  students. Prohibited items include illegal goods, weapons,
-                  alcohol, certain services, and any items that violate our
-                  terms of service or university policies.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-8">
-                <AccordionTrigger className="text-lg font-medium text-left">
-                  How do I report suspicious activity?
-                </AccordionTrigger>
-                <AccordionContent className="text-syinq-gray">
-                  Your safety is important to us. If you notice suspicious
-                  activity, you can use the in-app reporting feature to flag
-                  users, listings, or messages. Our support team reviews all
-                  reports and takes appropriate action to maintain a safe
-                  environment.
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </div>
-
-          <div className="bg-syinq-blue/5 rounded-xl p-8 md:p-12 mb-16">
-            <div className="text-center">
-              <h2 className="text-2xl font-bold mb-4">Still have questions?</h2>
-              <p className="text-syinq-gray mb-6 max-w-xl mx-auto">
-                If you couldn&apos;t find the answer you were looking for, our
-                support team is here to help.
-              </p>
-              <Button asChild className="bg-syinq-blue hover:bg-syinq-blue/90">
-                <Link href="/contact">Contact Us</Link>
-              </Button>
-            </div>
-          </div>
-
-          <div className="text-center">
-            <h2 className="text-2xl font-bold mb-4">Ready to join Syinq?</h2>
-            <p className="text-syinq-gray mb-6 max-w-xl mx-auto">
-              Download the app and get synced with your campus.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <Button asChild className="bg-syinq-blue hover:bg-syinq-blue/90">
-                <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
-                  Download on App Store
-                </a>
-              </Button>
-              <Button asChild className="bg-syinq-blue hover:bg-syinq-blue/90 text-white">
-                <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer">
-                  Get it on Play Store
-                </a>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+type CategoryBlock = {
+  category: Faq["category"];
+  subtitle: string;
 };
 
-export default FAQ;
+const CATEGORIES: CategoryBlock[] = [
+  {
+    category: "Basics",
+    subtitle:
+      "What Syinq is, how campus carpooling works, and who can join the verified network.",
+  },
+  {
+    category: "Safety & Trust",
+    subtitle:
+      "Verification, OTP proof-of-pool, live status and SOS readiness — and where cost-sharing stands in India.",
+  },
+  {
+    category: "Cost",
+    subtitle:
+      "How members split the running cost of a ride. It is always your share, never a Syinq fare.",
+  },
+  {
+    category: "Hosts",
+    subtitle:
+      "Offering spare seats on a route you already travel, and whether you need a car at all.",
+  },
+  {
+    category: "Campuses",
+    subtitle:
+      "Bringing verified ride coordination to your college, club or E-Cell through a pilot.",
+  },
+];
+
+export default function FaqPage() {
+  return (
+    <>
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "FAQ", path: "/faq" },
+          ]),
+          faqPageSchema(faqPairs()),
+        ]}
+      />
+
+      {/* Page hero */}
+      <section className="bg-brand-soft">
+        <Container className="py-16 sm:py-20 lg:py-24">
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <span className="eyebrow">FAQ</span>
+            <h1 className="mt-4 text-balance text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl">
+              Syinq FAQ — campus carpooling, answered
+            </h1>
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
+              Straight answers on how Syinq works, why verified-campus trust and OTP proof-of-pool
+              matter, how members split the running cost, what it takes to host, and how campuses can
+              partner with us. Grouped by topic so you can jump to what you need.
+            </p>
+            <div className="mt-10 flex justify-center">
+              <Lottie
+                src="/revamp/lottie/choose-place.lottie"
+                label="Animated illustration of choosing a campus pickup place"
+                className="h-44 w-full max-w-md sm:h-52"
+              />
+            </div>
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* One section per FAQ category, alternating backgrounds */}
+      {CATEGORIES.map(({ category, subtitle }, i) => {
+        const items = faqsByCategory(category);
+        const tinted = i % 2 === 1;
+        const isSafety = category === "Safety & Trust";
+
+        return (
+          <section
+            key={category}
+            id={category.toLowerCase().replace(/[^a-z]+/g, "-")}
+            className={tinted ? "bg-page py-16 sm:py-20 lg:py-24" : "bg-white py-16 sm:py-20 lg:py-24"}
+          >
+            <Container>
+              <Reveal className="max-w-2xl text-left">
+                <span className="eyebrow">
+                  {items.length} {items.length === 1 ? "answer" : "answers"}
+                </span>
+                <h2 className="mt-3 text-balance text-2xl font-bold leading-tight tracking-tight text-slate-900 sm:text-3xl">
+                  {category}
+                </h2>
+                <p className="mt-3 text-base leading-relaxed text-slate-600">{subtitle}</p>
+              </Reveal>
+
+              <Reveal delay={80} className="mt-8 max-w-3xl">
+                <FaqAccordion items={items} />
+
+                {isSafety && (
+                  <p className="mt-6 rounded-xl border border-slate-200 bg-white/70 p-4 text-sm leading-relaxed text-slate-500">
+                    Syinq supports safer coordination but cannot guarantee any outcome. Proof-of-pool
+                    is an accountability tool, not a safety guarantee — always use your judgement and
+                    the in-app safety tools.
+                  </p>
+                )}
+              </Reveal>
+            </Container>
+          </section>
+        );
+      })}
+
+      {/* Closing CTA band */}
+      <section className="bg-page py-16 sm:py-20 lg:py-24">
+        <Container>
+          <Reveal>
+            <div className="relative overflow-hidden rounded-3xl bg-brand-gradient px-6 py-14 text-center sm:px-12">
+              <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
+              <div className="pointer-events-none absolute -bottom-20 -left-10 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
+              <div className="relative mx-auto max-w-2xl">
+                <h2 className="text-balance text-3xl font-bold leading-tight text-white sm:text-4xl">
+                  Still have questions?
+                </h2>
+                <p className="mx-auto mt-4 max-w-xl text-base text-white/85">
+                  Reach the team and we will help, or get the app and see how your campus pools.
+                  Free on iOS and Android.
+                </p>
+                <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                  <CTAButton href="/contact" variant="secondary">
+                    Contact the team
+                  </CTAButton>
+                  <StoreButtons className="justify-center" />
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </Container>
+      </section>
+    </>
+  );
+}

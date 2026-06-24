@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
+import React from "react";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy | Syinq",
+export const metadata = pageMeta({
+  title: "Privacy Policy",
   description:
-    "Understand how Syinq collects, uses, and protects your personal information.",
-};
+    "How Syinq collects, uses, and protects your personal data — campus verification, ride coordination, security, and account deletion. Email support@syinq.com.",
+  path: "/privacy",
+});
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return children;
