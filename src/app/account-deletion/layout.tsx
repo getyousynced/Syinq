@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
+import React from "react";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Account Deletion | Syinq",
+export const metadata = pageMeta({
+  title: "Account Deletion",
   description:
-    "How to request deletion of your Syinq account and what data is removed or retained.",
-};
+    "How to permanently delete your Syinq account, what data is removed, and the limited data retained for compliance. Email support@syinq.com.",
+  path: "/account-deletion",
+});
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return children;

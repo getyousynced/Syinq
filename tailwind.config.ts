@@ -10,6 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // shadcn semantic tokens (consumed by src/components/ui/*)
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -43,82 +44,88 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
+        // Syinq brand blue (DS: --blue-* scale, primary #099BE4)
+        brand: {
+          50: "#E8F6FD",
+          100: "#C8EAFB",
+          200: "#93D6F6",
+          300: "#53C9FF",
+          400: "#209DFA",
+          500: "#099BE4",
+          600: "#0577B0",
+          700: "#1A64E4",
+          800: "#045985",
+          DEFAULT: "#099BE4",
         },
+        // App surfaces
+        page: "#F8FAFC",
+        // Status (DS semantic — matches Tailwind defaults but aliased for intent)
+        trust: "#16A34A",
+        // Legacy `syinq-*` palette kept for not-yet-migrated pages; corrected to DS.
         syinq: {
-          blue: "#147EFB",
-          green: "#34C759",
-          dark: "#1D1D1F",
-          gray: "#86868B",
-          background: "#F5F5F7",
-          lightgray: "#ffffffff",
-          cardgray: "#FAFAFA",
+          blue: "#099BE4",
+          green: "#16A34A",
+          dark: "#0F172A",
+          gray: "#475569",
+          background: "#F8FAFC",
+          lightgray: "#F1F5F9",
+          cardgray: "#FFFFFF",
         },
+      },
+      fontFamily: {
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        display: ["var(--font-poppins)", "var(--font-inter)", "system-ui", "sans-serif"],
+        inter: ["var(--font-inter)", "system-ui", "sans-serif"],
+        mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        card: "18px",
+        xl2: "24px",
+      },
+      boxShadow: {
+        xs: "0 1px 2px rgba(15,23,42,0.05)",
+        sm: "0 1px 3px rgba(15,23,42,0.07), 0 1px 2px rgba(15,23,42,0.04)",
+        md: "0 4px 12px rgba(15,23,42,0.08)",
+        lg: "0 8px 24px rgba(15,23,42,0.10)",
+        xl: "0 18px 48px rgba(15,23,42,0.12)",
+        fab: "0 6px 16px rgba(9,155,228,0.30)",
+        focus: "0 0 0 3px rgba(9,155,228,0.22)",
+      },
+      backgroundImage: {
+        "brand-gradient": "linear-gradient(135deg, #53C9FF 0%, #099BE4 48%, #1A64E4 100%)",
+        "brand-soft": "linear-gradient(135deg, #E8F6FD 0%, #D2ECFB 100%)",
+      },
+      maxWidth: {
+        content: "1200px",
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
-        "fade-in": {
-          "0%": { opacity: "0", transform: "translateY(10px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        "fade-in-right": {
-          "0%": { opacity: "0", transform: "translateX(20px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
-        },
-        "slide-up": {
-          "0%": { opacity: "0", transform: "translateY(30px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-8px)" },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fade-in 0.5s ease-out forwards",
-        "fade-in-right": "fade-in-right 0.5s ease-out forwards",
-        "slide-up": "slide-up 0.6s ease-out forwards",
-        float: "float 3s ease-in-out infinite",
-      },
-      fontFamily: {
-        inter: ["Inter", "system-ui", "sans-serif"],
+        marquee: "marquee var(--marquee-duration, 36s) linear infinite",
       },
     },
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "1200px",
       },
     },
   },

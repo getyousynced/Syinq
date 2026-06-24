@@ -1,59 +1,109 @@
-# 🛺 Syniq 🚖
+<div align="center">
+  <img src="public/revamp/brand/syinq-wordmark.png" alt="Syinq" height="64" />
+  <h1>Syinq — India's verified campus commute network</h1>
+  <p><strong>One App. For Every Campus Move.</strong></p>
+</div>
 
-**SuperApp designed by Students for Students**
+Syinq is a campus-first ride-coordination platform for **verified students, faculty and staff**. Members **find a verified pool going their way** or **offer their empty seats**, match on route and timing, board with **OTP proof-of-pool**, and **split the running cost fairly** — coordination, not a taxi.
 
-![Alt text](public/images/docs/readme.png)
+> Syinq is a coordinator for verified campus members. It never owns vehicles, sets fares, or guarantees outcomes. Cost is **your share**, agreed and settled with your Host.
 
-## 🌟 Vision
-Syniq is more than just a carpooling app – it’s a complete student mobility and community platform. Our goal is to make college travel easier, more affordable, and eco-friendly while also connecting students through a vibrant marketplace and community forum.
+This repository is the **marketing website** (`syinq.com`) — a Next.js App Router site that explains the product, builds verified-campus trust, and routes people to the apps.
 
-With Syniq, students can:
+---
 
-1. **🚗 Carpool easily**: Share rides, split costs, and reduce traffic.
-2. **💬 Engage in a community forum**: Discuss college life, share advice, and connect with peers.
-3. **🛍️ Buy & sell in the student marketplace**: Find books, gadgets, or even rent a ride.
+## Tech stack
 
-Crafted by tech wizards, Syniq is your magic carpet for campus life—zipping you around affordably, sustainably, and with a splash of social spice!
+| Area | Choice |
+|---|---|
+| Framework | [Next.js 14](https://nextjs.org/) (App Router, SSG) |
+| Language | TypeScript (strict) |
+| Styling | Tailwind CSS + design tokens (Poppins / Inter, brand `#099BE4`) |
+| Motion | framer-motion (reduced-motion safe), JS-gated scroll reveals |
+| Animation | [LottieFiles](https://lottiefiles.com/) (`@lottiefiles/dotlottie-react`) |
+| Icons | lucide-react + Iconscout Unicons |
+| Images | `next/image` + `sharp` |
+| Tooling | ESLint (`eslint-config-next`), Knip (dead-code) |
 
-## 🌱 Our Core Values
+## Getting started
 
-### 🚀 Easy & Fast – No Hassle, Just Results
-Syniq is built to make student life simpler. Whether you need a ride, want to sell something, or ask a question, it all happens in just a few taps. No complicated steps, no unnecessary delays—just a smooth and quick experience that gets things done without frustration.
+```bash
+# install (uses Yarn Classic, see packageManager)
+yarn install
 
+# run the dev server on http://localhost:3000
+yarn dev
 
-### 💰 Saves Money – Travel & Shop Without Breaking the Bank
-College expenses add up fast, and transportation is one of the biggest costs. With Syniq, you can share rides and split the cost, making travel way cheaper than taxis or ride-hailing apps. Plus, our student marketplace helps you buy and sell books, gadgets, and essentials at lower prices, saving money while helping other students.
+# production build + serve
+yarn build
+yarn start
 
-### 🔒 Safe & Secure – Trusted by Students, for Students
-When sharing rides or making deals, safety is a top priority. Syniq only allows verified users, so you always know you’re interacting with real students from your college. Whether you're riding with someone, buying an item, or chatting in the community, you can do it with peace of mind, knowing that Syniq prioritizes trust and security.
+# lint and dead-code check
+yarn lint
+yarn knip
+```
 
-### 🌍 Good for the Planet – Less Traffic, Less Pollution
-Every car on the road adds to traffic and pollution. With Syniq, fewer cars means cleaner air and less congestion. By choosing to carpool, students are actively helping the environment while also making commuting more affordable and efficient. It's a small step toward a greener and smarter future.
+### Environment variables
 
-### 🤝 Strong Community – Students Helping Students
-Syniq isn’t just an app—it’s a student-powered network where help is always available. Need a ride? Study materials? Advice on college life? The community forum lets students connect, share experiences, and support each other. Whether you’re looking for academic help, social connections, or just a good deal on second-hand books, Syniq brings students together in one place.
+Create `.env.local` (all optional — the site degrades gracefully without them):
 
-With Syniq, you're not just using an app—you're becoming part of a smarter, safer, and more supportive student community! 🚀
+| Variable | Purpose |
+|---|---|
+| `NEXT_PUBLIC_BACKEND_API` | Admin portal API base (admin auth lives on the backend). |
+| `NEXT_PUBLIC_API_CONTACTUS` | Endpoint the contact form POSTs to. |
+| `PETROL_PRICE_API_URL` | Optional live petrol-price source for the savings calculator. |
+| `PETROL_PRICE_API_KEY` | Bearer token for the petrol-price source (if required). |
 
-## ❓ Why Solve This Problem?
-**College students struggle with:**
+When `PETROL_PRICE_API_URL` is unset, the savings calculator uses a clearly-labelled reference price.
 
-Expensive and unreliable transportation.
-Finding trusted places to buy/sell books, gadgets, or services.
-A lack of a dedicated online space to connect with peers.
-Syniq solves all these issues in one platform, making daily life more convenient, cost-effective, and socially engaging.
+## Project structure
 
-## 📍 Our Journey So Far
-- ✅ Developed a smart carpooling system.
-- ✅ Built a community forum for student discussions.
-- ✅ Created a student marketplace for buying/selling.
-- 🚀 Launching soon to transform student life!
-- 🎯 Expanding to more colleges and features.
+```
+src/
+  app/                 # App Router routes
+    page.tsx           # Home (hero, calculator, how-it-works, trust, founders, FAQ)
+    how-it-works/      # Ride lifecycle deep-dive
+    safety/            # Verification & trust
+    for-hosts/         # Host value prop
+    for-campuses/      # Campus / club / ambassador partnerships
+    about/  faq/  blog/
+    contact/  privacy/  terms/  account-deletion/
+    admin-*/           # Admin portal (backend-gated; hardened via middleware)
+    robots.ts  sitemap.ts  layout.tsx
+  components/
+    home/              # Home page sections
+    site/              # Shared primitives (Navbar, Footer, Lottie, TabletFrame, ...)
+  content/             # Typed content (steps, FAQs, testimonials, blog)
+  lib/                 # site config, SEO/JSON-LD schema, petrol data layer
+  middleware.ts        # Admin-route hardening (noindex / no-store)
+public/revamp/         # Brand assets, app screenshots, Lottie animations
+```
 
-## ✨ Thanks to all contributors
+## SEO & GEO
 
-Thank you for your support in Syniq's growth. Keep up the great work! 🥂
+- Per-page metadata via the Next Metadata API, canonical URLs, OpenGraph/Twitter cards.
+- JSON-LD: `Organization`, `WebSite`, `SoftwareApplication`, `FAQPage`, `Person`, `Article`, `BreadcrumbList`.
+- `robots.ts` explicitly welcomes AI/citation crawlers (OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, Google-Extended) and keeps admin routes out of the index.
+- Answer-first content for AI-overview extraction; `sitemap.ts` lists all public canonical pages.
 
-<a href="https://github.com/getyousynced/sync/graphs/contributors">
-  <img src="https://contributors-img.web.app/image?repo=getyousynced/sync" alt="Contributors"/>
-</a>
+## Get the app
+
+- App Store: https://apps.apple.com/in/app/syinq/id6755780778
+- Google Play: https://play.google.com/store/apps/details?id=com.rasync.sync
+- Smart link: https://onelink.to/7x25s5
+
+## Brand rules (for contributors)
+
+- Use **Host** (vehicle owner), **Rider** (joiner), **Member** (any verified user).
+- Cost is **your share**, split fairly and settled with your Host — never a "Syinq fare".
+- Never imply Syinq owns drivers/vehicles or guarantees a ride/safety.
+- Label unbuilt features as **planned / concept**. No emoji in product UI.
+
+## Founders
+
+- **Raunak Shukla** — Co-founder & CEO
+- **Rupesh Shandillya** — Co-founder & CTO
+
+---
+
+<sub>© Rasync Global Solutions Private Limited. Support: support@syinq.com</sub>

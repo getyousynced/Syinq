@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
+import React from "react";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Terms & Conditions | Syinq",
+export const metadata = pageMeta({
+  title: "Terms & Conditions",
   description:
-    "Read the Terms & Conditions governing the use of the Syinq platform.",
-};
+    "The Terms governing your use of Syinq, eligibility, verified-member coordination, ride cost-sharing, acceptable use, and your rights.",
+  path: "/terms",
+});
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return children;

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -12,17 +11,25 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Phone, Mail, MapPin, Send, ExternalLink} from "lucide-react";
+import { Mail, Send, Building2, ArrowRight } from "lucide-react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/appLinks";
+import Link from "next/link";
+import { Container } from "@/components/site/primitives";
+import Reveal from "@/components/site/Reveal";
+import { StoreButtons } from "@/components/site/buttons";
+import Lottie from "@/components/site/Lottie";
+import { toast } from "@/components/ui/sonner";
+
 interface ContactFormValues {
   name: string;
   email: string;
   subject: string;
   message: string;
 }
-import { toast } from '@/components/ui/sonner';
+
+const inputClass =
+  "min-h-[44px] border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus-visible:ring-brand-400 focus-visible:ring-offset-0";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -37,7 +44,7 @@ const Contact = () => {
     },
   });
 
-  const onSubmit = async (data: ContactFormValues, e: any) => {
+  const onSubmit = async (data: ContactFormValues, e?: React.BaseSyntheticEvent) => {
     try {
       // Prevent default form submission behavior
       if (e) e.preventDefault();
@@ -82,195 +89,201 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
-      <div className=" flex-grow">
-        <div className="section-container max-w-6xl mx-auto px-6 py-12">
-          <div className=" text-center mb-12">
-            <div className="flex justify-center items-center gap-3 mb-6">
-              <div className="inline-block bg-syinq-blue/10 p-3 rounded-2xl">
-                <Phone className="h-6 w-6 text-syinq-blue" />
-              </div>
-              <h1 className="text-3xl md:text-4xl font-bold">
-                Get In <span className="text-syinq-blue">Touch</span>
-              </h1>
-            </div>
-            <p className="text-lg text-syinq-gray max-w-2xl mx-auto">
-              Have questions about Syinq? Want to partner with us or bring Syinq
-              to your campus? We&apos;d love to hear from you!
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-syinq-blue/10 rounded-full mb-4">
-                <Mail className="h-6 w-6 text-syinq-blue" />
-              </div>
-              <h3 className="text-lg font-semibold mb-2">Email Us</h3>
-              <p className="text-syinq-gray mb-4">
-                For general inquiries and support
-              </p>
+    <div className="flex min-h-screen flex-col bg-white">
+      {/* Page hero */}
+      <section className="relative overflow-hidden bg-page">
+        <Container className="relative py-16 sm:py-20 lg:py-24">
+          <Reveal className="max-w-2xl">
+            <span className="eyebrow">Contact</span>
+            <h1 className="mt-3 text-balance text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl">
+              Get in touch
+            </h1>
+            <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+              Reach the Syinq team for member support, feedback, or campus, club and
+              ambassador partnerships. Email{" "}
               <a
                 href="mailto:support@syinq.com"
-                className="text-syinq-blue hover:underline inline-flex items-center"
+                className="font-medium text-brand-600 hover:text-brand-700"
               >
                 support@syinq.com
-                <ExternalLink className="ml-1 h-4 w-4" />
-              </a>
-            </div>
+              </a>{" "}
+              or send a message below, we read everything and reply as soon as we can.
+            </p>
+          </Reveal>
 
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-syinq-blue/10 rounded-full mb-4">
-                <Phone className="h-6 w-6 text-syinq-blue" />
-              </div>
-              <h3 className="text-lg font-semibold mb-2">Call Us</h3>
-              <p className="text-syinq-gray mb-4">Mon-Fri from 9am to 5pm</p>
-              <a
-                href="tel:+919876543210"
-                className="text-syinq-blue hover:underline inline-flex items-center"
-              >
-                +91 6284376052
-                <ExternalLink className="ml-1 h-4 w-4" />
-              </a>
-            </div>
-
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-syinq-blue/10 rounded-full mb-4">
-                <MapPin className="h-6 w-6 text-syinq-blue" />
-              </div>
-              <h3 className="text-lg font-semibold mb-2">Visit Us</h3>
-              <p className="text-syinq-gray mb-4">Our headquarters in Noida</p>
-              <a
-                href="https://maps.app.goo.gl/1mzH44ku5TJx2cro6"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-syinq-blue hover:underline inline-flex items-center"
-              >
-                View on Map
-                <ExternalLink className="ml-1 h-4 w-4" />
-              </a>
-            </div>
+          <div className="pointer-events-none absolute right-0 top-1/2 hidden h-52 w-52 -translate-y-1/2 lg:block xl:h-60 xl:w-60">
+            <Lottie
+              src="/revamp/lottie/map-search-gps.lottie"
+              label="Animated map search locating campus pickup points"
+              className="h-full w-full"
+            />
           </div>
+        </Container>
+      </section>
 
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-            <div className="lg:col-span-2 flex flex-col justify-center">
-              <h2 className="text-2xl font-bold mb-4">Send us a message</h2>
-              <p className="text-syinq-gray mb-6">
-                Fill out the form and our team will get back to you within 24
-                hours.
-              </p>
-
-              <div className="bg-syinq-blue/5 rounded-xl p-6 border border-syinq-blue/20">
-                <h3 className="text-lg font-medium mb-3">Download Syinq</h3>
-                <p className="text-sm text-syinq-gray mb-4">
-                  Syinq is live on iOS and Android. Download the app to start carpooling today.
+      {/* Form + side panel */}
+      <section className="bg-white py-16 sm:py-20 lg:py-24">
+        <Container>
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
+            {/* Side panel */}
+            <div className="flex flex-col gap-5 lg:col-span-2">
+              <Reveal className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+                  <Mail size={22} />
+                </span>
+                <h2 className="mt-4 text-lg font-semibold text-slate-900">Email us</h2>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  For support, questions and feedback. We typically reply within a
+                  business day.
                 </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <Button asChild className="w-full bg-syinq-blue hover:bg-syinq-blue/90 text-white">
-                    <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
-                      App Store
-                    </a>
-                  </Button>
-                  <Button asChild className="w-full bg-syinq-blue hover:bg-syinq-blue/90 text-white">
-                    <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer">
-                      Play Store
-                    </a>
-                  </Button>
-                </div>
-              </div>
+                <a
+                  href="mailto:support@syinq.com"
+                  className="mt-3 inline-flex items-center gap-1.5 font-medium text-brand-600 hover:text-brand-700"
+                >
+                  support@syinq.com
+                  <ArrowRight size={16} />
+                </a>
+              </Reveal>
+
+              <Reveal
+                delay={70}
+                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+              >
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+                  <Building2 size={22} />
+                </span>
+                <h2 className="mt-4 text-lg font-semibold text-slate-900">
+                  Partnering a campus?
+                </h2>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  Bringing Syinq to your campus, club, or running it as an ambassador?
+                  See how campus partnerships work and start a conversation.
+                </p>
+                <Link
+                  href="/for-campuses"
+                  className="mt-3 inline-flex items-center gap-1.5 font-medium text-brand-600 hover:text-brand-700"
+                >
+                  See /for-campuses
+                  <ArrowRight size={16} />
+                </Link>
+              </Reveal>
+
+              <Reveal
+                delay={140}
+                className="rounded-2xl border border-slate-200 bg-page p-6 shadow-sm"
+              >
+                <h2 className="text-lg font-semibold text-slate-900">Get the app</h2>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  Syinq is live on iOS and Android, verified campus rides, all in one
+                  app.
+                </p>
+                <StoreButtons className="mt-4" />
+              </Reveal>
             </div>
 
-            <div className="lg:col-span-3 bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-              <Form {...form}>
-                <form
-                  onSubmit={form.handleSubmit(onSubmit)}
-                  className="space-y-5"
-                >
-                  <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Full Name</FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder="Enter your full name"
-                            {...field}
-                            required
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+            {/* Form */}
+            <Reveal className="lg:col-span-3">
+              <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 className="text-2xl font-bold text-slate-900">Send us a message</h2>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  Fill out the form and our team will get back to you.
+                </p>
 
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Email Address</FormLabel>
-                        <FormControl>
-                          <Input
-                            type="email"
-                            placeholder="Enter your email"
-                            {...field}
-                            required
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                <Form {...form}>
+                  <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="mt-6 space-y-5"
+                  >
+                    <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-slate-700">Full Name</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Enter your full name"
+                              className={inputClass}
+                              {...field}
+                              required
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                  <FormField
-                    control={form.control}
-                    name="subject"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Subject</FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder="What is this regarding?"
-                            {...field}
-                            required
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-slate-700">
+                            Email Address
+                          </FormLabel>
+                          <FormControl>
+                            <Input
+                              type="email"
+                              placeholder="Enter your email"
+                              className={inputClass}
+                              {...field}
+                              required
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Message</FormLabel>
-                        <FormControl>
-                          <Textarea
-                            placeholder="How can we help you?"
-                            className="min-h-[120px]"
-                            {...field}
-                            required
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                    <FormField
+                      control={form.control}
+                      name="subject"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-slate-700">Subject</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="What is this regarding?"
+                              className={inputClass}
+                              {...field}
+                              required
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                  <div className="pt-2">
-                    <Button
+                    <FormField
+                      control={form.control}
+                      name="message"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-slate-700">Message</FormLabel>
+                          <FormControl>
+                            <Textarea
+                              placeholder="How can we help you?"
+                              className="min-h-[140px] border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus-visible:ring-brand-400 focus-visible:ring-offset-0"
+                              {...field}
+                              required
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <button
                       type="submit"
-                      className="w-full bg-syinq-blue hover:bg-syinq-blue/90 flex items-center justify-center"
+                      className="inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-md bg-brand-gradient px-5 py-3 text-sm font-semibold text-white shadow-fab transition-all duration-200 hover:brightness-[1.04] hover:shadow-lg active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
                       disabled={isSubmitting}
                       aria-busy={isSubmitting}
                     >
                       {isSubmitting ? (
                         <>
-                          <span className="mr-2">Sending</span>
+                          <span>Sending</span>
                           <svg
-                            className="animate-spin h-4 w-4"
+                            className="h-4 w-4 animate-spin"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
@@ -293,17 +306,17 @@ const Contact = () => {
                       ) : (
                         <>
                           <span>{buttonText}</span>
-                          <Send className="ml-2 h-4 w-4" />
+                          <Send className="h-4 w-4" />
                         </>
                       )}
-                    </Button>
-                  </div>
-                </form>
-              </Form>
-            </div>
+                    </button>
+                  </form>
+                </Form>
+              </div>
+            </Reveal>
           </div>
-        </div>
-      </div>
+        </Container>
+      </section>
     </div>
   );
 };

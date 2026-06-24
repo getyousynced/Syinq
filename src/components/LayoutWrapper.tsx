@@ -1,9 +1,10 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/site/Navbar";
+import Footer from "@/components/site/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import ScrollProgress from "@/components/site/ScrollProgress";
 
 export default function LayoutWrapper({
   children,
@@ -12,30 +13,24 @@ export default function LayoutWrapper({
 }) {
   const pathname = usePathname();
 
-  // Define standalone routes
+  // Standalone routes render without the marketing chrome.
   const isStandalone =
     pathname.startsWith("/trip") ||
-    pathname.startsWith("/admin/login") ||
     pathname.startsWith("/admin-portal") ||
     pathname.startsWith("/admin-rides") ||
     pathname.startsWith("/admin-dashboard") ||
     pathname.startsWith("/admin-notifications") ||
     pathname.startsWith("/admin-users");
 
-  // Standalone → no navbar/footer
   if (isStandalone) {
     return <>{children}</>;
   }
 
-  // Normal site pages
   return (
     <>
+      <ScrollProgress />
       <Navbar />
-      <div
-        aria-hidden="true"
-        className="h-[144px] bg-white md:h-[98px]"
-      />
-      {children}
+      <main className="pt-[68px]">{children}</main>
       <Footer />
       <ScrollToTop />
     </>
