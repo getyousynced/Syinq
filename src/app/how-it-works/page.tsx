@@ -144,8 +144,8 @@ export default function HowItWorksPage() {
             </div>
             <div className="mt-10 flex justify-center">
               <Lottie
-                src="/revamp/lottie/two-points-route.lottie"
-                label="Animated route line connecting two campus points from A to B"
+                src="/revamp/lottie/ui-ux.lottie"
+                label="Syinq app interface in motion"
                 className="h-44 w-full max-w-md sm:h-52"
               />
             </div>

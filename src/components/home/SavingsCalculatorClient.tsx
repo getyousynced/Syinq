@@ -6,7 +6,6 @@ import { Minus, Plus, TrendingUp, Fuel, Users, CalendarDays } from "lucide-react
 import { Container, SectionHeading } from "@/components/site/primitives";
 import Reveal from "@/components/site/Reveal";
 import TabletFrame from "@/components/site/TabletFrame";
-import Lottie from "@/components/site/Lottie";
 import type { PetrolPrice } from "@/lib/petrol";
 
 const MILEAGE_KMPL = 15;
@@ -172,11 +171,9 @@ export default function SavingsCalculatorClient({ petrol }: { petrol: PetrolPric
           </p>
         </Reveal>
 
-        <Reveal className="mx-auto mt-8 max-w-4xl">
+        <Reveal className="mx-auto mt-8 max-w-md">
           <TabletFrame>
-            <div className="grid md:grid-cols-2 md:items-stretch">
-              {/* Left half, the calculator (inputs + breakdown), no coins */}
-              <div className="space-y-5 p-6 sm:p-7">
+              <div className="space-y-4 p-5 sm:p-6">
                 <div>
                   <label htmlFor="campus" className="flex items-center gap-2 text-sm font-medium text-slate-600">
                     <TrendingUp size={16} className="text-brand-600" />
@@ -216,7 +213,7 @@ export default function SavingsCalculatorClient({ petrol }: { petrol: PetrolPric
                   />
                 </div>
 
-                <div className="space-y-4 border-y border-slate-100 py-4">
+                <div className="space-y-3 border-y border-slate-100 py-3">
                   <Stepper label="Trips / week" icon={CalendarDays} value={tripsPerWeek} set={setTripsPerWeek} min={2} max={20} />
                   <Stepper label="Sharing with" icon={Users} value={people} set={setPeople} min={2} max={4} suffix="ppl" />
                 </div>
@@ -229,17 +226,6 @@ export default function SavingsCalculatorClient({ petrol }: { petrol: PetrolPric
                   </p>
                 </div>
               </div>
-
-              {/* Right half, embedded UI/UX animation */}
-              <div className="flex items-center justify-center bg-slate-50 p-4 sm:p-6">
-                <Lottie
-                  src="/revamp/lottie/ui-ux.lottie"
-                  loop
-                  label="Syinq app interface in motion"
-                  className="h-full min-h-[320px] w-full max-w-[480px]"
-                />
-              </div>
-            </div>
           </TabletFrame>
 
           <p className="mx-auto mt-4 max-w-3xl text-center text-xs leading-relaxed text-slate-400">
