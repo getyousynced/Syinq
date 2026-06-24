@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Minus, Plus, TrendingUp, Fuel, Users, CalendarDays } from "lucide-react";
+import { Minus, Plus, TrendingUp, Fuel, Users, CalendarDays, ChevronDown } from "lucide-react";
 import { Container, SectionHeading } from "@/components/site/primitives";
 import Reveal from "@/components/site/Reveal";
 import TabletFrame from "@/components/site/TabletFrame";
@@ -179,18 +179,25 @@ export default function SavingsCalculatorClient({ petrol }: { petrol: PetrolPric
                     <TrendingUp size={16} className="text-brand-600" />
                     Your campus
                   </label>
-                  <select
-                    id="campus"
-                    value={campus}
-                    onChange={(e) => setCampus(e.target.value)}
-                    className="mt-2 h-11 w-full rounded-lg border border-slate-200 bg-white px-3 text-sm font-medium text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
-                  >
-                    {CAMPUSES.map((c) => (
-                      <option key={c} value={c}>
-                        {c}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="relative mt-2">
+                    <select
+                      id="campus"
+                      value={campus}
+                      onChange={(e) => setCampus(e.target.value)}
+                      className="h-11 w-full appearance-none rounded-lg border border-slate-200 bg-white pl-3 pr-10 text-sm font-medium text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
+                    >
+                      {CAMPUSES.map((c) => (
+                        <option key={c} value={c}>
+                          {c}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown
+                      size={16}
+                      aria-hidden="true"
+                      className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-400"
+                    />
+                  </div>
                 </div>
 
                 <div>
