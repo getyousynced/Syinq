@@ -1,7 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence, useInView, useReducedMotion } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useInView,
+  useReducedMotion,
+} from "framer-motion";
 import {
   BadgeCheck,
   Car,
@@ -115,7 +120,9 @@ function VerificationBand() {
             initial={{ scaleX: 0 }}
             animate={{ scaleX: progress }}
             transition={
-              reduce ? { duration: 0 } : { type: "spring", stiffness: 55, damping: 18 }
+              reduce
+                ? { duration: 0 }
+                : { type: "spring", stiffness: 55, damping: 18 }
             }
           />
         </div>
@@ -126,11 +133,15 @@ function VerificationBand() {
             return (
               <motion.li
                 key={step.label}
-                animate={isVerified && !reduce ? { scale: [1, 1.04, 1] } : undefined}
+                animate={
+                  isVerified && !reduce ? { scale: [1, 1.04, 1] } : undefined
+                }
                 transition={{ duration: 0.35 }}
                 className={cn(
                   "relative z-10 flex items-center gap-2.5 rounded-2xl border px-3 py-2.5 transition-colors duration-300 sm:flex-col sm:gap-2 sm:px-4 sm:text-center",
-                  isVerified ? "border-green-200 bg-green-50" : "border-slate-200 bg-white",
+                  isVerified
+                    ? "border-green-200 bg-green-50"
+                    : "border-slate-200 bg-white",
                 )}
                 aria-label={`${step.label}${step.tag ? ` (${step.tag})` : ""}, ${
                   isVerified ? "verified" : "pending"
@@ -139,7 +150,9 @@ function VerificationBand() {
                 <span
                   className={cn(
                     "relative flex h-9 w-9 shrink-0 items-center justify-center rounded-xl transition-colors duration-300",
-                    isVerified ? "bg-trust/10 text-trust" : "bg-slate-100 text-slate-400",
+                    isVerified
+                      ? "bg-trust/10 text-trust"
+                      : "bg-slate-100 text-slate-400",
                   )}
                 >
                   <step.icon size={18} aria-hidden />
@@ -149,7 +162,11 @@ function VerificationBand() {
                         initial={reduce ? false : { scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 0, opacity: 0 }}
-                        transition={{ type: "spring", stiffness: 520, damping: 22 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 520,
+                          damping: 22,
+                        }}
                         className="absolute -bottom-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-trust text-white ring-2 ring-white"
                       >
                         <Check size={10} strokeWidth={3} aria-hidden />
@@ -190,7 +207,8 @@ function VerificationBand() {
       </div>
 
       <p className="mt-4 text-center text-xs text-slate-500">
-        How a member becomes verified, each check is confirmed before they appear in your pool.
+        How a member becomes verified, each check is confirmed before they
+        appear in your pool.
       </p>
     </div>
   );
@@ -226,17 +244,21 @@ export default function TrustBand() {
                 <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
                   <l.icon size={22} />
                 </span>
-                <h3 className="mt-4 text-lg font-semibold text-slate-900">{l.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">{l.text}</p>
+                <h3 className="mt-4 text-lg font-semibold text-slate-900">
+                  {l.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  {l.text}
+                </p>
               </div>
             ))}
           </Marquee>
         </Reveal>
 
         <Reveal className="mx-auto mt-8 max-w-3xl rounded-xl border border-slate-200 bg-white/70 p-4 text-center text-sm text-slate-500">
-          Syinq supports safer coordination but cannot guarantee any outcome. Proof-of-pool is an
-          accountability tool, not a safety guarantee, always use your judgement and the in-app
-          safety tools.
+          Every ride starts with trust. Verified campus members, and built-in
+          safety features create accountability before the journey even begins,
+          so you can focus on getting there together.
         </Reveal>
       </Container>
     </section>

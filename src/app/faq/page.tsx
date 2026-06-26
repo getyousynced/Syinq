@@ -71,9 +71,10 @@ export default function FaqPage() {
               Syinq FAQ, campus carpooling, answered
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-              Straight answers on how Syinq works, why verified-campus trust and OTP proof-of-pool
-              matter, how members split the running cost, what it takes to host, and how campuses can
-              partner with us. Grouped by topic so you can jump to what you need.
+              Straight answers on how Syinq works, why verified-campus trust and
+              OTP proof-of-pool matter, how members split the running cost, what
+              it takes to host, and how campuses can partner with us. Grouped by
+              topic so you can jump to what you need.
             </p>
             <div className="mt-10 flex justify-center">
               <Lottie
@@ -96,7 +97,11 @@ export default function FaqPage() {
           <section
             key={category}
             id={category.toLowerCase().replace(/[^a-z]+/g, "-")}
-            className={tinted ? "bg-page py-16 sm:py-20 lg:py-24" : "bg-white py-16 sm:py-20 lg:py-24"}
+            className={
+              tinted
+                ? "bg-page py-16 sm:py-20 lg:py-24"
+                : "bg-white py-16 sm:py-20 lg:py-24"
+            }
           >
             <Container>
               <Reveal className="max-w-2xl text-left">
@@ -106,7 +111,9 @@ export default function FaqPage() {
                 <h2 className="mt-3 text-balance text-2xl font-bold leading-tight tracking-tight text-slate-900 sm:text-3xl">
                   {category}
                 </h2>
-                <p className="mt-3 text-base leading-relaxed text-slate-600">{subtitle}</p>
+                <p className="mt-3 text-base leading-relaxed text-slate-600">
+                  {subtitle}
+                </p>
               </Reveal>
 
               <Reveal delay={80} className="mt-8 max-w-3xl">
@@ -114,9 +121,10 @@ export default function FaqPage() {
 
                 {isSafety && (
                   <p className="mt-6 rounded-xl border border-slate-200 bg-white/70 p-4 text-sm leading-relaxed text-slate-500">
-                    Syinq supports safer coordination but cannot guarantee any outcome. Proof-of-pool
-                    is an accountability tool, not a safety guarantee, always use your judgement and
-                    the in-app safety tools.
+                    Every ride starts with trust. Verified campus members, and
+                    built-in safety features create accountability before the
+                    journey even begins, so you can focus on getting there
+                    together.
                   </p>
                 )}
               </Reveal>
@@ -137,8 +145,8 @@ export default function FaqPage() {
                   Still have questions?
                 </h2>
                 <p className="mx-auto mt-4 max-w-xl text-base text-white/85">
-                  Reach the team and we will help, or get the app and see how your campus pools.
-                  Free on iOS and Android.
+                  Reach the team and we will help, or get the app and see how
+                  your campus pools. Free on iOS and Android.
                 </p>
                 <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
                   <CTAButton href="/contact" variant="secondary">
